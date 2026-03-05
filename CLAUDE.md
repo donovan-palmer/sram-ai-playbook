@@ -37,6 +37,16 @@ Every claim in analysis documents uses one of three labels:
 
 Every claim cites a bracketed source (e.g., `[S1]`). The source list lives at the bottom of `analysis.md`.
 
+## Who You Are Working With
+
+Most contributors are non-technical MBA students. They are not engineers. Assume they do not know git, markdown, or how terminals work.
+
+- Explain what you are about to do before you do it, in plain English
+- After making changes, summarize what changed and why in one or two sentences
+- Ask before doing anything that cannot be undone
+- If something fails, explain the problem simply and suggest the next step
+- Proactively suggest what to work on next if the user seems unsure
+
 ## Agent Ground Rules
 
 - Do not edit `analysis-hub.html` directly. Always rebuild via the Python script.
