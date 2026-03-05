@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SRAM AI Adoption Executive Outline</title>
+  <style>
+    :root {
+      --sram-red: #e10600;
+      --sram-red-dark: #ba0500;
+      --sram-red-soft: #fff1f0;
+      --ink: #101114;
+      --ink-soft: #4b5563;
+      --panel: #ffffff;
+      --line: #d8dde5;
+      --bg: #f3f5f8;
+      --charcoal: #16181d;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 20px;
+      --fs-hero: 30px;
+      --fs-h2: 16px;
+      --fs-title-card: 12px;
+      --fs-body: 12px;
+      --fs-meta: 12px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Avenir Next", "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% -10%, rgba(225, 6, 0, 0.16), transparent 42%),
+        radial-gradient(circle at 100% 0%, rgba(17, 24, 39, 0.18), transparent 32%),
+        var(--bg);
+      line-height: 1.4;
+    }
+
+    .wrap {
+      width: min(1220px, calc(100% - 20px));
+      margin: var(--space-3) auto var(--space-4);
+    }
+
+    .page {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 24px 48px rgba(15, 23, 42, 0.14);
+    }
+
+    .hero {
+      background:
+        linear-gradient(130deg, #0f1116 0%, #1a1e26 52%, #111827 100%);
+      color: #f9fafb;
+      padding: var(--space-5) 24px var(--space-4);
+      border-bottom: 4px solid var(--sram-red);
+    }
+
+    .kicker {
+      margin: 0 0 6px;
+      font-size: 10px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #fca5a5;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: var(--fs-hero);
+      line-height: 1.14;
+      letter-spacing: 0.2px;
+      max-width: 850px;
+    }
+
+    .hero h1 {
+      color: #ffd6d3;
+    }
+
+    .meta {
+      margin: 6px 0 0;
+      font-size: var(--fs-meta);
+      color: #d1d5db;
+    }
+
+    .byline {
+      margin: 4px 0 0;
+      font-size: 11px;
+      color: #fca5a5;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+
+
+    .top-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--space-2);
+      padding: var(--space-2) 24px 0;
+      background: var(--panel);
+    }
+
+    button {
+      border: 1px solid #2f3643;
+      border-radius: 999px;
+      background: #1d2330;
+      color: #fff;
+      font-size: 12px;
+      padding: 7px 12px;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: #fff;
+      color: #1d2330;
+    }
+
+    .content {
+      padding: var(--space-2) 24px var(--space-4);
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: var(--space-2);
+    }
+
+    .section {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: var(--radius-md);
+      padding: var(--space-3);
+      position: relative;
+    }
+
+    .sec-1 { grid-column: 1 / -1; }
+    .sec-2 { grid-column: 1 / -1; }
+    .sec-3 { grid-column: span 6; }
+    .sec-4 { grid-column: span 6; }
+    .sec-5 { grid-column: 1 / -1; }
+    .sec-7 { grid-column: 1 / -1; }
+
+    h2 {
+      margin: 0 0 var(--space-1);
+      font-size: var(--fs-h2);
+      line-height: 1.24;
+      color: #111827;
+    }
+
+    .section h2::after {
+      content: "";
+      display: block;
+      width: 42px;
+      height: 2px;
+      border-radius: 3px;
+      margin-top: 4px;
+      background: linear-gradient(90deg, var(--sram-red) 0%, #111827 100%);
+    }
+
+    .section p { margin: var(--space-1) 0; font-size: var(--fs-body); }
+
+    ul { margin: var(--space-1) 0 var(--space-2) 16px; padding: 0; }
+    li { margin: 2px 0; font-size: var(--fs-body); }
+
+    .table-wrap { overflow-x: auto; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 8px 9px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f8fafc;
+      color: #111827;
+      font-size: 12.3px;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-2);
+      margin-top: var(--space-1);
+    }
+
+    .process-card {
+      border: 1px solid #dce1e8;
+      border-radius: var(--radius-sm);
+      padding: var(--space-2);
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      border-left: 3px solid var(--sram-red);
+    }
+
+    .process-card h3 {
+      margin: 0 0 var(--space-1);
+      font-size: var(--fs-title-card);
+      color: #111827;
+      line-height: 1.25;
+    }
+
+    .process-card p {
+      margin: 1px 0;
+      font-size: 11px;
+      color: #1f2937;
+      line-height: 1.28;
+    }
+
+    .process-card .label {
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .legend {
+      display: inline-block;
+      margin: 1px 0 3px;
+      font-size: 10px;
+      color: #374151;
+      border: 1px solid #d1d5db;
+      background: #f9fafb;
+      border-radius: 999px;
+      padding: 2px 8px;
+    }
+
+    .finance-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-2);
+      margin-top: var(--space-1);
+    }
+
+    .metric {
+      border: 1px solid #dce1e8;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      padding: var(--space-2);
+      border-top: 3px solid var(--sram-red);
+    }
+
+    .metric h3 {
+      margin: 0 0 var(--space-1);
+      font-size: var(--fs-title-card);
+      color: #111827;
+    }
+
+    .range {
+      font-size: 15px;
+      font-weight: 800;
+      color: #111827;
+      margin: 0 0 2px;
+      letter-spacing: 0.1px;
+    }
+
+    .detail {
+      margin: 0;
+      font-size: 11px;
+      color: #1f2937;
+    }
+
+    .pill-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .pill {
+      font-size: 12px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #f9fafb;
+      color: #111827;
+      font-weight: 600;
+    }
+
+    .totals {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-2);
+      margin-top: var(--space-2);
+    }
+
+    .total-card {
+      border: 1px solid #dbe0e8;
+      border-radius: var(--radius-sm);
+      padding: var(--space-2);
+      background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+      border-top: 3px solid #1f2937;
+    }
+
+    .total-card h4 {
+      margin: 0 0 3px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #374151;
+    }
+
+    .total-card p {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 700;
+      color: #111827;
+      line-height: 1.2;
+    }
+
+    .callout {
+      margin-top: var(--space-2);
+      border-left: 4px solid var(--sram-red);
+      background: var(--sram-red-soft);
+      border-radius: var(--radius-sm);
+      padding: var(--space-2);
+      font-size: 11px;
+      color: #111827;
+    }
+
+    .sec5-flow {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-2);
+      margin-top: var(--space-2);
+    }
+
+    .mini-block {
+      border: 1px solid #dbe1ea;
+      border-radius: var(--radius-sm);
+      background: #fbfcff;
+      padding: var(--space-2);
+    }
+
+    .mini-block h3 {
+      margin: 0 0 var(--space-1);
+      font-size: var(--fs-title-card);
+      color: #111827;
+    }
+
+    .mini-block ul {
+      margin: 2px 0 0 14px;
+    }
+
+    .mini-block li {
+      margin: 1px 0;
+      font-size: 11px;
+      color: #1f2937;
+    }
+
+    .footer-note {
+      font-size: 11px;
+      color: #4b5563;
+      margin-top: var(--space-2);
+    }
+
+    @media screen and (max-width: 1024px) {
+      .content {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .sec-1 { grid-column: 1 / -1; }
+      .sec-2 { grid-column: 1 / -1; }
+      .sec-3, .sec-4, .sec-7 { grid-column: span 1; }
+      .sec-5 { grid-column: 1 / -1; }
+      .process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .finance-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .totals { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .sec5-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media screen and (max-width: 780px) {
+      .wrap { width: calc(100% - 12px); margin: 8px auto 18px; }
+      .hero, .top-actions, .content { padding-left: 14px; padding-right: 14px; }
+      .content { grid-template-columns: 1fr; gap: 10px; }
+      .sec-1, .sec-2, .sec-3, .sec-4, .sec-5, .sec-7 { grid-column: auto; }
+      .process-grid, .finance-grid { grid-template-columns: 1fr; }
+      .sec5-flow { grid-template-columns: 1fr; gap: 8px; }
+      h1 { font-size: 26px; }
+      .section { padding: 12px; }
+      .totals { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      @page { size: Letter portrait; margin: 0.12in; }
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      body { background: #fff; }
+      .wrap { width: 100%; margin: 0; }
+      .page {
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .top-actions { display: none !important; }
+      .section {
+        break-inside: auto;
+        page-break-inside: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <main class="page">
+      <header class="hero">
+        <p class="kicker">Executive Advisory Brief</p>
+        <h1>SRAM AI Adoption Executive Outline</h1>
+        <p class="meta">Date: February 28, 2026 | Company: SRAM LLC (private; SRAM = Scott, Ray, and Sam)</p>
+        <p class="byline">Prepared by Donovan Palmer</p>
+      </header>
+
+      <div class="top-actions">
+        <button class="secondary" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to Top</button>
+        <button onclick="window.print()">Print / Save as PDF</button>
+      </div>
+
+      <section class="content">
+        <section class="section sec-1">
+          <h2>1) Where SRAM Is Well Positioned for AI</h2>
+          <ul>
+            <li>SRAM has a large, structured support knowledge base (manuals, compatibility guides, troubleshooting, warranty guidance), which is strong AI input.</li>
+            <li>SRAM also has connected product workflows through AXS and Hammerhead. AXS is SRAM's wireless electronic shifting ecosystem and app experience; Hammerhead is SRAM's cycling computer platform for ride and device data.</li>
+            <li>Those connected interactions (setup, firmware updates, diagnostics, usage data) create practical data loops for better support and smarter recommendation workflows.</li>
+          </ul>
+        </section>
+
+        <section class="section sec-2">
+          <h2>2) Target Processes, Pain Points, Tools, and Why Each Tool Fits</h2>
+          <div class="process-grid">
+            <article class="process-card">
+              <h3>1) Rider/dealer support, warranty, compatibility help</h3>
+              <p><span class="label">Main pain point:</span> Teams spend too much time searching documents and repeating standard troubleshooting steps.</p>
+              <p><span class="label">AI tool stack:</span> Zendesk AI + Azure AI Search + OpenAI via Responses API.</p>
+              <p><span class="label">Why fit:</span> Zendesk fits current ticket operations, Azure AI Search finds approved content quickly, and OpenAI turns retrieved content into clear response drafts.</p>
+            </article>
+            <article class="process-card">
+              <h3>2) Demand forecasting and inventory allocation</h3>
+              <p><span class="label">Main pain point:</span> Forecast misses lead to stockouts, rush shipping, and markdown losses.</p>
+              <p><span class="label">AI tool stack:</span> Vertex AI Forecasting or Databricks.</p>
+              <p><span class="label">Why fit:</span> Strong for time-series forecasting and planner exception handling across multi-channel product portfolios.</p>
+            </article>
+            <article class="process-card">
+              <h3>3) Bicycle manufacturer proposal and spec package creation</h3>
+              <p><span class="label">Main pain point:</span> Proposal cycles are slow and manual, delaying response and lowering win rates.</p>
+              <p><span class="label">AI tool stack:</span> Salesforce Einstein/Agentforce + CPQ features.</p>
+              <p><span class="label">Why fit:</span> Fits existing quoting and package-configuration workflow, improving speed and consistency.</p>
+            </article>
+            <article class="process-card">
+              <h3>4) Technical documentation and translation</h3>
+              <p><span class="label">Main pain point:</span> Updates take too long to appear in manuals and localized content.</p>
+              <p><span class="label">AI tool stack:</span> OpenAI + DeepL API + workflow automation (Atlassian/ServiceNow).</p>
+              <p><span class="label">Why fit:</span> Accelerates draft + translation cycle while preserving review and approval controls.</p>
+            </article>
+            <article class="process-card">
+              <h3>5) Compatible next-part recommendations (Phase 3)</h3>
+              <p><span class="label">Main pain point:</span> Customers often finish purchase/service without clear guidance on next compatible part.</p>
+              <p><span class="label">AI tool stack:</span> Compatibility rules engine + recommender + OpenAI explanation layer.</p>
+              <p><span class="label">Why fit:</span> Rules protect fit accuracy, recommendation model lifts basket value, and explanation layer improves trust.</p>
+            </article>
+            <article class="process-card">
+              <h3>6) Product development workflow support (Phase 3)</h3>
+              <p><span class="label">Main pain point:</span> Engineering teams need faster translation of field issues into product requirements and quicker test planning cycles.</p>
+              <p><span class="label">AI tool stack:</span> OpenAI + issue/telemetry analytics + test-workflow automation.</p>
+              <p><span class="label">Why fit:</span> Supports requirements mining, firmware test acceleration, and design-review preparation without jumping to full design automation. Not included in Year-1 financial totals.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section sec-3">
+          <h2>3) Year-1 Cost Reduction</h2>
+          <span class="legend">Forecast format: conservative / expected / upside</span>
+          <div class="finance-grid">
+            <article class="metric">
+              <h3>Support assistant savings</h3>
+              <p class="range">$0.5M / $1.6M / $4.3M</p>
+              <p class="detail">AI helps agents resolve more tickets faster with fewer escalations.</p>
+              <p class="detail"><strong>Expected-case math:</strong> 120 people x $90K x 60% AI-helpable work x 35% productivity gain x 70% adoption.</p>
+            </article>
+            <article class="metric">
+              <h3>Forecasting and inventory savings</h3>
+              <p class="range">$0.7M / $1.6M / $4.5M</p>
+              <p class="detail">Lower avoidable loss from stockouts, expedites, and markdowns.</p>
+              <p class="detail"><strong>Expected-case math:</strong> $200M inventory exposure x 4% avoidable loss x 20% captured.</p>
+            </article>
+            <article class="metric">
+              <h3>Documentation and translation savings</h3>
+              <p class="range">$0.1M / $0.24M / $0.9M</p>
+              <p class="detail">Less manual content effort and faster publish cycle.</p>
+              <p class="detail"><strong>Expected-case math:</strong> 20 people x $85K x 50% workload x 40% reduction x 70% adoption.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section sec-4">
+          <h2>4) Year-1 Revenue Growth</h2>
+          <span class="legend">Forecast format: conservative / expected / upside</span>
+          <div class="finance-grid">
+            <article class="metric">
+              <h3>Keep more existing customers buying SRAM</h3>
+              <p class="range">$1.5M / $3.0M / $4.5M</p>
+              <p class="detail">Better support and clearer compatibility guidance improve repeat purchase behavior.</p>
+              <p class="detail"><strong>Expected-case math:</strong> $300M affected revenue x 1.0% improvement.</p>
+            </article>
+            <article class="metric">
+              <h3>Larger multi-brand package sales</h3>
+              <p class="range">$2.0M / $4.0M / $8.0M</p>
+              <p class="detail">More deals include complementary products across the SRAM brand family.</p>
+              <p class="detail"><strong>Expected-case math:</strong> $400M targeted revenue x 1.0% package-size improvement.</p>
+            </article>
+            <article class="metric">
+              <h3>More bicycle manufacturer wins via faster proposals</h3>
+              <p class="range">$1.3M / $2.5M / $3.8M</p>
+              <p class="detail">Faster, clearer proposals improve win rates on qualified opportunities.</p>
+              <p class="detail"><strong>Expected-case math:</strong> $250M opportunity pool x 1.0% win-rate improvement.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section sec-5">
+          <h2>5) Net Financial Picture, Rollout, and Risk Controls</h2>
+          <div class="totals">
+            <div class="total-card"><h4>Gross Value</h4><p>$6.1M / $12.9M / $26.0M</p></div>
+            <div class="total-card"><h4>Setup Cost (Year 1)</h4><p>$1.2M / $2.0M / $2.5M</p></div>
+            <div class="total-card"><h4>Operating Cost (Year 1)</h4><p>$0.4M / $0.7M / $1.0M</p></div>
+            <div class="total-card"><h4>Net Year-1 Value</h4><p>$4.5M / $10.2M / $22.5M</p></div>
+          </div>
+          <div class="callout"><strong>Expected-case return on spend:</strong> about 3.8x ($10.2M net / $2.7M total spend).</div>
+
+          <div class="sec5-flow">
+            <article class="mini-block">
+              <h3>Rollout sequence</h3>
+              <ul>
+                <li><strong>0-90 days:</strong> support + compatibility assistant pilot with tight scope.</li>
+                <li><strong>Start scope:</strong> AXS drivetrain + Hammerhead device support, dealer inbox + high-volume web forms, compatibility and firmware/update issues first.</li>
+                <li><strong>Pilot decision rule:</strong> AI drafts responses; human agents approve all customer-facing responses.</li>
+                <li><strong>90-180 days:</strong> forecasting rollout for top product/channel groups.</li>
+                <li><strong>180-365 days:</strong> expand to bicycle manufacturer proposal support and multi-brand recommendation workflows.</li>
+              </ul>
+            </article>
+            <article class="mini-block">
+              <h3>Risk controls</h3>
+              <ul>
+                <li>Human approval for warranty and safety exceptions.</li>
+                <li>Compatibility answers sourced from approved documents only.</li>
+                <li>Weekly quality review with rollback trigger if quality drops for two consecutive weeks.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="section sec-7">
+          <h2>6) CEO Decision</h2>
+          <ul>
+            <li>Approve a focused 90-day Phase 1 pilot for support and compatibility.</li>
+            <li>Approve this exact starting scope: AXS + Hammerhead support workflows in dealer/support channels, with compatibility and firmware/update issues first.</li>
+            <li>Assign one accountable business owner and one cross-functional delivery team.</li>
+            <li>Maintain sequencing discipline: bounded, well-defined problems first; broader transformation after measured proof.</li>
+          </ul>
+        </section>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
