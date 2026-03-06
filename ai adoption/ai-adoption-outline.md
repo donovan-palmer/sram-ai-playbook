@@ -1,8 +1,14 @@
 # SRAM AI Adoption Executive Outline
 
-Date: 2026-02-28  
-Company: SRAM LLC (private; the name comes from the founders Scott, Ray, and Sam)
+Date: 2026-02-28
+Company: SRAM LLC (private)
 Prepared by Donovan Palmer
+
+## Executive Summary
+
+SRAM has a strong foundation for AI adoption. Its AXS wireless ecosystem and Hammerhead cycling computer platform generate structured, real-time product data that most competitors do not have. The near-term opportunity is to use that data advantage to improve dealer and rider support, reduce forecast error, and accelerate proposal cycles — with a phased rollout that stays bounded and measurable before scaling.
+
+Expected-case Year-1 net value after setup and operating costs: $10.2M. Expected-case return on Year-1 spend: 3.8x. The recommendation is a focused 90-day pilot starting with AXS and Hammerhead support workflows, with human approval on all customer-facing outputs.
 
 ## 1) Where SRAM Is Well Positioned for AI
 
