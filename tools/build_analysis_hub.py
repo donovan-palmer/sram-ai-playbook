@@ -21,13 +21,25 @@ def slugify(s: str) -> str:
     return s[:80] or "section"
 
 
+BADGES = {
+    "Confirmed":   ("badge-confirmed",   "✓ Confirmed"),
+    "Inference":   ("badge-inference",   "~ Inference"),
+    "Speculative": ("badge-speculative", "? Speculative"),
+}
+
 def inline(text: str) -> str:
     text = html.escape(text)
-    text = re.sub(r"`([^`]+)`", r"<code>\1</code>", text)
+    text = re.sub(r"`([^`]+)`", lambda m: _badge_or_code(m.group(1)), text)
     text = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", text)
     text = re.sub(r"\*([^*]+)\*", r"<em>\1</em>", text)
     text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2" target="_blank">\1</a>', text)
     return text
+
+def _badge_or_code(inner: str) -> str:
+    if inner in BADGES:
+        cls, label = BADGES[inner]
+        return f'<span class="badge {cls}">{label}</span>'
+    return f"<code>{inner}</code>"
 
 
 def render_markdown(md: str, prefix: str) -> str:
@@ -148,233 +160,277 @@ def build() -> None:
         )
 
     page = f"""<!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SRAM AI Playbook</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,400&display=swap" rel="stylesheet">
   <style>
     :root {{
       --red: #e10600;
-      --red-dim: rgba(225,6,0,0.12);
+      --red-glow: rgba(225,6,0,0.25);
+      --ink: #f1f5f9;
+      --ink-2: #94a3b8;
+      --ink-3: #64748b;
+      --bg: #080b10;
+      --panel: #0f1420;
+      --panel-2: #141928;
+      --border: rgba(255,255,255,0.07);
+      --border-hover: rgba(255,255,255,0.13);
+      --nav-bg: #070a0f;
+      --accent: #60a5fa;
+      --code-bg: #0d1117;
+      --shadow: 0 4px 32px rgba(0,0,0,0.4);
+      --shadow-lg: 0 12px 48px rgba(0,0,0,0.6);
+      --shadow-red: 0 0 32px rgba(225,6,0,0.15);
+      --transition: 180ms cubic-bezier(0.4,0,0.2,1);
+      --radius: 14px;
+    }}
+
+    [data-theme="light"] {{
       --ink: #0d1117;
       --ink-2: #374151;
       --ink-3: #6b7280;
-      --bg: #f5f7fa;
+      --bg: #f4f6fa;
       --panel: #ffffff;
+      --panel-2: #f8fafc;
       --border: #e5e8ee;
+      --border-hover: #c8cdd8;
       --nav-bg: #0d1117;
-      --nav-text: #c9d5e8;
-      --nav-active: #ffffff;
-      --nav-hover-bg: rgba(255,255,255,0.06);
-      --accent: #3b82f6;
       --code-bg: #f1f3f7;
-      --shadow: 0 4px 24px rgba(13,17,23,0.07);
-      --shadow-lg: 0 8px 40px rgba(13,17,23,0.12);
-      --transition: 200ms cubic-bezier(0.4,0,0.2,1);
-    }}
-
-    [data-theme="dark"] {{
-      --ink: #f0f4f8;
-      --ink-2: #cbd5e1;
-      --ink-3: #94a3b8;
-      --bg: #0d1117;
-      --panel: #161b22;
-      --border: #30363d;
-      --code-bg: #1e2530;
-      --shadow: 0 4px 24px rgba(0,0,0,0.3);
-      --shadow-lg: 0 8px 40px rgba(0,0,0,0.4);
+      --shadow: 0 4px 24px rgba(13,17,23,0.08);
+      --shadow-lg: 0 12px 40px rgba(13,17,23,0.14);
+      --shadow-red: 0 0 24px rgba(225,6,0,0.08);
     }}
 
     * {{ box-sizing: border-box; margin: 0; padding: 0; }}
-
     html {{ scroll-behavior: smooth; }}
 
     body {{
-      font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+      font-family: "Inter", system-ui, sans-serif;
       background: var(--bg);
       color: var(--ink);
       line-height: 1.6;
       font-size: 15px;
-      transition: background var(--transition), color var(--transition);
+      -webkit-font-smoothing: antialiased;
     }}
 
     /* ── PROGRESS BAR ── */
     #progress {{
-      position: fixed;
-      top: 0; left: 0;
-      height: 3px;
-      width: 0%;
-      background: var(--red);
+      position: fixed; top: 0; left: 0;
+      height: 2px; width: 0%;
+      background: linear-gradient(90deg, var(--red), #ff4d4d);
       z-index: 9999;
-      transition: width 80ms linear;
+      transition: width 60ms linear;
+      box-shadow: 0 0 12px var(--red-glow);
     }}
+
+    /* ── COMMAND PALETTE ── */
+    #cmdOverlay {{
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(6px);
+      z-index: 9000;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 15vh;
+    }}
+    #cmdOverlay.open {{ display: flex; }}
+
+    #cmdBox {{
+      background: var(--panel);
+      border: 1px solid var(--border-hover);
+      border-radius: 16px;
+      width: 560px;
+      max-width: 90vw;
+      box-shadow: var(--shadow-lg), 0 0 0 1px rgba(225,6,0,0.1);
+      overflow: hidden;
+    }}
+
+    #cmdInput {{
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      padding: 16px 20px;
+      font-size: 16px;
+      font-family: inherit;
+      color: var(--ink);
+      outline: none;
+    }}
+
+    #cmdInput::placeholder {{ color: var(--ink-3); }}
+
+    #cmdResults {{
+      max-height: 360px;
+      overflow-y: auto;
+      padding: 6px;
+    }}
+
+    .cmd-item {{
+      padding: 10px 14px;
+      border-radius: 9px;
+      cursor: pointer;
+      font-size: 13px;
+      color: var(--ink-2);
+      transition: all var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }}
+
+    .cmd-item:hover, .cmd-item.selected {{
+      background: rgba(225,6,0,0.1);
+      color: var(--ink);
+    }}
+
+    .cmd-item-icon {{ color: var(--ink-3); font-size: 15px; width: 18px; text-align: center; }}
+    .cmd-hint {{ padding: 10px 14px; font-size: 11px; color: var(--ink-3); border-top: 1px solid var(--border); }}
 
     /* ── LAYOUT ── */
     .layout {{
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 260px 1fr;
       min-height: 100vh;
     }}
 
     /* ── SIDEBAR ── */
     nav {{
-      position: sticky;
-      top: 0;
-      height: 100vh;
+      position: sticky; top: 0; height: 100vh;
       overflow-y: auto;
       background: var(--nav-bg);
-      display: flex;
-      flex-direction: column;
-      border-right: 1px solid rgba(225,6,0,0.3);
+      display: flex; flex-direction: column;
+      border-right: 1px solid rgba(225,6,0,0.2);
     }}
 
-    nav::-webkit-scrollbar {{ width: 4px; }}
-    nav::-webkit-scrollbar-thumb {{ background: rgba(255,255,255,0.1); border-radius: 2px; }}
+    nav::-webkit-scrollbar {{ width: 3px; }}
+    nav::-webkit-scrollbar-thumb {{ background: rgba(255,255,255,0.08); border-radius: 2px; }}
 
     .nav-top {{
-      padding: 20px 18px 14px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 22px 16px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }}
+
+    .nav-logo {{
+      display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+    }}
+
+    .nav-logo-mark {{
+      width: 28px; height: 28px;
+      background: var(--red);
+      border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 13px; color: #fff; letter-spacing: -0.5px;
     }}
 
     .nav-brand {{
-      font-size: 17px;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -0.3px;
+      font-size: 15px; font-weight: 700; color: #fff; letter-spacing: -0.3px;
     }}
-
-    .nav-brand span {{ color: var(--red); }}
 
     .nav-sub {{
-      font-size: 11px;
-      color: #64748b;
-      margin-top: 2px;
+      font-size: 10.5px; color: #4b5563; margin-bottom: 12px; line-height: 1.4;
     }}
 
-    .nav-search {{
-      margin-top: 12px;
-      position: relative;
-    }}
-
-    .nav-search input {{
+    .cmd-trigger {{
       width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 7px 10px;
+      font-size: 12px;
+      color: #64748b;
+      font-family: inherit;
+      cursor: pointer;
+      text-align: left;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: all var(--transition);
+    }}
+    .cmd-trigger:hover {{ border-color: rgba(255,255,255,0.15); color: #94a3b8; }}
+    .cmd-trigger kbd {{
       background: rgba(255,255,255,0.07);
       border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 8px;
-      padding: 7px 10px 7px 30px;
-      font-size: 12px;
-      color: #fff;
-      font-family: inherit;
-      outline: none;
-      transition: border-color var(--transition);
-    }}
-
-    .nav-search input::placeholder {{ color: #64748b; }}
-    .nav-search input:focus {{ border-color: rgba(225,6,0,0.5); }}
-
-    .nav-search svg {{
-      position: absolute;
-      left: 9px;
-      top: 50%;
-      transform: translateY(-50%);
-      opacity: 0.4;
+      border-radius: 4px; padding: 1px 6px; font-size: 10px;
     }}
 
     .nav-links {{
-      flex: 1;
-      padding: 10px 10px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
+      flex: 1; padding: 8px 8px 16px;
+      display: flex; flex-direction: column; gap: 1px;
     }}
 
-    .nav-group-label {{
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      color: #4b5563;
-      padding: 10px 8px 4px;
+    .nav-section {{
+      font-size: 9.5px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: #374151; padding: 10px 8px 3px;
     }}
 
     .nav-link {{
-      display: block;
+      display: flex; align-items: center; gap: 8px;
       text-decoration: none;
-      color: var(--nav-text);
-      font-size: 13px;
-      padding: 7px 10px;
-      border-radius: 7px;
+      color: #6b7280; font-size: 12.5px;
+      padding: 6px 8px; border-radius: 7px;
       border: 1px solid transparent;
       transition: all var(--transition);
-      line-height: 1.35;
     }}
 
-    .nav-link:hover {{
-      background: var(--nav-hover-bg);
-      color: #fff;
-      border-color: rgba(255,255,255,0.08);
-    }}
+    .nav-link:hover {{ background: rgba(255,255,255,0.05); color: #d1d5db; }}
 
     .nav-link.active {{
-      background: rgba(225,6,0,0.15);
-      border-color: rgba(225,6,0,0.3);
-      color: var(--nav-active);
+      background: rgba(225,6,0,0.12);
+      border-color: rgba(225,6,0,0.25);
+      color: #fff;
     }}
 
-    .nav-link .nav-label {{ display: block; }}
+    .nav-link.active::before {{
+      content: ""; width: 3px; height: 14px;
+      background: var(--red); border-radius: 2px; flex-shrink: 0;
+    }}
 
     .nav-bottom {{
-      padding: 14px 18px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      display: flex;
-      gap: 8px;
+      padding: 12px 10px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex; gap: 6px;
     }}
 
-    .btn-ghost {{
+    .nav-btn {{
       flex: 1;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: #c9d5e8;
-      border-radius: 8px;
-      padding: 7px 10px;
-      font-size: 11px;
-      font-family: inherit;
-      cursor: pointer;
-      transition: all var(--transition);
-      text-align: center;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.07);
+      color: #6b7280; border-radius: 7px;
+      padding: 6px 4px; font-size: 10.5px;
+      font-family: inherit; cursor: pointer;
+      transition: all var(--transition); text-align: center;
     }}
-
-    .btn-ghost:hover {{ background: rgba(255,255,255,0.13); color: #fff; }}
+    .nav-btn:hover {{ background: rgba(255,255,255,0.1); color: #d1d5db; }}
 
     /* ── MAIN ── */
-    main {{
-      padding: 28px 32px 60px;
-      max-width: 900px;
-    }}
+    main {{ padding: 28px 36px 72px; max-width: 960px; }}
 
     /* ── HERO ── */
     .hero {{
-      background: var(--panel);
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, var(--panel) 0%, var(--panel-2) 100%);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px 32px;
-      margin-bottom: 20px;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
+      border-radius: 18px;
+      padding: 30px 32px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow), var(--shadow-red);
     }}
 
-    .hero::before {{
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--red), #ff6b35, var(--red));
-      background-size: 200% 100%;
-      animation: shimmer 3s infinite linear;
+    .hero-glow {{
+      position: absolute; top: -60px; right: -60px;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(225,6,0,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }}
+
+    .hero-stripe {{
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--red), #ff6b35, var(--red), transparent);
+      background-size: 300% 100%;
+      animation: shimmer 4s infinite linear;
     }}
 
     @keyframes shimmer {{
@@ -382,340 +438,319 @@ def build() -> None:
       100% {{ background-position: -200% 0; }}
     }}
 
-    .hero-row {{
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
+    .hero-eyebrow {{
+      font-size: 10.5px; font-weight: 700;
+      letter-spacing: 1.2px; text-transform: uppercase;
+      color: var(--red); margin-bottom: 6px;
     }}
 
     .hero h1 {{
-      font-size: 26px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      color: var(--ink);
+      font-size: 28px; font-weight: 900;
+      letter-spacing: -0.8px;
+      background: linear-gradient(135deg, var(--ink) 0%, var(--ink-2) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
       margin-bottom: 4px;
     }}
 
-    .hero-sub {{
-      font-size: 13px;
-      color: var(--ink-3);
+    .hero-sub {{ font-size: 13px; color: var(--ink-3); }}
+
+    .hero-row {{
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 20px; flex-wrap: wrap;
     }}
 
-    .hero-actions {{
-      display: flex;
-      gap: 8px;
-      flex-shrink: 0;
-      margin-top: 4px;
-    }}
+    .hero-actions {{ display: flex; gap: 8px; flex-shrink: 0; margin-top: 6px; }}
 
     .btn {{
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 9px 16px;
-      border-radius: 9px;
-      font-size: 13px;
-      font-weight: 500;
-      font-family: inherit;
-      cursor: pointer;
-      border: none;
-      transition: all var(--transition);
-      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 9px 18px; border-radius: 10px;
+      font-size: 13px; font-weight: 600;
+      font-family: inherit; cursor: pointer; border: none;
+      transition: all var(--transition); text-decoration: none;
+      letter-spacing: -0.1px;
     }}
 
     .btn-primary {{
-      background: var(--ink);
+      background: var(--red);
       color: #fff;
+      box-shadow: 0 4px 16px rgba(225,6,0,0.35);
     }}
+    .btn-primary:hover {{ transform: translateY(-1px); box-shadow: 0 6px 24px rgba(225,6,0,0.45); }}
 
-    [data-theme="dark"] .btn-primary {{ background: #fff; color: #0d1117; }}
-
-    .btn-primary:hover {{ opacity: 0.85; transform: translateY(-1px); }}
-
-    .btn-outline {{
-      background: transparent;
+    .btn-ghost-light {{
+      background: rgba(255,255,255,0.07);
       color: var(--ink-2);
       border: 1px solid var(--border);
     }}
+    [data-theme="light"] .btn-ghost-light {{
+      background: var(--panel-2); border-color: var(--border);
+    }}
+    .btn-ghost-light:hover {{ background: rgba(255,255,255,0.12); color: var(--ink); transform: translateY(-1px); }}
 
-    .btn-outline:hover {{ background: var(--bg); transform: translateY(-1px); }}
-
-    /* ── METRICS STRIP ── */
+    /* ── METRICS ── */
     .metrics {{
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-bottom: 20px;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px; margin-bottom: 18px;
     }}
 
     .metric {{
+      position: relative; overflow: hidden;
       background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px 18px;
+      border-radius: 14px;
+      padding: 18px 20px;
       box-shadow: var(--shadow);
-      transition: transform var(--transition), box-shadow var(--transition);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      cursor: default;
     }}
 
-    .metric:hover {{ transform: translateY(-2px); box-shadow: var(--shadow-lg); }}
+    .metric::after {{
+      content: "";
+      position: absolute; inset: 0;
+      border-radius: 14px;
+      background: radial-gradient(circle at 80% 20%, rgba(225,6,0,0.06), transparent 60%);
+      pointer-events: none;
+    }}
+
+    .metric:hover {{
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(225,6,0,0.2);
+    }}
 
     .metric-value {{
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      color: var(--red);
+      font-size: 26px; font-weight: 900;
+      letter-spacing: -1px; color: var(--red);
+      font-variant-numeric: tabular-nums;
     }}
 
     .metric-label {{
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--ink-3);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-top: 2px;
+      font-size: 10.5px; font-weight: 600;
+      color: var(--ink-3); text-transform: uppercase;
+      letter-spacing: 0.6px; margin-top: 3px;
     }}
 
-    .metric-sub {{
-      font-size: 12px;
-      color: var(--ink-3);
-      margin-top: 2px;
-    }}
+    .metric-sub {{ font-size: 11.5px; color: var(--ink-3); margin-top: 1px; }}
 
-    /* ── FILTER CHIPS ── */
+    /* ── FILTERS ── */
     .filters {{
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
+      display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px;
     }}
 
     .chip {{
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 500;
+      padding: 5px 14px; border-radius: 999px;
+      font-size: 12px; font-weight: 500;
       border: 1px solid var(--border);
-      background: var(--panel);
-      color: var(--ink-2);
-      cursor: pointer;
-      transition: all var(--transition);
+      background: var(--panel); color: var(--ink-3);
+      cursor: pointer; transition: all var(--transition);
     }}
 
-    .chip:hover, .chip.active {{
-      background: var(--ink);
-      color: #fff;
-      border-color: var(--ink);
-    }}
+    .chip:hover {{ border-color: var(--border-hover); color: var(--ink); }}
 
-    [data-theme="dark"] .chip:hover,
-    [data-theme="dark"] .chip.active {{
-      background: #fff;
-      color: #0d1117;
-      border-color: #fff;
+    .chip.active {{
+      background: var(--red); color: #fff;
+      border-color: var(--red);
+      box-shadow: 0 2px 12px rgba(225,6,0,0.3);
     }}
 
     /* ── DOC CARDS ── */
     .doc {{
       background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      margin-bottom: 16px;
+      border-radius: var(--radius);
+      margin-bottom: 12px;
       box-shadow: var(--shadow);
       overflow: hidden;
-      transition: box-shadow var(--transition), transform var(--transition);
+      transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition);
     }}
 
-    .doc:hover {{ box-shadow: var(--shadow-lg); }}
+    .doc:hover {{
+      box-shadow: var(--shadow-lg);
+      border-color: var(--border-hover);
+    }}
 
     .doc.hidden {{ display: none; }}
 
     .doc-header {{
-      padding: 16px 20px 14px;
+      padding: 15px 20px;
       border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-      cursor: pointer;
-      user-select: none;
+      display: flex; align-items: center; gap: 10px;
+      cursor: pointer; user-select: none;
+      transition: background var(--transition);
+    }}
+
+    .doc-header:hover {{ background: rgba(255,255,255,0.02); }}
+    [data-theme="light"] .doc-header:hover {{ background: rgba(0,0,0,0.015); }}
+
+    .doc-folder {{
+      font-size: 9.5px; font-weight: 700;
+      letter-spacing: 0.7px; text-transform: uppercase;
+      color: var(--ink-3);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      padding: 2px 8px; border-radius: 999px; flex-shrink: 0;
+    }}
+
+    [data-theme="light"] .doc-folder {{ background: var(--bg); }}
+
+    .doc-title {{
+      font-size: 15px; font-weight: 700;
+      color: var(--ink); flex: 1;
+      transition: color var(--transition);
     }}
 
     .doc-header:hover .doc-title {{ color: var(--red); }}
 
-    .doc-folder {{
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      background: var(--bg);
-      border: 1px solid var(--border);
-      padding: 2px 8px;
-      border-radius: 999px;
-      flex-shrink: 0;
-    }}
-
-    .doc-title {{
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--ink);
-      transition: color var(--transition);
-      flex: 1;
-    }}
-
     .doc-toggle {{
-      font-size: 18px;
-      color: var(--ink-3);
-      transition: transform var(--transition);
-      flex-shrink: 0;
+      color: var(--ink-3); font-size: 16px;
+      transition: transform var(--transition); flex-shrink: 0;
     }}
 
     .doc.collapsed .doc-toggle {{ transform: rotate(-90deg); }}
     .doc.collapsed .doc-body {{ display: none; }}
 
-    .doc-body {{
-      padding: 18px 20px 20px;
-    }}
+    .doc-body {{ padding: 20px 22px 22px; }}
 
     /* ── TYPOGRAPHY ── */
-    .doc-body h1 {{ font-size: 20px; font-weight: 700; margin: 20px 0 8px; color: var(--ink); }}
-    .doc-body h2 {{ font-size: 17px; font-weight: 700; margin: 18px 0 8px; color: var(--ink); padding-left: 10px; border-left: 3px solid var(--red); }}
-    .doc-body h3 {{ font-size: 14px; font-weight: 600; margin: 14px 0 6px; color: var(--ink-2); }}
-    .doc-body h4 {{ font-size: 13px; font-weight: 600; margin: 10px 0 4px; color: var(--ink-2); }}
-    .doc-body p {{ margin: 7px 0; font-size: 14px; color: var(--ink-2); line-height: 1.7; }}
-    .doc-body ul {{ margin: 7px 0 10px 18px; }}
-    .doc-body li {{ margin: 5px 0; font-size: 14px; color: var(--ink-2); line-height: 1.6; }}
+    .doc-body h1 {{ font-size: 19px; font-weight: 800; margin: 18px 0 8px; color: var(--ink); letter-spacing: -0.3px; }}
+    .doc-body h2 {{
+      font-size: 15px; font-weight: 700; margin: 18px 0 8px;
+      color: var(--ink); padding-left: 12px;
+      border-left: 2px solid var(--red);
+    }}
+    .doc-body h3 {{ font-size: 13.5px; font-weight: 600; margin: 14px 0 5px; color: var(--ink-2); }}
+    .doc-body h4 {{ font-size: 12.5px; font-weight: 600; margin: 10px 0 4px; color: var(--ink-3); }}
+    .doc-body p {{ margin: 7px 0; font-size: 13.5px; color: var(--ink-2); line-height: 1.75; }}
+    .doc-body ul {{ margin: 6px 0 10px 16px; }}
+    .doc-body li {{ margin: 4px 0; font-size: 13.5px; color: var(--ink-2); line-height: 1.65; }}
     .doc-body hr {{ border: none; border-top: 1px solid var(--border); margin: 16px 0; }}
     .doc-body strong {{ color: var(--ink); font-weight: 600; }}
     .doc-body a {{ color: var(--accent); text-decoration: none; }}
     .doc-body a:hover {{ text-decoration: underline; }}
+    .doc-body em {{ color: var(--ink-3); font-style: italic; }}
 
     .doc-body code {{
       background: var(--code-bg);
-      padding: 2px 6px;
-      border-radius: 5px;
+      padding: 2px 6px; border-radius: 5px;
       font-family: ui-monospace, "SF Mono", Menlo, monospace;
-      font-size: 12px;
-      color: var(--red);
+      font-size: 11.5px; color: #f97316;
       border: 1px solid var(--border);
     }}
 
     .doc-body pre {{
-      background: #0d1117;
-      color: #e2e8f0;
-      padding: 14px 16px;
-      border-radius: 10px;
-      overflow: auto;
-      margin: 10px 0;
-      font-size: 13px;
+      background: #060a0f;
+      color: #e2e8f0; padding: 14px 16px;
+      border-radius: 10px; overflow: auto; margin: 10px 0;
+      font-size: 12.5px; cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.05);
+      position: relative;
     }}
 
-    .doc-body pre code {{
-      background: transparent;
-      padding: 0;
-      color: inherit;
-      border: none;
-      font-size: inherit;
+    .doc-body pre::after {{
+      content: "click to copy";
+      position: absolute; top: 8px; right: 10px;
+      font-size: 10px; color: #4b5563; font-family: inherit;
+    }}
+
+    .doc-body pre:hover::after {{ color: #9ca3af; }}
+    .doc-body pre code {{ background: transparent; padding: 0; color: inherit; border: none; font-size: inherit; }}
+
+    /* ── CONFIDENCE BADGES ── */
+    .badge {{
+      display: inline-flex; align-items: center; gap: 3px;
+      padding: 1px 8px; border-radius: 999px;
+      font-size: 11px; font-weight: 600; font-family: inherit;
+      vertical-align: middle; margin: 0 1px;
+      letter-spacing: 0.2px;
+    }}
+
+    .badge-confirmed {{
+      background: rgba(16,185,129,0.12);
+      color: #10b981;
+      border: 1px solid rgba(16,185,129,0.25);
+    }}
+
+    .badge-inference {{
+      background: rgba(96,165,250,0.12);
+      color: #60a5fa;
+      border: 1px solid rgba(96,165,250,0.25);
+    }}
+
+    .badge-speculative {{
+      background: rgba(251,146,60,0.12);
+      color: #fb923c;
+      border: 1px solid rgba(251,146,60,0.25);
     }}
 
     /* ── TABLES ── */
-    .table-wrap {{ overflow-x: auto; margin: 10px 0 14px; border-radius: 10px; border: 1px solid var(--border); }}
-
-    .doc-body table {{
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-      min-width: 480px;
+    .table-wrap {{
+      overflow-x: auto; margin: 10px 0 14px;
+      border-radius: 10px; border: 1px solid var(--border);
     }}
 
+    .doc-body table {{ width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 480px; }}
+
     .doc-body th, .doc-body td {{
-      padding: 9px 12px;
-      text-align: left;
-      vertical-align: top;
-      border-bottom: 1px solid var(--border);
+      padding: 9px 12px; text-align: left;
+      vertical-align: top; border-bottom: 1px solid var(--border);
     }}
 
     .doc-body th {{
-      background: var(--bg);
-      font-weight: 600;
-      font-size: 12px;
-      color: var(--ink-2);
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
+      background: rgba(255,255,255,0.03);
+      font-weight: 600; font-size: 11px;
+      color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.5px;
     }}
 
+    [data-theme="light"] .doc-body th {{ background: var(--bg); }}
+
     .doc-body tr:last-child td {{ border-bottom: none; }}
-    .doc-body tr:hover td {{ background: rgba(0,0,0,0.015); }}
-    [data-theme="dark"] .doc-body tr:hover td {{ background: rgba(255,255,255,0.025); }}
+    .doc-body tr:hover td {{ background: rgba(255,255,255,0.02); }}
+    [data-theme="light"] .doc-body tr:hover td {{ background: rgba(0,0,0,0.015); }}
 
     /* ── ANIMATIONS ── */
     .fade-in {{
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 400ms ease, transform 400ms ease;
+      opacity: 0; transform: translateY(18px);
+      transition: opacity 450ms ease, transform 450ms ease;
     }}
-
-    .fade-in.visible {{
-      opacity: 1;
-      transform: translateY(0);
-    }}
-
-    /* ── SEARCH HIGHLIGHT ── */
-    mark {{
-      background: rgba(225,6,0,0.18);
-      color: inherit;
-      border-radius: 2px;
-      padding: 0 1px;
-    }}
+    .fade-in.visible {{ opacity: 1; transform: none; }}
 
     /* ── TOAST ── */
     .toast {{
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: var(--ink);
-      color: #fff;
-      padding: 10px 18px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 500;
+      position: fixed; bottom: 22px; right: 22px;
+      background: var(--panel); color: var(--ink);
+      padding: 10px 18px; border-radius: 10px;
+      font-size: 13px; font-weight: 500;
       box-shadow: var(--shadow-lg);
-      opacity: 0;
-      transform: translateY(8px);
-      transition: all 300ms ease;
-      pointer-events: none;
-      z-index: 9998;
+      border: 1px solid var(--border);
+      opacity: 0; transform: translateY(8px);
+      transition: all 260ms ease; pointer-events: none; z-index: 9998;
     }}
-
-    .toast.show {{ opacity: 1; transform: translateY(0); }}
+    .toast.show {{ opacity: 1; transform: none; }}
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {{
+    @media (max-width: 860px) {{
       .layout {{ grid-template-columns: 1fr; }}
       nav {{ position: relative; height: auto; }}
-      main {{ padding: 16px; }}
+      main {{ padding: 16px 16px 48px; }}
       .metrics {{ grid-template-columns: repeat(2, 1fr); }}
-    }}
-
-    @media (max-width: 540px) {{
-      .metrics {{ grid-template-columns: 1fr 1fr; }}
-      .hero-row {{ flex-direction: column; }}
+      #cmdBox {{ width: 92vw; }}
     }}
 
     /* ── PRINT ── */
     @media print {{
-      @page {{ size: Letter portrait; margin: 0.45in; }}
-      body {{ background: #fff; color: #000; }}
-      #progress, nav, .hero-actions, .filters, .chip,
-      .doc-toggle, .btn, .toast {{ display: none !important; }}
+      @page {{ size: Letter portrait; margin: 0.5in; }}
+      body {{ background: #fff; color: #000; -webkit-print-color-adjust: exact; }}
+      #progress, #cmdOverlay, nav, .hero-actions, .filters,
+      .doc-toggle, .toast {{ display: none !important; }}
       .layout {{ grid-template-columns: 1fr; }}
       main {{ padding: 0; max-width: 100%; }}
-      .doc {{ border: 1px solid #ccc; box-shadow: none; page-break-inside: avoid; margin-bottom: 12px; }}
+      .doc {{ border: 1px solid #ddd; box-shadow: none; page-break-inside: avoid; margin-bottom: 14px; }}
       .doc.collapsed .doc-body {{ display: block !important; }}
-      .hero {{ border: 1px solid #ccc; }}
-      .metrics {{ gap: 8px; }}
-      .metric {{ border: 1px solid #ccc; box-shadow: none; }}
+      .hero {{ border: 1px solid #ddd; box-shadow: none; }}
+      .hero h1 {{ -webkit-text-fill-color: #000; }}
+      .metrics {{ gap: 10px; }}
+      .metric {{ border: 1px solid #ddd; box-shadow: none; }}
     }}
   </style>
 </head>
@@ -723,16 +758,28 @@ def build() -> None:
   <div id="progress"></div>
   <div class="toast" id="toast"></div>
 
+  <!-- COMMAND PALETTE -->
+  <div id="cmdOverlay" onclick="closeCmd(event)">
+    <div id="cmdBox">
+      <input id="cmdInput" placeholder="Search documents and sections..." autocomplete="off" />
+      <div id="cmdResults"></div>
+      <div class="cmd-hint">&#8593;&#8595; navigate &nbsp;&nbsp; Enter jump &nbsp;&nbsp; Esc close</div>
+    </div>
+  </div>
+
   <div class="layout">
     <!-- SIDEBAR -->
     <nav>
       <div class="nav-top">
-        <div class="nav-brand">SRAM <span>AI</span> Playbook</div>
-        <div class="nav-sub">Kellogg AIML/MORS 950 &mdash; Winter 2026</div>
-        <div class="nav-search">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <input type="text" id="navSearch" placeholder="Search documents..." autocomplete="off" />
+        <div class="nav-logo">
+          <div class="nav-logo-mark">S</div>
+          <div class="nav-brand">SRAM AI Playbook</div>
         </div>
+        <div class="nav-sub">Kellogg AIML/MORS 950 &mdash; Winter 2026</div>
+        <button class="cmd-trigger" onclick="openCmd()">
+          <span>&#128269; Search...</span>
+          <kbd>&#8984;K</kbd>
+        </button>
       </div>
 
       <div class="nav-links" id="navLinks">
@@ -740,156 +787,223 @@ def build() -> None:
       </div>
 
       <div class="nav-bottom">
-        <button class="btn-ghost" onclick="toggleTheme()">&#9680; Theme</button>
-        <button class="btn-ghost" onclick="expandAll()">&#9633; Expand all</button>
-        <button class="btn-ghost" onclick="window.print()">&#8599; Print</button>
+        <button class="nav-btn" onclick="toggleTheme()">&#9680; Theme</button>
+        <button class="nav-btn" onclick="expandAll()">&#9633; Expand</button>
+        <button class="nav-btn" onclick="window.print()">&#8599; Print</button>
       </div>
     </nav>
 
     <!-- MAIN -->
     <main>
-      <!-- HERO -->
       <div class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-stripe"></div>
         <div class="hero-row">
           <div>
+            <div class="hero-eyebrow">AI Adoption Playbook &mdash; SRAM LLC</div>
             <h1>Executive Analysis Workspace</h1>
-            <p class="hero-sub">SRAM LLC &mdash; AI Adoption Playbook &mdash; {len(files)} documents</p>
+            <p class="hero-sub">{len(files)} documents &mdash; Competitive intelligence, revenue architecture, AI strategy</p>
           </div>
           <div class="hero-actions">
-            <a class="btn btn-outline" href="interview/interview.html">Interview &rarr;</a>
+            <a class="btn btn-ghost-light" href="interview/interview.html">Interview &rarr;</a>
             <button class="btn btn-primary" onclick="window.print()">Export PDF</button>
           </div>
         </div>
       </div>
 
-      <!-- METRICS -->
       <div class="metrics">
         <div class="metric">
-          <div class="metric-value">$10.2M</div>
+          <div class="metric-value" data-count="10.2" data-prefix="$" data-suffix="M">$10.2M</div>
           <div class="metric-label">Year-1 Net Value</div>
           <div class="metric-sub">Expected case</div>
         </div>
         <div class="metric">
-          <div class="metric-value">3.8x</div>
+          <div class="metric-value" data-count="3.8" data-suffix="x">3.8x</div>
           <div class="metric-label">Return on Spend</div>
           <div class="metric-sub">Year 1</div>
         </div>
         <div class="metric">
           <div class="metric-value">90d</div>
           <div class="metric-label">Pilot Timeline</div>
-          <div class="metric-sub">AXS + Hammerhead</div>
+          <div class="metric-sub">AXS + Hammerhead first</div>
         </div>
         <div class="metric">
-          <div class="metric-value">{len(files)}</div>
+          <div class="metric-value" data-count="{len(files)}">{len(files)}</div>
           <div class="metric-label">Documents</div>
           <div class="metric-sub">Analysis files</div>
         </div>
       </div>
 
-      <!-- FILTER CHIPS -->
-      <div class="filters" id="filters">
-        <button class="chip active" data-filter="all" onclick="filterDocs('all', this)">All</button>
-        <button class="chip" data-filter="root" onclick="filterDocs('root', this)">Overview</button>
-        <button class="chip" data-filter="ai adoption" onclick="filterDocs('ai adoption', this)">AI Adoption</button>
-        <button class="chip" data-filter="competitors" onclick="filterDocs('competitors', this)">Competitors</button>
-        <button class="chip" data-filter="revenue" onclick="filterDocs('revenue', this)">Revenue</button>
-        <button class="chip" data-filter="interview" onclick="filterDocs('interview', this)">Interview</button>
+      <div class="filters">
+        <button class="chip active" data-filter="all" onclick="filterDocs('all',this)">All</button>
+        <button class="chip" data-filter="root" onclick="filterDocs('root',this)">Overview</button>
+        <button class="chip" data-filter="ai adoption" onclick="filterDocs('ai adoption',this)">AI Adoption</button>
+        <button class="chip" data-filter="competitors" onclick="filterDocs('competitors',this)">Competitors</button>
+        <button class="chip" data-filter="revenue" onclick="filterDocs('revenue',this)">Revenue</button>
+        <button class="chip" data-filter="interview" onclick="filterDocs('interview',this)">Interview</button>
       </div>
 
-      <!-- DOCUMENTS -->
-      <div id="docs">
-        {''.join(sections)}
-      </div>
+      <div id="docs">{''.join(sections)}</div>
 
-      <p style="text-align:center;font-size:12px;color:var(--ink-3);margin-top:32px;">
-        Built from {len(files)} markdown files &mdash; rebuild with <code>python3 tools/build_analysis_hub.py</code>
+      <p style="text-align:center;font-size:11px;color:var(--ink-3);margin-top:40px;opacity:0.5;">
+        {len(files)} markdown files &mdash; rebuild: <code>python3 tools/build_analysis_hub.py</code>
       </p>
     </main>
   </div>
 
   <script>
-    // ── PROGRESS BAR ──
+    // ── THEME ──
+    const saved = localStorage.getItem('sram-theme');
+    if (saved) document.documentElement.dataset.theme = saved;
+
+    function toggleTheme() {{
+      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem('sram-theme', next);
+    }}
+
+    // ── PROGRESS ──
     const bar = document.getElementById('progress');
     window.addEventListener('scroll', () => {{
       const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
-      bar.style.width = pct + '%';
-    }}, {{ passive: true }});
+      bar.style.width = Math.min(pct, 100) + '%';
+    }}, {{passive:true}});
 
-    // ── THEME ──
-    function toggleTheme() {{
-      const html = document.documentElement;
-      const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
-      html.dataset.theme = next;
-      localStorage.setItem('theme', next);
-    }}
-    const saved = localStorage.getItem('theme');
-    if (saved) document.documentElement.dataset.theme = saved;
-
-    // ── COLLAPSE / EXPAND ──
-    document.querySelectorAll('.doc-header').forEach(h => {{
-      h.addEventListener('click', () => {{
-        h.closest('.doc').classList.toggle('collapsed');
+    // ── METRIC COUNTERS ──
+    const metricEls = document.querySelectorAll('[data-count]');
+    const mObs = new IntersectionObserver(entries => {{
+      entries.forEach(e => {{
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const target = parseFloat(el.dataset.count);
+        const prefix = el.dataset.prefix || '';
+        const suffix = el.dataset.suffix || '';
+        const isDecimal = target % 1 !== 0;
+        let start = null;
+        const duration = 900;
+        function step(ts) {{
+          if (!start) start = ts;
+          const p = Math.min((ts - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - p, 3);
+          const val = target * ease;
+          el.textContent = prefix + (isDecimal ? val.toFixed(1) : Math.round(val)) + suffix;
+          if (p < 1) requestAnimationFrame(step);
+        }}
+        requestAnimationFrame(step);
+        mObs.unobserve(el);
       }});
-    }});
+    }}, {{threshold: 0.5}});
+    metricEls.forEach(el => mObs.observe(el));
 
+    // ── FADE IN ──
+    const fadeObs = new IntersectionObserver(entries => {{
+      entries.forEach((e, i) => {{
+        if (e.isIntersecting) {{
+          setTimeout(() => e.target.classList.add('visible'), i * 40);
+        }}
+      }});
+    }}, {{threshold: 0.04}});
+    document.querySelectorAll('.fade-in').forEach(el => fadeObs.observe(el));
+
+    // ── ACTIVE NAV ──
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navObs = new IntersectionObserver(entries => {{
+      entries.forEach(e => {{
+        if (e.isIntersecting) {{
+          navLinks.forEach(l => l.classList.remove('active'));
+          const a = document.querySelector(`.nav-link[href="#${{e.target.id}}"]`);
+          if (a) {{ a.classList.add('active'); a.scrollIntoView({{block:'nearest'}}); }}
+        }}
+      }});
+    }}, {{rootMargin: '-15% 0px -75% 0px'}});
+    document.querySelectorAll('section.doc').forEach(s => navObs.observe(s));
+
+    // ── COLLAPSE ──
+    document.querySelectorAll('.doc-header').forEach(h => {{
+      h.addEventListener('click', () => h.closest('.doc').classList.toggle('collapsed'));
+    }});
     function expandAll() {{
       document.querySelectorAll('.doc').forEach(d => d.classList.remove('collapsed'));
     }}
 
-    // ── FADE IN ON SCROLL ──
-    const observer = new IntersectionObserver(entries => {{
-      entries.forEach(e => {{ if (e.isIntersecting) e.target.classList.add('visible'); }});
-    }}, {{ threshold: 0.05 }});
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // ── ACTIVE NAV ──
-    const sections = document.querySelectorAll('section.doc');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    const navObserver = new IntersectionObserver(entries => {{
-      entries.forEach(e => {{
-        if (e.isIntersecting) {{
-          navLinks.forEach(l => l.classList.remove('active'));
-          const active = document.querySelector(`.nav-link[href="#${{e.target.id}}"]`);
-          if (active) {{
-            active.classList.add('active');
-            active.scrollIntoView({{ block: 'nearest' }});
-          }}
-        }}
-      }});
-    }}, {{ rootMargin: '-20% 0px -70% 0px' }});
-    sections.forEach(s => navObserver.observe(s));
-
-    // ── FILTER CHIPS ──
+    // ── FILTER ──
     function filterDocs(filter, btn) {{
       document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
       btn.classList.add('active');
       document.querySelectorAll('section.doc').forEach(doc => {{
-        const folder = doc.dataset.folder;
-        doc.classList.toggle('hidden', filter !== 'all' && folder !== filter);
+        doc.classList.toggle('hidden', filter !== 'all' && doc.dataset.folder !== filter);
       }});
-      document.querySelectorAll('.nav-link').forEach(link => {{
-        const folder = link.dataset.folder;
-        link.style.display = (filter === 'all' || folder === filter) ? '' : 'none';
+      navLinks.forEach(l => {{
+        l.style.display = (filter === 'all' || l.dataset.folder === filter) ? '' : 'none';
       }});
     }}
 
-    // ── NAV SEARCH ──
-    document.getElementById('navSearch').addEventListener('input', function() {{
-      const q = this.value.trim().toLowerCase();
-      document.querySelectorAll('.nav-link').forEach(link => {{
-        const label = link.textContent.toLowerCase();
-        link.style.display = (!q || label.includes(q)) ? '' : 'none';
-      }});
+    // ── COMMAND PALETTE ──
+    const allDocs = Array.from(document.querySelectorAll('section.doc')).map(s => ({{
+      id: s.id,
+      title: s.querySelector('.doc-title')?.textContent || s.id,
+      folder: s.dataset.folder
+    }}));
+
+    function openCmd() {{
+      document.getElementById('cmdOverlay').classList.add('open');
+      document.getElementById('cmdInput').value = '';
+      renderCmd('');
+      setTimeout(() => document.getElementById('cmdInput').focus(), 50);
+    }}
+
+    function closeCmd(e) {{
+      if (e.target === document.getElementById('cmdOverlay') || e.type === 'keydown') {{
+        document.getElementById('cmdOverlay').classList.remove('open');
+      }}
+    }}
+
+    let selectedIdx = 0;
+
+    function renderCmd(q) {{
+      const results = q
+        ? allDocs.filter(d => d.title.toLowerCase().includes(q.toLowerCase()) || d.folder.toLowerCase().includes(q.toLowerCase()))
+        : allDocs;
+      selectedIdx = 0;
+      const container = document.getElementById('cmdResults');
+      container.innerHTML = results.slice(0, 8).map((d, i) =>
+        `<div class="cmd-item ${{i===0?'selected':''}}" data-id="${{d.id}}" onclick="jumpTo('${{d.id}}')">
+          <span class="cmd-item-icon">&#9643;</span>
+          <span>${{d.title}}</span>
+          <span style="margin-left:auto;font-size:10px;color:var(--ink-3)">${{d.folder}}</span>
+        </div>`
+      ).join('') || '<div class="cmd-item" style="opacity:0.5">No results</div>';
+    }}
+
+    function jumpTo(id) {{
+      document.getElementById('cmdOverlay').classList.remove('open');
+      const el = document.getElementById(id);
+      if (el) {{ el.classList.remove('collapsed'); el.scrollIntoView({{behavior:'smooth', block:'start'}}); }}
+    }}
+
+    document.getElementById('cmdInput').addEventListener('input', e => renderCmd(e.target.value));
+
+    document.getElementById('cmdInput').addEventListener('keydown', e => {{
+      const items = document.querySelectorAll('.cmd-item[data-id]');
+      if (e.key === 'ArrowDown') {{
+        e.preventDefault();
+        selectedIdx = Math.min(selectedIdx + 1, items.length - 1);
+        items.forEach((it, i) => it.classList.toggle('selected', i === selectedIdx));
+      }} else if (e.key === 'ArrowUp') {{
+        e.preventDefault();
+        selectedIdx = Math.max(selectedIdx - 1, 0);
+        items.forEach((it, i) => it.classList.toggle('selected', i === selectedIdx));
+      }} else if (e.key === 'Enter') {{
+        const sel = document.querySelector('.cmd-item.selected[data-id]');
+        if (sel) jumpTo(sel.dataset.id);
+      }} else if (e.key === 'Escape') {{
+        document.getElementById('cmdOverlay').classList.remove('open');
+      }}
     }});
 
-    // ── CONTENT SEARCH (Ctrl/Cmd+K) ──
-    let searchMode = false;
     document.addEventListener('keydown', e => {{
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {{
-        e.preventDefault();
-        document.getElementById('navSearch').focus();
-      }}
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {{ e.preventDefault(); openCmd(); }}
+      if (e.key === 'Escape') document.getElementById('cmdOverlay').classList.remove('open');
     }});
 
     // ── TOAST ──
@@ -897,15 +1011,14 @@ def build() -> None:
       const t = document.getElementById('toast');
       t.textContent = msg;
       t.classList.add('show');
-      setTimeout(() => t.classList.remove('show'), 2200);
+      setTimeout(() => t.classList.remove('show'), 2000);
     }}
 
-    // Copy code blocks on click
+    // ── COPY CODE ──
     document.querySelectorAll('pre').forEach(pre => {{
-      pre.style.cursor = 'pointer';
-      pre.title = 'Click to copy';
       pre.addEventListener('click', () => {{
-        navigator.clipboard.writeText(pre.textContent).then(() => showToast('Copied to clipboard'));
+        navigator.clipboard.writeText(pre.textContent.replace('click to copy','').trim())
+          .then(() => showToast('Copied'));
       }});
     }});
   </script>
