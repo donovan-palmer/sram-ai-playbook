@@ -145,6 +145,21 @@ Hartsell defined his own success criteria during our interview: "I want one work
 
 **Goal 5: Hold customer satisfaction flat.** Maintain or improve CSAT scores on AI-assisted tickets relative to the pre-pilot baseline, with no decline for two consecutive measurement periods. Any sustained CSAT drop triggers the rollback process. Trustpilot rating (currently 1.6/5.0) should stabilize and begin trending upward by day 90.
 
+### 90-Day Pilot Timeline
+
+| Week | Workstream | SMART Goal |
+|---|---|---|
+| 1-4 | Zendesk + Kendra + Bedrock integration; index AXS and Hammerhead docs; establish baseline metrics | Setup |
+| 3-4 | Begin AI draft rollout on AXS drivetrain tickets; agents review 100% of drafts | G3 |
+| 3-12 | Weekly response time tracking vs. SLA baseline | G1 |
+| 3-12 | Weekly escalation rate tracking vs. baseline | G2 |
+| 3-12 | Weekly CSAT monitoring; any sustained decline triggers rollback | G5 |
+| 5-6 | Expand AI draft rollout to Hammerhead device tickets | G3 |
+| 5-12 | Throughput measurement: tickets per agent per day tracked weekly | G4 |
+| 6 | Day-45 checkpoint: scope review if AI draft acceptance is below 50% | G3 |
+| 1-12 | Weekly quality reviews with defined rollback trigger | All |
+| 12 | Day-90 go/no-go decision: scale to Phase 2, adjust scope, or stop | All |
+
 ### Organizational Enablers
 
 **Talent.** SRAM's software organization is acquisition-built. The Hammerhead and Quarq acquisitions brought in engineering teams that are now being integrated into SRAM's broader digital product group. The combined organization has an estimated 250 to 400 software and firmware engineers working across Python, TypeScript, Rust, C++, React, and Svelte, with AWS as the cloud platform and Jenkins for CI/CD. This is not a firmware-only culture. The Hammerhead team builds web and mobile applications, and the broader org has full-stack web development capability alongside embedded systems work.

@@ -276,47 +276,112 @@ text(slide, Inches(0.8), Inches(1.35), Inches(11), Inches(0.35),
      "complexity and time to return.",
      size=13, color=BODY)
 
-initiatives = [
-    ("SUPPORT", "AI Support Agent", "70% of dealer questions are repetitive", True),
-    ("SUPPORT", "Warranty Automation", "Fraudulent and mis-filed claims cost time", False),
-    ("SUPPORT", "Compatibility Assistant", "Riders get wrong parts, return them", False),
-    ("SUPPLY CHAIN", "Demand Forecasting", "No forecasting system exists today", False),
-    ("SUPPLY CHAIN", "Inventory Allocation", "Stockouts and rush shipping losses", False),
-    ("SUPPLY CHAIN", "Customer Analytics", "Shopify data is siloed, unused", False),
-    ("SALES", "OEM Proposal Automation", "Proposal cycles are slow, manual", False),
-    ("SALES", "Part Recommendations", "No guided upsell at point of service", False),
-    ("SALES", "DTC Personalization", "Velocio has no targeting capability", False),
-    ("ENGINEERING", "Generative Design", "Physical testing is slow and expensive", False),
-    ("ENGINEERING", "AXS Intelligence", "Telemetry data is collected but unused", False),
-    ("ENGINEERING", "AI-Tuned Components", "Suspension and shifting are static", False),
+# Function color coding
+FUNC_COLORS = {
+    "SUPPORT": RGBColor(0x2D, 0x5F, 0x8A),       # Steel blue
+    "SUPPLY CHAIN": RGBColor(0x5B, 0x8C, 0x5A),   # Forest green
+    "SALES": RGBColor(0x8B, 0x6D, 0x2E),           # Amber/gold
+    "ENGINEERING": RGBColor(0x7A, 0x5C, 0x8A),     # Purple
+}
+
+# Rows grouped by function, 3 initiatives per row
+initiative_rows = [
+    ("SUPPORT", [
+        ("AI Support Agent", "70% of dealer questions are repetitive", True),
+        ("Warranty Automation", "Fraudulent and mis-filed claims cost time", False),
+        ("Compatibility Assistant", "Riders get wrong parts, return them", False),
+    ]),
+    ("SUPPLY CHAIN", [
+        ("Demand Forecasting", "No forecasting system exists today", False),
+        ("Inventory Allocation", "Stockouts and rush shipping losses", False),
+        ("Customer Analytics", "Shopify data is siloed, unused", False),
+    ]),
+    ("SALES", [
+        ("OEM Proposal Automation", "Proposal cycles are slow, manual", False),
+        ("Part Recommendations", "No guided upsell at point of service", False),
+        ("DTC Personalization", "Velocio has no targeting capability", False),
+    ]),
+    ("ENGINEERING", [
+        ("Generative Design", "Physical testing is slow and expensive", False),
+        ("AXS Intelligence", "Telemetry data is collected but unused", False),
+        ("AI-Tuned Components", "Suspension and shifting are static", False),
+    ]),
 ]
 
-for i, (area, initiative, problem, highlight) in enumerate(initiatives):
-    col = i % 3
-    row = i // 3
-    left = Inches(0.8) + Inches(col * 4.1)
-    top = Inches(2.0) + Inches(row * 1.25)
-    card_w = Inches(3.85)
-    card_h = Inches(1.05)
+grid_left = Inches(2.4)   # Cards start after row labels
+card_w = Inches(3.2)
+card_h = Inches(1.05)
+col_gap = Inches(0.15)
+row_gap = Inches(0.15)
 
-    if highlight:
-        add_rect(slide, left, top, card_w, card_h, HIGHLIGHT_BG, RED)
-        # Red left-edge accent bar
-        bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
-                                     left, top, Pt(4), card_h)
-        bar.fill.solid()
-        bar.fill.fore_color.rgb = RED
-        bar.line.fill.background()
-        text(slide, left + Inches(0.2), top + Inches(0.08), Inches(2.5), Inches(0.2),
-             f"{area}  |  RECOMMENDED PILOT", size=8, color=RED, bold=True)
-    else:
-        add_rect(slide, left, top, card_w, card_h, CARD, BORDER)
-        text(slide, left + Inches(0.2), top + Inches(0.08), Inches(1.5), Inches(0.2),
-             area, size=8, color=GRAY, bold=True)
-    text(slide, left + Inches(0.2), top + Inches(0.3), card_w - Inches(0.4), Inches(0.3),
-         initiative, size=13, color=BLACK, bold=True)
-    text(slide, left + Inches(0.2), top + Inches(0.65), card_w - Inches(0.4), Inches(0.35),
-         problem, size=10, color=GRAY)
+# Complexity arrow across the top
+arrow_labels = ["Quick Win", "Medium Effort", "Long-Term Bet"]
+for ci, alabel in enumerate(arrow_labels):
+    ax = grid_left + Inches(ci * (3.2 + 0.15))
+    text(slide, ax, Inches(1.75), card_w, Inches(0.22),
+         alabel, size=9, color=GRAY, bold=True, align=PP_ALIGN.CENTER)
+
+# Arrow line under the labels
+arrow_line = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
+                                    grid_left, Inches(1.97), Inches(10.05), Pt(2))
+arrow_line.fill.solid()
+arrow_line.fill.fore_color.rgb = BORDER
+arrow_line.line.fill.background()
+
+# Arrowhead triangle
+arrow_tri = slide.shapes.add_shape(MSO_SHAPE.ISOSCELES_TRIANGLE,
+                                   grid_left + Inches(10.0), Inches(1.91), Inches(0.15), Inches(0.14))
+arrow_tri.fill.solid()
+arrow_tri.fill.fore_color.rgb = BORDER
+arrow_tri.line.fill.background()
+arrow_tri.rotation = 90.0
+
+for ri, (area, items) in enumerate(initiative_rows):
+    row_top = Inches(2.1) + Inches(ri * (1.05 + 0.15))
+    fc = FUNC_COLORS[area]
+
+    # Row label on the left with colored accent bar
+    label_bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
+                                       Inches(0.8), row_top, Pt(4), card_h)
+    label_bar.fill.solid()
+    label_bar.fill.fore_color.rgb = fc
+    label_bar.line.fill.background()
+
+    text(slide, Inches(0.95), row_top + Inches(0.3), Inches(1.35), Inches(0.45),
+         area, size=9, color=fc, bold=True)
+
+    for ci, (initiative, problem, highlight) in enumerate(items):
+        left = grid_left + Inches(ci * (3.2 + 0.15))
+
+        if highlight:
+            add_rect(slide, left, row_top, card_w, card_h, HIGHLIGHT_BG, RED)
+            # Red left-edge accent bar
+            hbar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
+                                          left, row_top, Pt(4), card_h)
+            hbar.fill.solid()
+            hbar.fill.fore_color.rgb = RED
+            hbar.line.fill.background()
+            text(slide, left + Inches(0.2), row_top + Inches(0.08), Inches(2.5), Inches(0.2),
+                 "RECOMMENDED PILOT", size=8, color=RED, bold=True)
+        else:
+            add_rect(slide, left, row_top, card_w, card_h, CARD, BORDER)
+
+        text(slide, left + Inches(0.2), row_top + Inches(0.3), card_w - Inches(0.4), Inches(0.3),
+             initiative, size=13, color=BLACK, bold=True)
+        text(slide, left + Inches(0.2), row_top + Inches(0.65), card_w - Inches(0.4), Inches(0.35),
+             problem, size=10, color=GRAY)
+
+# Color legend at bottom
+legend_x = Inches(0.8)
+for area, fc in FUNC_COLORS.items():
+    dot = slide.shapes.add_shape(MSO_SHAPE.OVAL,
+                                 legend_x, Inches(7.0), Inches(0.12), Inches(0.12))
+    dot.fill.solid()
+    dot.fill.fore_color.rgb = fc
+    dot.line.fill.background()
+    text(slide, legend_x + Inches(0.16), Inches(6.95), Inches(1.2), Inches(0.22),
+         area, size=8, color=GRAY)
+    legend_x += Inches(1.6)
 
 slide_footer(slide, page)
 
@@ -453,7 +518,136 @@ slide_footer(slide, page)
 
 
 # ----------------------------------------------------------
-# SLIDE 7: Metrics + Financials
+# SLIDE 6b: Gantt Chart - 90-Day Pilot Timeline
+# ----------------------------------------------------------
+page += 1
+slide = prs.slides.add_slide(blank)
+set_slide_bg(slide)
+slide_header(slide, "THE TIMELINE",
+             "90-day pilot mapped to SMART goals")
+
+# Column headers: months across the top
+gantt_left = Inches(4.0)
+gantt_width = Inches(8.5)
+month_w = gantt_width / 3
+
+# Month labels
+for i, label in enumerate(["Month 1", "Month 2", "Month 3"]):
+    x = gantt_left + month_w * i
+    text(slide, x, Inches(1.4), month_w, Inches(0.25),
+         label, size=10, color=GRAY, bold=True, align=PP_ALIGN.CENTER)
+
+# Vertical month dividers
+for i in range(1, 3):
+    x = gantt_left + month_w * i
+    divider = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
+                                     x, Inches(1.65), Pt(1), Inches(5.0))
+    divider.fill.solid()
+    divider.fill.fore_color.rgb = CARD_BORDER
+    divider.line.fill.background()
+
+# Gantt rows: (label, smart_goal_num, start_month, duration_months, color)
+GANTT_ACCENT = RGBColor(0x2D, 0x5F, 0x8A)  # Steel blue for bars
+GANTT_LIGHT = RGBColor(0xD4, 0xE4, 0xF0)   # Light blue for setup bars
+
+gantt_rows = [
+    ("Setup + Integration", "", 0, 1, GANTT_LIGHT,
+     "Zendesk + Kendra + Bedrock integration; baseline metrics"),
+    ("Knowledge Base Indexing", "", 0, 0.7, GANTT_LIGHT,
+     "Index AXS + Hammerhead docs in Kendra"),
+    ("AI Draft Rollout (AXS)", "G3", 0.7, 1.3, GANTT_ACCENT,
+     "AI drafts responses; agents review 100%"),
+    ("AI Draft Rollout (Hammerhead)", "G3", 1.2, 1.0, GANTT_ACCENT,
+     "Expand to Hammerhead device tickets"),
+    ("Response Time Tracking", "G1", 0.5, 2.5, GANTT_ACCENT,
+     "Weekly measurement vs. SLA baseline"),
+    ("Escalation Rate Tracking", "G2", 0.5, 2.5, GANTT_ACCENT,
+     "Weekly measurement vs. baseline"),
+    ("Throughput Measurement", "G4", 1.0, 2.0, GANTT_ACCENT,
+     "Tickets/agent/day tracked weekly"),
+    ("CSAT Monitoring", "G5", 0.5, 2.5, GANTT_ACCENT,
+     "No decline for 2 consecutive periods"),
+    ("Weekly Quality Reviews", "", 0.5, 2.5, GRAY,
+     "Rollback trigger if quality drops 2 weeks"),
+    ("Day-45 Checkpoint", "", 1.5, 0.15, RED,
+     "Scope review if draft acceptance <50%"),
+    ("Day-90 Go/No-Go", "", 2.85, 0.15, RED,
+     "Decision: scale, adjust, or stop"),
+]
+
+row_height = Inches(0.38)
+for i, (label, goal_num, start, dur, color, desc) in enumerate(gantt_rows):
+    y = Inches(1.7) + row_height * i
+
+    # Alternating row background
+    if i % 2 == 0:
+        add_rect(slide, Inches(0.8), y, Inches(11.7), row_height,
+                 LIGHT_GRAY_BG, None, 0.01)
+
+    # Row label (left side)
+    text(slide, Inches(0.8), y + Inches(0.05), Inches(2.8), Inches(0.28),
+         label, size=9, color=BLACK, bold=True)
+
+    # SMART goal tag
+    if goal_num:
+        text(slide, Inches(3.4), y + Inches(0.05), Inches(0.5), Inches(0.28),
+             goal_num, size=8, color=RED, bold=True)
+
+    # Gantt bar
+    bar_x = gantt_left + month_w * start
+    bar_w = month_w * dur
+    bar = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,
+                                 int(bar_x), y + Inches(0.06),
+                                 int(bar_w), Inches(0.24))
+    bar.fill.solid()
+    bar.fill.fore_color.rgb = color
+    bar.line.fill.background()
+    bar.adjustments[0] = 0.15
+
+    # Description inside or beside bar (only if bar is wide enough)
+    if dur >= 1.0:
+        text(slide, int(bar_x) + Inches(0.1), y + Inches(0.06),
+             int(bar_w) - Inches(0.2), Inches(0.24),
+             desc, size=7, color=RGBColor(0xFF, 0xFF, 0xFF) if color == GANTT_ACCENT else BLACK)
+
+# Legend at bottom
+text(slide, Inches(0.8), Inches(6.0), Inches(11), Inches(0.25),
+     "G1-G5 = SMART Goals  |  Day-45 checkpoint triggers scope review if "
+     "draft acceptance < 50%  |  Day-90 is the formal go/no-go decision",
+     size=9, color=GRAY)
+
+# Year-1 phasing bar at very bottom
+text(slide, Inches(0.8), Inches(6.45), Inches(2.5), Inches(0.25),
+     "Full Year-1 Phasing", size=10, color=BLACK, bold=True)
+
+yr_phases = [
+    ("Phase 1: Support Pilot", 0, 3, GANTT_ACCENT),
+    ("Phase 2: Data Foundation", 3, 3, GANTT_LIGHT),
+    ("Phase 3: Revenue", 6, 6, GANTT_LIGHT),
+]
+phase_left = Inches(3.5)
+phase_width = Inches(9.0)
+month_px = phase_width / 12
+
+for plabel, pstart, pdur, pcolor in yr_phases:
+    px = phase_left + month_px * pstart
+    pw = month_px * pdur
+    pbar = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,
+                                  int(px), Inches(6.45), int(pw), Inches(0.25))
+    pbar.fill.solid()
+    pbar.fill.fore_color.rgb = pcolor
+    pbar.line.fill.background()
+    pbar.adjustments[0] = 0.15
+    text(slide, int(px) + Inches(0.1), Inches(6.45),
+         int(pw) - Inches(0.15), Inches(0.25),
+         plabel, size=7,
+         color=RGBColor(0xFF, 0xFF, 0xFF) if pcolor == GANTT_ACCENT else BLACK)
+
+slide_footer(slide, page)
+
+
+# ----------------------------------------------------------
+# SLIDE 8: Metrics + Financials
 # ----------------------------------------------------------
 page += 1
 slide = prs.slides.add_slide(blank)
