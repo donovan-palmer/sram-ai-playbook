@@ -461,31 +461,35 @@ set_slide_bg(slide)
 slide_header(slide, "THE RETURN",
              "$10.2M net value in Year 1 on $2.7M spend")
 
-# LEFT: Pilot metrics
+# LEFT: SMART Goals
 text(slide, Inches(0.8), Inches(1.45), Inches(5.5), Inches(0.3),
-     "90-Day Pilot Targets", size=16, color=BLACK, bold=True)
+     "SMART Goals (90 Days)", size=16, color=BLACK, bold=True)
 
-metrics_list = [
-    ("Time-to-first-response", "40% reduction"),
-    ("Tickets without escalation", "15% improvement"),
-    ("Agent productivity", "25% increase"),
-    ("AI draft acceptance rate", "Above 70%"),
-    ("Customer satisfaction", "No decline"),
+smart_goals = [
+    ("1", "First-response time", "-40%", "vs. current SLA"),
+    ("2", "Tickets without escalation", "+15 pts", "vs. current rate"),
+    ("3", "AI draft acceptance", ">70%", "agents approve draft"),
+    ("4", "Agent throughput", "+25%", "tickets per agent/day"),
+    ("5", "Customer satisfaction", "No decline", "CSAT holds flat"),
 ]
 
-for i, (met, target) in enumerate(metrics_list):
+for i, (num, goal, target, detail) in enumerate(smart_goals):
     y = Inches(1.9) + Inches(i * 0.42)
     if i % 2 == 0:
         add_rect(slide, Inches(0.8), y - Inches(0.02), Inches(5.5), Inches(0.38),
                  LIGHT_GRAY_BG, None, 0.02)
-    text(slide, Inches(1.0), y, Inches(3.2), Inches(0.3), met, size=12, color=BODY)
-    text(slide, Inches(4.4), y, Inches(1.8), Inches(0.3), target,
-         size=12, color=BLACK, bold=True)
+    text(slide, Inches(0.9), y, Inches(0.25), Inches(0.3), num,
+         size=11, color=GRAY, bold=True)
+    text(slide, Inches(1.15), y, Inches(2.3), Inches(0.3), goal, size=11, color=BODY)
+    text(slide, Inches(3.5), y, Inches(1.0), Inches(0.3), target,
+         size=11, color=BLACK, bold=True)
+    text(slide, Inches(4.5), y, Inches(1.7), Inches(0.3), detail,
+         size=9, color=GRAY)
 
 # Support savings math
-text(slide, Inches(0.8), Inches(4.2), Inches(5.5), Inches(0.3),
+text(slide, Inches(0.8), Inches(4.1), Inches(5.5), Inches(0.3),
      "Support Savings Math", size=14, color=BLACK, bold=True)
-text(slide, Inches(0.8), Inches(4.55), Inches(5.5), Inches(0.9),
+text(slide, Inches(0.8), Inches(4.45), Inches(5.5), Inches(0.9),
      "120 support staff x $90K avg. cost\n"
      "x 60% AI-addressable work\n"
      "x 35% productivity gain\n"
@@ -493,7 +497,7 @@ text(slide, Inches(0.8), Inches(4.55), Inches(5.5), Inches(0.9),
      size=11, color=BODY)
 
 # Scenario range
-text(slide, Inches(0.8), Inches(5.65), Inches(5.5), Inches(0.3),
+text(slide, Inches(0.8), Inches(5.55), Inches(5.5), Inches(0.3),
      "Scenario Range", size=14, color=BLACK, bold=True)
 
 scenarios = [
@@ -502,7 +506,7 @@ scenarios = [
     ("Upside", "$22.5M net", "6.4x"),
 ]
 for i, (label, value, roi) in enumerate(scenarios):
-    y = Inches(6.0) + Inches(i * 0.35)
+    y = Inches(5.9) + Inches(i * 0.35)
     text(slide, Inches(1.0), y, Inches(1.5), Inches(0.3), label, size=11, color=GRAY)
     text(slide, Inches(2.5), y, Inches(1.5), Inches(0.3), value,
          size=11, color=BLACK, bold=True)

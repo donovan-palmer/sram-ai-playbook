@@ -131,20 +131,19 @@ The implication for rollout design is significant. Human-in-the-loop is not a co
 
 **Decision rule.** Human agents approve all customer-facing responses during the pilot. No automated sends. This constraint addresses the trust deficit Hartsell identified and ensures that the compatibility errors that derailed the previous pilot are caught before they reach a dealer.
 
-### How to Measure Success
+### SMART Goals
 
-Hartsell defined his own success criteria during our interview: "I want one workflow measurably faster, measurably more accurate, with no regression in dealer satisfaction scores." His target is a 30 percent reduction in average handle time on AXS support tickets with dealer satisfaction holding flat or improving.
+Hartsell defined his own success criteria during our interview: "I want one workflow measurably faster, measurably more accurate, with no regression in dealer satisfaction scores." We translated his benchmarks into five SMART goals for the pilot.
 
-We aligned our pilot targets to his internal benchmarks.
+**Goal 1: Cut first-response time by 40%.** Reduce average time-to-first-response on AXS and Hammerhead dealer support tickets by 40% within 90 days of pilot launch, measured weekly against the pre-pilot SLA baseline in Zendesk.
 
-| Metric | Baseline (estimate) | 90-Day Target |
-|---|---|---|
-| Average time-to-first-response | Current SLA | 40% reduction |
-| Tickets resolved without escalation | Current rate | 15% improvement |
-| Agent productivity (tickets per agent per day) | Current throughput | 25% increase |
-| Draft acceptance rate (agent approves AI draft) | N/A | Above 70% |
-| Customer satisfaction (CSAT on AI-assisted tickets) | Current CSAT | No decline |
-| Trustpilot rating trend | 1.6/5.0 | Stabilize, begin upward trend |
+**Goal 2: Resolve 15% more tickets without escalation.** Increase the share of tickets resolved without escalation by 15 percentage points within 90 days, measured weekly against the current escalation rate. This tests whether AI-drafted responses give agents enough context to handle tickets they previously routed upward.
+
+**Goal 3: Reach 70%+ AI draft acceptance.** Achieve a 70% or higher rate of support agents approving the AI-drafted response (with minor or no edits) by day 90, measured per interaction. This is the core signal of whether the AI is producing useful output. Below 50% at day 45 triggers a scope review.
+
+**Goal 4: Increase agent throughput by 25%.** Raise tickets handled per agent per day by 25% within 90 days, measured weekly. This confirms that AI assistance translates into real productivity, not into agents spending equal time reviewing AI output as they spent writing from scratch.
+
+**Goal 5: Hold customer satisfaction flat.** Maintain or improve CSAT scores on AI-assisted tickets relative to the pre-pilot baseline, with no decline for two consecutive measurement periods. Any sustained CSAT drop triggers the rollback process. Trustpilot rating (currently 1.6/5.0) should stabilize and begin trending upward by day 90.
 
 ### Organizational Enablers
 
