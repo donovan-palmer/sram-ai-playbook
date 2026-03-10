@@ -70,7 +70,7 @@ AI opportunities at SRAM fall into four phases, ordered by implementation comple
 
 **Unified data infrastructure.** SRAM operates without an ERP system today. Customer data lives in Shopify (front-end), support systems, AXS app telemetry, and Hammerhead ride data, none of it connected. Hartsell described the current state bluntly: "We have good data in pockets and messy data everywhere else." Before AI can drive forecasting or personalization, SRAM needs a unified data layer linking CRM, inventory, telemetry, and support data. Hartsell confirmed that SRAM has been investing in data consolidation for 18 months, with support and compatibility data as the first priority and demand forecasting second.
 
-**Demand forecasting and supply chain optimization.** This is a confirmed high-priority need within the organization. SRAM performs minimal customer analytics today. A forecasting system built on Vertex AI or Databricks, using historical order data, dealer sell-through, and seasonal patterns, could reduce stockout and markdown losses. Expected savings of $1.6M in Year 1 by capturing 20% of an estimated $8M annual avoidable inventory loss.
+**Demand forecasting and supply chain optimization.** This is a confirmed high-priority need within the organization. SRAM performs minimal customer analytics today. A forecasting system built on AWS SageMaker, using historical order data, dealer sell-through, and seasonal patterns, could reduce stockout and markdown losses. SRAM already runs on AWS, so keeping the ML platform on the same cloud avoids the operational overhead and vendor fragmentation of introducing a second provider. Expected savings of $1.6M in Year 1 by capturing 20% of an estimated $8M annual avoidable inventory loss.
 
 ### Phase 3 - Revenue Acceleration (180-365 days)
 
@@ -117,10 +117,10 @@ The implication for rollout design is significant. Human-in-the-loop is not a co
 - Dealer inbox and high-volume web forms (not social or phone)
 - Compatibility and firmware/update issues first (highest volume, most structured)
 
-**Tool stack.**
+**Tool stack.** All AI components stay on AWS, consistent with SRAM's existing cloud infrastructure.
 - Zendesk AI for ticket routing and workflow integration (fits current operations)
-- Azure AI Search for retrieval from approved knowledge base content
-- OpenAI Responses API for generating clear, natural-language draft responses from retrieved content
+- Amazon Kendra for retrieval from approved knowledge base content
+- Amazon Bedrock (Claude) for generating clear, natural-language draft responses from retrieved content
 
 **Workflow.**
 1. Ticket arrives in Zendesk
@@ -148,7 +148,11 @@ We aligned our pilot targets to his internal benchmarks.
 
 ### Organizational Enablers
 
-**Talent.** SRAM has an in-house software engineering team through Hammerhead and Quarq acquisitions. The pilot does not require new AI/ML hires. It requires one integration engineer (internal or contractor) and one product owner from the support organization. Phase 2+ initiatives (data lake, forecasting) will require data engineering hires. Hartsell noted that integrating Quarq and Hammerhead data has been the biggest unlock so far on the engineering side.
+**Talent.** SRAM's software organization is acquisition-built. The Hammerhead and Quarq acquisitions brought in engineering teams that are now being integrated into SRAM's broader digital product group. The combined organization has an estimated 250 to 400 software and firmware engineers working across Python, TypeScript, Rust, C++, React, and Svelte, with AWS as the cloud platform and Jenkins for CI/CD. This is not a firmware-only culture. The Hammerhead team builds web and mobile applications, and the broader org has full-stack web development capability alongside embedded systems work.
+
+This team is large enough to support all four phases of AI adoption without additional engineering hires. With AI-assisted coding tools (GitHub Copilot, Claude) now widely available, 250 to 400 engineers can produce output that would have required a much larger team two years ago. The constraint is not engineering capacity. It is product management and QA. As AI tools increase the speed and volume of code output, the bottleneck shifts to defining what to build (product managers who understand the support and rider experience) and validating that it works correctly (QA engineers and processes that scale with output). Phase 2 and beyond will require additional product managers and QA capacity, not more developers.
+
+The acquisition history creates a real integration challenge. Quarq, Hammerhead, and core SRAM drivetrain teams were separate companies with separate codebases and data models. Hartsell noted that integrating Quarq and Hammerhead data has been the biggest unlock so far, but the Phase 2 data consolidation is fundamentally about stitching together acquisition-era systems. This is harder and slower than building a data layer from scratch. The pilot requires one integration engineer (internal or contractor) and one product owner from the support organization.
 
 **Data.** Existing knowledge base content and AXS/Hammerhead telemetry data are sufficient for the pilot. Compatibility documentation is maintained manually across product lines and updated on a release cadence that does not always keep pace with the hardware. This gap is manageable within the bounded pilot scope but will need to be addressed before expanding to the full product catalog. Data centralization work in Phase 2 builds the foundation for forecasting and personalization.
 

@@ -441,13 +441,13 @@
             <article class="process-card">
               <h3>1) Rider/dealer support, warranty, compatibility help</h3>
               <p><span class="label">Main pain point:</span> Teams spend too much time searching documents and repeating standard troubleshooting steps.</p>
-              <p><span class="label">AI tool stack:</span> Zendesk AI + Azure AI Search + OpenAI via Responses API.</p>
-              <p><span class="label">Why fit:</span> Zendesk fits current ticket operations, Azure AI Search finds approved content quickly, and OpenAI turns retrieved content into clear response drafts.</p>
+              <p><span class="label">AI tool stack:</span> Zendesk AI + Amazon Kendra + Amazon Bedrock (Claude).</p>
+              <p><span class="label">Why fit:</span> Zendesk fits current ticket operations, Amazon Kendra finds approved content quickly, and Bedrock turns retrieved content into clear response drafts. All on AWS, consistent with SRAM's existing infrastructure.</p>
             </article>
             <article class="process-card">
               <h3>2) Demand forecasting and inventory allocation</h3>
               <p><span class="label">Main pain point:</span> Forecast misses lead to stockouts, rush shipping, and markdown losses.</p>
-              <p><span class="label">AI tool stack:</span> Vertex AI Forecasting or Databricks.</p>
+              <p><span class="label">AI tool stack:</span> AWS SageMaker.</p>
               <p><span class="label">Why fit:</span> Strong for time-series forecasting and planner exception handling across multi-channel product portfolios.</p>
             </article>
             <article class="process-card">
@@ -459,19 +459,19 @@
             <article class="process-card">
               <h3>4) Technical documentation and translation</h3>
               <p><span class="label">Main pain point:</span> Updates take too long to appear in manuals and localized content.</p>
-              <p><span class="label">AI tool stack:</span> OpenAI + DeepL API + workflow automation (Atlassian/ServiceNow).</p>
+              <p><span class="label">AI tool stack:</span> Amazon Bedrock + DeepL API + workflow automation (Atlassian/ServiceNow).</p>
               <p><span class="label">Why fit:</span> Accelerates draft + translation cycle while preserving review and approval controls.</p>
             </article>
             <article class="process-card">
               <h3>5) Compatible next-part recommendations (Phase 3)</h3>
               <p><span class="label">Main pain point:</span> Customers often finish purchase/service without clear guidance on next compatible part.</p>
-              <p><span class="label">AI tool stack:</span> Compatibility rules engine + recommender + OpenAI explanation layer.</p>
+              <p><span class="label">AI tool stack:</span> Compatibility rules engine + recommender + Bedrock explanation layer.</p>
               <p><span class="label">Why fit:</span> Rules protect fit accuracy, recommendation model lifts basket value, and explanation layer improves trust.</p>
             </article>
             <article class="process-card">
               <h3>6) Product development workflow support (Phase 3)</h3>
               <p><span class="label">Main pain point:</span> Engineering teams need faster translation of field issues into product requirements and quicker test planning cycles.</p>
-              <p><span class="label">AI tool stack:</span> OpenAI + issue/telemetry analytics + test-workflow automation.</p>
+              <p><span class="label">AI tool stack:</span> Amazon Bedrock + issue/telemetry analytics + test-workflow automation.</p>
               <p><span class="label">Why fit:</span> Supports requirements mining, firmware test acceleration, and design-review preparation without jumping to full design automation. Not included in Year-1 financial totals.</p>
             </article>
           </div>

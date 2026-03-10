@@ -96,8 +96,8 @@ Deploy IoT sensor networks (vibration, temperature, current draw, acoustic emiss
 | Component | Technology | Vendor Options |
 |-----------|-----------|----------------|
 | IoT sensor layer | Vibration, thermal, current sensors | Siemens MindSphere, ABB, SKF |
-| Data ingestion | Industrial IoT gateway | AWS IoT Greengrass, Azure IoT Hub |
-| ML platform | Predictive failure models | IBM Maximo, Microsoft Azure ML, Samsara |
+| Data ingestion | Industrial IoT gateway | AWS IoT Greengrass |
+| ML platform | Predictive failure models | AWS SageMaker, IBM Maximo, Samsara |
 | CMMS integration | Work order generation | SAP PM, IBM Maximo |
 
 **Financial Model**
@@ -314,8 +314,8 @@ As SRAM expands Eagle Powertrain OEM adoption, this AI layer becomes a different
 | **Total New Revenue** | **$4.5M** | **$16M** | **$35M** |
 
 **Investment Required:**
-- ML/AI engineering talent: 8–15 additional engineers or reallocation with productivity gains from Initiative 5
-- Cloud compute (AWS/Azure): $1–3M/yr
+- Product managers and QA capacity to match AI-accelerated engineering output
+- Cloud compute (AWS): $1–3M/yr
 - Platform development: $5–12M over 3 years
 - **Total 3-year investment: $12–25M**
 
@@ -417,7 +417,7 @@ SRAM's OEM channel — spec contracts with Trek, Specialized, Giant, Canyon, and
 **Phase 2 Tools to Deploy:**
 - **Siemens MindSphere / IBM Maximo** → Predictive maintenance platform
 - **NVIDIA Modulus + Autodesk Generative Design** → R&D acceleration
-- **Custom ML models on AWS SageMaker or Azure ML** → AXS component health predictions
+- **Custom ML models on AWS SageMaker** → AXS component health predictions
 - **Snowflake** → Unified data lake aggregating AXS, Quarq, Karoo, RockShox telemetry
 - **Claude API** → AXS app AI coaching features (natural language performance insights)
 

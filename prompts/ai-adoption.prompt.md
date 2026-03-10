@@ -99,7 +99,7 @@ Use the exact section flow below:
 - Define any unavoidable term immediately in plain language.
 - Be explicit about who buys from SRAM when relevant (bike manufacturers, dealers/shops, riders).
 - Prefer practical tool stacks that can be integrated into existing workflows.
-- Use current-model wording for OpenAI (for example: "OpenAI via Responses API with current production model") and avoid obsolete model-name assumptions.
+- SRAM runs on AWS. All AI tool recommendations must use AWS-native services (Amazon Bedrock, Amazon Kendra, AWS SageMaker). Do not recommend Azure, GCP, or OpenAI directly.
 - Use descriptive language instead of shorthand phrases. For example:
   - Say "support assistant savings" instead of "support copilot savings".
   - Say "keep more existing customers buying SRAM" instead of "retention uplift".

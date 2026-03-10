@@ -723,7 +723,7 @@
 <p><strong>Customer and dealer support automation.</strong> This is the highest-impact near-term opportunity and the recommended deep-dive pilot. Details in Section 4.</p>
 <h3 id="doc-1-ai-adoption-playbook-phase-2---data-foundation-90-180-days">Phase 2 - Data Foundation (90-180 days)</h3>
 <p><strong>Unified data infrastructure.</strong> SRAM operates without an ERP system today. Customer data lives in Shopify (front-end), support systems, AXS app telemetry, and Hammerhead ride data, none of it connected. Hartsell described the current state bluntly: &quot;We have good data in pockets and messy data everywhere else.&quot; Before AI can drive forecasting or personalization, SRAM needs a unified data layer linking CRM, inventory, telemetry, and support data. Hartsell confirmed that SRAM has been investing in data consolidation for 18 months, with support and compatibility data as the first priority and demand forecasting second.</p>
-<p><strong>Demand forecasting and supply chain optimization.</strong> This is a confirmed high-priority need within the organization. SRAM performs minimal customer analytics today. A forecasting system built on Vertex AI or Databricks, using historical order data, dealer sell-through, and seasonal patterns, could reduce stockout and markdown losses. Expected savings of $1.6M in Year 1 by capturing 20% of an estimated $8M annual avoidable inventory loss.</p>
+<p><strong>Demand forecasting and supply chain optimization.</strong> This is a confirmed high-priority need within the organization. SRAM performs minimal customer analytics today. A forecasting system built on AWS SageMaker, using historical order data, dealer sell-through, and seasonal patterns, could reduce stockout and markdown losses. SRAM already runs on AWS, so keeping the ML platform on the same cloud avoids the operational overhead and vendor fragmentation of introducing a second provider. Expected savings of $1.6M in Year 1 by capturing 20% of an estimated $8M annual avoidable inventory loss.</p>
 <h3 id="doc-1-ai-adoption-playbook-phase-3---revenue-acceleration-180-365-days">Phase 3 - Revenue Acceleration (180-365 days)</h3>
 <p><strong>OEM proposal automation.</strong> Proposal and spec package creation for bicycle manufacturers is slow and manual. Salesforce Einstein/Agentforce with CPQ features could cut proposal cycle time and improve win rates on qualified opportunities. Expected incremental revenue of $2.5M from a 1% win-rate improvement on a $250M opportunity pool.</p>
 <p><strong>Compatible part recommendations.</strong> When a rider completes a purchase or service, there is no systematic guidance on the next compatible upgrade. A compatibility rules engine paired with a recommendation model could lift basket value while building trust through accurate fit guidance.</p>
@@ -750,11 +750,11 @@
 <li>Dealer inbox and high-volume web forms (not social or phone)</li>
 <li>Compatibility and firmware/update issues first (highest volume, most structured)</li>
 </ul>
-<p><strong>Tool stack.</strong></p>
+<p><strong>Tool stack.</strong> All AI components stay on AWS, consistent with SRAM&#x27;s existing cloud infrastructure.</p>
 <ul>
 <li>Zendesk AI for ticket routing and workflow integration (fits current operations)</li>
-<li>Azure AI Search for retrieval from approved knowledge base content</li>
-<li>OpenAI Responses API for generating clear, natural-language draft responses from retrieved content</li>
+<li>Amazon Kendra for retrieval from approved knowledge base content</li>
+<li>Amazon Bedrock (Claude) for generating clear, natural-language draft responses from retrieved content</li>
 </ul>
 <p><strong>Workflow.</strong></p>
 <p>1. Ticket arrives in Zendesk</p>
@@ -775,7 +775,9 @@
 <tr><td>Trustpilot rating trend</td><td>1.6/5.0</td><td>Stabilize, begin upward trend</td></tr>
 </tbody></table></div>
 <h3 id="doc-1-ai-adoption-playbook-organizational-enablers">Organizational Enablers</h3>
-<p><strong>Talent.</strong> SRAM has an in-house software engineering team through Hammerhead and Quarq acquisitions. The pilot does not require new AI/ML hires. It requires one integration engineer (internal or contractor) and one product owner from the support organization. Phase 2+ initiatives (data lake, forecasting) will require data engineering hires. Hartsell noted that integrating Quarq and Hammerhead data has been the biggest unlock so far on the engineering side.</p>
+<p><strong>Talent.</strong> SRAM&#x27;s software organization is acquisition-built. The Hammerhead and Quarq acquisitions brought in engineering teams that are now being integrated into SRAM&#x27;s broader digital product group. The combined organization has an estimated 250 to 400 software and firmware engineers working across Python, TypeScript, Rust, C++, React, and Svelte, with AWS as the cloud platform and Jenkins for CI/CD. This is not a firmware-only culture. The Hammerhead team builds web and mobile applications, and the broader org has full-stack web development capability alongside embedded systems work.</p>
+<p>This team is large enough to support all four phases of AI adoption without additional engineering hires. With AI-assisted coding tools (GitHub Copilot, Claude) now widely available, 250 to 400 engineers can produce output that would have required a much larger team two years ago. The constraint is not engineering capacity. It is product management and QA. As AI tools increase the speed and volume of code output, the bottleneck shifts to defining what to build (product managers who understand the support and rider experience) and validating that it works correctly (QA engineers and processes that scale with output). Phase 2 and beyond will require additional product managers and QA capacity, not more developers.</p>
+<p>The acquisition history creates a real integration challenge. Quarq, Hammerhead, and core SRAM drivetrain teams were separate companies with separate codebases and data models. Hartsell noted that integrating Quarq and Hammerhead data has been the biggest unlock so far, but the Phase 2 data consolidation is fundamentally about stitching together acquisition-era systems. This is harder and slower than building a data layer from scratch. The pilot requires one integration engineer (internal or contractor) and one product owner from the support organization.</p>
 <p><strong>Data.</strong> Existing knowledge base content and AXS/Hammerhead telemetry data are sufficient for the pilot. Compatibility documentation is maintained manually across product lines and updated on a release cadence that does not always keep pace with the hardware. This gap is manageable within the bounded pilot scope but will need to be addressed before expanding to the full product catalog. Data centralization work in Phase 2 builds the foundation for forecasting and personalization.</p>
 <p><strong>Leadership.</strong> The CEO must assign one accountable business owner for the pilot with authority to make scope and tooling decisions. Weekly quality reviews with a rollback trigger if quality drops for two consecutive weeks. The pilot owner reports progress at the existing leadership cadence, not through a new governance structure. An open question from our interview: it is unclear whether an executive sponsor above Hartsell has formally committed to the AI data consolidation roadmap, or whether this remains a digital-team initiative without full C-suite ownership. Resolving this reporting line is a prerequisite for Phase 2 investment.</p>
 <p><strong>Change management.</strong> The failed pilot Hartsell described reveals a pattern common in AI adoption across industries. A single high-visibility error, even one without real consequences, can set back organizational buy-in more than any technical failure. The rollout plan must treat agent trust as a first-order success metric, not an afterthought. Specific measures include involving support leads in the pilot design (not informing them after decisions are made), giving agents the ability to flag and correct AI errors in a feedback loop, and celebrating accuracy improvements publicly within the support team.</p>
@@ -1356,7 +1358,7 @@ python3 tools/build_analysis_hub.py
 <li>Define any unavoidable term immediately in plain language.</li>
 <li>Be explicit about who buys from SRAM when relevant (bike manufacturers, dealers/shops, riders).</li>
 <li>Prefer practical tool stacks that can be integrated into existing workflows.</li>
-<li>Use current-model wording for OpenAI (for example: &quot;OpenAI via Responses API with current production model&quot;) and avoid obsolete model-name assumptions.</li>
+<li>SRAM runs on AWS. All AI tool recommendations must use AWS-native services (Amazon Bedrock, Amazon Kendra, AWS SageMaker). Do not recommend Azure, GCP, or OpenAI directly.</li>
 <li>Use descriptive language instead of shorthand phrases. For example:</li>
 <li>Say &quot;support assistant savings&quot; instead of &quot;support copilot savings&quot;.</li>
 <li>Say &quot;keep more existing customers buying SRAM&quot; instead of &quot;retention uplift&quot;.</li>
@@ -1633,8 +1635,8 @@ claude
 <p>Deploy IoT sensor networks (vibration, temperature, current draw, acoustic emission) on critical equipment, feeding a machine learning platform that predicts failures 2–4 weeks before they occur, enabling planned maintenance windows instead of crisis shutdowns.</p>
 <div class="table-wrap"><table><thead><tr><th>Component</th><th>Technology</th><th>Vendor Options</th></tr></thead><tbody>
 <tr><td>IoT sensor layer</td><td>Vibration, thermal, current sensors</td><td>Siemens MindSphere, ABB, SKF</td></tr>
-<tr><td>Data ingestion</td><td>Industrial IoT gateway</td><td>AWS IoT Greengrass, Azure IoT Hub</td></tr>
-<tr><td>ML platform</td><td>Predictive failure models</td><td>IBM Maximo, Microsoft Azure ML, Samsara</td></tr>
+<tr><td>Data ingestion</td><td>Industrial IoT gateway</td><td>AWS IoT Greengrass</td></tr>
+<tr><td>ML platform</td><td>Predictive failure models</td><td>AWS SageMaker, IBM Maximo, Samsara</td></tr>
 <tr><td>CMMS integration</td><td>Work order generation</td><td>SAP PM, IBM Maximo</td></tr>
 </tbody></table></div>
 <p><strong>Financial Model</strong></p>
@@ -1799,8 +1801,8 @@ claude
 </tbody></table></div>
 <p><strong>Investment Required:</strong></p>
 <ul>
-<li>ML/AI engineering talent: 8–15 additional engineers or reallocation with productivity gains from Initiative 5</li>
-<li>Cloud compute (AWS/Azure): $1–3M/yr</li>
+<li>Product managers and QA capacity to match AI-accelerated engineering output</li>
+<li>Cloud compute (AWS): $1–3M/yr</li>
 <li>Platform development: $5–12M over 3 years</li>
 <li><strong>Total 3-year investment: $12–25M</strong></li>
 </ul>
@@ -1880,7 +1882,7 @@ claude
 <ul>
 <li><strong>Siemens MindSphere / IBM Maximo</strong> → Predictive maintenance platform</li>
 <li><strong>NVIDIA Modulus + Autodesk Generative Design</strong> → R&amp;D acceleration</li>
-<li><strong>Custom ML models on AWS SageMaker or Azure ML</strong> → AXS component health predictions</li>
+<li><strong>Custom ML models on AWS SageMaker</strong> → AXS component health predictions</li>
 <li><strong>Snowflake</strong> → Unified data lake aggregating AXS, Quarq, Karoo, RockShox telemetry</li>
 <li><strong>Claude API</strong> → AXS app AI coaching features (natural language performance insights)</li>
 </ul>
