@@ -8,19 +8,24 @@ Group project workspace for AIML/MORS 950 "Human and Machine Intelligence" at No
 
 ## Repository Structure
 
-- `analysis.md` — primary competitive intelligence document
-- `revenue/revenue_streams_sram.md` — revenue stream analysis
-- `competitors/competitors_sram.md` — competitor analysis
-- `ai adoption/ai-adoption-playbook.md` — final AI adoption playbook (6-8 page deliverable)
-- `interview/interview-writeup.md` — interview write-up (Jordan Hartsell, VP Digital Products)
-- `reference/sram_ai_strategy.md` — supplementary strategy reference
-- `prompts/ai-adoption.prompt.md` — prompt used to generate AI adoption content
-- `prompts/unified-playbook-session.prompt.md` — prompt for unified playbook generation
-- `presentation/SRAM_AI_Adoption_Playbook.pptx` — 8-minute presentation deck
-- `tools/build_presentation.py` — script that generates the presentation PPTX
-- `analysis-hub.html` — generated HTML viewer (do not edit directly)
-- `tools/build_analysis_hub.py` — script that compiles all `.md` files into `analysis-hub.html`
-- `syllabus.md` — course syllabus
+### Deliverables (what gets turned in)
+- `deliverables/SRAM_AI_Adoption_Playbook.md` — final 6-8 page AI adoption playbook
+- `deliverables/SRAM_AI_Adoption_Playbook.pptx` — 8-minute presentation deck
+
+### Research (supporting analysis and sources)
+- `research/analysis.md` — primary competitive intelligence document
+- `research/SRAM_company_analysis.md` — tech stack and org analysis
+- `research/revenue/` — revenue stream analysis
+- `research/competitors/` — competitor analysis
+- `research/interview/` — interview write-up (Jordan Hartsell, VP Digital Products)
+- `research/reference/` — supplementary strategy reference
+- `research/prompts/` — prompts used for AI-assisted content generation
+- `research/analysis-hub.html` — generated HTML viewer (do not edit directly)
+- `research/syllabus.md` — course syllabus
+
+### Tools (build scripts)
+- `tools/build_presentation.py` — generates the presentation PPTX into `deliverables/`
+- `tools/build_analysis_hub.py` — compiles all `.md` files into `research/analysis-hub.html`
 
 ## How to Rebuild the Analysis Hub
 
@@ -54,7 +59,7 @@ Most contributors are non-technical MBA students. They are not engineers. Assume
 
 ## Agent Ground Rules
 
-- Do not edit `analysis-hub.html` directly. Always rebuild via the Python script.
+- Do not edit `research/analysis-hub.html` directly. Always rebuild via the Python script.
 - Do not remove confidence labels or source citations from any claim.
 - Do not add claims without a label and a source citation.
 - Keep all changes in feature branches named `feature/{feature-name}`.
