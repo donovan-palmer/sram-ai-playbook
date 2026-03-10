@@ -11,8 +11,13 @@ Group project workspace for AIML/MORS 950 "Human and Machine Intelligence" at No
 - `analysis.md` — primary competitive intelligence document
 - `revenue/revenue_streams_sram.md` — revenue stream analysis
 - `competitors/competitors_sram.md` — competitor analysis
-- `ai adoption/ai-adoption-outline.md` — AI adoption strategy outline
+- `ai adoption/ai-adoption-playbook.md` — final AI adoption playbook (6-8 page deliverable)
+- `interview/interview-writeup.md` — interview write-up (Jordan Hartsell, VP Digital Products)
+- `reference/sram_ai_strategy.md` — supplementary strategy reference
 - `prompts/ai-adoption.prompt.md` — prompt used to generate AI adoption content
+- `prompts/unified-playbook-session.prompt.md` — prompt for unified playbook generation
+- `presentation/SRAM_AI_Adoption_Playbook.pptx` — 8-minute presentation deck
+- `tools/build_presentation.py` — script that generates the presentation PPTX
 - `analysis-hub.html` — generated HTML viewer (do not edit directly)
 - `tools/build_analysis_hub.py` — script that compiles all `.md` files into `analysis-hub.html`
 - `syllabus.md` — course syllabus

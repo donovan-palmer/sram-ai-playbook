@@ -622,7 +622,7 @@
       </div>
 
       <div class="nav-links" id="navLinks">
-        <a class="nav-link" href="#doc-1-ai-adoption-outline" data-folder="ai adoption"><span class="nav-label">ai adoption / ai-adoption-outline</span></a><a class="nav-link" href="#doc-2-analysis" data-folder="root"><span class="nav-label">analysis</span></a><a class="nav-link" href="#doc-3-claude" data-folder="root"><span class="nav-label">CLAUDE</span></a><a class="nav-link" href="#doc-4-competitorssram" data-folder="competitors"><span class="nav-label">competitors / competitors_sram</span></a><a class="nav-link" href="#doc-5-interview-writeup" data-folder="interview"><span class="nav-label">interview / interview-writeup</span></a><a class="nav-link" href="#doc-6-ai-adoptionprompt" data-folder="prompts"><span class="nav-label">prompts / ai-adoption.prompt</span></a><a class="nav-link" href="#doc-7-readme" data-folder="root"><span class="nav-label">README</span></a><a class="nav-link" href="#doc-8-revenuestreamssram" data-folder="revenue"><span class="nav-label">revenue / revenue_streams_sram</span></a><a class="nav-link" href="#doc-9-syllabus" data-folder="root"><span class="nav-label">syllabus</span></a>
+        <a class="nav-link" href="#doc-1-ai-adoption-playbook" data-folder="ai adoption"><span class="nav-label">ai adoption / ai-adoption-playbook</span></a><a class="nav-link" href="#doc-2-analysis" data-folder="root"><span class="nav-label">analysis</span></a><a class="nav-link" href="#doc-3-claude" data-folder="root"><span class="nav-label">CLAUDE</span></a><a class="nav-link" href="#doc-4-competitorssram" data-folder="competitors"><span class="nav-label">competitors / competitors_sram</span></a><a class="nav-link" href="#doc-5-interview-writeup" data-folder="interview"><span class="nav-label">interview / interview-writeup</span></a><a class="nav-link" href="#doc-6-ai-adoptionprompt" data-folder="prompts"><span class="nav-label">prompts / ai-adoption.prompt</span></a><a class="nav-link" href="#doc-7-unified-playbook-sessionprompt" data-folder="prompts"><span class="nav-label">prompts / unified-playbook-session.prompt</span></a><a class="nav-link" href="#doc-8-readme" data-folder="root"><span class="nav-label">README</span></a><a class="nav-link" href="#doc-9-sramaistrategy" data-folder="reference"><span class="nav-label">reference / sram_ai_strategy</span></a><a class="nav-link" href="#doc-10-revenuestreamssram" data-folder="revenue"><span class="nav-label">revenue / revenue_streams_sram</span></a><a class="nav-link" href="#doc-11-syllabus" data-folder="root"><span class="nav-label">syllabus</span></a>
       </div>
 
       <div class="nav-bottom">
@@ -641,7 +641,7 @@
           <div>
             <div class="hero-eyebrow">AI Adoption Playbook &mdash; SRAM LLC</div>
             <h1>Executive Analysis Workspace</h1>
-            <p class="hero-sub">9 documents &mdash; Competitive intelligence, revenue architecture, AI strategy</p>
+            <p class="hero-sub">11 documents &mdash; Competitive intelligence, revenue architecture, AI strategy</p>
           </div>
           <div class="hero-actions">
             <a class="btn btn-ghost-light" href="interview/interview.html">Interview &rarr;</a>
@@ -667,7 +667,7 @@
           <div class="metric-sub">AXS + Hammerhead first</div>
         </div>
         <div class="metric">
-          <div class="metric-value" data-count="9">9</div>
+          <div class="metric-value" data-count="11">11</div>
           <div class="metric-label">Documents</div>
           <div class="metric-sub">Analysis files</div>
         </div>
@@ -682,89 +682,135 @@
         <button class="chip" data-filter="interview" onclick="filterDocs('interview',this)">Interview</button>
       </div>
 
-      <div id="docs"><section class="doc fade-in" id="doc-1-ai-adoption-outline" data-folder="ai adoption"><div class="doc-header"><span class="doc-folder">ai adoption</span><h2 class="doc-title">Ai Adoption Outline</h2></div><div class="doc-body"><h1 id="doc-1-ai-adoption-outline-sram-ai-adoption-executive-outline">SRAM AI Adoption Executive Outline</h1>
-<p>Date: 2026-02-28</p>
-<p>Company: SRAM LLC (private)</p>
-<p>Prepared by Donovan Palmer</p>
-<h2 id="doc-1-ai-adoption-outline-executive-summary">Executive Summary</h2>
-<p>SRAM has a strong foundation for AI adoption. Its AXS wireless ecosystem and Hammerhead cycling computer platform generate structured, real-time product data that most competitors do not have. The near-term opportunity is to use that data advantage to improve dealer and rider support, reduce forecast error, and accelerate proposal cycles — with a phased rollout that stays bounded and measurable before scaling.</p>
-<p>Expected-case Year-1 net value after setup and operating costs: $10.2M. Expected-case return on Year-1 spend: 3.8x. The recommendation is a focused 90-day pilot starting with AXS and Hammerhead support workflows, with human approval on all customer-facing outputs.</p>
-<h2 id="doc-1-ai-adoption-outline-1-where-sram-is-well-positioned-for-ai">1) Where SRAM Is Well Positioned for AI</h2>
-<ul>
-<li>SRAM has a large, structured support knowledge base (manuals, compatibility guides, troubleshooting, warranty guidance), which is strong AI input.</li>
-<li>SRAM also has connected product workflows through AXS and Hammerhead. AXS is SRAM&#x27;s wireless electronic shifting ecosystem and app experience; Hammerhead is SRAM&#x27;s cycling computer platform for ride and device data.</li>
-<li>Those connected interactions (setup, firmware updates, diagnostics, usage data) create practical data loops for better support and smarter recommendation workflows.</li>
-</ul>
-<h2 id="doc-1-ai-adoption-outline-2-target-processes-pain-points-tools-and-why-each-tool-fits">2) Target Processes, Pain Points, Tools, and Why Each Tool Fits</h2>
-<div class="table-wrap"><table><thead><tr><th>Priority</th><th>Business Process</th><th>Main Pain Point</th><th>AI Tool Stack</th><th>Why This Tool Is Right for the Job</th></tr></thead><tbody>
-<tr><td>1</td><td>Rider/dealer support, warranty handling, compatibility help</td><td>Teams spend too much time searching documents and repeating standard troubleshooting steps.</td><td><code>Zendesk AI</code> + <code>Azure AI Search</code> + <code>OpenAI via Responses API</code></td><td>Zendesk fits current ticket operations, Azure AI Search finds approved content quickly, and OpenAI turns retrieved content into clear response drafts.</td></tr>
-<tr><td>2</td><td>Demand forecasting and inventory allocation</td><td>Forecast misses lead to stockouts, rush shipping, and markdown losses.</td><td><code>Vertex AI Forecasting</code> or <code>Databricks</code></td><td>Strong for time-series forecasting and planner exception handling across multi-channel product portfolios.</td></tr>
-<tr><td>3</td><td>Bicycle manufacturer proposal and spec package creation</td><td>Proposal cycles are slow and manual, delaying response and lowering win rates.</td><td><code>Salesforce Einstein/Agentforce</code> + CPQ features</td><td>Fits existing quoting and package-configuration workflow, improving speed and consistency.</td></tr>
-<tr><td>4</td><td>Technical documentation and translation</td><td>Updates take too long to appear in manuals and localized content.</td><td><code>OpenAI</code> + <code>DeepL API</code> + workflow automation (<code>Atlassian</code>/<code>ServiceNow</code>)</td><td>Accelerates draft and translation cycle while preserving review and approval controls.</td></tr>
-<tr><td>5 (Phase 3 option)</td><td>Compatible next-part recommendations at journey end</td><td>Customers often finish purchase or service without clear guidance on the next compatible part.</td><td>Compatibility rules engine + recommendation model + <code>OpenAI</code> explanation layer</td><td>Rules protect fit accuracy, recommendation model lifts basket value, and explanation layer improves trust.</td></tr>
-<tr><td>6 (Phase 3 option)</td><td>Product development workflow support</td><td>Engineering teams need faster translation of field issues into product requirements and quicker test planning cycles.</td><td><code>OpenAI</code> + issue/telemetry analytics + test-workflow automation</td><td>Supports requirements mining, firmware test acceleration, and design-review preparation without jumping to full design automation. Not included in Year-1 financial totals.</td></tr>
+      <div id="docs"><section class="doc fade-in" id="doc-1-ai-adoption-playbook" data-folder="ai adoption"><div class="doc-header"><span class="doc-folder">ai adoption</span><h2 class="doc-title">Ai Adoption Playbook</h2></div><div class="doc-body"><h1 id="doc-1-ai-adoption-playbook-sram-llc---ai-adoption-playbook">SRAM LLC - AI Adoption Playbook</h1>
+<p>Prepared for SRAM Executive Leadership</p>
+<p>March 2026</p>
+<hr>
+<h2 id="doc-1-ai-adoption-playbook-1-executive-summary">1. Executive Summary</h2>
+<p>SRAM is a $1B+ private cycling components company with a rare structural advantage for AI adoption. Its AXS wireless ecosystem and Hammerhead cycling computer generate real-time telemetry data that no competitor matches in breadth. SRAM sells drivetrains, suspension, wheels, power meters, computers, and pedals across seven brands, reaching riders through OEM partnerships, dealer networks, and a growing direct channel.</p>
+<p>The opportunity is clear. SRAM today has no ERP system, no centralized customer analytics, and a support operation where roughly 70% of inbound dealer questions follow patterns an AI agent could handle. Trustpilot ratings sit at 1.6 out of 5, driven by warranty friction and firmware troubleshooting failures. These are solvable problems with immediate financial returns.</p>
+<p>This playbook recommends a phased approach across four stages, starting with a 90-day pilot in dealer and rider support automation. Expected Year-1 net value across all phases is $10.2M on $2.7M total spend, a 3.8x return. The deep-dive recommendation targets customer and dealer support, where SRAM&#x27;s strongest data asset (AXS telemetry and structured knowledge base) meets its most visible pain point (support quality and warranty friction).</p>
+<p>The ask for SRAM&#x27;s CEO is straightforward. Approve the 90-day Phase 1 pilot, assign one accountable business owner, and hold to bounded scope until measured proof supports scaling.</p>
+<hr>
+<h2 id="doc-1-ai-adoption-playbook-2-what-sram-does---the-value-generation-engine">2. What SRAM Does - The Value Generation Engine</h2>
+<h3 id="doc-1-ai-adoption-playbook-the-business-model">The Business Model</h3>
+<p>SRAM makes money by selling premium cycling component systems through three channels. OEM bike manufacturers spec SRAM parts on complete bikes. Distributors and dealers sell components through bike shops. Riders buy aftermarket upgrades and replacement parts directly or through dealers.</p>
+<p>This creates a multi-year revenue arc per bike platform. An OEM spec win places SRAM products on new bikes, building an installed base that generates replacement, upgrade, and accessory revenue for years afterward.</p>
+<h3 id="doc-1-ai-adoption-playbook-revenue-streams">Revenue Streams</h3>
+<div class="table-wrap"><table><thead><tr><th>Revenue Stream</th><th>Brands</th><th>Revenue Signal</th><th>Role in Portfolio</th></tr></thead><tbody>
+<tr><td>Drivetrains and braking</td><td>SRAM (RED, Force, Rival, Apex, Eagle)</td><td>Very High</td><td>Core revenue engine</td></tr>
+<tr><td>Suspension</td><td>RockShox</td><td>High</td><td>OE spec + service/rebuild cycle</td></tr>
+<tr><td>Wheels and cockpit</td><td>Zipp</td><td>Medium</td><td>Premium performance segment</td></tr>
+<tr><td>Power meters</td><td>Quarq + integrated</td><td>Medium</td><td>Upsell and data monetization</td></tr>
+<tr><td>Cycling computers</td><td>Hammerhead (Karoo)</td><td>Medium-Low (strategic)</td><td>Connected ecosystem retention</td></tr>
+<tr><td>Pedals</td><td>TIME</td><td>Low-Medium</td><td>Adjacent category cross-sell</td></tr>
+<tr><td>Wear parts and service</td><td>Chains, cassettes, brake pads, rotors</td><td>High (recurring)</td><td>Installed-base lock-in</td></tr>
+<tr><td>Adjacent categories</td><td>Velocio apparel, Ochain</td><td>Low (growing)</td><td>Share-of-wallet expansion</td></tr>
 </tbody></table></div>
-<h2 id="doc-1-ai-adoption-outline-3-year-1-cost-reduction-conservative-expected-upside">3) Year-1 Cost Reduction (Conservative / Expected / Upside)</h2>
+<h3 id="doc-1-ai-adoption-playbook-why-sram-commands-premium-pricing">Why SRAM Commands Premium Pricing</h3>
+<p>SRAM does not sell parts. It sells systems. The AXS wireless ecosystem connects shifting, braking, controls, electronics, and software into an integrated experience. Once a rider, shop, or OEM invests in the platform (training, tooling, compatibility knowledge), switching carries real friction. This system-level integration, combined with multi-brand portfolio bundling across SRAM, RockShox, Zipp, Quarq, Hammerhead, and TIME, increases wallet share per rider and strengthens OEM leverage.</p>
+<h3 id="doc-1-ai-adoption-playbook-competitive-position">Competitive Position</h3>
+<p>SRAM dominates mountain bike components. Shimano leads road. Three competitive pressures demand attention.</p>
+<p>Shimano entered fully wireless gravel shifting with GRX RX827, narrowing SRAM&#x27;s early wireless lead. Campagnolo pushed premium positioning with 13-speed wireless at EUR 4,300. microSHIFT&#x27;s Sword offers a mechanical, serviceable alternative with an explicit anti-complexity narrative targeting riders who resist electronic premium pricing.</p>
+<p>SRAM&#x27;s durable edge is cross-brand integration breadth. No competitor sells drivetrain, suspension, wheels, power, head unit, and pedals as a connected ecosystem.</p>
+<hr>
+<h2 id="doc-1-ai-adoption-playbook-3-where-ai-adds-value---the-opportunity-map">3. Where AI Adds Value - The Opportunity Map</h2>
+<p>AI opportunities at SRAM fall into four phases, ordered by implementation complexity, organizational readiness, and time to measurable return.</p>
+<h3 id="doc-1-ai-adoption-playbook-phase-1---immediate-productivity-0-90-days">Phase 1 - Immediate Productivity (0-90 days)</h3>
+<p><strong>Individual AI tools for daily work.</strong> Deploy coding assistants (GitHub Copilot, Claude) for the software engineering team. Enable AI-powered note-taking, email drafting, and meeting summarization across business functions. This phase costs little, builds AI fluency, and creates internal champions before larger deployments.</p>
+<p><strong>Customer and dealer support automation.</strong> This is the highest-impact near-term opportunity and the recommended deep-dive pilot. Details in Section 4.</p>
+<h3 id="doc-1-ai-adoption-playbook-phase-2---data-foundation-90-180-days">Phase 2 - Data Foundation (90-180 days)</h3>
+<p><strong>Unified data infrastructure.</strong> SRAM operates without an ERP system today. Customer data lives in Shopify (front-end), support systems, AXS app telemetry, and Hammerhead ride data, none of it connected. Before AI can drive forecasting or personalization, SRAM needs a unified data layer linking CRM, inventory, telemetry, and support data.</p>
+<p><strong>Demand forecasting and supply chain optimization.</strong> This is a confirmed high-priority need within the organization. SRAM performs minimal customer analytics today. A forecasting system built on Vertex AI or Databricks, using historical order data, dealer sell-through, and seasonal patterns, could reduce stockout and markdown losses. Expected savings of $1.6M in Year 1 by capturing 20% of an estimated $8M annual avoidable inventory loss.</p>
+<h3 id="doc-1-ai-adoption-playbook-phase-3---revenue-acceleration-180-365-days">Phase 3 - Revenue Acceleration (180-365 days)</h3>
+<p><strong>OEM proposal automation.</strong> Proposal and spec package creation for bicycle manufacturers is slow and manual. Salesforce Einstein/Agentforce with CPQ features could cut proposal cycle time and improve win rates on qualified opportunities. Expected incremental revenue of $2.5M from a 1% win-rate improvement on a $250M opportunity pool.</p>
+<p><strong>Compatible part recommendations.</strong> When a rider completes a purchase or service, there is no systematic guidance on the next compatible upgrade. A compatibility rules engine paired with a recommendation model could lift basket value while building trust through accurate fit guidance.</p>
+<h3 id="doc-1-ai-adoption-playbook-phase-4---ai-first-culture-year-2">Phase 4 - AI-First Culture (Year 2+)</h3>
+<p><strong>AXS Intelligence Platform.</strong> This is the long-term strategic play. Unify telemetry from AXS drivetrains, RockShox suspension, Quarq power meters, and Hammerhead computers into a single rider performance dashboard. No competitor has the product breadth to show a rider their complete system data (heart rate, power output, gearing patterns, suspension behavior) in one view. This platform creates a data moat and opens new revenue streams through premium data services and AI-driven component optimization.</p>
+<p><strong>Generative design and R&amp;D acceleration.</strong> AI-assisted patent search, digital twin testing (simulating wheel pressure tests or suspension stress rather than running physical tests for every iteration), and requirements mining from field telemetry data. This frees engineering capacity for higher-value innovation work.</p>
+<p><strong>AI-adjusted component performance.</strong> SRAM&#x27;s connected products open the possibility of AI tuning suspension force, shift timing, or brake modulation based on riding conditions and rider behavior. This moves SRAM from selling hardware to selling continuously improving performance.</p>
+<hr>
+<h2 id="doc-1-ai-adoption-playbook-4-how-to-integrate-ai---the-support-pilot-deep-dive">4. How to Integrate AI - The Support Pilot (Deep Dive)</h2>
+<h3 id="doc-1-ai-adoption-playbook-why-support-is-the-right-starting-point">Why Support is the Right Starting Point</h3>
+<p>Three factors make customer and dealer support the strongest pilot candidate.</p>
+<p><strong>The pain is visible and measurable.</strong> SRAM&#x27;s Trustpilot rating is 1.6 out of 5. Reddit threads in 2024-2025 consistently report pairing issues, firmware failures, and shifting anomalies. Trustpilot reviews include riders explicitly stating intent to switch to Shimano after support failures. The churn risk is real, and it is driven by support quality, not product quality.</p>
+<p><strong>The data advantage is already in place.</strong> SRAM maintains a large, structured support knowledge base with manuals, compatibility guides, troubleshooting procedures, and warranty guidance. AXS and Hammerhead generate device-level telemetry (firmware versions, error codes, configuration state). This is strong AI input that requires no new data collection.</p>
+<p><strong>The volume supports automation.</strong> Approximately 70% of inbound dealer questions follow repeatable patterns that an AI agent could draft accurate responses for. This does not mean removing humans. It means giving support agents AI-drafted responses to review and approve, reducing time-per-ticket and allowing reallocation of headcount to product development and other value-generating roles.</p>
+<h3 id="doc-1-ai-adoption-playbook-pilot-design">Pilot Design</h3>
+<p><strong>Scope (0-90 days).</strong></p>
 <ul>
-<li><strong>Support assistant savings:</strong> <strong>$0.5M / $1.6M / $4.3M</strong></li>
+<li>AXS drivetrain and Hammerhead device support only (not full product line)</li>
+<li>Dealer inbox and high-volume web forms (not social or phone)</li>
+<li>Compatibility and firmware/update issues first (highest volume, most structured)</li>
 </ul>
-<p>What this means: AI helps agents resolve more tickets faster with fewer escalations.</p>
-<p>Expected-case math: <code>120 people x $90K x 60% AI-helpable work x 35% productivity gain x 70% adoption</code>.</p>
+<p><strong>Tool stack.</strong></p>
 <ul>
-<li><strong>Forecasting and inventory savings:</strong> <strong>$0.7M / $1.6M / $4.5M</strong></li>
+<li>Zendesk AI for ticket routing and workflow integration (fits current operations)</li>
+<li>Azure AI Search for retrieval from approved knowledge base content</li>
+<li>OpenAI Responses API for generating clear, natural-language draft responses from retrieved content</li>
 </ul>
-<p>What this means: lower avoidable loss from stockouts, expedites, and markdowns.</p>
-<p>Expected-case math: <code>$200M inventory exposure x 4% avoidable loss x 20% captured</code>.</p>
+<p><strong>Workflow.</strong></p>
+<p>1. Ticket arrives in Zendesk</p>
+<p>2. AI retrieves relevant documentation and telemetry context</p>
+<p>3. AI drafts a response</p>
+<p>4. Human agent reviews and approves before sending</p>
+<p>5. Quality metrics logged per interaction</p>
+<p><strong>Decision rule.</strong> Human agents approve all customer-facing responses during the pilot. No automated sends.</p>
+<h3 id="doc-1-ai-adoption-playbook-how-to-measure-success">How to Measure Success</h3>
+<div class="table-wrap"><table><thead><tr><th>Metric</th><th>Baseline (estimate)</th><th>90-Day Target</th></tr></thead><tbody>
+<tr><td>Average time-to-first-response</td><td>Current SLA</td><td>40% reduction</td></tr>
+<tr><td>Tickets resolved without escalation</td><td>Current rate</td><td>15% improvement</td></tr>
+<tr><td>Agent productivity (tickets per agent per day)</td><td>Current throughput</td><td>25% increase</td></tr>
+<tr><td>Draft acceptance rate (agent approves AI draft)</td><td>N/A</td><td>Above 70%</td></tr>
+<tr><td>Customer satisfaction (CSAT on AI-assisted tickets)</td><td>Current CSAT</td><td>No decline</td></tr>
+<tr><td>Trustpilot rating trend</td><td>1.6/5.0</td><td>Stabilize, begin upward trend</td></tr>
+</tbody></table></div>
+<h3 id="doc-1-ai-adoption-playbook-organizational-enablers">Organizational Enablers</h3>
+<p><strong>Talent.</strong> SRAM has an in-house software engineering team through Hammerhead and Quarq acquisitions. The pilot does not require new AI/ML hires. It requires one integration engineer (internal or contractor) and one product owner from the support organization. Phase 2+ initiatives (data lake, forecasting) will require data engineering hires.</p>
+<p><strong>Data.</strong> Existing knowledge base content and AXS/Hammerhead telemetry data are sufficient for the pilot. Data centralization work in Phase 2 builds the foundation for forecasting and personalization.</p>
+<p><strong>Leadership.</strong> The CEO must assign one accountable business owner for the pilot with authority to make scope and tooling decisions. Weekly quality reviews with a rollback trigger if quality drops for two consecutive weeks. The pilot owner reports progress at the existing leadership cadence, not through a new governance structure.</p>
+<h3 id="doc-1-ai-adoption-playbook-financial-impact---year-1-all-phases">Financial Impact - Year 1 (All Phases)</h3>
+<div class="table-wrap"><table><thead><tr><th>Category</th><th>Conservative</th><th>Expected</th><th>Upside</th></tr></thead><tbody>
+<tr><td>Support assistant savings</td><td>$0.5M</td><td>$1.6M</td><td>$4.3M</td></tr>
+<tr><td>Forecasting and inventory savings</td><td>$0.7M</td><td>$1.6M</td><td>$4.5M</td></tr>
+<tr><td>Documentation and translation savings</td><td>$0.1M</td><td>$0.24M</td><td>$0.9M</td></tr>
+<tr><td>Customer retention revenue</td><td>$1.5M</td><td>$3.0M</td><td>$4.5M</td></tr>
+<tr><td>Package size increase revenue</td><td>$2.0M</td><td>$4.0M</td><td>$8.0M</td></tr>
+<tr><td>Proposal win-rate revenue</td><td>$1.3M</td><td>$2.5M</td><td>$3.8M</td></tr>
+<tr><td><strong>Gross value</strong></td><td><strong>$6.1M</strong></td><td><strong>$12.9M</strong></td><td><strong>$26.0M</strong></td></tr>
+<tr><td>Setup costs</td><td>($1.2M)</td><td>($2.0M)</td><td>($2.5M)</td></tr>
+<tr><td>Operating costs</td><td>($0.4M)</td><td>($0.7M)</td><td>($1.0M)</td></tr>
+<tr><td><strong>Net Year-1 value</strong></td><td><strong>$4.5M</strong></td><td><strong>$10.2M</strong></td><td><strong>$22.5M</strong></td></tr>
+<tr><td><strong>Return on spend</strong></td><td><strong>2.8x</strong></td><td><strong>3.8x</strong></td><td><strong>6.4x</strong></td></tr>
+</tbody></table></div>
+<p>Expected-case support savings math: 120 support staff x $90K average cost x 60% AI-addressable work x 35% productivity gain x 70% adoption = $1.6M.</p>
+<h3 id="doc-1-ai-adoption-playbook-risk-controls">Risk Controls</h3>
 <ul>
-<li><strong>Documentation and translation savings:</strong> <strong>$0.1M / $0.24M / $0.9M</strong></li>
+<li>Human approval required for all warranty decisions and safety-related guidance</li>
+<li>Compatibility answers sourced from approved documentation only, never from general model knowledge</li>
+<li>Weekly quality review with defined rollback trigger</li>
+<li>No automated warranty adjudication in Phase 1</li>
 </ul>
-<p>What this means: less manual content effort and faster publish cycle.</p>
-<p>Expected-case math: <code>20 people x $85K x 50% workload x 40% reduction x 70% adoption</code>.</p>
-<h2 id="doc-1-ai-adoption-outline-4-year-1-revenue-growth-conservative-expected-upside">4) Year-1 Revenue Growth (Conservative / Expected / Upside)</h2>
-<ul>
-<li><strong>Keep more existing customers buying SRAM:</strong> <strong>$1.5M / $3.0M / $4.5M</strong></li>
-</ul>
-<p>Meaning: better support and clearer compatibility guidance improve repeat purchase behavior.</p>
-<p>Expected-case math: <code>$300M affected revenue x 1.0% improvement</code>.</p>
-<ul>
-<li><strong>Increase average deal size by selling more complete multi-brand packages:</strong> <strong>$2.0M / $4.0M / $8.0M</strong></li>
-</ul>
-<p>Meaning: more deals include complementary products across the SRAM brand family.</p>
-<p>Expected-case math: <code>$400M targeted revenue x 1.0% package-size improvement</code>.</p>
-<ul>
-<li><strong>Win more bicycle manufacturer opportunities through faster proposals:</strong> <strong>$1.3M / $2.5M / $3.8M</strong></li>
-</ul>
-<p>Meaning: faster, clearer proposals improve win rates on qualified opportunities.</p>
-<p>Expected-case math: <code>$250M opportunity pool x 1.0% win-rate improvement</code>.</p>
-<h2 id="doc-1-ai-adoption-outline-5-net-financial-picture-rollout-and-risk-controls">5) Net Financial Picture, Rollout, and Risk Controls</h2>
-<ul>
-<li><strong>Gross value (cost reduction + revenue growth):</strong> <strong>$6.1M / $12.9M / $26.0M</strong>.</li>
-<li><strong>Year-1 setup cost (integration, data work, training):</strong> <strong>$1.2M / $2.0M / $2.5M</strong>.</li>
-<li><strong>Year-1 operating cost (licenses, model usage, operations):</strong> <strong>$0.4M / $0.7M / $1.0M</strong>.</li>
-<li><strong>Net Year-1 value:</strong> <strong>$4.5M / $10.2M / $22.5M</strong>.</li>
-<li><strong>Expected-case return on Year-1 spend:</strong> about <strong>3.8x</strong> (<code>$10.2M net / $2.7M total spend</code>).</li>
-</ul>
-<p>Rollout sequence (start bounded, then scale):</p>
-<ul>
-<li><strong>0-90 days:</strong> support and compatibility assistant pilot with tight scope.</li>
-<li><strong>Start scope:</strong> AXS drivetrain and Hammerhead device support, dealer inbox and high-volume web forms, compatibility and firmware/update issues first.</li>
-<li><strong>Pilot decision rule:</strong> AI drafts responses; human agents approve all customer-facing responses.</li>
-<li><strong>90-180 days:</strong> forecasting rollout for top product/channel groups.</li>
-<li><strong>180-365 days:</strong> expand to bicycle manufacturer proposal support and multi-brand recommendation workflows.</li>
-</ul>
-<p>Risk controls:</p>
-<ul>
-<li>Human approval for warranty and safety exceptions.</li>
-<li>Compatibility answers sourced from approved documents only.</li>
-<li>Weekly quality review with rollback trigger if quality drops for two consecutive weeks.</li>
-</ul>
-<h2 id="doc-1-ai-adoption-outline-6-ceo-decision">6) CEO Decision</h2>
-<ul>
-<li>Approve a focused 90-day Phase 1 pilot for support and compatibility.</li>
-<li>Approve this exact starting point: AXS + Hammerhead support workflows in dealer/support channels, with compatibility and firmware/update issues first.</li>
-<li>Assign one accountable business owner and cross-functional delivery team.</li>
-<li>Maintain sequencing discipline: bounded, well-defined problems first; broader transformation after measured proof.</li>
-</ul></div></section><section class="doc fade-in" id="doc-2-analysis" data-folder="root"><div class="doc-header"><span class="doc-folder">root</span><h2 class="doc-title">Analysis</h2></div><div class="doc-body"><h1 id="doc-2-analysis-sram-competitive-intelligence">SRAM Competitive Intelligence</h1>
+<hr>
+<h2 id="doc-1-ai-adoption-playbook-5-sram-in-2031---the-ai-first-company">5. SRAM in 2031 - The AI-First Company</h2>
+<p>By 2031, a fully executed AI strategy transforms SRAM from a hardware manufacturer into a performance intelligence company.</p>
+<h3 id="doc-1-ai-adoption-playbook-the-rider-experience-changes">The Rider Experience Changes</h3>
+<p>A rider in 2031 buys a SRAM-equipped bike and receives a continuously improving product. AXS Intelligence monitors drivetrain wear patterns and predicts when a chain or cassette needs replacement before failure. RockShox suspension auto-tunes based on terrain detection and rider weight shifts. The Hammerhead Karoo synthesizes power, gearing, suspension, and heart rate data into a unified performance coaching system that no competitor can replicate because no competitor sells all these components.</p>
+<h3 id="doc-1-ai-adoption-playbook-new-revenue-streams-emerge">New Revenue Streams Emerge</h3>
+<p><strong>Predictive maintenance subscriptions.</strong> Riders and fleet operators (rental companies, team mechanics) pay for proactive component health monitoring. SRAM&#x27;s installed base of connected components becomes a recurring revenue platform, not a one-time hardware sale.</p>
+<p><strong>Performance optimization services.</strong> AI-tuned suspension and shifting profiles, personalized to rider weight, terrain preferences, and fitness level. Premium tier offers real-time adjustment. This is the AXS Intelligence Platform at maturity.</p>
+<p><strong>Dealer intelligence tools.</strong> Aggregated (anonymized) telemetry data tells dealers which components are approaching end-of-life in their service area. This turns SRAM&#x27;s dealer network into a proactive parts-ordering system rather than a reactive one, reducing stockouts and improving dealer margins.</p>
+<p><strong>Data-informed product development.</strong> Engineering teams use field telemetry to identify failure modes, usage patterns, and feature requests at scale. Product development cycles shorten. Testing costs drop as digital twin simulations replace a portion of physical stress testing.</p>
+<h3 id="doc-1-ai-adoption-playbook-what-makes-this-defensible">What Makes This Defensible</h3>
+<p>This vision works because SRAM owns the full stack. The components generate the data. The software interprets it. The ecosystem locks it together. A rider using SRAM drivetrain, RockShox suspension, Quarq power, and Hammerhead computer gets a unified intelligence layer that a mixed-component setup cannot match. Each additional connected SRAM product a rider buys increases the value of the data and the quality of the AI recommendations.</p>
+<p>This is the flywheel. Hardware sells data access. Data improves performance. Performance sells hardware.</p>
+<hr>
+<h2 id="doc-1-ai-adoption-playbook-6-the-decision">6. The Decision</h2>
+<p>We recommend SRAM&#x27;s CEO approve three actions.</p>
+<p>1. <strong>Launch the 90-day support pilot.</strong> Scope it to AXS and Hammerhead dealer support. Staff it with one product owner and one integration engineer. Human approval on all customer-facing outputs. Weekly quality reviews.</p>
+<p>2. <strong>Begin data infrastructure planning.</strong> Initiate requirements gathering for a unified data layer connecting Shopify, support systems, and telemetry data. This is the foundation for Phase 2 (forecasting) and Phase 4 (AXS Intelligence).</p>
+<p>3. <strong>Hold sequencing discipline.</strong> Bounded, well-defined problems first. Broader transformation after measured proof. The 90-day pilot produces data to justify or redirect every subsequent investment.</p>
+<p>Expected Year-1 return on the full phased program is 3.8x. The downside is bounded by the 90-day pilot scope. The upside scales with SRAM&#x27;s unique data advantage and connected product ecosystem.</p></div></section><section class="doc fade-in" id="doc-2-analysis" data-folder="root"><div class="doc-header"><span class="doc-folder">root</span><h2 class="doc-title">Analysis</h2></div><div class="doc-body"><h1 id="doc-2-analysis-sram-competitive-intelligence">SRAM Competitive Intelligence</h1>
 <p>Date: 2026-02-28</p>
 <p>Company: SRAM LLC (private)</p>
 <h2 id="doc-2-analysis-method-and-confidence-rules">Method And Confidence Rules</h2>
@@ -1054,8 +1100,13 @@
 <li><code>analysis.md</code> — primary competitive intelligence document</li>
 <li><code>revenue/revenue_streams_sram.md</code> — revenue stream analysis</li>
 <li><code>competitors/competitors_sram.md</code> — competitor analysis</li>
-<li><code>ai adoption/ai-adoption-outline.md</code> — AI adoption strategy outline</li>
+<li><code>ai adoption/ai-adoption-playbook.md</code> — final AI adoption playbook (6-8 page deliverable)</li>
+<li><code>interview/interview-writeup.md</code> — interview write-up (Jordan Hartsell, VP Digital Products)</li>
+<li><code>reference/sram_ai_strategy.md</code> — supplementary strategy reference</li>
 <li><code>prompts/ai-adoption.prompt.md</code> — prompt used to generate AI adoption content</li>
+<li><code>prompts/unified-playbook-session.prompt.md</code> — prompt for unified playbook generation</li>
+<li><code>presentation/SRAM_AI_Adoption_Playbook.pptx</code> — 8-minute presentation deck</li>
+<li><code>tools/build_presentation.py</code> — script that generates the presentation PPTX</li>
 <li><code>analysis-hub.html</code> — generated HTML viewer (do not edit directly)</li>
 <li><code>tools/build_analysis_hub.py</code> — script that compiles all <code>.md</code> files into <code>analysis-hub.html</code></li>
 <li><code>syllabus.md</code> — course syllabus</li>
@@ -1305,33 +1356,151 @@ python3 tools/build_analysis_hub.py
 <li>firmware/app support for AXS/Hammerhead</li>
 <li>compatibility and content management</li>
 <li>multi-brand selling across SRAM/RockShox/Zipp/Quarq/Hammerhead/TIME</li>
-</ul></div></section><section class="doc fade-in" id="doc-7-readme" data-folder="root"><div class="doc-header"><span class="doc-folder">root</span><h2 class="doc-title">Readme</h2></div><div class="doc-body"><h1 id="doc-7-readme-sram-ai-adoption-playbook">SRAM AI Adoption Playbook</h1>
+</ul></div></section><section class="doc fade-in" id="doc-7-unified-playbook-sessionprompt" data-folder="prompts"><div class="doc-header"><span class="doc-folder">prompts</span><h2 class="doc-title">Unified Playbook Session.Prompt</h2></div><div class="doc-body"><h1 id="doc-7-unified-playbook-sessionprompt-session-prompts-unified-ai-adoption-playbook">Session Prompts — Unified AI Adoption Playbook</h1>
+<h2 id="doc-7-unified-playbook-sessionprompt-aimlmors-950-northwestern-kellogg-winter-2026">AIML/MORS 950, Northwestern Kellogg, Winter 2026</h2>
+<p>This file documents the exact prompts used in the Claude Code session that produced</p>
+<p><code>ai adoption/unified-ai-playbook-2031.md</code> and the supporting reference materials.</p>
+<p>It is preserved here so the reasoning process is transparent and reproducible.</p>
+<hr>
+<h2 id="doc-7-unified-playbook-sessionprompt-session-overview">Session Overview</h2>
+<p><strong>Date:</strong> 2026-03-06</p>
+<p><strong>Tool:</strong> Claude Code (claude-sonnet-4-6)</p>
+<p><strong>Working directory:</strong> C:\claude_output\AIML950SRAM</p>
+<p><strong>Repository:</strong> https://github.com/donovan-palmer/sram-ai-playbook</p>
+<p>The session began with cloning the repository, reading all key files,</p>
+<p>and then performing a structured analysis and synthesis exercise that</p>
+<p>produced the unified playbook.</p>
+<hr>
+<h2 id="doc-7-unified-playbook-sessionprompt-prompts-used-in-order">Prompts Used (In Order)</h2>
+<h3 id="doc-7-unified-playbook-sessionprompt-prompt-1-clone-the-repository">Prompt 1 — Clone the repository</h3>
+<p>&gt; Please clone this public repository https://github.com/donovan-palmer/sram-ai-playbook.git</p>
+<p>&gt; to my current working directory for this class. You should follow the CLAUDE.md file</p>
+<p>&gt; exclusively as it defines some of the key git processes for you to follow so that you</p>
+<p>&gt; can contribute to the project.</p>
+<p><strong>What this produced:</strong> Claude cloned the repository, read CLAUDE.md, and summarized</p>
+<p>the project structure and contribution rules (feature branches, PRs, no Co-Authored-By</p>
+<p>lines, confidence labeling convention, analysis-hub rebuild process).</p>
+<hr>
+<h3 id="doc-7-unified-playbook-sessionprompt-prompt-2-read-the-key-files">Prompt 2 — Read the key files</h3>
+<p>&gt; Can you please read back to me the key files within the repository as a starting point?</p>
+<p><strong>What this produced:</strong> Claude read and summarized all four primary documents in parallel:</p>
+<ul>
+<li><code>analysis.md</code> — competitive intelligence</li>
+<li><code>revenue/revenue_streams_sram.md</code> — revenue architecture</li>
+<li><code>competitors/competitors_sram.md</code> — competitor map</li>
+<li><code>ai adoption/ai-adoption-outline.md</code> — original AI adoption pilot proposal</li>
+</ul>
+<hr>
+<h3 id="doc-7-unified-playbook-sessionprompt-prompt-3-explain-the-collaboration-workflow">Prompt 3 — Explain the collaboration workflow</h3>
+<p>&gt; Assume I have no prior coding or GitHub experience and do not understand that lingo.</p>
+<p>&gt; Please walk me through how I can work with Claude to collaborate with the owner of</p>
+<p>&gt; the repository I just had you access.</p>
+<p><strong>What this produced:</strong> A plain-English guide explaining repositories, branches, commits,</p>
+<p>and pull requests using Google Docs and track-changes analogies. Defined the user&#x27;s role</p>
+<p>(describe what to add/change; provide sources) versus Claude&#x27;s role (all technical steps).</p>
+<hr>
+<h3 id="doc-7-unified-playbook-sessionprompt-prompt-4-compare-the-two-strategy-documents">Prompt 4 — Compare the two strategy documents</h3>
+<p>&gt; Can you perform a detailed comparison of the sram_ai_strategy.md file to the</p>
+<p>&gt; ai-adoption-outline.md file from the cloned repository. Please include a complete</p>
+<p>&gt; breakdown of what is unique to each AI strategy, what is shared, how the financial</p>
+<p>&gt; forecasts compare, and how the action plans and measurement criteria compare.</p>
+<p><strong>What this produced:</strong> A six-section structured comparison covering:</p>
+<p>1. What the documents share</p>
+<p>2. What is unique to <code>ai-adoption-outline.md</code> (the repo file)</p>
+<p>3. What is unique to <code>sram_ai_strategy.md</code> (the reference file)</p>
+<p>4. Financial forecast comparison (side-by-side table)</p>
+<p>5. Action plan comparison (phase timing, scope, accountability)</p>
+<p>6. Measurement criteria comparison (success metrics, rollback rules, guardrails)</p>
+<p>Key finding: the two documents are complementary — the outline is a bounded 90-day</p>
+<p>pilot proposal; the strategy document is a 3-year transformation case with manufacturing,</p>
+<p>engineering, and platform depth. Neither alone is complete.</p>
+<hr>
+<h3 id="doc-7-unified-playbook-sessionprompt-prompt-5-propose-the-merged-strategy">Prompt 5 — Propose the merged strategy</h3>
+<p>&gt; How would you propose merging these two proposals into an actionable near-term pilot</p>
+<p>&gt; program that ultimately informs a long-term AI adoption strategy that would be fully</p>
+<p>&gt; implemented with run-rate financial impacts realized by 2031? Please focus on refining</p>
+<p>&gt; key areas of alignment between the two proposals, finding parallel processes to more</p>
+<p>&gt; efficiently implement and accomplish proposed outcomes, and maximize financial returns</p>
+<p>&gt; of the overall adoption program. Please provide a detailed summary of the ultimate</p>
+<p>&gt; proposal for the AI adoption playbook.</p>
+<p><strong>What this produced:</strong> A full synthesis proposal organized around four design principles:</p>
+<p>1. Start bounded, build infrastructure</p>
+<p>2. Run parallel tracks where dependencies allow</p>
+<p>3. Let the AXS platform be the financial engine</p>
+<p>4. Apply human approval and rollback rules across all phases</p>
+<p>The proposal included:</p>
+<ul>
+<li>5-year financial model ($238M cumulative net, $105-120M 2031 steady-state annual value)</li>
+<li>Five parallel Phase 1 tracks with no interdependencies</li>
+<li>Phase 2 manufacturing and R&amp;D AI additions</li>
+<li>Phase 3 AXS subscription and B2B data intelligence launch</li>
+<li>Phase 4-5 compounding layer through 2031</li>
+<li>Parallel process architecture identifying shared infrastructure vs. sequential dependencies</li>
+<li>Risk register with 8 identified risks, probabilities, impacts, and mitigations</li>
+<li>Five specific CEO approvals required to begin</li>
+</ul>
+<hr>
+<h3 id="doc-7-unified-playbook-sessionprompt-prompt-6-formalize-as-a-repository-contribution">Prompt 6 — Formalize as a repository contribution</h3>
+<p>&gt; Yes please draft this as a formal document to contribute to the repository — following</p>
+<p>&gt; the CLAUDE.md rules, on a new feature branch, with a PR for Donovan to review. Can you</p>
+<p>&gt; also make a separate contribution to the repository that shows the prompts I used to</p>
+<p>&gt; generate this output and also the sram_ai_strategy.md itself for reference?</p>
+<p><strong>What this produced:</strong> This current set of files:</p>
+<ul>
+<li><code>ai adoption/unified-ai-playbook-2031.md</code> — the formal merged playbook</li>
+<li><code>prompts/unified-playbook-session.prompt.md</code> — this file</li>
+<li><code>reference/sram_ai_strategy.md</code> — the supplementary strategy document for reference</li>
+</ul>
+<p>Two feature branches and two PRs to <code>donovan-palmer/sram-ai-playbook</code>:</p>
+<ul>
+<li><code>feature/unified-ai-adoption-playbook</code></li>
+<li><code>feature/session-reference-materials</code></li>
+</ul>
+<hr>
+<h2 id="doc-7-unified-playbook-sessionprompt-notes-on-the-analytical-process">Notes on the Analytical Process</h2>
+<p>The merged playbook is not a simple combination of the two source documents.</p>
+<p>The key synthesis decisions were:</p>
+<p>1. <strong>Data infrastructure moved to Phase 1.</strong> Both source documents treated the Snowflake</p>
+<p>unified data lake as a future-phase concern. The merged plan moves it to Phase 1 because</p>
+<p>it is the prerequisite for every high-value Phase 2 and Phase 3 initiative. Deferring it</p>
+<p>was identified as the single most expensive sequencing mistake available.</p>
+<p>2. <strong>Engineering AI tools moved to Week 1.</strong> The outline did not include this at all.</p>
+<p>The strategy document included it but did not emphasize the parallel-track logic.</p>
+<p>The merged plan makes it Week 1, Track A, because it has zero dependencies and</p>
+<p>generates $8M in labor equivalent value that effectively funds the rest of the program.</p>
+<p>3. <strong>Demand forecasting moved from Phase 2 to Phase 1.</strong> The outline sequenced it after</p>
+<p>support. The merged plan runs it in parallel from Month 1 because there is no dependency</p>
+<p>between the two tracks, and running them in parallel captures $7M+ in Year 1 savings</p>
+<p>that the original outline deferred.</p>
+<p>4. <strong>Governance applied universally.</strong> The outline had strong rollback rules and human</p>
+<p>approval requirements but scoped them only to customer service. The merged plan applies</p>
+<p>the same governance framework across all phases and all use cases.</p></div></section><section class="doc fade-in" id="doc-8-readme" data-folder="root"><div class="doc-header"><span class="doc-folder">root</span><h2 class="doc-title">Readme</h2></div><div class="doc-body"><h1 id="doc-8-readme-sram-ai-adoption-playbook">SRAM AI Adoption Playbook</h1>
 <p>Group project for AIML/MORS 950 &quot;Human and Machine Intelligence&quot; — Northwestern Kellogg, Winter 2026.</p>
 <p><strong>Goal:</strong> Produce a C-suite-ready AI Adoption Playbook for SRAM LLC (6–8 pages).</p>
 <p><strong>Team lead:</strong> Donovan Palmer</p>
 <hr>
-<h2 id="doc-7-readme-getting-started-no-technical-experience-required">Getting Started (No Technical Experience Required)</h2>
+<h2 id="doc-8-readme-getting-started-no-technical-experience-required">Getting Started (No Technical Experience Required)</h2>
 <p>You will use Claude Code to contribute to this project. Claude Code is an AI assistant that works directly inside this repository. It reads the project files, understands the context, and helps you write, edit, and organize content.</p>
-<h3 id="doc-7-readme-step-1-install-claude-code">Step 1 — Install Claude Code</h3>
+<h3 id="doc-8-readme-step-1-install-claude-code">Step 1 — Install Claude Code</h3>
 <p>Open your terminal (on Mac, press Cmd + Space and type &quot;Terminal&quot;) and run:</p>
 <pre><code>
 npm install -g @anthropic-ai/claude-code
 </code></pre>
 <p>If you do not have Node.js installed, download it first from https://nodejs.org and then run the command above.</p>
-<h3 id="doc-7-readme-step-2-clone-this-repository">Step 2 — Clone This Repository</h3>
+<h3 id="doc-8-readme-step-2-clone-this-repository">Step 2 — Clone This Repository</h3>
 <p>In your terminal, run:</p>
 <pre><code>
 git clone https://github.com/donovan-palmer/sram-ai-playbook.git
 cd sram-ai-playbook
 </code></pre>
 <p>This downloads the project to your computer.</p>
-<h3 id="doc-7-readme-step-3-open-claude-code">Step 3 — Open Claude Code</h3>
+<h3 id="doc-8-readme-step-3-open-claude-code">Step 3 — Open Claude Code</h3>
 <p>From inside the project folder, run:</p>
 <pre><code>
 claude
 </code></pre>
 <p>Claude Code will start up, read all the project files automatically, and be ready to help. You do not need to explain the project to it. It already knows the context.</p>
-<h3 id="doc-7-readme-step-4-ask-claude-to-help-you">Step 4 — Ask Claude to Help You</h3>
+<h3 id="doc-8-readme-step-4-ask-claude-to-help-you">Step 4 — Ask Claude to Help You</h3>
 <p>Just type what you want to do. For example:</p>
 <ul>
 <li>&quot;Summarize what we have so far on the AI adoption strategy&quot;</li>
@@ -1341,7 +1510,7 @@ claude
 </ul>
 <p>Claude will make changes, explain what it did, and ask before doing anything significant.</p>
 <hr>
-<h2 id="doc-7-readme-what-is-in-this-repository">What Is In This Repository</h2>
+<h2 id="doc-8-readme-what-is-in-this-repository">What Is In This Repository</h2>
 <div class="table-wrap"><table><thead><tr><th>File or Folder</th><th>What It Contains</th></tr></thead><tbody>
 <tr><td><code>analysis.md</code></td><td>Full competitive intelligence on SRAM — company overview, revenue, competitors, leadership</td></tr>
 <tr><td><code>ai adoption/ai-adoption-outline.md</code></td><td>AI adoption strategy with prioritized use cases and tool recommendations</td></tr>
@@ -1353,11 +1522,11 @@ claude
 <tr><td><code>syllabus.md</code></td><td>Course syllabus for reference</td></tr>
 </tbody></table></div>
 <hr>
-<h2 id="doc-7-readme-how-to-view-the-full-analysis">How to View the Full Analysis</h2>
+<h2 id="doc-8-readme-how-to-view-the-full-analysis">How to View the Full Analysis</h2>
 <p>Open <code>analysis-hub.html</code> in your browser. It pulls everything together in one readable view. If you make edits to any markdown file, ask Claude to rebuild it:</p>
 <p>&gt; &quot;Rebuild the analysis hub&quot;</p>
 <hr>
-<h2 id="doc-7-readme-how-claims-are-labeled">How Claims Are Labeled</h2>
+<h2 id="doc-8-readme-how-claims-are-labeled">How Claims Are Labeled</h2>
 <p>Every factual claim in the analysis files carries one of three labels:</p>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span> — backed by a direct source</li>
@@ -1366,7 +1535,7 @@ claude
 </ul>
 <p>Every claim also has a bracketed source (like <code>[S1]</code>). The full source list is at the bottom of <code>analysis.md</code>. Do not add claims without a label and a source.</p>
 <hr>
-<h2 id="doc-7-readme-how-to-contribute">How to Contribute</h2>
+<h2 id="doc-8-readme-how-to-contribute">How to Contribute</h2>
 <p>Claude Code handles the technical parts. You focus on the content.</p>
 <p>1. Tell Claude what you want to add or change</p>
 <p>2. Review what Claude proposes before it makes changes</p>
@@ -1374,11 +1543,443 @@ claude
 <p>4. Donovan reviews and merges</p>
 <p>If you get stuck, just ask Claude: &quot;What should I work on next?&quot; or &quot;Walk me through how to contribute.&quot;</p>
 <hr>
-<h2 id="doc-7-readme-questions">Questions</h2>
-<p>Reach out to Donovan Palmer directly.</p></div></section><section class="doc fade-in" id="doc-8-revenuestreamssram" data-folder="revenue"><div class="doc-header"><span class="doc-folder">revenue</span><h2 class="doc-title">Revenue Streams Sram</h2></div><div class="doc-body"><h1 id="doc-8-revenuestreamssram-sram-revenue-architecture-how-the-company-makes-money">SRAM Revenue Architecture: How the Company Makes Money</h1>
+<h2 id="doc-8-readme-questions">Questions</h2>
+<p>Reach out to Donovan Palmer directly.</p></div></section><section class="doc fade-in" id="doc-9-sramaistrategy" data-folder="reference"><div class="doc-header"><span class="doc-folder">reference</span><h2 class="doc-title">Sram Ai Strategy</h2></div><div class="doc-body"><h1 id="doc-9-sramaistrategy-sram-llc-ai-adoption-strategy">SRAM LLC — AI Adoption Strategy</h1>
+<h2 id="doc-9-sramaistrategy-executive-summary-deep-analysis">Executive Summary &amp; Deep Analysis</h2>
+<p><strong>Prepared:</strong> February 28, 2026</p>
+<p><strong>Scope:</strong> AI adoption roadmap, business process transformation, financial modeling</p>
+<p><strong>Confidence:</strong> ✅ Benchmarked from industry data | ⚠️ Estimated | 🔮 Speculative projection</p>
+<hr>
+<h2 id="doc-9-sramaistrategy-executive-summary">EXECUTIVE SUMMARY</h2>
+<p>SRAM LLC sits at a rare strategic inflection point. It is simultaneously a precision hardware manufacturer ($1B+ revenue), a wireless IoT platform owner (AXS ecosystem, millions of connected components), and a nascent data company (Hammerhead Karoo telemetry, Quarq power data, RockShox suspension data). Most of its competitors — Shimano in particular — are pure hardware manufacturers with no comparable connected ecosystem. <strong>This asymmetry is SRAM&#x27;s most underexploited asset.</strong></p>
+<p>AI adoption at SRAM can generate value across two distinct, compounding axes:</p>
+<p><strong>1. Cost Reduction (Operations):</strong> AI applied to manufacturing, supply chain, engineering, and customer service can realistically reduce annual operating costs by <strong>$23–46M per year</strong> at steady state, representing a <strong>2.3–4.6% improvement on estimated $1B revenue</strong> — material for a capital-intensive manufacturer with thin industrial margins.</p>
+<p><strong>2. Revenue Expansion (Products &amp; Platform):</strong> AI layered onto the AXS ecosystem can unlock new recurring software revenue streams, deepen hardware pricing power, and create a data moat that no bicycle hardware competitor can easily replicate. Conservative modeling suggests <strong>$15–30M in new annual recurring revenue</strong> by Year 3, with a path to $50M+ as the AXS installed base grows.</p>
+<p><strong>Combined 3-Year Net Value:</strong> $85–200M+</p>
+<p><strong>Total 3-Year AI Investment:</strong> $29–58M</p>
+<p><strong>Blended ROI (3-Year):</strong> ~200–350%</p>
+<p><strong>Time to First Positive ROI:</strong> 6–12 months (Phase 1 initiatives)</p>
+<p>The single most important strategic imperative: <strong>treat the AXS ecosystem as an AI data platform, not just a wireless shifting system.</strong> Every AXS component in the field is a sensor node. The company that first turns cycling telemetry into AI-powered intelligence — for riders, for OEMs, for retailers — will own the premium digital layer of the cycling industry for a decade.</p>
+<hr>
+<h2 id="doc-9-sramaistrategy-financial-baseline-assumptions">FINANCIAL BASELINE ASSUMPTIONS</h2>
+<p>All modeling uses conservative midpoint estimates for SRAM&#x27;s private financials.</p>
+<div class="table-wrap"><table><thead><tr><th>Metric</th><th>Estimate</th><th>Confidence</th></tr></thead><tbody>
+<tr><td>Annual Revenue</td><td>~$1.0B</td><td>⚠️ Midpoint of $725M–$1.4B public estimates</td></tr>
+<tr><td>COGS (manufacturing-heavy)</td><td>~$550M (55%)</td><td>⚠️ Typical precision industrial hardware</td></tr>
+<tr><td>SG&amp;A</td><td>~$175M (17.5%)</td><td>⚠️</td></tr>
+<tr><td>R&amp;D Spend</td><td>~$60M (6%)</td><td>⚠️</td></tr>
+<tr><td>Gross Margin</td><td>~45%</td><td>⚠️</td></tr>
+<tr><td>Total Employees (group-wide)</td><td>~5,000</td><td>✅ Multiple sources</td></tr>
+<tr><td>Software/Firmware Engineers</td><td>~250–400</td><td>⚠️ Inferred from job postings, company size</td></tr>
+<tr><td>AXS Active Component Users (est.)</td><td>500K–1.5M globally</td><td>🔮</td></tr>
+<tr><td>Manufacturing Facilities</td><td>6–8 major sites</td><td>✅</td></tr>
+<tr><td>Inventory on Hand (est.)</td><td>$100–150M</td><td>⚠️</td></tr>
+</tbody></table></div>
+<hr>
+<h2 id="doc-9-sramaistrategy-part-i-cost-reduction-initiatives">PART I: COST REDUCTION INITIATIVES</h2>
+<h3 id="doc-9-sramaistrategy-initiative-1-ai-computer-vision-for-manufacturing-quality-control">Initiative 1: AI Computer Vision for Manufacturing Quality Control</h3>
+<p><strong>The Problem</strong></p>
+<p>SRAM&#x27;s 2024 CPSC recall of 20,000+ shift brake levers (RED, Force, Rival, Apex) due to improper threadlock application was a preventable manufacturing defect. Industry estimates for managing a safety recall of this scale — replacement parts, logistics, regulatory compliance, dealer communication, brand damage — run $5–20M. The assembly defect (excess threadlock creating false torque readings) is exactly the class of problem computer vision systems are designed to detect. SRAM&#x27;s existing quality gap also generates persistent customer complaints about rotor warps, seal failures, and dropper post defects.</p>
+<p><strong>The AI Solution</strong></p>
+<p>Deploy automated visual inspection (AVI) systems with machine vision AI at every major assembly and final QC stage. Modern AI vision systems achieve 98–99% defect detection accuracy — versus human inspection at 80–85% — while running at 25–50% faster inspection cycles.</p>
+<div class="table-wrap"><table><thead><tr><th>Component</th><th>Technology</th><th>Vendor Options</th></tr></thead><tbody>
+<tr><td>Camera hardware</td><td>High-resolution industrial cameras</td><td>Cognex, Keyence, Basler</td></tr>
+<tr><td>Edge inference hardware</td><td>NVIDIA Jetson Orin or similar</td><td>NVIDIA</td></tr>
+<tr><td>Vision AI model</td><td>Custom-trained defect detection</td><td>Landing AI, Matroid, or in-house</td></tr>
+<tr><td>Integration layer</td><td>MES/ERP integration</td><td>SAP integration or custom API</td></tr>
+<tr><td>Dashboard &amp; alerting</td><td>Real-time QC monitoring</td><td>Custom or Vuforia/PTC</td></tr>
+</tbody></table></div>
+<p><strong>Deployment Targets:</strong></p>
+<ul>
+<li>Phase 1: Taichung Taiwan mega-factory (in construction — ideal greenfield deployment)</li>
+<li>Phase 2: Coimbra, Portugal chain factory</li>
+<li>Phase 3: US assembly/service operations</li>
+</ul>
+<p><strong>Financial Model</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Item</th><th>Low</th><th>High</th></tr></thead><tbody>
+<tr><td>Implementation cost (per factory)</td><td>$500K</td><td>$2M</td></tr>
+<tr><td>Total implementation (4 priority factories)</td><td>$2M</td><td>$8M</td></tr>
+<tr><td>Annual maintenance/licensing</td><td>$400K</td><td>$1M</td></tr>
+<tr><td>Defect reduction (37–50% industry benchmark) on 1% COGS baseline</td><td>$2M/yr</td><td>$5.5M/yr</td></tr>
+<tr><td>Recall prevention value (1 recall/3 yrs amortized)</td><td>$1.7M/yr</td><td>$7M/yr</td></tr>
+<tr><td>Labor savings (partial inspection staffing)</td><td>$500K/yr</td><td>$2M/yr</td></tr>
+<tr><td><strong>Total Annual Benefit</strong></td><td><strong>$4.2M</strong></td><td><strong>$14.5M</strong></td></tr>
+<tr><td><strong>Payback Period</strong></td><td>7 months</td><td>23 months</td></tr>
+</tbody></table></div>
+<p><strong>Industry Benchmark:</strong> Intel reports $2M/yr savings per facility from AI vision QC. Rock-and-River documented 37% defect reduction with 6-month ROI across manufacturing case studies. ✅</p>
+<hr>
+<h3 id="doc-9-sramaistrategy-initiative-2-predictive-maintenance-manufacturing-equipment">Initiative 2: Predictive Maintenance — Manufacturing Equipment</h3>
+<p><strong>The Problem</strong></p>
+<p>SRAM&#x27;s Taiwan factories run high-precision CNC machining, stamping, assembly lines, and test equipment 24/7 across a soon-to-be 100,000 m² facility. Unplanned equipment downtime in precision manufacturing typically costs $10,000–$50,000/hour when considering lost output, emergency maintenance, and schedule disruption. Even 1% unplanned downtime on a high-throughput facility represents multi-million dollar annual losses.</p>
+<p><strong>The AI Solution</strong></p>
+<p>Deploy IoT sensor networks (vibration, temperature, current draw, acoustic emission) on critical equipment, feeding a machine learning platform that predicts failures 2–4 weeks before they occur, enabling planned maintenance windows instead of crisis shutdowns.</p>
+<div class="table-wrap"><table><thead><tr><th>Component</th><th>Technology</th><th>Vendor Options</th></tr></thead><tbody>
+<tr><td>IoT sensor layer</td><td>Vibration, thermal, current sensors</td><td>Siemens MindSphere, ABB, SKF</td></tr>
+<tr><td>Data ingestion</td><td>Industrial IoT gateway</td><td>AWS IoT Greengrass, Azure IoT Hub</td></tr>
+<tr><td>ML platform</td><td>Predictive failure models</td><td>IBM Maximo, Microsoft Azure ML, Samsara</td></tr>
+<tr><td>CMMS integration</td><td>Work order generation</td><td>SAP PM, IBM Maximo</td></tr>
+</tbody></table></div>
+<p><strong>Financial Model</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Item</th><th>Low</th><th>High</th></tr></thead><tbody>
+<tr><td>Implementation (sensors + platform)</td><td>$1.5M</td><td>$5M</td></tr>
+<tr><td>Annual licensing/maintenance</td><td>$300K</td><td>$800K</td></tr>
+<tr><td>Downtime reduction (30–50% of unplanned) on ~$8M baseline</td><td>$2.4M/yr</td><td>$4M/yr</td></tr>
+<tr><td>Maintenance cost reduction (10–20%) on ~$15M maint. budget</td><td>$1.5M/yr</td><td>$3M/yr</td></tr>
+<tr><td>Equipment lifespan extension (20–25%) on capex</td><td>$1M/yr</td><td>$2M/yr</td></tr>
+<tr><td><strong>Total Annual Benefit</strong></td><td><strong>$4.9M</strong></td><td><strong>$9M</strong></td></tr>
+<tr><td><strong>Payback Period</strong></td><td>4 months</td><td>14 months</td></tr>
+</tbody></table></div>
+<p><strong>Industry Benchmark:</strong> AI-driven predictive maintenance delivers 30–50% downtime reduction and 20–40% lower maintenance costs across manufacturing sectors (IBM, Bridgera, Körber research, 2025). ✅</p>
+<hr>
+<h3 id="doc-9-sramaistrategy-initiative-3-ai-demand-forecasting-supply-chain-optimization">Initiative 3: AI Demand Forecasting &amp; Supply Chain Optimization</h3>
+<p><strong>The Problem</strong></p>
+<p>The cycling industry experienced one of the most extreme demand volatility events in consumer hardware history: 2020–2021 pandemic-driven demand surge → 2022–2024 demand cliff → normalization. SRAM&#x27;s multi-brand, multi-category portfolio (9 brands, 100s of SKUs) across B2C, IBD, and OEM channels makes accurate demand forecasting enormously difficult with traditional methods. Excess inventory ties up working capital and forces markdowns; stockouts on key SKUs (e.g., Eagle cassettes during demand spikes) damage OEM relationships and lose retail revenue.</p>
+<p><strong>The AI Solution</strong></p>
+<p>Replace or augment existing ERP-based forecasting with an AI demand planning platform that ingests historical sales, POS data from dealer network, OEM build schedules, web traffic signals, macro cycling participation data, and competitive launch timing to produce probabilistic demand forecasts with 20–50% lower error rates.</p>
+<div class="table-wrap"><table><thead><tr><th>Component</th><th>Technology</th><th>Vendor Options</th></tr></thead><tbody>
+<tr><td>Core demand platform</td><td>ML-powered planning engine</td><td>Blue Yonder, o9 Solutions, Kinaxis</td></tr>
+<tr><td>External data ingestion</td><td>Market signals, web scraping</td><td>Snowflake, custom pipelines</td></tr>
+<tr><td>OEM EDI integration</td><td>Build schedule data</td><td>Existing EDI + AI layer</td></tr>
+<tr><td>Scenario modeling</td><td>Tariff, supply disruption, launch scenarios</td><td>Built into platform</td></tr>
+</tbody></table></div>
+<p><strong>Financial Model</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Item</th><th>Low</th><th>High</th></tr></thead><tbody>
+<tr><td>Platform implementation</td><td>$2M</td><td>$7M</td></tr>
+<tr><td>Annual licensing (SaaS)</td><td>$500K</td><td>$1.5M</td></tr>
+<tr><td>Inventory reduction (20% of ~$125M)</td><td>—</td><td>$25M one-time WC release</td></tr>
+<tr><td>Annual carrying cost savings on freed capital (at 8%)</td><td>$1.6M/yr</td><td>$4M/yr</td></tr>
+<tr><td>Stockout revenue protection (1–2% revenue risk)</td><td>$5M/yr</td><td>$10M/yr</td></tr>
+<tr><td>Planning labor efficiency</td><td>$500K/yr</td><td>$1.5M/yr</td></tr>
+<tr><td><strong>Total Annual Benefit</strong></td><td><strong>$7.1M</strong></td><td><strong>$15.5M</strong></td></tr>
+<tr><td><strong>One-Time Working Capital Release</strong></td><td><strong>$10M</strong></td><td><strong>$25M</strong></td></tr>
+<tr><td><strong>Payback Period</strong></td><td>4 months</td><td>14 months</td></tr>
+</tbody></table></div>
+<p><strong>Industry Benchmark:</strong> Companies using AI in supply chains report 12.7% logistics cost reduction and 20.3% inventory level reduction. AI control towers deliver 307% ROI within 18 months vs. 87% for traditional ERP. ✅</p>
+<hr>
+<h3 id="doc-9-sramaistrategy-initiative-4-ai-powered-customer-service-warranty-management">Initiative 4: AI-Powered Customer Service &amp; Warranty Management</h3>
+<p><strong>The Problem</strong></p>
+<p>SRAM&#x27;s single most consistent vulnerability in customer intelligence is its customer service reputation. PissedConsumer (114 reviews), Trustpilot (65 reviews), and Reddit cycling communities document a repeating pattern: warranty denials that blame the customer, poor responsiveness, and frustrating claim processes. This is especially damaging given SRAM&#x27;s premium pricing — buyers who spend $2,000–$3,000 on a RED AXS groupset expect premium service. Negative reviews compound: every 1-star Trustpilot review is read by dozens of prospective customers at the point of purchase consideration.</p>
+<p>Current likely CS cost: ~75–100 agents globally × $45K avg. loaded cost = $3.4–4.5M/yr in CS labor alone, with high ticket volume and poor customer satisfaction.</p>
+<p><strong>The AI Solution</strong></p>
+<p>A multi-layer AI customer service transformation:</p>
+<div class="table-wrap"><table><thead><tr><th>Layer</th><th>Solution</th><th>Tools</th></tr></thead><tbody>
+<tr><td><strong>Tier 0 — Self-service</strong></td><td>AI chatbot handles FAQs, setup guides, AXS pairing, firmware updates</td><td>Claude API (Anthropic), custom RAG on SRAM knowledge base</td></tr>
+<tr><td><strong>Tier 1 — Intelligent triage</strong></td><td>AI classifies issues (technical, warranty, retail, shipping), routes correctly, pre-populates case info</td><td>Salesforce Einstein, Zendesk AI</td></tr>
+<tr><td><strong>Warranty AI</strong></td><td>AI assesses warranty claims using component serial #, purchase date, usage telemetry (from AXS), defect photos</td><td>Custom ML + Claude API for reasoning</td></tr>
+<tr><td><strong>Sentiment-aware escalation</strong></td><td>Detects frustrated customers early, flags for human intervention before they post reviews</td><td>Amazon Comprehend, custom fine-tuned model</td></tr>
+<tr><td><strong>Service knowledge base</strong></td><td>Auto-generated, always-current service documentation fed by AXS firmware changelogs and product updates</td><td>Claude API for doc generation</td></tr>
+</tbody></table></div>
+<p><strong>The warranty AI element is uniquely powerful for SRAM:</strong> Because AXS components transmit telemetry (shift counts, mileage equivalent, battery cycles, error codes), AI can make objective warranty assessments based on actual usage data rather than subjective customer accounts. This simultaneously reduces fraudulent claims AND eliminates unjust denials — addressing both sides of the current perception problem.</p>
+<p><strong>Financial Model</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Item</th><th>Low</th><th>High</th></tr></thead><tbody>
+<tr><td>Implementation cost</td><td>$500K</td><td>$2.5M</td></tr>
+<tr><td>Annual API/platform costs</td><td>$150K</td><td>$500K</td></tr>
+<tr><td>Ticket deflection (40–60% of Tier 0/1)</td><td>—</td><td>—</td></tr>
+<tr><td>CS labor savings</td><td>$1.2M/yr</td><td>$2.5M/yr</td></tr>
+<tr><td>Warranty claim accuracy improvement</td><td>$500K/yr</td><td>$2M/yr</td></tr>
+<tr><td>Brand reputation recovery (reduced review damage)</td><td>$1M/yr</td><td>$5M/yr*</td></tr>
+<tr><td><strong>Total Annual Benefit</strong></td><td><strong>$2.7M</strong></td><td><strong>$9.5M</strong></td></tr>
+</tbody></table></div>
+<p>*Brand reputation value estimated as retention of premium price positioning and reduced OEM switching risk — inherently difficult to quantify but material.</p>
+<hr>
+<h3 id="doc-9-sramaistrategy-initiative-5-ai-coding-assistants-for-engineering-productivity">Initiative 5: AI Coding Assistants for Engineering Productivity</h3>
+<p><strong>The Problem</strong></p>
+<p>SRAM&#x27;s competitive advantage increasingly lives in software: AXS firmware, the AXS mobile app, AXS Web, Hammerhead Karoo OS, and embedded systems across all connected components. SRAM employs an estimated 250–400 software and firmware engineers. Engineering velocity directly determines how fast SRAM can ship new AXS features, respond to bugs (the 2024 recall had firmware implications), and develop the AI-powered platform described later in this document. Hiring engineers at current market rates in Colorado Springs, Chicago, and European offices costs $100K–$180K fully loaded per head.</p>
+<p><strong>The AI Solution</strong></p>
+<p>Deploy AI coding assistants across the entire engineering organization as a standard tooling investment.</p>
+<div class="table-wrap"><table><thead><tr><th>Tool</th><th>Use Case</th><th>Cost</th></tr></thead><tbody>
+<tr><td><strong>GitHub Copilot Enterprise</strong></td><td>Real-time code completion, embedded C/C++, Swift/Kotlin for AXS app</td><td>$39/user/month</td></tr>
+<tr><td><strong>Claude API (Anthropic)</strong></td><td>Code review, architecture questions, documentation generation, test writing</td><td>Usage-based (~$0.003/1K tokens)</td></tr>
+<tr><td><strong>Cursor</strong></td><td>Agentic coding for complex refactors across AXS codebase</td><td>$40/user/month</td></tr>
+<tr><td><strong>Claude Code CLI</strong></td><td>Autonomous coding agent for engineers on complex multi-file tasks</td><td>Included with Claude API</td></tr>
+</tbody></table></div>
+<p><strong>Financial Model (300 engineers)</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Item</th><th>Cost/Benefit</th></tr></thead><tbody>
+<tr><td>GitHub Copilot Enterprise (300 × $39 × 12)</td><td>$140K/yr</td></tr>
+<tr><td>Claude API usage (300 engineers)</td><td>~$180K/yr</td></tr>
+<tr><td>Cursor Pro (100 power users × $40 × 12)</td><td>$48K/yr</td></tr>
+<tr><td><strong>Total annual tooling cost</strong></td><td><strong>~$370K/yr</strong></td></tr>
+<tr><td>Developer productivity gain (25–55% on coding tasks; conservative 20% overall)</td><td>—</td></tr>
+<tr><td>300 engineers × $140K fully loaded × 20% productivity gain</td><td><strong>$8.4M equivalent labor value/yr</strong></td></tr>
+<tr><td>Equivalent headcount freed for new initiatives</td><td>~60 engineers</td></tr>
+<tr><td><strong>Net Annual Benefit</strong></td><td><strong>~$8M</strong></td></tr>
+<tr><td><strong>ROI</strong></td><td><strong>2,059%</strong></td></tr>
+</tbody></table></div>
+<p><strong>Industry Benchmark:</strong> GitHub Copilot users complete tasks 55% faster in controlled studies. AI-generated code now represents 46% of average commits for Copilot users, with 88% acceptance rate. ROI positive within first quarter for most teams. ✅</p>
+<hr>
+<h2 id="doc-9-sramaistrategy-part-ii-revenue-expansion-initiatives">PART II: REVENUE EXPANSION INITIATIVES</h2>
+<h3 id="doc-9-sramaistrategy-initiative-6-axs-intelligence-platform-ai-powered-connected-cycling">Initiative 6: AXS Intelligence Platform — AI-Powered Connected Cycling</h3>
+<p><strong>This is SRAM&#x27;s highest-value, most defensible AI opportunity.</strong></p>
+<p><strong>The Strategic Context</strong></p>
+<p>SRAM&#x27;s AXS ecosystem is not primarily a hardware platform — it is a telemetry network. Every AXS component in the field transmits data: gear position, shift counts, actuation force, battery state, error codes, and firmware version, all timestamped and linked to a rider profile. Quarq adds power (watts), cadence, torque. RockShox AXS adds suspension position/sag/travel data. Hammerhead Karoo 3 adds GPS, mapping, environmental data, and serves as the hub.</p>
+<p>When combined, SRAM&#x27;s ecosystem generates a dataset that no other bicycle component company possesses at scale:</p>
+<pre><code>
+[Terrain gradient via GPS] + [Power output via Quarq] + [Gear selection via AXS drivetrain]
++ [Suspension response via RockShox AXS] + [Cadence/speed] + [Component age/wear]
+= The most complete picture of bicycle performance ever collected
+</code></pre>
+<p><strong>Shimano has no equivalent.</strong> Shimano&#x27;s Di2 has app connectivity, but no native GPS computer, no native power meter brand, no suspension brand — and critically, no strategy to aggregate this data into an intelligence platform.</p>
+<p><strong>AI Application Layer on AXS</strong></p>
+<p><strong>6A. Predictive Component Health (Proactive Maintenance Intelligence)</strong></p>
+<p>&gt; &quot;Your Eagle cassette has 847 hours of riding. Based on your terrain type (Rocky Mountain trail) and your power output patterns, we predict 60–80 hours of life remaining before shift quality degrades. Schedule a service appointment.&quot;</p>
+<p>AI models trained on shift quality data, component wear rates, terrain type, rider weight/power, temperature exposure, and lubrication patterns can predict component end-of-life with high accuracy. This transforms SRAM from a component seller into a service relationship partner.</p>
+<ul>
+<li><strong>Builds on AXS telemetry</strong> already being collected — no new hardware required</li>
+<li><strong>Reduces warranty claims</strong> (failures caught before they become warranty events)</li>
+<li><strong>Drives parts/accessory revenue</strong> (replacement cassettes, chains, brake pads sold proactively)</li>
+<li><strong>Improves customer satisfaction</strong> (riders never experience a mid-ride failure)</li>
+<li><strong>Implementation:</strong> Custom ML models on cloud infrastructure + Claude API for natural language insights in AXS app</li>
+</ul>
+<p><strong>6B. Intelligent Shifting Optimization</strong></p>
+<p>&gt; &quot;Your shifting efficiency score is 73%. Based on your power profile and cadence preferences, we recommend shifting 2 gears earlier on steep climbs. Riders with your fitness profile who adopted this pattern improved their average speed by 1.8%.&quot;</p>
+<p>AXS already knows every gear selection. AI can:</p>
+<ul>
+<li>Identify suboptimal shifting patterns</li>
+<li>Recommend personalized gearing configuration (front/rear tooth combination)</li>
+<li>Auto-tune AXS shift sensitivity based on terrain type detected via GPS</li>
+<li>Enable AI-auto-shift mode for e-bike Eagle Powertrain (motor + drivetrain coordinating via ML)</li>
+</ul>
+<p><strong>6C. AXS Premium Subscription Tier</strong></p>
+<p>The most direct monetization of the AI platform. Current AXS app is free — a missed revenue opportunity given the value it provides.</p>
+<p><strong>Proposed Tiers:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Tier</th><th>Price</th><th>Features</th></tr></thead><tbody>
+<tr><td><strong>AXS Free</strong> (current)</td><td>$0</td><td>Component pairing, firmware updates, basic battery monitoring</td></tr>
+<tr><td><strong>AXS Premium</strong></td><td>$7.99/mo or $79/yr</td><td>Component health AI, shift intelligence, training insights, priority support, AXS Web full analytics</td></tr>
+<tr><td><strong>AXS Performance</strong></td><td>$19.99/mo or $199/yr</td><td>Everything in Premium + AI coaching (integrated with training load), professional bike fitting AI (recommends saddle height, cleat position based on power data), early access features, dealer service scheduling</td></tr>
+</tbody></table></div>
+<p><strong>Revenue Model:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Scenario</th><th>Subscribers</th><th>ARPU/yr</th><th>ARR</th></tr></thead><tbody>
+<tr><td>Conservative</td><td>50,000 (5–10% AXS users)</td><td>$79</td><td>$3.95M</td></tr>
+<tr><td>Base Case</td><td>150,000 (15%)</td><td>$95 (mix)</td><td>$14.25M</td></tr>
+<tr><td>Optimistic</td><td>350,000 (25–35%)</td><td>$110 (mix)</td><td>$38.5M</td></tr>
+</tbody></table></div>
+<p><strong>Comparable benchmarks:</strong> Garmin Connect+ ($9.99/mo), Wahoo SYSTM ($17/mo), Zwift ($19.99/mo) — all successfully monetizing cycling data. SRAM&#x27;s component health AI and shift intelligence are unique value propositions none of these competitors offer.</p>
+<p><strong>6D. OEM &amp; Retailer Data Intelligence (B2B Monetization)</strong></p>
+<p>SRAM&#x27;s aggregated (anonymized) fleet telemetry has extraordinary commercial value to:</p>
+<ul>
+<li><strong>Bike OEM brands</strong> (Trek, Specialized, Canyon): &quot;How do riders in Colorado use XX Eagle vs. GX Eagle across 12 months? What terrain types? What failure patterns?&quot; → Informs their next spec decisions</li>
+<li><strong>Bike retailers / IBDs</strong>: &quot;Your local customer base rides an average of 3,200 miles/year. Based on that, their Eagle drivetrains need service every 8 months on average. Here&#x27;s a recommended service outreach cadence.&quot; → Transforms IBDs into proactive service businesses</li>
+<li><strong>Insurance/warranty providers</strong>: Actuarial component failure data</li>
+</ul>
+<p>This creates a new B2B SaaS offering — <strong>AXS Insights for Partners</strong> — that deepens OEM relationships beyond component spec contracts.</p>
+<p><strong>6E. Eagle Powertrain AI — e-Bike Intelligence</strong></p>
+<p>The Eagle Powertrain (Brose motor + SRAM drivetrain integration) already has software controlling both motor output and gear selection. AI enhancement:</p>
+<ul>
+<li>Terrain-adaptive motor assist (AI predicts upcoming climb from GPS and pre-stages motor assist level)</li>
+<li>Battery range AI (learns rider patterns to optimize assist vs. range tradeoff)</li>
+<li>Predictive gear+motor coordination (shifts timed to motor assist level for seamless transitions)</li>
+<li>Over-the-air AI model updates via Karoo 3</li>
+</ul>
+<p>As SRAM expands Eagle Powertrain OEM adoption, this AI layer becomes a differentiator vs. Bosch, Shimano EP801, and other competitors.</p>
+<p><strong>Financial Model — AXS Intelligence Platform (3-Year)</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Revenue Stream</th><th>Year 1</th><th>Year 2</th><th>Year 3</th></tr></thead><tbody>
+<tr><td>AXS Premium Subscriptions</td><td>$2M</td><td>$8M</td><td>$18M</td></tr>
+<tr><td>AXS Performance Subscriptions</td><td>$500K</td><td>$2M</td><td>$5M</td></tr>
+<tr><td>OEM/Retailer Data Intelligence</td><td>$0</td><td>$1M</td><td>$4M</td></tr>
+<tr><td>Incremental parts/accessories (proactive maintenance)</td><td>$2M</td><td>$5M</td><td>$8M</td></tr>
+<tr><td><strong>Total New Revenue</strong></td><td><strong>$4.5M</strong></td><td><strong>$16M</strong></td><td><strong>$35M</strong></td></tr>
+</tbody></table></div>
+<p><strong>Investment Required:</strong></p>
+<ul>
+<li>ML/AI engineering talent: 8–15 additional engineers or reallocation with productivity gains from Initiative 5</li>
+<li>Cloud compute (AWS/Azure): $1–3M/yr</li>
+<li>Platform development: $5–12M over 3 years</li>
+<li><strong>Total 3-year investment: $12–25M</strong></li>
+</ul>
+<hr>
+<h3 id="doc-9-sramaistrategy-initiative-7-generative-design-ai-accelerated-rd">Initiative 7: Generative Design &amp; AI-Accelerated R&amp;D</h3>
+<p><strong>The Problem</strong></p>
+<p>SRAM competes on weight and performance at the premium end. A 5g saving on a Zipp wheel set justifies a $300 retail price premium. A 10% improvement in RockShox shock travel efficiency drives spec decisions by OEM brands. But traditional simulation-driven design (FEA, CFD) is slow: each design iteration may take weeks of engineering time and $50K–$200K in physical prototyping. Faster product development cycles = earlier revenue capture, more iterations tested per dollar, and stronger product at launch.</p>
+<p><strong>The AI Solution</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Application</th><th>Technology</th><th>Benefit</th></tr></thead><tbody>
+<tr><td><strong>Topology optimization</strong> for Zipp rims, Quarq spiders, RockShox crowns</td><td>Autodesk Fusion Generative Design, Siemens NX Topology</td><td>Find minimum-material geometries that meet strength/stiffness targets → weight savings</td></tr>
+<tr><td><strong>CFD surrogate models</strong> for Zipp aerodynamics</td><td>NVIDIA Modulus (physics-informed ML), Ansys AI-enhanced simulation</td><td>Run 100× more aero simulations in same time as 1 traditional CFD run</td></tr>
+<tr><td><strong>FEA acceleration</strong> for fatigue/impact testing</td><td>SimScale AI, ANSYS Discovery</td><td>Reduce simulation time 70–90%</td></tr>
+<tr><td><strong>Material ML</strong> for carbon fiber layup optimization</td><td>Custom ML on material property database</td><td>Optimize carbon fiber orientation and layup for weight + stiffness targets</td></tr>
+<tr><td><strong>Patent landscape AI</strong></td><td>PatSnap AI, Anaqua</td><td>Monitor competitive filings; identify white-space IP opportunities</td></tr>
+</tbody></table></div>
+<p><strong>Financial Model</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Item</th><th>Low</th><th>High</th></tr></thead><tbody>
+<tr><td>Tooling investment (3 years)</td><td>$2M</td><td>$6M</td></tr>
+<tr><td>Prototype iterations avoided (2–3 per product line, 5 major products/yr)</td><td>$750K/yr</td><td>$3M/yr</td></tr>
+<tr><td>Time-to-market compression (2–4 months earlier per major launch)</td><td>$2M/yr</td><td>$6M/yr*</td></tr>
+<tr><td>Weight/performance improvement enabling premium pricing</td><td>$1M/yr</td><td>$5M/yr</td></tr>
+<tr><td><strong>Total Annual Benefit</strong></td><td><strong>$3.75M</strong></td><td><strong>$14M</strong></td></tr>
+</tbody></table></div>
+<p>*Revenue captured 2–4 months earlier on a new major product line (e.g., new Zipp wheel family at ~$30M+ peak annual revenue) represents substantial NPV.</p>
+<hr>
+<h3 id="doc-9-sramaistrategy-initiative-8-ai-marketing-intelligence-oem-retention">Initiative 8: AI Marketing Intelligence &amp; OEM Retention</h3>
+<p><strong>The Problem</strong></p>
+<p>SRAM&#x27;s OEM channel — spec contracts with Trek, Specialized, Giant, Canyon, and others — represents an estimated $300–500M of annual revenue. Losing a major spec contract (e.g., Trek switching a tier from SRAM Eagle to Shimano XTR) is not a lost sale at a bike shop; it is a structural revenue change affecting thousands of units over multiple model years. SRAM&#x27;s current intelligence on OEM spec switching signals is likely reactive rather than predictive.</p>
+<p><strong>The AI Solution</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Tool</th><th>Application</th></tr></thead><tbody>
+<tr><td><strong>Competitive intelligence AI</strong> (Crayon, Klue, or custom)</td><td>Monitor Shimano/Campagnolo product launches, pricing changes, team spec announcements in real time</td></tr>
+<tr><td><strong>Web scraping + NLP</strong></td><td>Analyze bike brand catalog pages for spec changes; detect when OEM switches groupset tier</td></tr>
+<tr><td><strong>Sentiment AI on media/forums</strong></td><td>Reddit, BikeRadar forums, CyclingNews comments — early signal of consumer preference shifts</td></tr>
+<tr><td><strong>Claude API for synthesis</strong></td><td>Weekly AI-generated competitive brief synthesizing all signals for SRAM sales/marketing leadership</td></tr>
+<tr><td><strong>IBD outreach AI</strong></td><td>Personalized email sequences to dealer network based on purchase history, local riding trends, service cycle timing</td></tr>
+</tbody></table></div>
+<p><strong>Financial Model</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Item</th><th>Low</th><th>High</th></tr></thead><tbody>
+<tr><td>Implementation + annual licensing</td><td>$300K</td><td>$800K</td></tr>
+<tr><td>OEM retention value (detect 1 switching signal 6 months early → retain contract)</td><td>$5M/yr</td><td>$20M/yr</td></tr>
+<tr><td>IBD revenue uplift (personalized outreach conversion)</td><td>$1M/yr</td><td>$4M/yr</td></tr>
+<tr><td><strong>Net Annual Benefit</strong></td><td><strong>$5.7M</strong></td><td><strong>$23.2M</strong></td></tr>
+</tbody></table></div>
+<hr>
+<h2 id="doc-9-sramaistrategy-part-iii-phased-implementation-roadmap">PART III: PHASED IMPLEMENTATION ROADMAP</h2>
+<h3 id="doc-9-sramaistrategy-phase-1-quick-wins-year-1-816m-investment">Phase 1 — Quick Wins (Year 1, $8–16M Investment)</h3>
+<p><strong>Goal:</strong> Demonstrate AI ROI quickly; build internal AI capability; address immediate risk areas (QC, CS, brand reputation).</p>
+<div class="table-wrap"><table><thead><tr><th>Initiative</th><th>Investment</th><th>Expected Benefit Y1</th></tr></thead><tbody>
+<tr><td>Engineering AI tools (Copilot, Claude)</td><td>$370K</td><td>$8M labor equiv.</td></tr>
+<tr><td>AI customer service + warranty AI (pilot)</td><td>$750K</td><td>$1.5M savings + brand</td></tr>
+<tr><td>Manufacturing QC vision pilot (1 Taiwan line)</td><td>$2M</td><td>$3M</td></tr>
+<tr><td>Demand forecasting platform (implementation)</td><td>$4M</td><td>$5M + $15M WC release</td></tr>
+<tr><td>AXS AI roadmap + data infrastructure</td><td>$1.5M</td><td>Foundation only</td></tr>
+<tr><td>Marketing intelligence AI</td><td>$400K</td><td>$3M (OEM retention)</td></tr>
+<tr><td><strong>Phase 1 Total</strong></td><td><strong>~$9M</strong></td><td><strong>~$20.5M + $15M WC</strong></td></tr>
+</tbody></table></div>
+<p><strong>Phase 1 Tools to Deploy:</strong></p>
+<ul>
+<li><strong>GitHub Copilot Enterprise</strong> → All ~300 engineers; deploy in Week 1</li>
+<li><strong>Claude API</strong> (Anthropic) → Customer service chatbot, warranty assessment engine, internal knowledge assistant</li>
+<li><strong>Cognex or Landing AI</strong> → QC vision system on 1 Taiwan assembly line</li>
+<li><strong>Blue Yonder or o9 Solutions</strong> → Demand planning platform</li>
+<li><strong>Crayon + Claude API</strong> → Competitive intelligence synthesis</li>
+</ul>
+<hr>
+<h3 id="doc-9-sramaistrategy-phase-2-core-investment-year-2-1525m-investment">Phase 2 — Core Investment (Year 2, $15–25M Investment)</h3>
+<p><strong>Goal:</strong> Scale successful pilots; launch AXS intelligence platform; deploy manufacturing AI group-wide.</p>
+<div class="table-wrap"><table><thead><tr><th>Initiative</th><th>Investment</th><th>Expected Benefit Y2</th></tr></thead><tbody>
+<tr><td>Scale QC vision to all major factories</td><td>$5M</td><td>$8M/yr</td></tr>
+<tr><td>Predictive maintenance rollout (Taiwan mega-factory)</td><td>$3M</td><td>$5M/yr</td></tr>
+<tr><td>AXS Premium subscription launch</td><td>$5M</td><td>$8M ARR</td></tr>
+<tr><td>Generative design tools for Zipp + RockShox R&amp;D</td><td>$3M</td><td>$4M/yr</td></tr>
+<tr><td>Supply chain AI expansion + optimization</td><td>$2M</td><td>$5M/yr</td></tr>
+<tr><td><strong>Phase 2 Total</strong></td><td><strong>~$18M</strong></td><td><strong>~$30M/yr run rate</strong></td></tr>
+</tbody></table></div>
+<p><strong>Phase 2 Tools to Deploy:</strong></p>
+<ul>
+<li><strong>Siemens MindSphere / IBM Maximo</strong> → Predictive maintenance platform</li>
+<li><strong>NVIDIA Modulus + Autodesk Generative Design</strong> → R&amp;D acceleration</li>
+<li><strong>Custom ML models on AWS SageMaker or Azure ML</strong> → AXS component health predictions</li>
+<li><strong>Snowflake</strong> → Unified data lake aggregating AXS, Quarq, Karoo, RockShox telemetry</li>
+<li><strong>Claude API</strong> → AXS app AI coaching features (natural language performance insights)</li>
+</ul>
+<hr>
+<h3 id="doc-9-sramaistrategy-phase-3-moat-building-year-3-1020m-investment">Phase 3 — Moat Building (Year 3, $10–20M Investment)</h3>
+<p><strong>Goal:</strong> Compound competitive advantages; launch B2B data intelligence; full Eagle Powertrain AI integration.</p>
+<div class="table-wrap"><table><thead><tr><th>Initiative</th><th>Investment</th><th>Expected Benefit Y3</th></tr></thead><tbody>
+<tr><td>AXS Performance subscription + OEM data tier</td><td>$3M</td><td>$9M ARR</td></tr>
+<tr><td>Eagle Powertrain AI (terrain-adaptive assist)</td><td>$4M</td><td>OEM differentiation</td></tr>
+<tr><td>Hammerhead Karoo AI coaching (full)</td><td>$3M</td><td>Karoo sales lift</td></tr>
+<tr><td>Full AI-driven warranty lifecycle management</td><td>$1.5M</td><td>$3M/yr</td></tr>
+<tr><td>IBD personalization + service AI</td><td>$1M</td><td>$3M/yr</td></tr>
+<tr><td><strong>Phase 3 Total</strong></td><td><strong>~$12.5M</strong></td><td><strong>~$15M incremental</strong></td></tr>
+</tbody></table></div>
+<p><strong>Phase 3 Tools to Deploy:</strong></p>
+<ul>
+<li><strong>Custom LLM fine-tuning</strong> on AXS + cycling domain data (via Claude or open-source base model)</li>
+<li><strong>Edge AI on Karoo 3</strong> (on-device inference for AI coaching without cloud latency)</li>
+<li><strong>B2B data platform</strong> (Databricks or Snowflake) → OEM/retailer data intelligence offering</li>
+<li><strong>Reinforcement learning</strong> → Eagle Powertrain adaptive motor-drivetrain AI</li>
+</ul>
+<hr>
+<h2 id="doc-9-sramaistrategy-part-iv-consolidated-financial-summary">PART IV: CONSOLIDATED FINANCIAL SUMMARY</h2>
+<h3 id="doc-9-sramaistrategy-3-year-investment-vs-return">3-Year Investment vs. Return</h3>
+<p>| | Year 1 | Year 2 | Year 3 | 3-Year Total |</p>
+<p>|-|--------|--------|--------|-------------|</p>
+<p>| <strong>Investment</strong> | $9M | $18M | $12.5M | <strong>$39.5M</strong> |</p>
+<p>| <strong>Cost Reduction Benefits</strong> | $18M | $28M | $35M | <strong>$81M</strong> |</p>
+<p>| <strong>New Revenue (annualized)</strong> | $4.5M | $16M | $35M | <strong>$55.5M ARR by Y3</strong> |</p>
+<p>| <strong>One-Time WC Release</strong> | $15M | — | — | <strong>$15M</strong> |</p>
+<p>| <strong>Cumulative Net Benefit</strong> | $28.5M | $46M | $72.5M | <strong>$147M</strong> |</p>
+<p>| <strong>Cumulative Net of Investment</strong> | $19.5M | $28M | $59.5M | <strong>$107.5M</strong> |</p>
+<p><strong>3-Year Blended ROI: ~272%</strong></p>
+<p><strong>Payback on total investment: ~18–24 months</strong></p>
+<h3 id="doc-9-sramaistrategy-annual-steady-state-value-year-3">Annual Steady-State Value (Year 3+)</h3>
+<div class="table-wrap"><table><thead><tr><th>Category</th><th>Annual Value</th></tr></thead><tbody>
+<tr><td>Manufacturing QC cost reduction</td><td>$8–14.5M</td></tr>
+<tr><td>Predictive maintenance savings</td><td>$5–9M</td></tr>
+<tr><td>Supply chain / demand forecasting</td><td>$7–15M</td></tr>
+<tr><td>Customer service efficiency</td><td>$2.7–9.5M</td></tr>
+<tr><td>Engineering productivity</td><td>$8M (labor equiv.)</td></tr>
+<tr><td><strong>Total Cost Reduction</strong></td><td><strong>$30.7–56M/yr</strong></td></tr>
+<tr><td>AXS Premium + Performance subscriptions</td><td>$23–38M ARR</td></tr>
+<tr><td>Incremental parts/accessories (proactive maintenance)</td><td>$8M</td></tr>
+<tr><td>OEM/Retailer data intelligence</td><td>$4M</td></tr>
+<tr><td>R&amp;D acceleration / pricing power</td><td>$5–14M</td></tr>
+<tr><td><strong>Total Revenue Expansion</strong></td><td><strong>$40–64M/yr</strong></td></tr>
+<tr><td><strong>Combined Annual Value (Steady State)</strong></td><td><strong>$71–120M/yr</strong></td></tr>
+</tbody></table></div>
+<hr>
+<h2 id="doc-9-sramaistrategy-part-v-risk-factors-mitigations">PART V: RISK FACTORS &amp; MITIGATIONS</h2>
+<div class="table-wrap"><table><thead><tr><th>Risk</th><th>Probability</th><th>Impact</th><th>Mitigation</th></tr></thead><tbody>
+<tr><td><strong>AXS data privacy / GDPR compliance</strong> for EU users</td><td>Medium</td><td>High</td><td>Data architecture must include consent management, anonymization, regional data residency from Day 1</td></tr>
+<tr><td><strong>Rider adoption of subscription</strong></td><td>Medium</td><td>High</td><td>Free tier must remain genuinely valuable; subscription must offer demonstrably unique AI value</td></tr>
+<tr><td><strong>AI QC false negative</strong> (defect escapes AI system)</td><td>Low</td><td>High</td><td>Maintain human QC sampling layer; AI is addition not replacement; 98–99% accuracy still requires audit</td></tr>
+<tr><td><strong>Engineering culture resistance</strong> to AI tools</td><td>Low</td><td>Medium</td><td>Structured adoption program (GitHub internal data shows 40% better outcomes with structured rollout)</td></tr>
+<tr><td><strong>Brose motor partnership changes</strong> (Eagle Powertrain)</td><td>Low</td><td>High</td><td>Secure long-term partnership agreements; invest in understanding motor AI independently</td></tr>
+<tr><td><strong>Shimano counters with own data platform</strong></td><td>Medium</td><td>High</td><td>Speed to market matters; first-mover advantage in cycling AI platform is significant</td></tr>
+<tr><td><strong>Taiwan geopolitical disruption</strong> to manufacturing</td><td>Low-Medium</td><td>Very High</td><td>AI supply chain modeling actually helps scenario-plan and activate alternative suppliers faster</td></tr>
+<tr><td><strong>Data quality from legacy AXS components</strong></td><td>Medium</td><td>Medium</td><td>Invest in data cleaning pipeline; Phase 1 infrastructure work creates clean foundation</td></tr>
+</tbody></table></div>
+<hr>
+<h2 id="doc-9-sramaistrategy-part-vi-specific-ai-tools-reference-guide">PART VI: SPECIFIC AI TOOLS REFERENCE GUIDE</h2>
+<h3 id="doc-9-sramaistrategy-operational-manufacturing">Operational / Manufacturing</h3>
+<div class="table-wrap"><table><thead><tr><th>Tool</th><th>Use Case</th><th>Pricing Model</th></tr></thead><tbody>
+<tr><td><a href="https://www.cognex.com/products/machine-vision/deep-learning-software" target="_blank">Cognex ViDi</a></td><td>Factory visual inspection</td><td>Hardware + per-deployment license</td></tr>
+<tr><td><a href="https://landing.ai" target="_blank">Landing AI</a></td><td>Custom vision QC models</td><td>Per-model SaaS</td></tr>
+<tr><td><a href="https://www.ibm.com/products/maximo" target="_blank">IBM Maximo Application Suite</a></td><td>Predictive maintenance</td><td>Per-asset/user SaaS</td></tr>
+<tr><td><a href="https://www.siemens.com/mindsphere" target="_blank">Siemens MindSphere</a></td><td>Industrial IoT + ML</td><td>Per-connection SaaS</td></tr>
+<tr><td><a href="https://blueyonder.com" target="_blank">Blue Yonder Demand Planning</a></td><td>AI demand forecasting</td><td>Enterprise SaaS</td></tr>
+<tr><td><a href="https://o9solutions.com" target="_blank">o9 Solutions</a></td><td>Supply chain intelligence</td><td>Enterprise SaaS</td></tr>
+</tbody></table></div>
+<h3 id="doc-9-sramaistrategy-engineering-productivity">Engineering Productivity</h3>
+<div class="table-wrap"><table><thead><tr><th>Tool</th><th>Use Case</th><th>Pricing</th></tr></thead><tbody>
+<tr><td><a href="https://github.com/features/copilot" target="_blank">GitHub Copilot Enterprise</a></td><td>Real-time code completion (C/C++, Swift, Kotlin, TS)</td><td>$39/user/mo</td></tr>
+<tr><td><a href="https://www.anthropic.com/api" target="_blank">Anthropic Claude API</a></td><td>Code review, architecture, docs, CS chatbot</td><td>Usage-based</td></tr>
+<tr><td><a href="https://cursor.sh" target="_blank">Cursor</a></td><td>Agentic coding, large refactors</td><td>$40/user/mo</td></tr>
+<tr><td><a href="https://claude.ai/claude-code" target="_blank">Claude Code CLI</a></td><td>Autonomous engineering agent</td><td>Claude API pricing</td></tr>
+</tbody></table></div>
+<h3 id="doc-9-sramaistrategy-product-rd">Product R&amp;D</h3>
+<div class="table-wrap"><table><thead><tr><th>Tool</th><th>Use Case</th><th>Notes</th></tr></thead><tbody>
+<tr><td><a href="https://www.autodesk.com/products/fusion-360/generative-design" target="_blank">Autodesk Fusion Generative Design</a></td><td>Topology optimization for components</td><td>Included in Fusion 360 Product Design &amp; Mfg</td></tr>
+<tr><td><a href="https://developer.nvidia.com/modulus" target="_blank">NVIDIA Modulus</a></td><td>Physics-informed ML for CFD/FEA simulation</td><td>Free SDK; GPU compute cost</td></tr>
+<tr><td><a href="https://www.ansys.com/products/discovery" target="_blank">Ansys Discovery</a></td><td>AI-accelerated simulation</td><td>Enterprise license</td></tr>
+<tr><td><a href="https://www.patsnap.com" target="_blank">PatSnap</a></td><td>AI patent landscape + competitive IP intelligence</td><td>SaaS subscription</td></tr>
+</tbody></table></div>
+<h3 id="doc-9-sramaistrategy-customer-facing-platform">Customer-Facing &amp; Platform</h3>
+<div class="table-wrap"><table><thead><tr><th>Tool</th><th>Use Case</th><th>Notes</th></tr></thead><tbody>
+<tr><td><a href="https://www.anthropic.com/api" target="_blank">Anthropic Claude API</a></td><td>AXS chatbot, warranty AI reasoning, coaching insights</td><td>Usage-based; Claude 3.5+ models</td></tr>
+<tr><td><a href="https://aws.amazon.com/sagemaker/" target="_blank">AWS SageMaker</a></td><td>Train and deploy component health ML models</td><td>Cloud ML platform</td></tr>
+<tr><td><a href="https://www.snowflake.com" target="_blank">Snowflake</a></td><td>Unified AXS telemetry data lake</td><td>Data warehouse SaaS</td></tr>
+<tr><td><a href="https://www.salesforce.com/products/einstein/" target="_blank">Salesforce Einstein</a></td><td>CS ticket AI triage and routing</td><td>Add-on to SFDC</td></tr>
+<tr><td><a href="https://www.zendesk.com/ai/" target="_blank">Zendesk AI</a></td><td>Customer service automation</td><td>Add-on to Zendesk</td></tr>
+</tbody></table></div>
+<h3 id="doc-9-sramaistrategy-marketing-intelligence">Marketing &amp; Intelligence</h3>
+<div class="table-wrap"><table><thead><tr><th>Tool</th><th>Use Case</th><th>Notes</th></tr></thead><tbody>
+<tr><td><a href="https://www.crayon.co" target="_blank">Crayon</a></td><td>Competitive intelligence monitoring</td><td>SaaS</td></tr>
+<tr><td><a href="https://klue.com" target="_blank">Klue</a></td><td>Competitive battlecards + win/loss AI</td><td>SaaS</td></tr>
+<tr><td><a href="https://www.brandwatch.com" target="_blank">Brandwatch</a></td><td>Social listening + sentiment AI</td><td>SaaS</td></tr>
+<tr><td><a href="https://www.anthropic.com/api" target="_blank">Claude API</a></td><td>Weekly competitive brief synthesis, content generation</td><td>Usage-based</td></tr>
+</tbody></table></div>
+<hr>
+<h2 id="doc-9-sramaistrategy-conclusion">CONCLUSION</h2>
+<p>SRAM has built an asset that its primary competitor Shimano cannot easily replicate: <strong>a complete, multi-sensor connected ecosystem across drivetrain, suspension, power measurement, and cycling computer.</strong> This is not primarily a hardware story — it is a data infrastructure story. The company that recognized this earliest wins.</p>
+<p>The recommended priority sequence:</p>
+<p>1. <strong>Immediately (Month 1):</strong> Deploy engineering AI tools. $370K investment, $8M labor value. No approval risk, no integration complexity, pure velocity gain.</p>
+<p>2. <strong>Immediately (Month 1–3):</strong> Launch AI customer service pilot. SRAM&#x27;s worst public weakness is addressable in under 90 days with modern AI tooling.</p>
+<p>3. <strong>Q2 2026:</strong> Launch AXS data infrastructure (Snowflake unified data lake) — this unlocks everything in Phase 2 and 3.</p>
+<p>4. <strong>Q3 2026:</strong> QC vision pilot on Taiwan production line — leverage the new mega-factory construction as greenfield deployment opportunity.</p>
+<p>5. <strong>Q4 2026:</strong> AXS Premium subscription beta — small cohort, test willingness to pay, gather feedback before full launch.</p>
+<p>6. <strong>2027:</strong> Full platform, subscription, and manufacturing AI at scale.</p>
+<p>The window to establish an unassailable AI moat in cycling is <strong>now</strong>. Shimano&#x27;s 2026 response to SRAM&#x27;s WorldTour parity will likely be product-led. SRAM&#x27;s asymmetric advantage is the platform play — and AI is what turns that platform from a nice-to-have app into an indispensable performance intelligence layer for every serious cyclist on earth.</p>
+<hr>
+<p><em>Analysis compiled from public financial benchmarks, industry AI ROI studies, and SRAM competitive intelligence research. All SRAM-specific financial figures are estimates based on publicly available data. AI ROI benchmarks sourced from IBM, Bridgera, Rock-and-River, LinearB, GitHub/Microsoft, and industry analyst reports (2024–2026). Re-verify projections against internal SRAM financials before use in capital allocation decisions.</em></p></div></section><section class="doc fade-in" id="doc-10-revenuestreamssram" data-folder="revenue"><div class="doc-header"><span class="doc-folder">revenue</span><h2 class="doc-title">Revenue Streams Sram</h2></div><div class="doc-body"><h1 id="doc-10-revenuestreamssram-sram-revenue-architecture-how-the-company-makes-money">SRAM Revenue Architecture: How the Company Makes Money</h1>
 <p>Date: 2026-02-22</p>
 <p>Company: SRAM LLC (private)</p>
-<h2 id="doc-8-revenuestreamssram-1-core-revenue-model">1) Core Revenue Model</h2>
+<h2 id="doc-10-revenuestreamssram-1-core-revenue-model">1) Core Revenue Model</h2>
 <p>SRAM is a performance cycling components company that makes money by selling a portfolio of premium bike systems and parts through:</p>
 <ul>
 <li>OEM bike manufacturers (components spec&#x27;d on complete bikes)</li>
@@ -1386,9 +1987,9 @@ claude
 <li>Aftermarket replacement and upgrade purchases (riders/teams through dealers and retail channels)</li>
 </ul>
 <p>SRAM is private and does not publish audited segment revenue. That means the Week 2 answer must use a &quot;revenue architecture&quot; approach: identify the major revenue streams, how they monetize, and why SRAM can sustain pricing.</p>
-<h2 id="doc-8-revenuestreamssram-2-main-revenue-streams-structured-view">2) Main Revenue Streams (Structured View)</h2>
+<h2 id="doc-10-revenuestreamssram-2-main-revenue-streams-structured-view">2) Main Revenue Streams (Structured View)</h2>
 <p>Private-company note: SRAM does not disclose segment revenue percentages publicly. The tables below use observable product breadth, channel visibility, and pricing signals as proxies for relative importance.</p>
-<h3 id="doc-8-revenuestreamssram-a-revenue-stream-map-what-they-sell-how-they-get-paid">A. Revenue Stream Map (What They Sell / How They Get Paid)</h3>
+<h3 id="doc-10-revenuestreamssram-a-revenue-stream-map-what-they-sell-how-they-get-paid">A. Revenue Stream Map (What They Sell / How They Get Paid)</h3>
 <div class="table-wrap"><table><thead><tr><th>Revenue Stream</th><th>Representative Products</th><th>Primary Channels</th><th>Revenue Mechanics</th><th>Relative Importance (Estimate)</th></tr></thead><tbody>
 <tr><td>Core drivetrain + braking systems</td><td><code>RED</code>, <code>Force</code>, <code>Rival</code>, <code>Apex</code>, <code>Eagle</code>, <code>Eagle Transmission</code>, brakes/controls</td><td>OEMs, dealers, aftermarket riders</td><td>Groupsets, component upgrades, replacement parts</td><td>Very High</td></tr>
 <tr><td>Suspension (RockShox)</td><td>Forks, rear shocks, suspension controls, service parts</td><td>OEMs, dealers, MTB aftermarket</td><td>OE spec, upgrades, rebuild/service cycles</td><td>High</td></tr>
@@ -1399,7 +2000,7 @@ claude
 <tr><td>Wear parts / service parts / accessories</td><td>Chains, cassettes, chainrings, brake pads, rotors, batteries, small parts, kits</td><td>Dealers, service shops, aftermarket riders</td><td>Recurring replacement demand tied to installed base</td><td>High (recurring support stream)</td></tr>
 <tr><td>Adjacent brands / newer additions</td><td>Velocio apparel, Ochain-related additions, other integrated categories</td><td>Direct retail, dealers, enthusiasts</td><td>Product sales in adjacent categories</td><td>Low (current), option value</td></tr>
 </tbody></table></div>
-<h3 id="doc-8-revenuestreamssram-b-why-sram-can-charge-moat-pricing-power-by-stream">B. Why SRAM Can Charge (Moat / Pricing Power by Stream)</h3>
+<h3 id="doc-10-revenuestreamssram-b-why-sram-can-charge-moat-pricing-power-by-stream">B. Why SRAM Can Charge (Moat / Pricing Power by Stream)</h3>
 <div class="table-wrap"><table><thead><tr><th>Revenue Stream</th><th>Pricing Power / Moat</th><th>Why It Works in Practice</th></tr></thead><tbody>
 <tr><td>Core drivetrain + braking systems</td><td>Brand reputation + AXS ecosystem + OE relationships</td><td>Performance credibility and system compatibility reduce pure price comparison</td></tr>
 <tr><td>Suspension (RockShox)</td><td>Product performance reputation + service ecosystem</td><td>OEM trust and rider/shop familiarity support premium MTB pricing</td></tr>
@@ -1410,32 +2011,32 @@ claude
 <tr><td>Wear parts / service parts / accessories</td><td>Installed-base lock-in + compatibility requirements</td><td>Maintenance is non-optional and shops prefer known-compatible parts</td></tr>
 <tr><td>Adjacent brands / newer additions</td><td>Portfolio adjacency + share-of-wallet expansion</td><td>Cross-sell works if SRAM keeps brand quality and integration coherent</td></tr>
 </tbody></table></div>
-<h2 id="doc-8-revenuestreamssram-3-why-the-revenue-model-works-and-why-sram-can-charge-premium-prices">3) Why the Revenue Model Works (and Why SRAM Can Charge Premium Prices)</h2>
-<h3 id="doc-8-revenuestreamssram-a-oem-aftermarket-flywheel">A. OEM + Aftermarket Flywheel</h3>
+<h2 id="doc-10-revenuestreamssram-3-why-the-revenue-model-works-and-why-sram-can-charge-premium-prices">3) Why the Revenue Model Works (and Why SRAM Can Charge Premium Prices)</h2>
+<h3 id="doc-10-revenuestreamssram-a-oem-aftermarket-flywheel">A. OEM + Aftermarket Flywheel</h3>
 <ul>
 <li>OEM spec wins place SRAM products on complete bikes.</li>
 <li>That creates an installed base that later buys replacements, upgrades, and compatible accessories.</li>
 <li>The result is a multi-year revenue arc per bike platform, not just a one-time sale.</li>
 </ul>
-<h3 id="doc-8-revenuestreamssram-b-system-level-selling-not-just-parts">B. System-Level Selling (Not Just Parts)</h3>
+<h3 id="doc-10-revenuestreamssram-b-system-level-selling-not-just-parts">B. System-Level Selling (Not Just Parts)</h3>
 <ul>
 <li>SRAM is not only selling a derailleur or brake lever; it increasingly sells a system (drivetrain + braking + controls + electronics + app/software + data integrations).</li>
 <li>System performance and compatibility reduce price-only comparison and support premium pricing.</li>
 </ul>
-<h3 id="doc-8-revenuestreamssram-c-multi-brand-portfolio-bundling">C. Multi-Brand Portfolio Bundling</h3>
+<h3 id="doc-10-revenuestreamssram-c-multi-brand-portfolio-bundling">C. Multi-Brand Portfolio Bundling</h3>
 <ul>
 <li>SRAM can participate in more of the bike bill of materials via SRAM, RockShox, Zipp, Quarq, Hammerhead, TIME, and newer additions.</li>
 <li>This increases wallet share per rider and improves leverage with OEMs that prefer fewer high-quality suppliers.</li>
 </ul>
-<h3 id="doc-8-revenuestreamssram-d-performance-brand-switching-friction">D. Performance Brand + Switching Friction</h3>
+<h3 id="doc-10-revenuestreamssram-d-performance-brand-switching-friction">D. Performance Brand + Switching Friction</h3>
 <ul>
 <li>Riders, teams, and shops care about reliability, setup familiarity, and serviceability.</li>
 <li>Once a rider/shop is trained on a platform (AXS, brake bleed procedures, compatibility rules), switching is possible but not frictionless.</li>
 <li>This creates practical switching costs even when alternatives exist.</li>
 </ul>
-<h2 id="doc-8-revenuestreamssram-4-where-srams-revenue-streams-are-vulnerable">4) Where SRAM&#x27;s Revenue Streams Are Vulnerable</h2>
+<h2 id="doc-10-revenuestreamssram-4-where-srams-revenue-streams-are-vulnerable">4) Where SRAM&#x27;s Revenue Streams Are Vulnerable</h2>
 <p>The question is not whether SRAM has revenue streams. It is which streams are most exposed and what could reduce pricing power or growth.</p>
-<h2 id="doc-8-revenuestreamssram-5-near-term-risks-12-24-months">5) Near-Term Risks (12-24 Months)</h2>
+<h2 id="doc-10-revenuestreamssram-5-near-term-risks-12-24-months">5) Near-Term Risks (12-24 Months)</h2>
 <div class="table-wrap"><table><thead><tr><th>Near-Term Risk</th><th>Exposed Streams</th><th>Why It Matters to Revenue</th><th>Early Signals to Monitor</th></tr></thead><tbody>
 <tr><td>Bike industry inventory corrections / channel destocking</td><td>Drivetrains, brakes, suspension, wheels</td><td>OEM and dealer orders can slow sharply even if end demand is stable</td><td>Dealer discounting, OEM spec downgrades, broad promotions</td></tr>
 <tr><td>Consumer trade-down behavior</td><td>Premium groupsets, Zipp, Quarq, Hammerhead</td><td>Riders may delay upgrades or buy lower-tier alternatives in weaker macro periods</td><td>Mix shift from premium to mid-tier, more promo pricing</td></tr>
@@ -1443,7 +2044,7 @@ claude
 <tr><td>Competitor product refresh cycles (Shimano/Fox/Garmin/Wahoo)</td><td>Most categories (especially drivetrain, suspension, head units)</td><td>Better competitor launches can slow SRAM upgrade cycles or force price response</td><td>Launch cadence, media reviews, OEM spec changes</td></tr>
 <tr><td>OE spec mix volatility</td><td>Core systems and suspension</td><td>OEM decisions can move large volumes quickly across model years</td><td>OEM catalog specs, distributor order patterns, bike model announcements</td></tr>
 </tbody></table></div>
-<h2 id="doc-8-revenuestreamssram-6-long-term-risks-3-7-years">6) Long-Term Risks (3-7 Years)</h2>
+<h2 id="doc-10-revenuestreamssram-6-long-term-risks-3-7-years">6) Long-Term Risks (3-7 Years)</h2>
 <div class="table-wrap"><table><thead><tr><th>Long-Term Risk</th><th>Exposed Streams</th><th>Why It Matters to Revenue</th><th>Strategic Implication</th></tr></thead><tbody>
 <tr><td>Margin pressure from stronger value-tier competition</td><td>Core drivetrains/brakes, wear parts</td><td>If mid-market alternatives improve, SRAM may face lower realized pricing in broader segments</td><td>Requires clearer tiering and stronger differentiation at each price point</td></tr>
 <tr><td>Ecosystem fragmentation / standards shifts</td><td>Drivetrains, power, connected devices</td><td>New standards or compatibility changes can weaken platform lock-in</td><td>SRAM must shape standards and maintain compatibility leadership</td></tr>
@@ -1451,9 +2052,9 @@ claude
 <tr><td>Overextension across too many categories</td><td>Adjacent brands/new acquisitions</td><td>Portfolio complexity can dilute focus and execution quality</td><td>Need disciplined integration and capital allocation</td></tr>
 <tr><td>Cycling participation / demand cyclicality over longer periods</td><td>Most categories</td><td>Category growth may be uneven by geography and discipline</td><td>Revenue resilience depends on portfolio balance and aftermarket capture</td></tr>
 </tbody></table></div>
-<h2 id="doc-8-revenuestreamssram-7-summary">7) Summary</h2>
+<h2 id="doc-10-revenuestreamssram-7-summary">7) Summary</h2>
 <p>SRAM makes money through a portfolio of performance cycling revenue streams led by core drivetrain and braking systems, supported by suspension (RockShox), wheels/cockpit (Zipp), power meters (Quarq), connected head units (Hammerhead), pedals (TIME), and recurring wear/service parts across the installed base. The reason SRAM charges premium prices is not only product quality. It is the combination of OEM spec relationships, aftermarket replacement cycles, system-level integration (especially AXS), and a multi-brand portfolio that increases switching friction and share of wallet. The key question for the AI playbook is which parts of the revenue base are most vulnerable to channel inventory cycles, premium trade-down, and software/support execution gaps in a more connected product stack.</p>
-<h2 id="doc-8-revenuestreamssram-sources">Sources</h2>
+<h2 id="doc-10-revenuestreamssram-sources">Sources</h2>
 <ul>
 <li><a href="https://www.sram.com/en/company" target="_blank">SRAM Company page</a></li>
 <li><a href="https://www.sram.com/en/company/history" target="_blank">SRAM History page</a></li>
@@ -1462,11 +2063,11 @@ claude
 <li><a href="https://www.sram.com/en/sram/mountain/collections/eagle-transmission" target="_blank">SRAM mountain collections (Eagle Transmission)</a></li>
 <li><a href="https://www.linkedin.com/company/sram-corporation/" target="_blank">LinkedIn - SRAM company page (employee band / leadership labels)</a></li>
 <li><a href="https://builtin.com/company/sram" target="_blank">Built In - SRAM (jobs/tech stack signals, secondary)</a></li>
-</ul></div></section><section class="doc fade-in" id="doc-9-syllabus" data-folder="root"><div class="doc-header"><span class="doc-folder">root</span><h2 class="doc-title">Syllabus</h2></div><div class="doc-body"><h1 id="doc-9-syllabus-human-and-machine-intelligence-aiml-950-mors-950">Human and Machine Intelligence (AIML 950 / MORS 950)</h1>
+</ul></div></section><section class="doc fade-in" id="doc-11-syllabus" data-folder="root"><div class="doc-header"><span class="doc-folder">root</span><h2 class="doc-title">Syllabus</h2></div><div class="doc-body"><h1 id="doc-11-syllabus-human-and-machine-intelligence-aiml-950-mors-950">Human and Machine Intelligence (AIML 950 / MORS 950)</h1>
 <p>Winter 2026 syllabus (reformatted from the PDF source).</p>
 <p>Source: <code>../AIML950_W26_groh.pdf</code></p>
 <p>Reformatted on: 2026-02-19</p>
-<h2 id="doc-9-syllabus-instructor-and-logistics">Instructor and Logistics</h2>
+<h2 id="doc-11-syllabus-instructor-and-logistics">Instructor and Logistics</h2>
 <ul>
 <li>Professor: Matt Groh (he/him/his)</li>
 <li>Email: matthew.groh@kellogg.northwestern.edu</li>
@@ -1474,43 +2075,43 @@ claude
 <li>Section 81: Saturdays, 9:00 AM to 12:00 PM, TBD (Chicago)</li>
 <li>Office hours: Schedule available on Canvas and by appointment</li>
 </ul>
-<h2 id="doc-9-syllabus-course-overview">Course Overview</h2>
+<h2 id="doc-11-syllabus-course-overview">Course Overview</h2>
 <p>Human and Machine Intelligence builds upon the foundations of AIML901-MO and dives deeper into how humans and AI interact, what that means for leadership and organizations, and how to successfully lead AI adoption in organizations.</p>
 <p>This is a real-world applications oriented course that draws on interdisciplinary insights from machine learning, cognitive science, human-computer interaction, organizational behavior, and literature to examine how and why humans and machines differ in problem-solving abilities.</p>
 <p>By understanding the strengths and weaknesses of current and future humans and machines across a breadth of case studies, you will learn to recognize where AI can complement human intelligence and organizational processes, when human judgment is indispensable, what trade-offs emerge when employing humans versus machines, and how to design hybrid teams that outperform either humans or machines working alone.</p>
 <p>This course is an interactive lecture-based course with reading reflection assignments and a final group project. The goal of the course is to prepare you to identify and evaluate AI opportunities, uncover human and machine blindspots, navigate ethical dilemmas, and lead teams of hybrid human and machine intelligence to effectively integrate AI into new businesses and adapt old ones.</p>
-<h2 id="doc-9-syllabus-northwestern-syllabus-standards">Northwestern Syllabus Standards</h2>
+<h2 id="doc-11-syllabus-northwestern-syllabus-standards">Northwestern Syllabus Standards</h2>
 <p>This course follows the Northwestern University Syllabus Standards. Students are responsible for familiarizing themselves with this information. Students can find useful resources for safety and security, academic support, and mental and physical health and well-being on the NU help website.</p>
 <p>Unauthorized copying or distribution of any course materials is strictly prohibited.</p>
-<h2 id="doc-9-syllabus-class-attendance-and-screen-policy">Class Attendance and Screen Policy</h2>
+<h2 id="doc-11-syllabus-class-attendance-and-screen-policy">Class Attendance and Screen Policy</h2>
 <p>Students are expected to attend every class in person unless they are feeling sick or have an approved absence.</p>
 <p>No laptops, tablets, or cell phones are allowed to be used in class except when laptops are needed for in-class exercises.</p>
 <p>This policy is designed to avoid distractions for you and your classmates. Note-taking with pen and notebook is strongly encouraged because research shows that handwriting supports memory and learning better than typing (see Flanigan et al., 2024, &quot;Typed versus Handwritten&quot;).</p>
-<h2 id="doc-9-syllabus-grading">Grading</h2>
+<h2 id="doc-11-syllabus-grading">Grading</h2>
 <ul>
 <li>Final Project: 55%</li>
 <li>Reflection Assignments: 30%</li>
 <li>Participation: 15%</li>
 </ul>
-<h3 id="doc-9-syllabus-final-project-55">Final Project (55%)</h3>
+<h3 id="doc-11-syllabus-final-project-55">Final Project (55%)</h3>
 <p>Today, nearly every company represents a case for AI adoption. The real managerial question is how to do AI adoption effectively given the organization&#x27;s operational processes, strategy, and culture.</p>
 <p>In the final group project (with individual and group deliverables), you will identify, think through, and artfully write up an AI adoption playbook for a Fortune 500 company.</p>
 <p>The goal is to produce a C-suite-ready playbook: concise, insightful, and action-oriented.</p>
 <p>The AI Adoption Playbook should be 6 to 8 pages and structured as if being delivered to the company&#x27;s executive leadership.</p>
-<h4 id="doc-9-syllabus-final-project-rubric-structure">Final Project Rubric Structure</h4>
+<h4 id="doc-11-syllabus-final-project-rubric-structure">Final Project Rubric Structure</h4>
 <p>1. Executive Summary (1 page)</p>
 <p>2. What the company does, with a focus on value generation process</p>
 <p>3. Where AI can add value to current processes</p>
 <p>4. How to integrate AI into current processes, including what to pilot, how to measure success, and what organizational enablers (talent, data, leadership) are required</p>
 <p>5. What an AI-first version of this company could look like in 2031, including where significant new revenue streams could emerge</p>
-<h4 id="doc-9-syllabus-milestones">Milestones</h4>
+<h4 id="doc-11-syllabus-milestones">Milestones</h4>
 <ul>
 <li>By end of Week 2: Individual 1-page outline on how the company works, focused on the problem: main revenue streams.</li>
 <li>By end of Week 3: Individual 1-page outline on AI adoption readiness, focused on the solution: how AI can decrease costs and increase value of new and existing revenue streams. Include business processes, specific AI tools, and rough order-of-magnitude cost/benefit numbers.</li>
 <li>By end of Week 4: Team interview with someone in the organization responsible for management and innovation. Submit a 1 to 3 page interview overview (one interview per team).</li>
 <li>By end of Week 5: Submit the final 6 to 8 page AI Adoption Playbook and present an 8-minute version to the class.</li>
 </ul>
-<h4 id="doc-9-syllabus-final-project-evaluation-criteria">Final Project Evaluation Criteria</h4>
+<h4 id="doc-11-syllabus-final-project-evaluation-criteria">Final Project Evaluation Criteria</h4>
 <ul>
 <li>Depth: How fully and insightfully you understand the company, industry, and AI adoption potential.</li>
 <li>Specificity: How concrete and detailed the analysis is, with real workflows, decisions, metrics, and implementable examples.</li>
@@ -1520,10 +2121,10 @@ claude
 </ul>
 <p>Peer evaluations will be collected and used directly to help determine each individual&#x27;s final project grade.</p>
 <p>Milestone deliverables in Weeks 2 to 4 are graded on a check-plus/check/check-minus scale. The final deliverable uses a standard letter grade scale.</p>
-<h3 id="doc-9-syllabus-reflection-assignments-30">Reflection Assignments (30%)</h3>
+<h3 id="doc-11-syllabus-reflection-assignments-30">Reflection Assignments (30%)</h3>
 <p>In Weeks 2, 3, and 4, you will write a short reflection paper (minimum 1 page, maximum 2 pages) on one or more assigned readings that week.</p>
 <p>Format requirement: double-spaced, 12-point type.</p>
-<h4 id="doc-9-syllabus-reflection-rubric">Reflection Rubric</h4>
+<h4 id="doc-11-syllabus-reflection-rubric">Reflection Rubric</h4>
 <p>1. Summarize the main topic, key ideas, and management relevance in a short paragraph.</p>
 <p>2. Explain what you find exceptional and what surprised you.</p>
 <p>3. Describe a work/organizational experience that connects to the reading, including what matches, what does not, and what leadership questions this raises.</p>
@@ -1535,18 +2136,18 @@ claude
 <li>5 points: connection to your lived managerial experience</li>
 </ul>
 <p>If you use AI for light brainstorming or proofreading, that is allowed and encouraged. The thinking must still be yours.</p>
-<h4 id="doc-9-syllabus-reflection-due-date-and-late-policy">Reflection Due Date and Late Policy</h4>
+<h4 id="doc-11-syllabus-reflection-due-date-and-late-policy">Reflection Due Date and Late Policy</h4>
 <ul>
 <li>Due: one hour before class starts</li>
 <li>Late penalty: 10% per day late (up to 3 days)</li>
 <li>Examples: 1 minute late = 10% deduction; 25 hours late = 20%; 3 days late = 30%; 4 days late = 0%</li>
 </ul>
-<h3 id="doc-9-syllabus-participation-15">Participation (15%)</h3>
+<h3 id="doc-11-syllabus-participation-15">Participation (15%)</h3>
 <p>You are expected to attend every class and actively engage in group discussions. Participation grade is based on attendance and in-class participation.</p>
-<h2 id="doc-9-syllabus-ai-policy">AI Policy</h2>
+<h2 id="doc-11-syllabus-ai-policy">AI Policy</h2>
 <p>Use AI as a tool for assignments in this class, but do not blindly trust outputs and do not copy outputs directly. Use your own words. You are responsible for errors and omissions in your submitted work.</p>
-<h2 id="doc-9-syllabus-aiml-950-mors-950-winter-2026-schedule">AIML 950 / MORS 950 Winter 2026 Schedule</h2>
-<h3 id="doc-9-syllabus-1-intelligence-across-scales">1. Intelligence Across Scales</h3>
+<h2 id="doc-11-syllabus-aiml-950-mors-950-winter-2026-schedule">AIML 950 / MORS 950 Winter 2026 Schedule</h2>
+<h3 id="doc-11-syllabus-1-intelligence-across-scales">1. Intelligence Across Scales</h3>
 <p>Guiding questions:</p>
 <ul>
 <li>How do we compare intelligence across biological organisms, artificial systems, and organizations?</li>
@@ -1558,7 +2159,7 @@ claude
 <li>Measuring AI Ability to Complete Long Tasks (2025) by METR</li>
 <li>Powers of Ten by Charles and Ray Eames</li>
 </ul>
-<h3 id="doc-9-syllabus-2-decision-making-blindspots">2. Decision-Making Blindspots</h3>
+<h3 id="doc-11-syllabus-2-decision-making-blindspots">2. Decision-Making Blindspots</h3>
 <p>Guiding questions:</p>
 <ul>
 <li>What cognitive biases systematically distort human decision-making?</li>
@@ -1570,7 +2171,7 @@ claude
 <li>Why People Resist Embracing AI by Julian de Freitas (2024)</li>
 <li>The Illusion Illusion by Tomer Ullman (2024)</li>
 </ul>
-<h3 id="doc-9-syllabus-3-creativity">3. Creativity</h3>
+<h3 id="doc-11-syllabus-3-creativity">3. Creativity</h3>
 <p>Guiding questions:</p>
 <ul>
 <li>What is creative thinking?</li>
@@ -1581,7 +2182,7 @@ claude
 <ul>
 <li>Innovation (Chapter 5) in <em>Primal Intelligence</em> by Angus Fletcher (2026)</li>
 </ul>
-<h3 id="doc-9-syllabus-4-the-media-equation-eliza-and-ai-boyfriends">4. The Media Equation, Eliza, and AI Boyfriends</h3>
+<h3 id="doc-11-syllabus-4-the-media-equation-eliza-and-ai-boyfriends">4. The Media Equation, Eliza, and AI Boyfriends</h3>
 <p>Guiding questions:</p>
 <ul>
 <li>Why do humans treat computers and AI systems as social actors, often unconsciously?</li>
@@ -1593,7 +2194,7 @@ claude
 <li>Chapter 1, &quot;The Media Equation&quot; by Byron Reeves and Cliff Nass (1996)</li>
 <li>Empowering AI Companions for Enhanced Relationship Marketing by Rijul Chaturvedi, Sanjeev Verma, and Vartika Srivastava (2025), with video companion</li>
 </ul>
-<h3 id="doc-9-syllabus-5-hype-engineering-and-dousing">5. Hype Engineering and Dousing</h3>
+<h3 id="doc-11-syllabus-5-hype-engineering-and-dousing">5. Hype Engineering and Dousing</h3>
 <p>Guiding questions:</p>
 <ul>
 <li>Why does hype emerge so predictably around new technologies like AI?</li>
@@ -1605,7 +2206,7 @@ claude
 <li><em>Normal Technology</em> by Arvind Narayanan and Sayash Kapoor (2025)</li>
 <li>Chapter 1, &quot;An Introduction to AI Hype&quot; from <em>The AI Con</em> by Emily Bender and Alex Hanna (2025)</li>
 </ul>
-<h3 id="doc-9-syllabus-6-recommendations">6. Recommendations</h3>
+<h3 id="doc-11-syllabus-6-recommendations">6. Recommendations</h3>
 <p>Guiding question:</p>
 <ul>
 <li>Why do people trust (or resist) recommendations differently when they come from humans versus algorithms, and what risks emerge when organizations over-rely on machine recommendations?</li>
@@ -1614,7 +2215,7 @@ claude
 <ul>
 <li>The Netflix Recommender Systems: Algorithms, Business Value, and Innovations by Carlos Gomez-Uribe and Neil Hunt (2015)</li>
 </ul>
-<h3 id="doc-9-syllabus-7-intuition-and-imagination">7. Intuition and Imagination</h3>
+<h3 id="doc-11-syllabus-7-intuition-and-imagination">7. Intuition and Imagination</h3>
 <p>Guiding questions:</p>
 <ul>
 <li>What role should human intuition play in high-stakes managerial decisions alongside AI?</li>
@@ -1630,7 +2231,7 @@ claude
 <li>The Last Question by Isaac Asimov (1956)</li>
 <li>Optional: Common Sense by John McCarthy (2002)</li>
 </ul>
-<h3 id="doc-9-syllabus-8-storytelling">8. Storytelling</h3>
+<h3 id="doc-11-syllabus-8-storytelling">8. Storytelling</h3>
 <p>Guiding questions:</p>
 <ul>
 <li>Why did Steve Jobs say &quot;The most powerful person in the world is the storyteller&quot;?</li>
@@ -1642,7 +2243,7 @@ claude
 <li>Why Your Intuition, Imagination, and Emotion Will Outlast AI by Eric Markowitz and Angus Fletcher (2025)</li>
 <li>The Secret Structure of Great Talks by Nancy Duarte (2011)</li>
 </ul>
-<h3 id="doc-9-syllabus-9-emotions">9. Emotions</h3>
+<h3 id="doc-11-syllabus-9-emotions">9. Emotions</h3>
 <p>Guiding questions:</p>
 <ul>
 <li>How well can machines recognize, respond to, and express emotion?</li>
@@ -1652,12 +2253,12 @@ claude
 <ul>
 <li>Feeling Machines: Emotion AI at Affectiva by Shane Greenstein and John Masko (2019)</li>
 </ul>
-<h3 id="doc-9-syllabus-10-presentations">10. Presentations</h3>
+<h3 id="doc-11-syllabus-10-presentations">10. Presentations</h3>
 <ul>
 <li>Team presentation of AI Adoption Playbook</li>
 <li>Format: 8-minute presentation + 2 questions from classmates</li>
 </ul>
-<h2 id="doc-9-syllabus-session-modules-readings-and-assignments">Session Modules, Readings, and Assignments</h2>
+<h2 id="doc-11-syllabus-session-modules-readings-and-assignments">Session Modules, Readings, and Assignments</h2>
 <div class="table-wrap"><table><thead><tr><th>Session</th><th>Module</th><th>Reading(s)</th><th>Assignment / Milestone</th></tr></thead><tbody>
 <tr><td>1</td><td>Intelligence</td><td>Measuring AI Ability to Complete Long Tasks (2025) by METR</td><td>-</td></tr>
 <tr><td>2</td><td>Blind Spots</td><td>Why People Resist Embracing AI (2024); The Illusion Illusion (2024)</td><td>Project: Team formation complete and Fortune 500 company chosen (by end of lecture 2)</td></tr>
@@ -1670,7 +2271,7 @@ claude
 <tr><td>9</td><td>Emotion</td><td>Feeling Machines: Emotion AI at Affectiva (2019)</td><td>-</td></tr>
 <tr><td>10</td><td>Presentations</td><td>You&#x27;re presenting</td><td>Project: Final AI Adoption Playbook submitted (team)</td></tr>
 </tbody></table></div>
-<h2 id="doc-9-syllabus-chicago-mid-and-upper-market-companies-to-choose-from">Chicago Mid and Upper Market Companies to Choose From</h2>
+<h2 id="doc-11-syllabus-chicago-mid-and-upper-market-companies-to-choose-from">Chicago Mid and Upper Market Companies to Choose From</h2>
 <ul>
 <li>Industrial Distribution: McMaster-Carr, W.W. Grainger, Lawson Products</li>
 <li>Manufacturing: Illinois Tool Works, Sloan Valve Co., Fellowes Brands</li>
@@ -1684,7 +2285,7 @@ claude
 </ul></div></section></div>
 
       <p style="text-align:center;font-size:11px;color:var(--ink-3);margin-top:40px;opacity:0.5;">
-        9 markdown files &mdash; rebuild: <code>python3 tools/build_analysis_hub.py</code>
+        11 markdown files &mdash; rebuild: <code>python3 tools/build_analysis_hub.py</code>
       </p>
     </main>
   </div>
