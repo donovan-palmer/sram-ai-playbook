@@ -439,7 +439,7 @@ SRAM's OEM channel — spec contracts with Trek, Specialized, Giant, Canyon, and
 **Phase 3 Tools to Deploy:**
 - **Custom LLM fine-tuning** on AXS + cycling domain data (via Claude or open-source base model)
 - **Edge AI on Karoo 3** (on-device inference for AI coaching without cloud latency)
-- **B2B data platform** (Databricks or Snowflake) → OEM/retailer data intelligence offering
+- **B2B data platform** (AWS Redshift or Snowflake) → OEM/retailer data intelligence offering
 - **Reinforcement learning** → Eagle Powertrain adaptive motor-drivetrain AI
 
 ---
