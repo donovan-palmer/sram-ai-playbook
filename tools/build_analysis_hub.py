@@ -6,7 +6,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "analysis-hub.html"
+OUT = ROOT / "research" / "analysis-hub.html"
 
 
 def md_files(root: Path):

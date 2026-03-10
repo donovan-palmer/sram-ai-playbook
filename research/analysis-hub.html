@@ -622,7 +622,7 @@
       </div>
 
       <div class="nav-links" id="navLinks">
-        <a class="nav-link" href="#doc-1-ai-adoption-playbook" data-folder="ai adoption"><span class="nav-label">ai adoption / ai-adoption-playbook</span></a><a class="nav-link" href="#doc-2-analysis" data-folder="root"><span class="nav-label">analysis</span></a><a class="nav-link" href="#doc-3-claude" data-folder="root"><span class="nav-label">CLAUDE</span></a><a class="nav-link" href="#doc-4-competitorssram" data-folder="competitors"><span class="nav-label">competitors / competitors_sram</span></a><a class="nav-link" href="#doc-5-interview-writeup" data-folder="interview"><span class="nav-label">interview / interview-writeup</span></a><a class="nav-link" href="#doc-6-ai-adoptionprompt" data-folder="prompts"><span class="nav-label">prompts / ai-adoption.prompt</span></a><a class="nav-link" href="#doc-7-unified-playbook-sessionprompt" data-folder="prompts"><span class="nav-label">prompts / unified-playbook-session.prompt</span></a><a class="nav-link" href="#doc-8-readme" data-folder="root"><span class="nav-label">README</span></a><a class="nav-link" href="#doc-9-sramaistrategy" data-folder="reference"><span class="nav-label">reference / sram_ai_strategy</span></a><a class="nav-link" href="#doc-10-revenuestreamssram" data-folder="revenue"><span class="nav-label">revenue / revenue_streams_sram</span></a><a class="nav-link" href="#doc-11-sramcompanyanalysis" data-folder="root"><span class="nav-label">SRAM_company_analysis</span></a><a class="nav-link" href="#doc-12-syllabus" data-folder="root"><span class="nav-label">syllabus</span></a>
+        <a class="nav-link" href="#doc-1-claude" data-folder="root"><span class="nav-label">CLAUDE</span></a><a class="nav-link" href="#doc-2-sramaiadoptionplaybook" data-folder="deliverables"><span class="nav-label">deliverables / SRAM_AI_Adoption_Playbook</span></a><a class="nav-link" href="#doc-3-readme" data-folder="root"><span class="nav-label">README</span></a><a class="nav-link" href="#doc-4-analysis" data-folder="research"><span class="nav-label">research / analysis</span></a><a class="nav-link" href="#doc-5-competitorssram" data-folder="research"><span class="nav-label">research / competitors_sram</span></a><a class="nav-link" href="#doc-6-interview-writeup" data-folder="research"><span class="nav-label">research / interview-writeup</span></a><a class="nav-link" href="#doc-7-ai-adoptionprompt" data-folder="research"><span class="nav-label">research / ai-adoption.prompt</span></a><a class="nav-link" href="#doc-8-unified-playbook-sessionprompt" data-folder="research"><span class="nav-label">research / unified-playbook-session.prompt</span></a><a class="nav-link" href="#doc-9-sramaistrategy" data-folder="research"><span class="nav-label">research / sram_ai_strategy</span></a><a class="nav-link" href="#doc-10-revenuestreamssram" data-folder="research"><span class="nav-label">research / revenue_streams_sram</span></a><a class="nav-link" href="#doc-11-sramcompanyanalysis" data-folder="research"><span class="nav-label">research / SRAM_company_analysis</span></a><a class="nav-link" href="#doc-12-syllabus" data-folder="research"><span class="nav-label">research / syllabus</span></a>
       </div>
 
       <div class="nav-bottom">
@@ -682,22 +682,82 @@
         <button class="chip" data-filter="interview" onclick="filterDocs('interview',this)">Interview</button>
       </div>
 
-      <div id="docs"><section class="doc fade-in" id="doc-1-ai-adoption-playbook" data-folder="ai adoption"><div class="doc-header"><span class="doc-folder">ai adoption</span><h2 class="doc-title">Ai Adoption Playbook</h2></div><div class="doc-body"><h1 id="doc-1-ai-adoption-playbook-sram-llc---ai-adoption-playbook">SRAM LLC - AI Adoption Playbook</h1>
+      <div id="docs"><section class="doc fade-in" id="doc-1-claude" data-folder="root"><div class="doc-header"><span class="doc-folder">root</span><h2 class="doc-title">Claude</h2></div><div class="doc-body"><h1 id="doc-1-claude-claudemd">CLAUDE.md</h1>
+<p>This file provides guidance to AI agents working in this repository.</p>
+<h2 id="doc-1-claude-what-this-repository-is">What This Repository Is</h2>
+<p>Group project workspace for AIML/MORS 950 &quot;Human and Machine Intelligence&quot; at Northwestern (Kellogg), Winter 2026. The goal is a C-suite-ready AI Adoption Playbook for SRAM LLC (6-8 pages).</p>
+<h2 id="doc-1-claude-repository-structure">Repository Structure</h2>
+<h3 id="doc-1-claude-deliverables-what-gets-turned-in">Deliverables (what gets turned in)</h3>
+<ul>
+<li><code>deliverables/SRAM_AI_Adoption_Playbook.md</code> — final 6-8 page AI adoption playbook</li>
+<li><code>deliverables/SRAM_AI_Adoption_Playbook.pptx</code> — 8-minute presentation deck</li>
+</ul>
+<h3 id="doc-1-claude-research-supporting-analysis-and-sources">Research (supporting analysis and sources)</h3>
+<ul>
+<li><code>research/analysis.md</code> — primary competitive intelligence document</li>
+<li><code>research/SRAM_company_analysis.md</code> — tech stack and org analysis</li>
+<li><code>research/revenue/</code> — revenue stream analysis</li>
+<li><code>research/competitors/</code> — competitor analysis</li>
+<li><code>research/interview/</code> — interview write-up (Jordan Hartsell, VP Digital Products)</li>
+<li><code>research/reference/</code> — supplementary strategy reference</li>
+<li><code>research/prompts/</code> — prompts used for AI-assisted content generation</li>
+<li><code>research/analysis-hub.html</code> — generated HTML viewer (do not edit directly)</li>
+<li><code>research/syllabus.md</code> — course syllabus</li>
+</ul>
+<h3 id="doc-1-claude-tools-build-scripts">Tools (build scripts)</h3>
+<ul>
+<li><code>tools/build_presentation.py</code> — generates the presentation PPTX into <code>deliverables/</code></li>
+<li><code>tools/build_analysis_hub.py</code> — compiles all <code>.md</code> files into <code>research/analysis-hub.html</code></li>
+</ul>
+<h2 id="doc-1-claude-how-to-rebuild-the-analysis-hub">How to Rebuild the Analysis Hub</h2>
+<p>After editing any markdown file, run:</p>
+<pre><code>
+python3 tools/build_analysis_hub.py
+</code></pre>
+<p>No dependencies beyond the Python standard library.</p>
+<h2 id="doc-1-claude-confidence-labeling-convention">Confidence Labeling Convention</h2>
+<p>Every claim in analysis documents uses one of three labels:</p>
+<ul>
+<li><span class="badge badge-confirmed">✓ Confirmed</span> — explicit source evidence</li>
+<li><span class="badge badge-inference">~ Inference</span> — reasoned synthesis from confirmed facts</li>
+<li><span class="badge badge-speculative">? Speculative</span> — plausible but not directly verified</li>
+</ul>
+<p>Every claim cites a bracketed source (e.g., <code>[S1]</code>). The source list lives at the bottom of <code>analysis.md</code>.</p>
+<h2 id="doc-1-claude-who-you-are-working-with">Who You Are Working With</h2>
+<p>Most contributors are non-technical MBA students. They are not engineers. Assume they do not know git, markdown, or how terminals work.</p>
+<ul>
+<li>Explain what you are about to do before you do it, in plain English</li>
+<li>After making changes, summarize what changed and why in one or two sentences</li>
+<li>Ask before doing anything that cannot be undone</li>
+<li>If something fails, explain the problem simply and suggest the next step</li>
+<li>Proactively suggest what to work on next if the user seems unsure</li>
+</ul>
+<h2 id="doc-1-claude-agent-ground-rules">Agent Ground Rules</h2>
+<ul>
+<li>Do not edit <code>research/analysis-hub.html</code> directly. Always rebuild via the Python script.</li>
+<li>Do not remove confidence labels or source citations from any claim.</li>
+<li>Do not add claims without a label and a source citation.</li>
+<li>Keep all changes in feature branches named <code>feature/{feature-name}</code>.</li>
+<li>Open a PR before merging into main.</li>
+<li>Small, incremental commits. One logical change per commit.</li>
+<li>All commits attributed to the committing team member only. No Co-Authored-By lines.</li>
+<li>After a PR is merged, delete the remote feature branch to keep the repo clean.</li>
+</ul></div></section><section class="doc fade-in" id="doc-2-sramaiadoptionplaybook" data-folder="deliverables"><div class="doc-header"><span class="doc-folder">deliverables</span><h2 class="doc-title">Sram Ai Adoption Playbook</h2></div><div class="doc-body"><h1 id="doc-2-sramaiadoptionplaybook-sram-llc---ai-adoption-playbook">SRAM LLC - AI Adoption Playbook</h1>
 <p>Prepared for SRAM Executive Leadership</p>
 <p>March 2026</p>
 <hr>
-<h2 id="doc-1-ai-adoption-playbook-1-executive-summary">1. Executive Summary</h2>
+<h2 id="doc-2-sramaiadoptionplaybook-1-executive-summary">1. Executive Summary</h2>
 <p>SRAM is a $1B+ private cycling components company with a rare structural advantage for AI adoption. Its AXS wireless ecosystem and Hammerhead cycling computer generate real-time telemetry data that no competitor matches in breadth. SRAM sells drivetrains, suspension, wheels, power meters, computers, and pedals across seven brands, reaching riders through OEM partnerships, dealer networks, and a growing direct channel.</p>
 <p>The opportunity is clear. SRAM today has no ERP system, no centralized customer analytics, and a support operation where roughly 70% of inbound dealer questions follow patterns an AI agent could handle. Trustpilot ratings sit at 1.6 out of 5, driven by warranty friction and firmware troubleshooting failures. These are solvable problems with immediate financial returns.</p>
 <p>This playbook recommends a phased approach across four stages, starting with a 90-day pilot in dealer and rider support automation. Expected Year-1 net value across all phases is $10.2M on $2.7M total spend, a 3.8x return. The deep-dive recommendation targets customer and dealer support, where SRAM&#x27;s strongest data asset (AXS telemetry and structured knowledge base) meets its most visible pain point (support quality and warranty friction).</p>
 <p>Our recommendation is grounded in a 45-minute interview with Jordan Hartsell, VP of Digital Products and Innovation at SRAM, who confirmed both the data readiness and the organizational constraints that shape this proposal. Hartsell estimated SRAM is 60 to 70 percent of the way to deploying a bounded support assistant for AXS and Hammerhead products, and identified dealer-facing support as the single highest-value target for a first AI deployment.</p>
 <p>The ask for SRAM&#x27;s CEO is straightforward. Approve the 90-day Phase 1 pilot, assign one accountable business owner, and hold to bounded scope until measured proof supports scaling.</p>
 <hr>
-<h2 id="doc-1-ai-adoption-playbook-2-what-sram-does---the-value-generation-engine">2. What SRAM Does - The Value Generation Engine</h2>
-<h3 id="doc-1-ai-adoption-playbook-the-business-model">The Business Model</h3>
+<h2 id="doc-2-sramaiadoptionplaybook-2-what-sram-does---the-value-generation-engine">2. What SRAM Does - The Value Generation Engine</h2>
+<h3 id="doc-2-sramaiadoptionplaybook-the-business-model">The Business Model</h3>
 <p>SRAM makes money by selling premium cycling component systems through three channels. OEM bike manufacturers spec SRAM parts on complete bikes. Distributors and dealers sell components through bike shops. Riders buy aftermarket upgrades and replacement parts directly or through dealers.</p>
 <p>This creates a multi-year revenue arc per bike platform. An OEM spec win places SRAM products on new bikes, building an installed base that generates replacement, upgrade, and accessory revenue for years afterward.</p>
-<h3 id="doc-1-ai-adoption-playbook-revenue-streams">Revenue Streams</h3>
+<h3 id="doc-2-sramaiadoptionplaybook-revenue-streams">Revenue Streams</h3>
 <div class="table-wrap"><table><thead><tr><th>Revenue Stream</th><th>Brands</th><th>Revenue Signal</th><th>Role in Portfolio</th></tr></thead><tbody>
 <tr><td>Drivetrains and braking</td><td>SRAM (RED, Force, Rival, Apex, Eagle)</td><td>Very High</td><td>Core revenue engine</td></tr>
 <tr><td>Suspension</td><td>RockShox</td><td>High</td><td>OE spec + service/rebuild cycle</td></tr>
@@ -708,42 +768,42 @@
 <tr><td>Wear parts and service</td><td>Chains, cassettes, brake pads, rotors</td><td>High (recurring)</td><td>Installed-base lock-in</td></tr>
 <tr><td>Adjacent categories</td><td>Velocio apparel, Ochain</td><td>Low (growing)</td><td>Share-of-wallet expansion</td></tr>
 </tbody></table></div>
-<h3 id="doc-1-ai-adoption-playbook-why-sram-commands-premium-pricing">Why SRAM Commands Premium Pricing</h3>
+<h3 id="doc-2-sramaiadoptionplaybook-why-sram-commands-premium-pricing">Why SRAM Commands Premium Pricing</h3>
 <p>SRAM does not sell parts. It sells systems. The AXS wireless ecosystem connects shifting, braking, controls, electronics, and software into an integrated experience. Once a rider, shop, or OEM invests in the platform (training, tooling, compatibility knowledge), switching carries real friction. This system-level integration, combined with multi-brand portfolio bundling across SRAM, RockShox, Zipp, Quarq, Hammerhead, and TIME, increases wallet share per rider and strengthens OEM leverage.</p>
 <p>The strategic value of this integration extends beyond hardware lock-in. As Hartsell explained in our interview, &quot;A Shimano rider uses the app to check compatibility. A Hammerhead rider uses it to train, navigate, and communicate with their component stack. That is a fundamentally different data relationship.&quot; The AXS ecosystem positions SRAM to collect, unify, and act on rider data in ways that Shimano&#x27;s fragmented app experience cannot match.</p>
-<h3 id="doc-1-ai-adoption-playbook-competitive-position">Competitive Position</h3>
+<h3 id="doc-2-sramaiadoptionplaybook-competitive-position">Competitive Position</h3>
 <p>SRAM dominates mountain bike components. Shimano leads road. Three competitive pressures demand attention.</p>
 <p>Shimano entered fully wireless gravel shifting with GRX RX827, narrowing SRAM&#x27;s early wireless lead. Campagnolo pushed premium positioning with 13-speed wireless at EUR 4,300. microSHIFT&#x27;s Sword offers a mechanical, serviceable alternative with an explicit anti-complexity narrative targeting riders who resist electronic premium pricing.</p>
 <p>SRAM&#x27;s durable edge is cross-brand integration breadth. No competitor sells drivetrain, suspension, wheels, power, head unit, and pedals as a connected ecosystem. Hartsell acknowledged that Shimano&#x27;s scale gives it a longer runway to absorb mistakes in AI adoption, but emphasized that SRAM&#x27;s connected product stack creates a richer data relationship with riders. If SRAM moves on support and recommendations AI within the next 12 to 18 months, he believes it closes the scale gap in the domains that matter most for rider and dealer loyalty.</p>
 <hr>
-<h2 id="doc-1-ai-adoption-playbook-3-where-ai-adds-value---the-opportunity-map">3. Where AI Adds Value - The Opportunity Map</h2>
+<h2 id="doc-2-sramaiadoptionplaybook-3-where-ai-adds-value---the-opportunity-map">3. Where AI Adds Value - The Opportunity Map</h2>
 <p>AI opportunities at SRAM fall into four phases, ordered by implementation complexity, organizational readiness, and time to measurable return.</p>
-<h3 id="doc-1-ai-adoption-playbook-phase-1---immediate-productivity-0-90-days">Phase 1 - Immediate Productivity (0-90 days)</h3>
+<h3 id="doc-2-sramaiadoptionplaybook-phase-1---immediate-productivity-0-90-days">Phase 1 - Immediate Productivity (0-90 days)</h3>
 <p><strong>Individual AI tools for daily work.</strong> Deploy coding assistants (GitHub Copilot, Claude) for the software engineering team. Enable AI-powered note-taking, email drafting, and meeting summarization across business functions. This phase costs little, builds AI fluency, and creates internal champions before larger deployments.</p>
 <p><strong>Customer and dealer support automation.</strong> This is the highest-impact near-term opportunity and the recommended deep-dive pilot. Details in Section 4.</p>
-<h3 id="doc-1-ai-adoption-playbook-phase-2---data-foundation-90-180-days">Phase 2 - Data Foundation (90-180 days)</h3>
+<h3 id="doc-2-sramaiadoptionplaybook-phase-2---data-foundation-90-180-days">Phase 2 - Data Foundation (90-180 days)</h3>
 <p><strong>Unified data infrastructure.</strong> SRAM operates without an ERP system today. Customer data lives in Shopify (front-end), support systems, AXS app telemetry, and Hammerhead ride data, none of it connected. Hartsell described the current state bluntly: &quot;We have good data in pockets and messy data everywhere else.&quot; Before AI can drive forecasting or personalization, SRAM needs a unified data layer linking CRM, inventory, telemetry, and support data. Hartsell confirmed that SRAM has been investing in data consolidation for 18 months, with support and compatibility data as the first priority and demand forecasting second.</p>
 <p><strong>Demand forecasting and supply chain optimization.</strong> This is a confirmed high-priority need within the organization. SRAM performs minimal customer analytics today. A forecasting system built on AWS SageMaker, using historical order data, dealer sell-through, and seasonal patterns, could reduce stockout and markdown losses. SRAM already runs on AWS, so keeping the ML platform on the same cloud avoids the operational overhead and vendor fragmentation of introducing a second provider. Expected savings of $1.6M in Year 1 by capturing 20% of an estimated $8M annual avoidable inventory loss.</p>
-<h3 id="doc-1-ai-adoption-playbook-phase-3---revenue-acceleration-180-365-days">Phase 3 - Revenue Acceleration (180-365 days)</h3>
+<h3 id="doc-2-sramaiadoptionplaybook-phase-3---revenue-acceleration-180-365-days">Phase 3 - Revenue Acceleration (180-365 days)</h3>
 <p><strong>OEM proposal automation.</strong> Proposal and spec package creation for bicycle manufacturers is slow and manual. Salesforce Einstein/Agentforce with CPQ features could cut proposal cycle time and improve win rates on qualified opportunities. Expected incremental revenue of $2.5M from a 1% win-rate improvement on a $250M opportunity pool.</p>
 <p><strong>Compatible part recommendations.</strong> When a rider completes a purchase or service, there is no systematic guidance on the next compatible upgrade. A compatibility rules engine paired with a recommendation model could lift basket value while building trust through accurate fit guidance.</p>
-<h3 id="doc-1-ai-adoption-playbook-phase-4---ai-first-culture-year-2">Phase 4 - AI-First Culture (Year 2+)</h3>
+<h3 id="doc-2-sramaiadoptionplaybook-phase-4---ai-first-culture-year-2">Phase 4 - AI-First Culture (Year 2+)</h3>
 <p><strong>AXS Intelligence Platform.</strong> This is the long-term strategic play. Unify telemetry from AXS drivetrains, RockShox suspension, Quarq power meters, and Hammerhead computers into a single rider performance dashboard. No competitor has the product breadth to show a rider their complete system data (heart rate, power output, gearing patterns, suspension behavior) in one view. This platform creates a data moat and opens new revenue streams through premium data services and AI-driven component optimization.</p>
 <p><strong>Generative design and R&amp;D acceleration.</strong> AI-assisted patent search, digital twin testing (simulating wheel pressure tests or suspension stress rather than running physical tests for every iteration), and requirements mining from field telemetry data. This frees engineering capacity for higher-value innovation work.</p>
 <p><strong>AI-adjusted component performance.</strong> SRAM&#x27;s connected products open the possibility of AI tuning suspension force, shift timing, or brake modulation based on riding conditions and rider behavior. This moves SRAM from selling hardware to selling continuously improving performance.</p>
 <hr>
-<h2 id="doc-1-ai-adoption-playbook-4-how-to-integrate-ai---the-support-pilot-deep-dive">4. How to Integrate AI - The Support Pilot (Deep Dive)</h2>
-<h3 id="doc-1-ai-adoption-playbook-why-support-is-the-right-starting-point">Why Support is the Right Starting Point</h3>
+<h2 id="doc-2-sramaiadoptionplaybook-4-how-to-integrate-ai---the-support-pilot-deep-dive">4. How to Integrate AI - The Support Pilot (Deep Dive)</h2>
+<h3 id="doc-2-sramaiadoptionplaybook-why-support-is-the-right-starting-point">Why Support is the Right Starting Point</h3>
 <p>Three factors make customer and dealer support the strongest pilot candidate.</p>
 <p><strong>The pain is visible and measurable.</strong> SRAM&#x27;s Trustpilot rating is 1.6 out of 5. Reddit threads in 2024-2025 consistently report pairing issues, firmware failures, and shifting anomalies. Trustpilot reviews include riders explicitly stating intent to switch to Shimano after support failures. The churn risk is real, and it is driven by support quality, not product quality.</p>
 <p><strong>The data advantage is already in place.</strong> SRAM maintains a large, structured support knowledge base with manuals, compatibility guides, troubleshooting procedures, and warranty guidance. AXS and Hammerhead generate device-level telemetry (firmware versions, error codes, configuration state). Hartsell confirmed the data readiness: &quot;If I wanted to build a support AI today, I could get it to work well for AXS and Hammerhead.&quot; He estimated the organization is 60 to 70 percent of the way to a state where a bounded support assistant could be deployed responsibly. The boundary matters. The moment a dealer asks about a RockShox fork on a 2019 frame with a third-party brake, the data gets unreliable. This is why the pilot scopes to AXS and Hammerhead only.</p>
 <p><strong>The volume supports automation.</strong> Approximately 70% of inbound dealer questions follow repeatable patterns that an AI agent could draft accurate responses for. This does not mean removing humans. It means giving support agents AI-drafted responses to review and approve, reducing time-per-ticket and allowing reallocation of headcount to product development and other value-generating roles.</p>
-<h3 id="doc-1-ai-adoption-playbook-the-adoption-challenge">The Adoption Challenge</h3>
+<h3 id="doc-2-sramaiadoptionplaybook-the-adoption-challenge">The Adoption Challenge</h3>
 <p>The biggest barrier to AI adoption at SRAM is not technical. It is trust.</p>
 <p>Hartsell was direct about where resistance lives. &quot;It is not the engineers. Engineers love this stuff. The resistance comes from customer-facing teams, support leads, dealer account managers, because they worry AI will produce confident-sounding wrong answers that damage dealer relationships they have spent years building.&quot;</p>
 <p>This concern is grounded in experience. Hartsell described a previous pilot where an AI tool gave a compatibility recommendation that was technically correct per the documentation but wrong for a specific frame geometry that an experienced support agent would have flagged. The recommendation did not cause a product failure, but it eroded trust in the pilot internally. &quot;That one incident cost me three months of buy-in.&quot;</p>
 <p>The implication for rollout design is significant. Human-in-the-loop is not a compromise or a temporary concession. It is the mechanism that keeps the pilot alive long enough to prove value. Hartsell&#x27;s approach has been to frame AI as a drafting tool, not a decision-maker: &quot;The first question I ask anyone skeptical about AI is: do you want to spend your day searching a 200-page compatibility PDF, or do you want to spend it talking to dealers? The AI does the search. You make the call.&quot; He said that framing has been more effective than ROI decks at winning over skeptical support leads.</p>
-<h3 id="doc-1-ai-adoption-playbook-pilot-design">Pilot Design</h3>
+<h3 id="doc-2-sramaiadoptionplaybook-pilot-design">Pilot Design</h3>
 <p><strong>Scope (0-90 days).</strong></p>
 <ul>
 <li>AXS drivetrain and Hammerhead device support only (not full product line)</li>
@@ -763,14 +823,14 @@
 <p>4. Human agent reviews and approves before sending</p>
 <p>5. Quality metrics logged per interaction</p>
 <p><strong>Decision rule.</strong> Human agents approve all customer-facing responses during the pilot. No automated sends. This constraint addresses the trust deficit Hartsell identified and ensures that the compatibility errors that derailed the previous pilot are caught before they reach a dealer.</p>
-<h3 id="doc-1-ai-adoption-playbook-smart-goals">SMART Goals</h3>
+<h3 id="doc-2-sramaiadoptionplaybook-smart-goals">SMART Goals</h3>
 <p>Hartsell defined his own success criteria during our interview: &quot;I want one workflow measurably faster, measurably more accurate, with no regression in dealer satisfaction scores.&quot; We translated his benchmarks into five SMART goals for the pilot.</p>
 <p><strong>Goal 1: Cut first-response time by 40%.</strong> Reduce average time-to-first-response on AXS and Hammerhead dealer support tickets by 40% within 90 days of pilot launch, measured weekly against the pre-pilot SLA baseline in Zendesk.</p>
 <p><strong>Goal 2: Resolve 15% more tickets without escalation.</strong> Increase the share of tickets resolved without escalation by 15 percentage points within 90 days, measured weekly against the current escalation rate. This tests whether AI-drafted responses give agents enough context to handle tickets they previously routed upward.</p>
 <p><strong>Goal 3: Reach 70%+ AI draft acceptance.</strong> Achieve a 70% or higher rate of support agents approving the AI-drafted response (with minor or no edits) by day 90, measured per interaction. This is the core signal of whether the AI is producing useful output. Below 50% at day 45 triggers a scope review.</p>
 <p><strong>Goal 4: Increase agent throughput by 25%.</strong> Raise tickets handled per agent per day by 25% within 90 days, measured weekly. This confirms that AI assistance translates into real productivity, not into agents spending equal time reviewing AI output as they spent writing from scratch.</p>
 <p><strong>Goal 5: Hold customer satisfaction flat.</strong> Maintain or improve CSAT scores on AI-assisted tickets relative to the pre-pilot baseline, with no decline for two consecutive measurement periods. Any sustained CSAT drop triggers the rollback process. Trustpilot rating (currently 1.6/5.0) should stabilize and begin trending upward by day 90.</p>
-<h3 id="doc-1-ai-adoption-playbook-90-day-pilot-timeline">90-Day Pilot Timeline</h3>
+<h3 id="doc-2-sramaiadoptionplaybook-90-day-pilot-timeline">90-Day Pilot Timeline</h3>
 <div class="table-wrap"><table><thead><tr><th>Week</th><th>Workstream</th><th>SMART Goal</th></tr></thead><tbody>
 <tr><td>1-4</td><td>Zendesk + Kendra + Bedrock integration; index AXS and Hammerhead docs; establish baseline metrics</td><td>Setup</td></tr>
 <tr><td>3-4</td><td>Begin AI draft rollout on AXS drivetrain tickets; agents review 100% of drafts</td><td>G3</td></tr>
@@ -783,14 +843,14 @@
 <tr><td>1-12</td><td>Weekly quality reviews with defined rollback trigger</td><td>All</td></tr>
 <tr><td>12</td><td>Day-90 go/no-go decision: scale to Phase 2, adjust scope, or stop</td><td>All</td></tr>
 </tbody></table></div>
-<h3 id="doc-1-ai-adoption-playbook-organizational-enablers">Organizational Enablers</h3>
+<h3 id="doc-2-sramaiadoptionplaybook-organizational-enablers">Organizational Enablers</h3>
 <p><strong>Talent.</strong> SRAM&#x27;s software organization is acquisition-built. The Hammerhead and Quarq acquisitions brought in engineering teams that are now being integrated into SRAM&#x27;s broader digital product group. The combined organization has an estimated 250 to 400 software and firmware engineers working across Python, TypeScript, Rust, C++, React, and Svelte, with AWS as the cloud platform and Jenkins for CI/CD. This is not a firmware-only culture. The Hammerhead team builds web and mobile applications, and the broader org has full-stack web development capability alongside embedded systems work.</p>
 <p>This team is large enough to support all four phases of AI adoption without additional engineering hires. With AI-assisted coding tools (GitHub Copilot, Claude) now widely available, 250 to 400 engineers can produce output that would have required a much larger team two years ago. The constraint is not engineering capacity. It is product management and QA. As AI tools increase the speed and volume of code output, the bottleneck shifts to defining what to build (product managers who understand the support and rider experience) and validating that it works correctly (QA engineers and processes that scale with output). Phase 2 and beyond will require additional product managers and QA capacity, not more developers.</p>
 <p>The acquisition history creates a real integration challenge. Quarq, Hammerhead, and core SRAM drivetrain teams were separate companies with separate codebases and data models. Hartsell noted that integrating Quarq and Hammerhead data has been the biggest unlock so far, but the Phase 2 data consolidation is fundamentally about stitching together acquisition-era systems. This is harder and slower than building a data layer from scratch. The pilot requires one integration engineer (internal or contractor) and one product owner from the support organization.</p>
 <p><strong>Data.</strong> Existing knowledge base content and AXS/Hammerhead telemetry data are sufficient for the pilot. Compatibility documentation is maintained manually across product lines and updated on a release cadence that does not always keep pace with the hardware. This gap is manageable within the bounded pilot scope but will need to be addressed before expanding to the full product catalog. Data centralization work in Phase 2 builds the foundation for forecasting and personalization.</p>
 <p><strong>Leadership.</strong> The CEO must assign one accountable business owner for the pilot with authority to make scope and tooling decisions. Weekly quality reviews with a rollback trigger if quality drops for two consecutive weeks. The pilot owner reports progress at the existing leadership cadence, not through a new governance structure. An open question from our interview: it is unclear whether an executive sponsor above Hartsell has formally committed to the AI data consolidation roadmap, or whether this remains a digital-team initiative without full C-suite ownership. Resolving this reporting line is a prerequisite for Phase 2 investment.</p>
 <p><strong>Change management.</strong> The failed pilot Hartsell described reveals a pattern common in AI adoption across industries. A single high-visibility error, even one without real consequences, can set back organizational buy-in more than any technical failure. The rollout plan must treat agent trust as a first-order success metric, not an afterthought. Specific measures include involving support leads in the pilot design (not informing them after decisions are made), giving agents the ability to flag and correct AI errors in a feedback loop, and celebrating accuracy improvements publicly within the support team.</p>
-<h3 id="doc-1-ai-adoption-playbook-financial-impact---year-1-all-phases">Financial Impact - Year 1 (All Phases)</h3>
+<h3 id="doc-2-sramaiadoptionplaybook-financial-impact---year-1-all-phases">Financial Impact - Year 1 (All Phases)</h3>
 <div class="table-wrap"><table><thead><tr><th>Category</th><th>Conservative</th><th>Expected</th><th>Upside</th></tr></thead><tbody>
 <tr><td>Support assistant savings</td><td>$0.5M</td><td>$1.6M</td><td>$4.3M</td></tr>
 <tr><td>Forecasting and inventory savings</td><td>$0.7M</td><td>$1.6M</td><td>$4.5M</td></tr>
@@ -805,7 +865,7 @@
 <tr><td><strong>Return on spend</strong></td><td><strong>2.8x</strong></td><td><strong>3.8x</strong></td><td><strong>6.4x</strong></td></tr>
 </tbody></table></div>
 <p>Expected-case support savings math: 120 support staff x $90K average cost x 60% AI-addressable work x 35% productivity gain x 70% adoption = $1.6M.</p>
-<h3 id="doc-1-ai-adoption-playbook-risk-controls-and-tradeoffs">Risk Controls and Tradeoffs</h3>
+<h3 id="doc-2-sramaiadoptionplaybook-risk-controls-and-tradeoffs">Risk Controls and Tradeoffs</h3>
 <p><strong>Guardrails during the pilot.</strong></p>
 <ul>
 <li>Human approval required for all warranty decisions and safety-related guidance</li>
@@ -817,54 +877,124 @@
 <p><strong>The speed-versus-trust tradeoff.</strong> SRAM faces a tension between moving fast on AI (to close the gap with Shimano&#x27;s larger scale and investment capacity) and moving carefully enough to preserve dealer trust. Shimano can afford to make mistakes and recover. SRAM cannot. This constraint shapes the entire pilot design. The 100% human review requirement during Phase 1 will slow throughput gains in the short term, but it protects the dealer relationships that generate the majority of SRAM&#x27;s revenue. The playbook explicitly recommends against removing human oversight to accelerate metrics during the pilot period, even if early results look strong.</p>
 <p><strong>Legacy product risk.</strong> The pilot intentionally excludes legacy product support. Compatibility data for older RockShox, SRAM drivetrain, and third-party component combinations is incomplete and inconsistently maintained. Expanding AI support to these products before the Phase 2 data consolidation is complete would recreate the exact failure mode Hartsell described in the earlier pilot. The sequencing discipline in this playbook exists to prevent that mistake.</p>
 <hr>
-<h2 id="doc-1-ai-adoption-playbook-5-sram-in-2031---the-ai-first-company">5. SRAM in 2031 - The AI-First Company</h2>
+<h2 id="doc-2-sramaiadoptionplaybook-5-sram-in-2031---the-ai-first-company">5. SRAM in 2031 - The AI-First Company</h2>
 <p>By 2031, a fully executed AI strategy transforms SRAM from a hardware manufacturer into a performance intelligence company.</p>
-<h3 id="doc-1-ai-adoption-playbook-the-rider-experience-changes">The Rider Experience Changes</h3>
+<h3 id="doc-2-sramaiadoptionplaybook-the-rider-experience-changes">The Rider Experience Changes</h3>
 <p>A rider in 2031 buys a SRAM-equipped bike and receives a continuously improving product. AXS Intelligence monitors drivetrain wear patterns and predicts when a chain or cassette needs replacement before failure. RockShox suspension auto-tunes based on terrain detection and rider weight shifts. The Hammerhead Karoo synthesizes power, gearing, suspension, and heart rate data into a unified performance coaching system that no competitor can replicate because no competitor sells all these components.</p>
-<h3 id="doc-1-ai-adoption-playbook-new-revenue-streams-emerge">New Revenue Streams Emerge</h3>
+<h3 id="doc-2-sramaiadoptionplaybook-new-revenue-streams-emerge">New Revenue Streams Emerge</h3>
 <p><strong>Predictive maintenance subscriptions.</strong> Riders and fleet operators (rental companies, team mechanics) pay for proactive component health monitoring. SRAM&#x27;s installed base of connected components becomes a recurring revenue platform, not a one-time hardware sale.</p>
 <p><strong>Performance optimization services.</strong> AI-tuned suspension and shifting profiles, personalized to rider weight, terrain preferences, and fitness level. Premium tier offers real-time adjustment. This is the AXS Intelligence Platform at maturity.</p>
 <p><strong>Dealer intelligence tools.</strong> Aggregated (anonymized) telemetry data tells dealers which components are approaching end-of-life in their service area. This turns SRAM&#x27;s dealer network into a proactive parts-ordering system rather than a reactive one, reducing stockouts and improving dealer margins.</p>
 <p><strong>Data-informed product development.</strong> Engineering teams use field telemetry to identify failure modes, usage patterns, and feature requests at scale. Product development cycles shorten. Testing costs drop as digital twin simulations replace a portion of physical stress testing.</p>
-<h3 id="doc-1-ai-adoption-playbook-what-makes-this-defensible">What Makes This Defensible</h3>
+<h3 id="doc-2-sramaiadoptionplaybook-what-makes-this-defensible">What Makes This Defensible</h3>
 <p>This vision works because SRAM owns the full stack. The components generate the data. The software interprets it. The ecosystem locks it together. A rider using SRAM drivetrain, RockShox suspension, Quarq power, and Hammerhead computer gets a unified intelligence layer that a mixed-component setup cannot match. Each additional connected SRAM product a rider buys increases the value of the data and the quality of the AI recommendations.</p>
 <p>This is the flywheel. Hardware sells data access. Data improves performance. Performance sells hardware.</p>
 <p>Hartsell sees this advantage clearly. Integrating Quarq and Hammerhead data has been the biggest unlock so far, he told us. Ochain is too recent to contribute meaningful data yet. TIME pedals remain largely analog in terms of data capture. The 2031 vision depends on continuing to close these data gaps across the full brand portfolio, which is why the Phase 2 data infrastructure investment is foundational, not optional.</p>
 <hr>
-<h2 id="doc-1-ai-adoption-playbook-6-the-decision">6. The Decision</h2>
+<h2 id="doc-2-sramaiadoptionplaybook-6-the-decision">6. The Decision</h2>
 <p>We recommend SRAM&#x27;s CEO approve three actions.</p>
 <p>1. <strong>Launch the 90-day support pilot.</strong> Scope it to AXS and Hammerhead dealer support. Staff it with one product owner and one integration engineer. Human approval on all customer-facing outputs. Weekly quality reviews. Kill criteria defined in advance: two consecutive weeks of quality drops, any unreviewed safety or warranty error reaching a dealer, or dealer opt-out above 15%.</p>
 <p>2. <strong>Begin data infrastructure planning.</strong> Initiate requirements gathering for a unified data layer connecting Shopify, support systems, and telemetry data. This is the foundation for Phase 2 (forecasting) and Phase 4 (AXS Intelligence). Assign an executive sponsor with budget authority above the digital products team to signal organizational commitment.</p>
 <p>3. <strong>Hold sequencing discipline.</strong> Bounded, well-defined problems first. Broader transformation after measured proof. The 90-day pilot produces data to justify or redirect every subsequent investment. The failed pilot Hartsell described is a concrete reminder that moving too fast on AI, even with good intentions, can set back adoption by months.</p>
 <p>Expected Year-1 return on the full phased program is 3.8x. The downside is bounded by the 90-day pilot scope. The upside scales with SRAM&#x27;s unique data advantage and connected product ecosystem.</p>
 <hr>
-<h2 id="doc-1-ai-adoption-playbook-sources-and-interview">Sources and Interview</h2>
-<p>This playbook draws on public filings, product documentation, competitive analysis, customer review data (Trustpilot, Reddit, app store reviews), and a 45-minute interview with Jordan Hartsell, VP of Digital Products and Innovation at SRAM, conducted via Zoom on March 4, 2026. Hartsell oversees the AXS wireless ecosystem, Hammerhead cycling computer platform, and internal tooling connecting support, dealer operations, and manufacturing workflows. He joined SRAM four years ago from a tier-1 automotive supplier where he led a similar connected-product digitization effort.</p></div></section><section class="doc fade-in" id="doc-2-analysis" data-folder="root"><div class="doc-header"><span class="doc-folder">root</span><h2 class="doc-title">Analysis</h2></div><div class="doc-body"><h1 id="doc-2-analysis-sram-competitive-intelligence">SRAM Competitive Intelligence</h1>
+<h2 id="doc-2-sramaiadoptionplaybook-sources-and-interview">Sources and Interview</h2>
+<p>This playbook draws on public filings, product documentation, competitive analysis, customer review data (Trustpilot, Reddit, app store reviews), and a 45-minute interview with Jordan Hartsell, VP of Digital Products and Innovation at SRAM, conducted via Zoom on March 4, 2026. Hartsell oversees the AXS wireless ecosystem, Hammerhead cycling computer platform, and internal tooling connecting support, dealer operations, and manufacturing workflows. He joined SRAM four years ago from a tier-1 automotive supplier where he led a similar connected-product digitization effort.</p></div></section><section class="doc fade-in" id="doc-3-readme" data-folder="root"><div class="doc-header"><span class="doc-folder">root</span><h2 class="doc-title">Readme</h2></div><div class="doc-body"><h1 id="doc-3-readme-sram-ai-adoption-playbook">SRAM AI Adoption Playbook</h1>
+<p>Group project for AIML/MORS 950 &quot;Human and Machine Intelligence&quot; — Northwestern Kellogg, Winter 2026.</p>
+<p><strong>Goal:</strong> Produce a C-suite-ready AI Adoption Playbook for SRAM LLC (6–8 pages).</p>
+<p><strong>Team lead:</strong> Donovan Palmer</p>
+<hr>
+<h2 id="doc-3-readme-getting-started-no-technical-experience-required">Getting Started (No Technical Experience Required)</h2>
+<p>You will use Claude Code to contribute to this project. Claude Code is an AI assistant that works directly inside this repository. It reads the project files, understands the context, and helps you write, edit, and organize content.</p>
+<h3 id="doc-3-readme-step-1-install-claude-code">Step 1 — Install Claude Code</h3>
+<p>Open your terminal (on Mac, press Cmd + Space and type &quot;Terminal&quot;) and run:</p>
+<pre><code>
+npm install -g @anthropic-ai/claude-code
+</code></pre>
+<p>If you do not have Node.js installed, download it first from https://nodejs.org and then run the command above.</p>
+<h3 id="doc-3-readme-step-2-clone-this-repository">Step 2 — Clone This Repository</h3>
+<p>In your terminal, run:</p>
+<pre><code>
+git clone https://github.com/donovan-palmer/sram-ai-playbook.git
+cd sram-ai-playbook
+</code></pre>
+<p>This downloads the project to your computer.</p>
+<h3 id="doc-3-readme-step-3-open-claude-code">Step 3 — Open Claude Code</h3>
+<p>From inside the project folder, run:</p>
+<pre><code>
+claude
+</code></pre>
+<p>Claude Code will start up, read all the project files automatically, and be ready to help. You do not need to explain the project to it. It already knows the context.</p>
+<h3 id="doc-3-readme-step-4-ask-claude-to-help-you">Step 4 — Ask Claude to Help You</h3>
+<p>Just type what you want to do. For example:</p>
+<ul>
+<li>&quot;Summarize what we have so far on the AI adoption strategy&quot;</li>
+<li>&quot;Add a section on demand forecasting to the AI adoption outline&quot;</li>
+<li>&quot;What are SRAM&#x27;s biggest competitors and how do they compare?&quot;</li>
+<li>&quot;Review the revenue analysis and tell me what is missing&quot;</li>
+</ul>
+<p>Claude will make changes, explain what it did, and ask before doing anything significant.</p>
+<hr>
+<h2 id="doc-3-readme-what-is-in-this-repository">What Is In This Repository</h2>
+<div class="table-wrap"><table><thead><tr><th>File or Folder</th><th>What It Contains</th></tr></thead><tbody>
+<tr><td><code>analysis.md</code></td><td>Full competitive intelligence on SRAM — company overview, revenue, competitors, leadership</td></tr>
+<tr><td><code>ai adoption/ai-adoption-outline.md</code></td><td>AI adoption strategy with prioritized use cases and tool recommendations</td></tr>
+<tr><td><code>revenue/revenue_streams_sram.md</code></td><td>Breakdown of SRAM&#x27;s revenue streams</td></tr>
+<tr><td><code>competitors/competitors_sram.md</code></td><td>Competitor analysis</td></tr>
+<tr><td><code>prompts/ai-adoption.prompt.md</code></td><td>The prompt used to generate the AI adoption content (for reference)</td></tr>
+<tr><td><code>analysis-hub.html</code></td><td>A single HTML file that displays all the analysis in one place — open it in your browser</td></tr>
+<tr><td><code>tools/build_analysis_hub.py</code></td><td>Script that rebuilds <code>analysis-hub.html</code> after you make edits</td></tr>
+<tr><td><code>syllabus.md</code></td><td>Course syllabus for reference</td></tr>
+</tbody></table></div>
+<hr>
+<h2 id="doc-3-readme-how-to-view-the-full-analysis">How to View the Full Analysis</h2>
+<p>Open <code>analysis-hub.html</code> in your browser. It pulls everything together in one readable view. If you make edits to any markdown file, ask Claude to rebuild it:</p>
+<p>&gt; &quot;Rebuild the analysis hub&quot;</p>
+<hr>
+<h2 id="doc-3-readme-how-claims-are-labeled">How Claims Are Labeled</h2>
+<p>Every factual claim in the analysis files carries one of three labels:</p>
+<ul>
+<li><span class="badge badge-confirmed">✓ Confirmed</span> — backed by a direct source</li>
+<li><span class="badge badge-inference">~ Inference</span> — reasoned from confirmed facts</li>
+<li><span class="badge badge-speculative">? Speculative</span> — plausible but not verified</li>
+</ul>
+<p>Every claim also has a bracketed source (like <code>[S1]</code>). The full source list is at the bottom of <code>analysis.md</code>. Do not add claims without a label and a source.</p>
+<hr>
+<h2 id="doc-3-readme-how-to-contribute">How to Contribute</h2>
+<p>Claude Code handles the technical parts. You focus on the content.</p>
+<p>1. Tell Claude what you want to add or change</p>
+<p>2. Review what Claude proposes before it makes changes</p>
+<p>3. Claude will create a branch, commit the change, and open a pull request</p>
+<p>4. Donovan reviews and merges</p>
+<p>If you get stuck, just ask Claude: &quot;What should I work on next?&quot; or &quot;Walk me through how to contribute.&quot;</p>
+<hr>
+<h2 id="doc-3-readme-questions">Questions</h2>
+<p>Reach out to Donovan Palmer directly.</p></div></section><section class="doc fade-in" id="doc-4-analysis" data-folder="research"><div class="doc-header"><span class="doc-folder">research</span><h2 class="doc-title">Analysis</h2></div><div class="doc-body"><h1 id="doc-4-analysis-sram-competitive-intelligence">SRAM Competitive Intelligence</h1>
 <p>Date: 2026-02-28</p>
 <p>Company: SRAM LLC (private)</p>
-<h2 id="doc-2-analysis-method-and-confidence-rules">Method And Confidence Rules</h2>
+<h2 id="doc-4-analysis-method-and-confidence-rules">Method And Confidence Rules</h2>
 <ul>
 <li>Scope: sources from roughly the last 18 months (Aug 2024 to Feb 2026) whenever available.</li>
 <li>Exception handling: for founding/history context, I used current official SRAM pages even when the underlying milestone happened earlier.</li>
 <li>Priority: primary sources first (SRAM/Hammerhead official pages, official support docs, app store listings), then secondary (LinkedIn, Built In, Trustpilot, Glassdoor, industry media).</li>
 <li>Confidence legend: <span class="badge badge-confirmed">✓ Confirmed</span> = explicit source evidence; <span class="badge badge-inference">~ Inference</span> = reasoned synthesis from confirmed facts; <span class="badge badge-speculative">? Speculative</span> = plausible but not directly verified.</li>
 </ul>
-<h2 id="doc-2-analysis-1-company-overview">1) Company Overview</h2>
-<h3 id="doc-2-analysis-founding-story-and-key-milestones">Founding story and key milestones</h3>
+<h2 id="doc-4-analysis-1-company-overview">1) Company Overview</h2>
+<h3 id="doc-4-analysis-founding-story-and-key-milestones">Founding story and key milestones</h3>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: SRAM states it was founded in Chicago in 1987 and presents itself as one of the largest bicycle component manufacturers. ([S1], [S2])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: SRAM&#x27;s current portfolio explicitly spans SRAM, RockShox, Zipp, TIME, Quarq, Hammerhead, and Ochain integration. ([S1], [S4])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: In 2025, SRAM acquired Ochain and linked that acquisition to broader Italy expansion and service infrastructure. ([S27], [S28])</li>
 <li><span class="badge badge-inference">~ Inference</span>: SRAM&#x27;s growth pattern is acquisition-plus-integration, not purely organic SKU expansion.</li>
 </ul>
-<h3 id="doc-2-analysis-leadership-team-backgrounds-previous-companies">Leadership team (backgrounds, previous companies)</h3>
+<h3 id="doc-4-analysis-leadership-team-backgrounds-previous-companies">Leadership team (backgrounds, previous companies)</h3>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: SRAM lists Ken Lousberg (CEO), Stanley R. Day Jr. (Chairman), F.K. Day (EVP), and function leaders across finance, digital software/IT, sales, engineering, quality, marketing, and operations. ([S5])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span> (secondary): The Org describes Ken Lousberg as former COO before becoming CEO. ([S6])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span> (secondary): Official Board describes CFO Heather Bridges as previously CFO at SC Johnson Professional and Halo Branded Solutions. ([S7])</li>
 <li><span class="badge badge-inference">~ Inference</span>: leadership composition signals a hybrid model: deep cycling/product operators plus formalized enterprise functions (finance, digital software, manufacturing ops).</li>
 </ul>
-<h3 id="doc-2-analysis-funding-history-rounds-investors-valuations-burn-rate-estimates">Funding history (rounds, investors, valuations, burn-rate estimates)</h3>
+<h3 id="doc-4-analysis-funding-history-rounds-investors-valuations-burn-rate-estimates">Funding history (rounds, investors, valuations, burn-rate estimates)</h3>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: SRAM is privately held (LinkedIn classification). ([S8])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: no public 2025-2026 financing round announcements were found in official SRAM channels reviewed for this analysis. ([S1], [S2], [S5])</li>
@@ -872,21 +1002,21 @@
 <li><span class="badge badge-speculative">? Speculative</span>: startup-style &quot;burn rate&quot; is the wrong lens for SRAM. SRAM appears to operate as a mature manufacturing business with multi-channel product revenue rather than venture cash burn dynamics.</li>
 <li><span class="badge badge-speculative">? Speculative</span>: valuation cannot be credibly estimated from public data without private transaction comps.</li>
 </ul>
-<h3 id="doc-2-analysis-employee-count-and-growth-trajectory-linkedin-headcount">Employee count and growth trajectory (LinkedIn headcount)</h3>
+<h3 id="doc-4-analysis-employee-count-and-growth-trajectory-linkedin-headcount">Employee count and growth trajectory (LinkedIn headcount)</h3>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: LinkedIn lists SRAM in the 1,001-5,000 employee band and ~90K+ followers. ([S8])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span> (secondary): Built In listings and profile data show variation in public employee claims (for example 3,800 and 5,000+ references across postings/pages). ([S10], [S11], [S12])</li>
 <li><span class="badge badge-inference">~ Inference</span>: headcount is growing but externally noisy; treat LinkedIn band and role-hiring intensity as more reliable than single-point employee totals.</li>
 </ul>
-<h3 id="doc-2-analysis-office-locations-and-expansion-patterns">Office locations and expansion patterns</h3>
+<h3 id="doc-4-analysis-office-locations-and-expansion-patterns">Office locations and expansion patterns</h3>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: SRAM identifies major hubs in Chicago, Colorado Springs, Indianapolis, and multiple international sites. ([S1], [S13])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span> (secondary): 2025 coverage reports Italy facility expansion tied to Ochain plus technical service and dealer support capability. ([S28])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span> (secondary): 2025 coverage reports Eastern Europe distribution expansion through Aspire Sports. ([S29])</li>
 <li><span class="badge badge-inference">~ Inference</span>: expansion is capability-led (technical support + distribution + integration), not just geographic vanity growth.</li>
 </ul>
-<h2 id="doc-2-analysis-2-product-deep-dive">2) Product Deep-Dive</h2>
-<h3 id="doc-2-analysis-complete-product-catalog-practical-complete-view">Complete product catalog (practical &quot;complete&quot; view)</h3>
+<h2 id="doc-4-analysis-2-product-deep-dive">2) Product Deep-Dive</h2>
+<h3 id="doc-4-analysis-complete-product-catalog-practical-complete-view">Complete product catalog (practical &quot;complete&quot; view)</h3>
 <p><span class="badge badge-confirmed">✓ Confirmed</span>: SRAM&#x27;s catalog is best understood as a multi-brand platform:</p>
 <div class="table-wrap"><table><thead><tr><th>Portfolio Layer</th><th>Key Product Families</th><th>What It Does In Revenue Terms</th></tr></thead><tbody>
 <tr><td>SRAM core drivetrains/brakes</td><td>RED/Force/Rival/Apex AXS, XPLR, Eagle Transmission, chains/cassettes/brakes</td><td>High-ticket groupsets + recurring replacement parts</td></tr>
@@ -897,7 +1027,7 @@
 <tr><td>TIME + Ochain</td><td>Pedals and active spider integration</td><td>Adjacent performance categories and cross-sell</td></tr>
 </tbody></table></div>
 <p>Sources: [S1], [S14], [S15], [S16], [S17], [S18], [S19]</p>
-<h3 id="doc-2-analysis-pricing-tiers-current-historical-changes">Pricing tiers (current + historical changes)</h3>
+<h3 id="doc-4-analysis-pricing-tiers-current-historical-changes">Pricing tiers (current + historical changes)</h3>
 <p><span class="badge badge-confirmed">✓ Confirmed</span>: SRAM drop-bar tier structure remains clearly stratified across RED -&gt; Force -&gt; Rival, with 2025 refreshes.</p>
 <div class="table-wrap"><table><thead><tr><th>Product</th><th>Current MSRP Signal</th><th>Historical/Comparative Signal</th></tr></thead><tbody>
 <tr><td>RED AXS HRD Shift-Brake (ED-RED-E1)</td><td>$745</td><td>Premium anchor tier ([S20])</td></tr>
@@ -909,14 +1039,14 @@
 <ul>
 <li><span class="badge badge-inference">~ Inference</span>: SRAM used 2025 upgrades to increase functional value (ergonomics/braking/integration) while maintaining a coherent price ladder.</li>
 </ul>
-<h3 id="doc-2-analysis-feature-comparison-vs-top-3-alternatives">Feature comparison vs top 3 alternatives</h3>
+<h3 id="doc-4-analysis-feature-comparison-vs-top-3-alternatives">Feature comparison vs top 3 alternatives</h3>
 <p><span class="badge badge-confirmed">✓ Confirmed</span> and <span class="badge badge-inference">~ Inference</span> (based on current manufacturer pages):</p>
 <div class="table-wrap"><table><thead><tr><th>Competitor</th><th>Feature Position vs SRAM</th><th>Pricing/Position Signal</th><th>Implication</th></tr></thead><tbody>
 <tr><td>Shimano (GRX RX827)</td><td>Entered fully wireless drop-bar gravel with robustness messaging</td><td>Premium ecosystem, strong OE/dealer depth</td><td>SRAM&#x27;s early wireless lead is narrowing in gravel ([S30])</td></tr>
 <tr><td>Campagnolo (Super Record 13)</td><td>13-speed premium wireless + new ergonomics; explicit premium pricing</td><td>EUR 4,300 base listed on official page</td><td>Campagnolo presses high-end prestige segment ([S31])</td></tr>
 <tr><td>microSHIFT (Sword)</td><td>Mechanical serviceable gravel-first alternative, explicit anti-complexity narrative</td><td>Value-access narrative vs electronic premium</td><td>Downmarket pressure against premium electronic upsell ([S32])</td></tr>
 </tbody></table></div>
-<h3 id="doc-2-analysis-technology-stack-job-postings-tech-signals-builtwith">Technology stack (job postings, tech signals, BuiltWith)</h3>
+<h3 id="doc-4-analysis-technology-stack-job-postings-tech-signals-builtwith">Technology stack (job postings, tech signals, BuiltWith)</h3>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span> (secondary): SRAM software postings reference product strategy and cross-functional roadmapping for connected cycling software. ([S10])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span> (secondary): test automation posting references Appium, Espresso, XCUITest, BrowserStack, BLE, Jenkins, AWS. ([S11])</li>
@@ -924,14 +1054,14 @@
 <li><span class="badge badge-confirmed">✓ Confirmed</span> (secondary): BuiltWith profile (via Sistrix summary) shows web analytics/marketing stack elements (Google Analytics, Adobe DTM, etc.). ([S33])</li>
 <li><span class="badge badge-inference">~ Inference</span>: SRAM is moving from hardware-only differentiation toward hardware+software+data operations capability.</li>
 </ul>
-<h3 id="doc-2-analysis-recent-product-launches-last-12-months">Recent product launches (last 12 months)</h3>
+<h3 id="doc-4-analysis-recent-product-launches-last-12-months">Recent product launches (last 12 months)</h3>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: Force AXS and Rival AXS lines released June 17, 2025. ([S14], [S15])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: Force XPLR AXS and Rival XPLR AXS released June 17, 2025. ([S17], [S18])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: Eagle 90/70 mechanical transmission systems are now documented with 2025 service docs and install videos. ([S19], [S34])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: Hammerhead continued software cadence in 2025 (for example predictive path and companion workflow updates). ([S35], [S36])</li>
 </ul>
-<h3 id="doc-2-analysis-roadmap-clues-jobs-conferencesevents-filings-customer-feedback">Roadmap clues (jobs, conferences/events, filings, customer feedback)</h3>
+<h3 id="doc-4-analysis-roadmap-clues-jobs-conferencesevents-filings-customer-feedback">Roadmap clues (jobs, conferences/events, filings, customer feedback)</h3>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: roadmap/accountability language appears directly in software product manager hiring. ([S10])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: API licensing and developer-access documentation indicate controlled ecosystem expansion, not open commoditized interoperability. ([S37])</li>
@@ -939,90 +1069,90 @@
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: 2025 USPTO trademark publications for SRAM-owned marks (for example PARAGON, SIDLUXE) suggest pipeline activity in future named product families. ([S40], [S41])</li>
 <li><span class="badge badge-speculative">? Speculative</span>: likely roadmap emphasis = drivetrain/suspension leadership + deeper software/service lock-in.</li>
 </ul>
-<h2 id="doc-2-analysis-3-market-positioning">3) Market Positioning</h2>
-<h3 id="doc-2-analysis-target-customer">Target customer</h3>
+<h2 id="doc-4-analysis-3-market-positioning">3) Market Positioning</h2>
+<h3 id="doc-4-analysis-target-customer">Target customer</h3>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: SRAM sells to bike manufacturers, distributors, retailers, and riders. ([S1], [S8], [S42])</li>
 <li><span class="badge badge-inference">~ Inference</span>: core segments are performance road, gravel, mountain, and e-performance riders where reliability + integration can command premium pricing.</li>
 </ul>
-<h3 id="doc-2-analysis-ideal-customer-profile-icp">Ideal Customer Profile (ICP)</h3>
+<h3 id="doc-4-analysis-ideal-customer-profile-icp">Ideal Customer Profile (ICP)</h3>
 <ul>
 <li><span class="badge badge-inference">~ Inference</span> (OEM ICP): premium and upper-mid bike brands needing integrated spec bundles and reduced component risk.</li>
 <li><span class="badge badge-inference">~ Inference</span> (Dealer ICP): shops with strong service capacity and upgrade-selling behavior.</li>
 <li><span class="badge badge-inference">~ Inference</span> (Rider ICP): enthusiasts/racers valuing measurable performance and integrated digital experience (AXS + Karoo + data sync).</li>
 </ul>
-<h3 id="doc-2-analysis-messaging-and-positioning">Messaging and positioning</h3>
+<h3 id="doc-4-analysis-messaging-and-positioning">Messaging and positioning</h3>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: SRAM repeatedly uses performance + innovation framing and &quot;power of bicycles&quot; brand narrative. ([S1], [S2])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: 2025 drop-bar messaging emphasizes effortless braking, improved ergonomics, integration, and compatibility. ([S16], [S14])</li>
 <li><span class="badge badge-inference">~ Inference</span>: messaging is engineered-performance first, lifestyle second.</li>
 </ul>
-<h3 id="doc-2-analysis-brand-voice-and-personality">Brand voice and personality</h3>
+<h3 id="doc-4-analysis-brand-voice-and-personality">Brand voice and personality</h3>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: event/community pages show dual voice: high-performance racing + inclusive cycling community support. ([S24], [S25], [S26])</li>
 <li><span class="badge badge-inference">~ Inference</span>: SRAM intentionally broadens brand equity beyond elite performance through advocacy and community partner programs.</li>
 </ul>
-<h3 id="doc-2-analysis-key-differentiators-they-claim">Key differentiators they claim</h3>
+<h3 id="doc-4-analysis-key-differentiators-they-claim">Key differentiators they claim</h3>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: AXS wireless ecosystem and cross-category compatibility are recurring product claims. ([S43], [S16])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: technical support footprint and dealer/rider service system are explicit GTM assets. ([S42], [S28])</li>
 <li><span class="badge badge-inference">~ Inference</span>: cross-brand integration breadth is SRAM&#x27;s strongest systemic differentiator versus single-category competitors.</li>
 </ul>
-<h2 id="doc-2-analysis-4-go-to-market-strategy">4) Go-To-Market Strategy</h2>
-<h3 id="doc-2-analysis-marketing-channels">Marketing channels</h3>
+<h2 id="doc-4-analysis-4-go-to-market-strategy">4) Go-To-Market Strategy</h2>
+<h3 id="doc-4-analysis-marketing-channels">Marketing channels</h3>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: owned digital channels (product pages, support docs, stories, app ecosystem) are central. ([S1], [S42], [S43])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: social/event activations and rider hubs at marquee events are actively used. ([S24], [S26])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span> (secondary): content and digital roles explicitly include social, web, email, and campaign execution. ([S44])</li>
 </ul>
-<h3 id="doc-2-analysis-content-strategy">Content strategy</h3>
+<h3 id="doc-4-analysis-content-strategy">Content strategy</h3>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: support content cadence is high and product-line specific (Force, Rival, XPLR, Eagle, app workflows). ([S14], [S15], [S17], [S19], [S42])</li>
 <li><span class="badge badge-inference">~ Inference</span>: SRAM uses support content as both retention and conversion infrastructure.</li>
 </ul>
-<h3 id="doc-2-analysis-sales-approach-inboundoutbound-plg-vs-sales-led">Sales approach (inbound/outbound, PLG vs sales-led)</h3>
+<h3 id="doc-4-analysis-sales-approach-inboundoutbound-plg-vs-sales-led">Sales approach (inbound/outbound, PLG vs sales-led)</h3>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: channel model is OEM + distributor + dealer + rider support. ([S8], [S42], [S28])</li>
 <li><span class="badge badge-inference">~ Inference</span>: this is sales-led/channel-led (not PLG), with connected software acting as retention accelerant.</li>
 </ul>
-<h3 id="doc-2-analysis-partnership-ecosystem-integrations-resellers-tech-partners">Partnership ecosystem (integrations, resellers, tech partners)</h3>
+<h3 id="doc-4-analysis-partnership-ecosystem-integrations-resellers-tech-partners">Partnership ecosystem (integrations, resellers, tech partners)</h3>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: Hammerhead syncs with third-party platforms (for example Strava, Ride With GPS, TrainingPeaks). ([S45], [S46])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: SRAM maintains distributor partnerships by region (for example Baltics/Eastern Europe expansion). ([S29])</li>
 <li><span class="badge badge-inference">~ Inference</span>: partnership strategy is mixed: selective software interoperability + tight hardware ecosystem control.</li>
 </ul>
-<h3 id="doc-2-analysis-event-presence-conferences-webinars-sponsorships">Event presence (conferences, webinars, sponsorships)</h3>
+<h3 id="doc-4-analysis-event-presence-conferences-webinars-sponsorships">Event presence (conferences, webinars, sponsorships)</h3>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: SRAM hosts/activates at major race events and community programs (World Gravel Championships, Rampage, community partners). ([S24], [S25], [S26])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span> (secondary): SRAM HQ used for retailer education events (NBDA/CABDA workshop tie-ins). ([S47])</li>
 </ul>
-<h2 id="doc-2-analysis-5-customer-intelligence">5) Customer Intelligence</h2>
-<h3 id="doc-2-analysis-review-analysis-g2capterratrustpilot">Review analysis (G2/Capterra/Trustpilot)</h3>
+<h2 id="doc-4-analysis-5-customer-intelligence">5) Customer Intelligence</h2>
+<h3 id="doc-4-analysis-review-analysis-g2capterratrustpilot">Review analysis (G2/Capterra/Trustpilot)</h3>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: G2/Capterra are weak channels for this hardware category; no high-signal SRAM software-style review footprint found.</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: Trustpilot for sram.com shows low trust score (~1.6/5) with complaint concentration in warranty and support friction. ([S48])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: Trustpilot for hammerhead.io similarly skews negative in battery/support reliability commentary. ([S49])</li>
 <li><span class="badge badge-inference">~ Inference</span>: public review channels over-index dissatisfied users, but they still highlight real process failure points.</li>
 </ul>
-<h3 id="doc-2-analysis-common-complaints-reddit-support-communities">Common complaints (Reddit, support communities)</h3>
+<h3 id="doc-4-analysis-common-complaints-reddit-support-communities">Common complaints (Reddit, support communities)</h3>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: Reddit threads in 2024-2025 repeatedly cite pairing issues, firmware/update problems, and shifting anomalies. ([S50], [S51], [S52], [S53])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: Trustpilot includes examples of update-related derailleur failures and warranty frustration. ([S48])</li>
 <li><span class="badge badge-inference">~ Inference</span>: reliability narrative risk is increasingly software-operations-driven, not just mechanical QC.</li>
 </ul>
-<h3 id="doc-2-analysis-feature-requests-and-gaps">Feature requests and gaps</h3>
+<h3 id="doc-4-analysis-feature-requests-and-gaps">Feature requests and gaps</h3>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: Hammerhead feature request/community workflows exist and route-surface filtering shipped in 2025 updates. ([S38], [S39])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: API access is licensed and gated, which can limit ecosystem experimentation by third-party developers. ([S37])</li>
 <li><span class="badge badge-inference">~ Inference</span>: customers want easier troubleshooting/recovery flows and more transparent compatibility behavior.</li>
 </ul>
-<h3 id="doc-2-analysis-churn-signals-employees-customers">Churn signals (employees + customers)</h3>
+<h3 id="doc-4-analysis-churn-signals-employees-customers">Churn signals (employees + customers)</h3>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: public reviews include explicit intent to switch to Shimano or other alternatives after support failures. ([S48])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: Glassdoor reviews are overall positive but repeatedly mention process rigor gaps, below-market pay concerns, and cross-functional execution friction. ([S54], [S55])</li>
 <li><span class="badge badge-inference">~ Inference</span>: churn risk is less about raw product performance and more about confidence in lifecycle support.</li>
 </ul>
-<h2 id="doc-2-analysis-6-strategic-risks-for-sram">6) Strategic Risks for SRAM</h2>
+<h2 id="doc-4-analysis-6-strategic-risks-for-sram">6) Strategic Risks for SRAM</h2>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: private ownership limits financial transparency (segment margins, concentration, investment intensity). ([S8])</li>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: connected-product complaints (pairing/update/support) are persistent across channels. ([S48], [S50], [S51])</li>
@@ -1030,13 +1160,13 @@
 <li><span class="badge badge-inference">~ Inference</span>: SRAM carries a &quot;complexity tax&quot; from managing premium hardware + embedded firmware + consumer software + global service simultaneously.</li>
 <li><span class="badge badge-speculative">? Speculative</span>: overextension risk rises as portfolio breadth expands faster than support consistency.</li>
 </ul>
-<h2 id="doc-2-analysis-7-competitive-landscape-assessment">7) Competitive Landscape Assessment</h2>
-<h3 id="doc-2-analysis-how-sram-competes-in-its-markets">How SRAM competes in its markets</h3>
+<h2 id="doc-4-analysis-7-competitive-landscape-assessment">7) Competitive Landscape Assessment</h2>
+<h3 id="doc-4-analysis-how-sram-competes-in-its-markets">How SRAM competes in its markets</h3>
 <ul>
 <li><span class="badge badge-confirmed">✓ Confirmed</span>: SRAM runs a multi-front competitive posture: multi-line product refreshes in 2025, distribution and service expansion, and active legal defense of product positioning. ([S14], [S29], [S56])</li>
 <li><span class="badge badge-inference">~ Inference</span>: SRAM&#x27;s competitive approach is structural, not campaign-based. It pushes simultaneously on product, channel, and ecosystem.</li>
 </ul>
-<h3 id="doc-2-analysis-what-it-takes-to-win-in-srams-markets">What it takes to win in SRAM&#x27;s markets</h3>
+<h3 id="doc-4-analysis-what-it-takes-to-win-in-srams-markets">What it takes to win in SRAM&#x27;s markets</h3>
 <ul>
 <li><span class="badge badge-inference">~ Inference</span>: product parity in shifting or braking alone is insufficient for durable market leadership. Winning requires:</li>
 <li>strong dealer-service reliability across geographies,</li>
@@ -1044,13 +1174,13 @@
 <li>ecosystem compatibility leadership,</li>
 <li>and OEM commercial terms that reduce integration risk for bike manufacturers.</li>
 </ul>
-<h3 id="doc-2-analysis-competitor-moves-that-pose-the-greatest-threat-to-sram">Competitor moves that pose the greatest threat to SRAM</h3>
+<h3 id="doc-4-analysis-competitor-moves-that-pose-the-greatest-threat-to-sram">Competitor moves that pose the greatest threat to SRAM</h3>
 <ul>
 <li><span class="badge badge-speculative">? Speculative</span>: Shimano accelerating connected-product investment to close the AXS/Hammerhead data advantage.</li>
 <li><span class="badge badge-speculative">? Speculative</span>: bundle-led OEM wins by a competitor across drivetrain + suspension + head unit at lower integrated cost.</li>
 <li><span class="badge badge-speculative">? Speculative</span>: a credible value-tier entrant (like microSHIFT) improving software and service to undercut SRAM&#x27;s mid-market positioning.</li>
 </ul>
-<h3 id="doc-2-analysis-early-warning-signals-to-monitor">Early warning signals to monitor</h3>
+<h3 id="doc-4-analysis-early-warning-signals-to-monitor">Early warning signals to monitor</h3>
 <ul>
 <li>New 2026+ distributor/service-center announcements from Shimano or Fox. ([S28], [S29])</li>
 <li>Connected-product hiring velocity and role seniority at Shimano and Garmin.</li>
@@ -1058,8 +1188,8 @@
 <li>OEM spec-share shifts on flagship bike launches (SRAM vs Shimano/Campagnolo mix).</li>
 <li>New trademark filings attached to SRAM LLC before product launch windows. ([S40], [S41])</li>
 </ul>
-<h2 id="doc-2-analysis-appendix-source-list-recent">Appendix: Source List (Recent)</h2>
-<h3 id="doc-2-analysis-primary-official">Primary / Official</h3>
+<h2 id="doc-4-analysis-appendix-source-list-recent">Appendix: Source List (Recent)</h2>
+<h3 id="doc-4-analysis-primary-official">Primary / Official</h3>
 <ul>
 <li><a href="https://www.sram.com/en/company" target="_blank">S1</a> SRAM Company page.</li>
 <li><a href="https://www.sram.com/de/company/about/history" target="_blank">S2</a> SRAM History page.</li>
@@ -1091,7 +1221,7 @@
 <li><a href="https://apps.apple.com/it/app/sram-axs/id1430049231" target="_blank">S57</a> SRAM AXS app listing.</li>
 <li><a href="https://apps.apple.com/fr/app/hammerhead-companion/id6476576279" target="_blank">S58</a> Hammerhead companion app listing (rating snapshot).</li>
 </ul>
-<h3 id="doc-2-analysis-secondary-corroboration">Secondary / Corroboration</h3>
+<h3 id="doc-4-analysis-secondary-corroboration">Secondary / Corroboration</h3>
 <ul>
 <li><a href="https://theorg.com/org/sram/org-chart/ken-lousberg" target="_blank">S6</a> The Org: Ken Lousberg profile.</li>
 <li><a href="https://www.theofficialboard.com/biography/heather-bridges-dg507" target="_blank">S7</a> Official Board: Heather Bridges bio.</li>
@@ -1120,127 +1250,74 @@
 <li><a href="https://www.glassdoor.com/Reviews/SRAM-Reviews-E14880.htm" target="_blank">S54</a> Glassdoor SRAM review aggregate.</li>
 <li><a href="https://www.glassdoor.com/Reviews/Employee-Review-SRAM-E14880-RVW102439081.htm" target="_blank">S55</a> Glassdoor recent employee review snapshot.</li>
 <li><a href="https://www.cyclingnews.com/news/its-implementation-has-already-caused-tangible-harm-sram-launches-legal-challenge-against-uci-gear-restrictions/" target="_blank">S56</a> CyclingNews on SRAM&#x27;s UCI challenge.</li>
-</ul></div></section><section class="doc fade-in" id="doc-3-claude" data-folder="root"><div class="doc-header"><span class="doc-folder">root</span><h2 class="doc-title">Claude</h2></div><div class="doc-body"><h1 id="doc-3-claude-claudemd">CLAUDE.md</h1>
-<p>This file provides guidance to AI agents working in this repository.</p>
-<h2 id="doc-3-claude-what-this-repository-is">What This Repository Is</h2>
-<p>Group project workspace for AIML/MORS 950 &quot;Human and Machine Intelligence&quot; at Northwestern (Kellogg), Winter 2026. The goal is a C-suite-ready AI Adoption Playbook for SRAM LLC (6-8 pages).</p>
-<h2 id="doc-3-claude-repository-structure">Repository Structure</h2>
-<ul>
-<li><code>analysis.md</code> — primary competitive intelligence document</li>
-<li><code>revenue/revenue_streams_sram.md</code> — revenue stream analysis</li>
-<li><code>competitors/competitors_sram.md</code> — competitor analysis</li>
-<li><code>ai adoption/ai-adoption-playbook.md</code> — final AI adoption playbook (6-8 page deliverable)</li>
-<li><code>interview/interview-writeup.md</code> — interview write-up (Jordan Hartsell, VP Digital Products)</li>
-<li><code>reference/sram_ai_strategy.md</code> — supplementary strategy reference</li>
-<li><code>prompts/ai-adoption.prompt.md</code> — prompt used to generate AI adoption content</li>
-<li><code>prompts/unified-playbook-session.prompt.md</code> — prompt for unified playbook generation</li>
-<li><code>presentation/SRAM_AI_Adoption_Playbook.pptx</code> — 8-minute presentation deck</li>
-<li><code>tools/build_presentation.py</code> — script that generates the presentation PPTX</li>
-<li><code>analysis-hub.html</code> — generated HTML viewer (do not edit directly)</li>
-<li><code>tools/build_analysis_hub.py</code> — script that compiles all <code>.md</code> files into <code>analysis-hub.html</code></li>
-<li><code>syllabus.md</code> — course syllabus</li>
-</ul>
-<h2 id="doc-3-claude-how-to-rebuild-the-analysis-hub">How to Rebuild the Analysis Hub</h2>
-<p>After editing any markdown file, run:</p>
-<pre><code>
-python3 tools/build_analysis_hub.py
-</code></pre>
-<p>No dependencies beyond the Python standard library.</p>
-<h2 id="doc-3-claude-confidence-labeling-convention">Confidence Labeling Convention</h2>
-<p>Every claim in analysis documents uses one of three labels:</p>
-<ul>
-<li><span class="badge badge-confirmed">✓ Confirmed</span> — explicit source evidence</li>
-<li><span class="badge badge-inference">~ Inference</span> — reasoned synthesis from confirmed facts</li>
-<li><span class="badge badge-speculative">? Speculative</span> — plausible but not directly verified</li>
-</ul>
-<p>Every claim cites a bracketed source (e.g., <code>[S1]</code>). The source list lives at the bottom of <code>analysis.md</code>.</p>
-<h2 id="doc-3-claude-who-you-are-working-with">Who You Are Working With</h2>
-<p>Most contributors are non-technical MBA students. They are not engineers. Assume they do not know git, markdown, or how terminals work.</p>
-<ul>
-<li>Explain what you are about to do before you do it, in plain English</li>
-<li>After making changes, summarize what changed and why in one or two sentences</li>
-<li>Ask before doing anything that cannot be undone</li>
-<li>If something fails, explain the problem simply and suggest the next step</li>
-<li>Proactively suggest what to work on next if the user seems unsure</li>
-</ul>
-<h2 id="doc-3-claude-agent-ground-rules">Agent Ground Rules</h2>
-<ul>
-<li>Do not edit <code>analysis-hub.html</code> directly. Always rebuild via the Python script.</li>
-<li>Do not remove confidence labels or source citations from any claim.</li>
-<li>Do not add claims without a label and a source citation.</li>
-<li>Keep all changes in feature branches named <code>feature/{feature-name}</code>.</li>
-<li>Open a PR before merging into main.</li>
-<li>Small, incremental commits. One logical change per commit.</li>
-<li>All commits attributed to the committing team member only. No Co-Authored-By lines.</li>
-<li>After a PR is merged, delete the remote feature branch to keep the repo clean.</li>
-</ul></div></section><section class="doc fade-in" id="doc-4-competitorssram" data-folder="competitors"><div class="doc-header"><span class="doc-folder">competitors</span><h2 class="doc-title">Competitors Sram</h2></div><div class="doc-body"><h1 id="doc-4-competitorssram-sram-competitor-map">SRAM Competitor Map</h1>
+</ul></div></section><section class="doc fade-in" id="doc-5-competitorssram" data-folder="research"><div class="doc-header"><span class="doc-folder">research/competitors</span><h2 class="doc-title">Competitors Sram</h2></div><div class="doc-body"><h1 id="doc-5-competitorssram-sram-competitor-map">SRAM Competitor Map</h1>
 <p>Date: 2026-02-22</p>
 <p>Company: SRAM LLC (private)</p>
-<h2 id="doc-4-competitorssram-overview">Overview</h2>
+<h2 id="doc-5-competitorssram-overview">Overview</h2>
 <p>SRAM competes across multiple cycling categories, so there is no single competitor set. The most important competitors depend on which SRAM business line you are analyzing (drivetrains, suspension, wheels, pedals, or cycling computers).</p>
-<h2 id="doc-4-competitorssram-most-relevant-competitors-by-segment">Most Relevant Competitors (By Segment)</h2>
-<h3 id="doc-4-competitorssram-1-drivetrains-brakes-core-component-systems">1) Drivetrains / Brakes / Core Component Systems</h3>
+<h2 id="doc-5-competitorssram-most-relevant-competitors-by-segment">Most Relevant Competitors (By Segment)</h2>
+<h3 id="doc-5-competitorssram-1-drivetrains-brakes-core-component-systems">1) Drivetrains / Brakes / Core Component Systems</h3>
 <ul>
 <li><strong>Shimano</strong> (broadest direct competitor across road/MTB/gravel drivetrains, brakes, pedals)</li>
 <li><strong>Campagnolo</strong> (premium road groupset competitor)</li>
 <li><strong>microSHIFT</strong> (value/mid-market drivetrain competition, especially on OE and entry/mid tiers)</li>
 <li><strong>TRP / Tektro</strong> (brake and some drivetrain overlap in selected categories)</li>
 </ul>
-<h3 id="doc-4-competitorssram-2-mtb-suspension-and-gravity-component-overlap-rockshox-vs-alternatives">2) MTB Suspension and Gravity Component Overlap (RockShox vs alternatives)</h3>
+<h3 id="doc-5-competitorssram-2-mtb-suspension-and-gravity-component-overlap-rockshox-vs-alternatives">2) MTB Suspension and Gravity Component Overlap (RockShox vs alternatives)</h3>
 <ul>
 <li><strong>Fox Factory</strong> (FOX / Marzocchi; major suspension competitor)</li>
 <li><strong>Manitou / Hayes</strong> (selected suspension/brake overlap)</li>
 <li><strong>Ohlins</strong> (premium suspension overlap in some segments)</li>
 </ul>
-<h3 id="doc-4-competitorssram-3-wheels-cockpit-zipp-overlap">3) Wheels / Cockpit (Zipp overlap)</h3>
+<h3 id="doc-5-competitorssram-3-wheels-cockpit-zipp-overlap">3) Wheels / Cockpit (Zipp overlap)</h3>
 <ul>
 <li><strong>DT Swiss</strong></li>
 <li><strong>ENVE</strong></li>
 <li><strong>Reserve</strong> (Santa Cruz-related wheel brand ecosystem)</li>
 <li><strong>Bontrager / Roval</strong> (bike-brand affiliated wheel systems on OE and aftermarket)</li>
 </ul>
-<h3 id="doc-4-competitorssram-4-power-meters-ride-data-quarq-overlap">4) Power Meters / Ride Data (Quarq overlap)</h3>
+<h3 id="doc-5-competitorssram-4-power-meters-ride-data-quarq-overlap">4) Power Meters / Ride Data (Quarq overlap)</h3>
 <ul>
 <li><strong>4iiii</strong></li>
 <li><strong>Favero</strong></li>
 <li><strong>Power2Max</strong></li>
 <li><strong>Shimano</strong> (integrated power meter options)</li>
 </ul>
-<h3 id="doc-4-competitorssram-5-cycling-computers-connected-experience-hammerhead-overlap">5) Cycling Computers / Connected Experience (Hammerhead overlap)</h3>
+<h3 id="doc-5-competitorssram-5-cycling-computers-connected-experience-hammerhead-overlap">5) Cycling Computers / Connected Experience (Hammerhead overlap)</h3>
 <ul>
 <li><strong>Garmin</strong></li>
 <li><strong>Wahoo</strong></li>
 <li><strong>Bryton</strong></li>
 </ul>
-<h3 id="doc-4-competitorssram-6-pedals-time-overlap">6) Pedals (TIME overlap)</h3>
+<h3 id="doc-5-competitorssram-6-pedals-time-overlap">6) Pedals (TIME overlap)</h3>
 <ul>
 <li><strong>Shimano SPD / SPD-SL</strong></li>
 <li><strong>LOOK</strong></li>
 <li><strong>Crankbrothers</strong></li>
 </ul>
-<h2 id="doc-4-competitorssram-practical-takeaway-for-analysis">Practical Takeaway for Analysis</h2>
+<h2 id="doc-5-competitorssram-practical-takeaway-for-analysis">Practical Takeaway for Analysis</h2>
 <p>Track competitors in two layers:</p>
 <p>1. <strong>Platform-level competitor</strong>: Shimano (most complete direct overlap with SRAM&#x27;s component ecosystem).</p>
 <p>2. <strong>Segment specialists</strong>: Campagnolo (road), Fox (suspension), Garmin/Wahoo (head units), DT Swiss/ENVE (wheels), etc.</p>
-<h2 id="doc-4-competitorssram-why-this-matters-for-sram-strategy">Why This Matters for SRAM Strategy</h2>
+<h2 id="doc-5-competitorssram-why-this-matters-for-sram-strategy">Why This Matters for SRAM Strategy</h2>
 <p>SRAM&#x27;s advantage is not just single products; it is the ability to bundle and integrate across brands (SRAM, RockShox, Zipp, Quarq, Hammerhead, TIME, Ochain). Competitors can be stronger in one category but weaker across the full performance-cycling stack.</p>
-<h2 id="doc-4-competitorssram-source-base-used">Source Base Used</h2>
+<h2 id="doc-5-competitorssram-source-base-used">Source Base Used</h2>
 <ul>
 <li><a href="https://www.sram.com/en/company" target="_blank">SRAM Company page</a></li>
 <li><a href="https://www.sram.com/en/sram/road/collections/etap-axs/collection" target="_blank">SRAM product/category navigation and collections</a></li>
 <li><a href="https://www.sram.com/en/sram/mountain/collections/eagle-transmission" target="_blank">SRAM Eagle Transmission collection</a></li>
 <li><a href="https://www.sram.com/en/support" target="_blank">SRAM support ecosystem pages</a></li>
-</ul></div></section><section class="doc fade-in" id="doc-5-interview-writeup" data-folder="interview"><div class="doc-header"><span class="doc-folder">interview</span><h2 class="doc-title">Interview Writeup</h2></div><div class="doc-body"><h1 id="doc-5-interview-writeup-sram-interview-write-up">SRAM Interview Write-Up</h1>
+</ul></div></section><section class="doc fade-in" id="doc-6-interview-writeup" data-folder="research"><div class="doc-header"><span class="doc-folder">research/interview</span><h2 class="doc-title">Interview Writeup</h2></div><div class="doc-body"><h1 id="doc-6-interview-writeup-sram-interview-write-up">SRAM Interview Write-Up</h1>
 <p>Donovan Palmer, Ed [Last Name], Will [Last Name] | AIML/MORS 950 | Week 4 | 4 Mar 2026</p>
 <p>Interviewee: Jordan Hartsell, VP of Digital Products and Innovation, SRAM LLC</p>
 <p>Format: 45-minute Zoom call</p>
 <p>Interviewer team: Donovan Palmer, Ed [Last Name], Will [Last Name]</p>
 <hr>
-<h2 id="doc-5-interview-writeup-background">Background</h2>
+<h2 id="doc-6-interview-writeup-background">Background</h2>
 <p>Jordan Hartsell oversees SRAM&#x27;s digital product organization, including the AXS wireless ecosystem, the Hammerhead cycling computer platform, and internal tooling that connects support, dealer operations, and manufacturing workflows. Hartsell joined SRAM from a tier-1 automotive supplier where he led a similar connected-product digitization effort. He has been at SRAM for four years.</p>
 <p>We reached out to Hartsell through a LinkedIn introduction from a mutual contact at Northwestern. He agreed to a 45-minute conversation focused on how SRAM thinks about technology adoption and where AI fits into that picture.</p>
 <hr>
-<h2 id="doc-5-interview-writeup-key-questions-and-responses">Key Questions and Responses</h2>
+<h2 id="doc-6-interview-writeup-key-questions-and-responses">Key Questions and Responses</h2>
 <p><strong>Donovan: What does SRAM&#x27;s data infrastructure look like today, and how ready is it for AI-driven workflows?</strong></p>
 <p>Hartsell was direct. &quot;We have good data in pockets and messy data everywhere else.&quot; The AXS and Hammerhead platforms generate structured, real-time usage data — firmware update logs, connectivity events, ride metrics, diagnostic flags. That data is clean and increasingly well-organized. The problem is everything adjacent to it. Dealer support tickets live in one system. Warranty claims live in another. Compatibility documentation is maintained manually across product lines and updated on a release cadence that does not always keep pace with the actual hardware. &quot;If I wanted to build a support AI today, I could get it to work well for AXS and Hammerhead,&quot; he said. &quot;The moment a dealer asks about a RockShox fork on a 2019 frame with a third-party brake, I start to sweat.&quot;</p>
 <p>He said SRAM has been investing in data consolidation for 18 months, with the explicit goal of making it AI-ready. The priority has been support and compatibility data first, demand forecasting second. He estimated they are 60 to 70 percent of the way to a state where a bounded support assistant could be deployed responsibly.</p>
@@ -1254,18 +1331,18 @@ python3 tools/build_analysis_hub.py
 <p>Success in year one, per Hartsell, is narrow and boring. &quot;I want one workflow measurably faster, measurably more accurate, with no regression in dealer satisfaction scores.&quot; He specifically named the AXS drivetrain support queue as the target. His internal definition of success is a 30 percent reduction in average handle time on AXS support tickets with dealer satisfaction scores holding flat or improving.</p>
 <p>The pull-the-plug criteria he cited: two consecutive weeks of quality degradation, any warranty or safety-adjacent error that reaches a dealer without human review, or dealer opt-out rate above 15 percent in the pilot cohort. &quot;I would rather shut it down and restart than defend a mistake to Ken [Lousberg].&quot;</p>
 <hr>
-<h2 id="doc-5-interview-writeup-synthesis-and-implications">Synthesis and Implications</h2>
+<h2 id="doc-6-interview-writeup-synthesis-and-implications">Synthesis and Implications</h2>
 <p>Three things from this conversation directly shaped our diagnosis.</p>
 <p>First, SRAM&#x27;s data readiness is real but bounded. The AXS and Hammerhead stack is AI-ready now. The broader catalog is not. Any year-one AI recommendation must start inside that ready perimeter and expand only after the data consolidation work matures. This validates our recommendation to pilot on AXS and Hammerhead support first.</p>
 <p>Second, the adoption barrier is not technical — it is trust. The failed pilot Hartsell described created more internal skepticism than any cost or complexity argument would have. The implication for our playbook is that the rollout design matters as much as the tool selection. Human-in-the-loop is not a concession to skeptics; it is the thing that keeps the pilot alive long enough to prove value.</p>
 <p>Third, Hammerhead is SRAM&#x27;s real AI moat. The connected rider data relationship that Hammerhead enables is a structural advantage over Shimano that SRAM is not fully exploiting yet. Our playbook should call this out explicitly as the long-term differentiation lever, not just a near-term support tool.</p>
 <hr>
-<h2 id="doc-5-interview-writeup-open-questions-for-the-playbook">Open Questions for the Playbook</h2>
+<h2 id="doc-6-interview-writeup-open-questions-for-the-playbook">Open Questions for the Playbook</h2>
 <ul>
 <li>What is the current state of SRAM&#x27;s dealer satisfaction tracking, and is it consistent enough to serve as a reliable AI pilot baseline?</li>
 <li>How does SRAM plan to handle compatibility AI for legacy products where documentation is incomplete or inconsistent?</li>
 <li>Is there an executive sponsor above Hartsell who has formally committed to the AI data consolidation roadmap, or is this still a digital-team initiative without C-suite ownership?</li>
-</ul></div></section><section class="doc fade-in" id="doc-6-ai-adoptionprompt" data-folder="prompts"><div class="doc-header"><span class="doc-folder">prompts</span><h2 class="doc-title">Ai Adoption.Prompt</h2></div><div class="doc-body"><p><strong>PROMPT:</strong></p>
+</ul></div></section><section class="doc fade-in" id="doc-7-ai-adoptionprompt" data-folder="research"><div class="doc-header"><span class="doc-folder">research/prompts</span><h2 class="doc-title">Ai Adoption.Prompt</h2></div><div class="doc-body"><p><strong>PROMPT:</strong></p>
 <p>You are a strategic business consultant. Create a <strong>1-page executive outline</strong> for SRAM LLC on how the company is positioned for AI adoption, with a clear focus on:</p>
 <ul>
 <li>lowering cost,</li>
@@ -1273,7 +1350,7 @@ python3 tools/build_analysis_hub.py
 <li>creating new revenue opportunities.</li>
 </ul>
 <p>Use <strong>plain language only</strong>. Avoid technical jargon unless briefly explained in simple terms.</p>
-<h2 id="doc-6-ai-adoptionprompt-output-goal">Output Goal</h2>
+<h2 id="doc-7-ai-adoptionprompt-output-goal">Output Goal</h2>
 <p>Write this as if it is going to SRAM&#x27;s CEO. Make it direct, practical, and decision-oriented.</p>
 <p>The output must support two uses:</p>
 <ul>
@@ -1282,7 +1359,7 @@ python3 tools/build_analysis_hub.py
 </ul>
 <p>Do not use <code>[FACT]</code> or <code>[ASSUMPTION]</code> labels.</p>
 <p>Do not reference <code>analysis.md</code>.</p>
-<h2 id="doc-6-ai-adoptionprompt-required-structure">Required Structure</h2>
+<h2 id="doc-7-ai-adoptionprompt-required-structure">Required Structure</h2>
 <p>Use the exact section flow below:</p>
 <p>1. <strong>Where SRAM Stands Today</strong></p>
 <ul>
@@ -1349,7 +1426,7 @@ python3 tools/build_analysis_hub.py
 <li>Clear decision bullets on what to approve now.</li>
 <li>Re-state the sequencing rule: bounded, well-defined first; big-system overhaul later.</li>
 </ul>
-<h2 id="doc-6-ai-adoptionprompt-website-rendering-requirements">Website Rendering Requirements</h2>
+<h2 id="doc-7-ai-adoptionprompt-website-rendering-requirements">Website Rendering Requirements</h2>
 <ul>
 <li>The website version must preserve all Markdown content (no dropped sections, no omitted bullets).</li>
 <li>Use a consistent card-and-grid information architecture:</li>
@@ -1360,7 +1437,7 @@ python3 tools/build_analysis_hub.py
 <li>Keep print behavior visually consistent with the web layout (avoid radically different print-only rearrangements).</li>
 <li>Ensure the design remains readable and professional on desktop and mobile.</li>
 </ul>
-<h2 id="doc-6-ai-adoptionprompt-style-rules">Style Rules</h2>
+<h2 id="doc-7-ai-adoptionprompt-style-rules">Style Rules</h2>
 <ul>
 <li>Keep it to one page.</li>
 <li>Use plain business language.</li>
@@ -1375,7 +1452,7 @@ python3 tools/build_analysis_hub.py
 <li>Say &quot;win more bicycle manufacturer opportunities through faster proposals&quot; instead of &quot;OEM proposal cycle win lift&quot;.</li>
 <li>Do not use unexplained abbreviations such as <code>L/B/H</code>, <code>AHT</code>, <code>MAPE</code>, or <code>fill-rate</code>.</li>
 </ul>
-<h2 id="doc-6-ai-adoptionprompt-context-to-use">Context to Use</h2>
+<h2 id="doc-7-ai-adoptionprompt-context-to-use">Context to Use</h2>
 <p>SRAM LLC is a private company in performance cycling components and connected cycling technology (drivetrains/brakes, RockShox suspension, Zipp wheels/cockpit, Quarq power meters, Hammerhead cycling computers, TIME pedals).</p>
 <p>Known process areas to consider:</p>
 <ul>
@@ -1385,13 +1462,13 @@ python3 tools/build_analysis_hub.py
 <li>firmware/app support for AXS/Hammerhead</li>
 <li>compatibility and content management</li>
 <li>multi-brand selling across SRAM/RockShox/Zipp/Quarq/Hammerhead/TIME</li>
-</ul></div></section><section class="doc fade-in" id="doc-7-unified-playbook-sessionprompt" data-folder="prompts"><div class="doc-header"><span class="doc-folder">prompts</span><h2 class="doc-title">Unified Playbook Session.Prompt</h2></div><div class="doc-body"><h1 id="doc-7-unified-playbook-sessionprompt-session-prompts-unified-ai-adoption-playbook">Session Prompts — Unified AI Adoption Playbook</h1>
-<h2 id="doc-7-unified-playbook-sessionprompt-aimlmors-950-northwestern-kellogg-winter-2026">AIML/MORS 950, Northwestern Kellogg, Winter 2026</h2>
+</ul></div></section><section class="doc fade-in" id="doc-8-unified-playbook-sessionprompt" data-folder="research"><div class="doc-header"><span class="doc-folder">research/prompts</span><h2 class="doc-title">Unified Playbook Session.Prompt</h2></div><div class="doc-body"><h1 id="doc-8-unified-playbook-sessionprompt-session-prompts-unified-ai-adoption-playbook">Session Prompts — Unified AI Adoption Playbook</h1>
+<h2 id="doc-8-unified-playbook-sessionprompt-aimlmors-950-northwestern-kellogg-winter-2026">AIML/MORS 950, Northwestern Kellogg, Winter 2026</h2>
 <p>This file documents the exact prompts used in the Claude Code session that produced</p>
 <p><code>ai adoption/unified-ai-playbook-2031.md</code> and the supporting reference materials.</p>
 <p>It is preserved here so the reasoning process is transparent and reproducible.</p>
 <hr>
-<h2 id="doc-7-unified-playbook-sessionprompt-session-overview">Session Overview</h2>
+<h2 id="doc-8-unified-playbook-sessionprompt-session-overview">Session Overview</h2>
 <p><strong>Date:</strong> 2026-03-06</p>
 <p><strong>Tool:</strong> Claude Code (claude-sonnet-4-6)</p>
 <p><strong>Working directory:</strong> C:\claude_output\AIML950SRAM</p>
@@ -1400,8 +1477,8 @@ python3 tools/build_analysis_hub.py
 <p>and then performing a structured analysis and synthesis exercise that</p>
 <p>produced the unified playbook.</p>
 <hr>
-<h2 id="doc-7-unified-playbook-sessionprompt-prompts-used-in-order">Prompts Used (In Order)</h2>
-<h3 id="doc-7-unified-playbook-sessionprompt-prompt-1-clone-the-repository">Prompt 1 — Clone the repository</h3>
+<h2 id="doc-8-unified-playbook-sessionprompt-prompts-used-in-order">Prompts Used (In Order)</h2>
+<h3 id="doc-8-unified-playbook-sessionprompt-prompt-1-clone-the-repository">Prompt 1 — Clone the repository</h3>
 <p>&gt; Please clone this public repository https://github.com/donovan-palmer/sram-ai-playbook.git</p>
 <p>&gt; to my current working directory for this class. You should follow the CLAUDE.md file</p>
 <p>&gt; exclusively as it defines some of the key git processes for you to follow so that you</p>
@@ -1410,7 +1487,7 @@ python3 tools/build_analysis_hub.py
 <p>the project structure and contribution rules (feature branches, PRs, no Co-Authored-By</p>
 <p>lines, confidence labeling convention, analysis-hub rebuild process).</p>
 <hr>
-<h3 id="doc-7-unified-playbook-sessionprompt-prompt-2-read-the-key-files">Prompt 2 — Read the key files</h3>
+<h3 id="doc-8-unified-playbook-sessionprompt-prompt-2-read-the-key-files">Prompt 2 — Read the key files</h3>
 <p>&gt; Can you please read back to me the key files within the repository as a starting point?</p>
 <p><strong>What this produced:</strong> Claude read and summarized all four primary documents in parallel:</p>
 <ul>
@@ -1420,7 +1497,7 @@ python3 tools/build_analysis_hub.py
 <li><code>ai adoption/ai-adoption-outline.md</code> — original AI adoption pilot proposal</li>
 </ul>
 <hr>
-<h3 id="doc-7-unified-playbook-sessionprompt-prompt-3-explain-the-collaboration-workflow">Prompt 3 — Explain the collaboration workflow</h3>
+<h3 id="doc-8-unified-playbook-sessionprompt-prompt-3-explain-the-collaboration-workflow">Prompt 3 — Explain the collaboration workflow</h3>
 <p>&gt; Assume I have no prior coding or GitHub experience and do not understand that lingo.</p>
 <p>&gt; Please walk me through how I can work with Claude to collaborate with the owner of</p>
 <p>&gt; the repository I just had you access.</p>
@@ -1428,7 +1505,7 @@ python3 tools/build_analysis_hub.py
 <p>and pull requests using Google Docs and track-changes analogies. Defined the user&#x27;s role</p>
 <p>(describe what to add/change; provide sources) versus Claude&#x27;s role (all technical steps).</p>
 <hr>
-<h3 id="doc-7-unified-playbook-sessionprompt-prompt-4-compare-the-two-strategy-documents">Prompt 4 — Compare the two strategy documents</h3>
+<h3 id="doc-8-unified-playbook-sessionprompt-prompt-4-compare-the-two-strategy-documents">Prompt 4 — Compare the two strategy documents</h3>
 <p>&gt; Can you perform a detailed comparison of the sram_ai_strategy.md file to the</p>
 <p>&gt; ai-adoption-outline.md file from the cloned repository. Please include a complete</p>
 <p>&gt; breakdown of what is unique to each AI strategy, what is shared, how the financial</p>
@@ -1444,7 +1521,7 @@ python3 tools/build_analysis_hub.py
 <p>pilot proposal; the strategy document is a 3-year transformation case with manufacturing,</p>
 <p>engineering, and platform depth. Neither alone is complete.</p>
 <hr>
-<h3 id="doc-7-unified-playbook-sessionprompt-prompt-5-propose-the-merged-strategy">Prompt 5 — Propose the merged strategy</h3>
+<h3 id="doc-8-unified-playbook-sessionprompt-prompt-5-propose-the-merged-strategy">Prompt 5 — Propose the merged strategy</h3>
 <p>&gt; How would you propose merging these two proposals into an actionable near-term pilot</p>
 <p>&gt; program that ultimately informs a long-term AI adoption strategy that would be fully</p>
 <p>&gt; implemented with run-rate financial impacts realized by 2031? Please focus on refining</p>
@@ -1469,7 +1546,7 @@ python3 tools/build_analysis_hub.py
 <li>Five specific CEO approvals required to begin</li>
 </ul>
 <hr>
-<h3 id="doc-7-unified-playbook-sessionprompt-prompt-6-formalize-as-a-repository-contribution">Prompt 6 — Formalize as a repository contribution</h3>
+<h3 id="doc-8-unified-playbook-sessionprompt-prompt-6-formalize-as-a-repository-contribution">Prompt 6 — Formalize as a repository contribution</h3>
 <p>&gt; Yes please draft this as a formal document to contribute to the repository — following</p>
 <p>&gt; the CLAUDE.md rules, on a new feature branch, with a PR for Donovan to review. Can you</p>
 <p>&gt; also make a separate contribution to the repository that shows the prompts I used to</p>
@@ -1486,7 +1563,7 @@ python3 tools/build_analysis_hub.py
 <li><code>feature/session-reference-materials</code></li>
 </ul>
 <hr>
-<h2 id="doc-7-unified-playbook-sessionprompt-notes-on-the-analytical-process">Notes on the Analytical Process</h2>
+<h2 id="doc-8-unified-playbook-sessionprompt-notes-on-the-analytical-process">Notes on the Analytical Process</h2>
 <p>The merged playbook is not a simple combination of the two source documents.</p>
 <p>The key synthesis decisions were:</p>
 <p>1. <strong>Data infrastructure moved to Phase 1.</strong> Both source documents treated the Snowflake</p>
@@ -1503,77 +1580,7 @@ python3 tools/build_analysis_hub.py
 <p>that the original outline deferred.</p>
 <p>4. <strong>Governance applied universally.</strong> The outline had strong rollback rules and human</p>
 <p>approval requirements but scoped them only to customer service. The merged plan applies</p>
-<p>the same governance framework across all phases and all use cases.</p></div></section><section class="doc fade-in" id="doc-8-readme" data-folder="root"><div class="doc-header"><span class="doc-folder">root</span><h2 class="doc-title">Readme</h2></div><div class="doc-body"><h1 id="doc-8-readme-sram-ai-adoption-playbook">SRAM AI Adoption Playbook</h1>
-<p>Group project for AIML/MORS 950 &quot;Human and Machine Intelligence&quot; — Northwestern Kellogg, Winter 2026.</p>
-<p><strong>Goal:</strong> Produce a C-suite-ready AI Adoption Playbook for SRAM LLC (6–8 pages).</p>
-<p><strong>Team lead:</strong> Donovan Palmer</p>
-<hr>
-<h2 id="doc-8-readme-getting-started-no-technical-experience-required">Getting Started (No Technical Experience Required)</h2>
-<p>You will use Claude Code to contribute to this project. Claude Code is an AI assistant that works directly inside this repository. It reads the project files, understands the context, and helps you write, edit, and organize content.</p>
-<h3 id="doc-8-readme-step-1-install-claude-code">Step 1 — Install Claude Code</h3>
-<p>Open your terminal (on Mac, press Cmd + Space and type &quot;Terminal&quot;) and run:</p>
-<pre><code>
-npm install -g @anthropic-ai/claude-code
-</code></pre>
-<p>If you do not have Node.js installed, download it first from https://nodejs.org and then run the command above.</p>
-<h3 id="doc-8-readme-step-2-clone-this-repository">Step 2 — Clone This Repository</h3>
-<p>In your terminal, run:</p>
-<pre><code>
-git clone https://github.com/donovan-palmer/sram-ai-playbook.git
-cd sram-ai-playbook
-</code></pre>
-<p>This downloads the project to your computer.</p>
-<h3 id="doc-8-readme-step-3-open-claude-code">Step 3 — Open Claude Code</h3>
-<p>From inside the project folder, run:</p>
-<pre><code>
-claude
-</code></pre>
-<p>Claude Code will start up, read all the project files automatically, and be ready to help. You do not need to explain the project to it. It already knows the context.</p>
-<h3 id="doc-8-readme-step-4-ask-claude-to-help-you">Step 4 — Ask Claude to Help You</h3>
-<p>Just type what you want to do. For example:</p>
-<ul>
-<li>&quot;Summarize what we have so far on the AI adoption strategy&quot;</li>
-<li>&quot;Add a section on demand forecasting to the AI adoption outline&quot;</li>
-<li>&quot;What are SRAM&#x27;s biggest competitors and how do they compare?&quot;</li>
-<li>&quot;Review the revenue analysis and tell me what is missing&quot;</li>
-</ul>
-<p>Claude will make changes, explain what it did, and ask before doing anything significant.</p>
-<hr>
-<h2 id="doc-8-readme-what-is-in-this-repository">What Is In This Repository</h2>
-<div class="table-wrap"><table><thead><tr><th>File or Folder</th><th>What It Contains</th></tr></thead><tbody>
-<tr><td><code>analysis.md</code></td><td>Full competitive intelligence on SRAM — company overview, revenue, competitors, leadership</td></tr>
-<tr><td><code>ai adoption/ai-adoption-outline.md</code></td><td>AI adoption strategy with prioritized use cases and tool recommendations</td></tr>
-<tr><td><code>revenue/revenue_streams_sram.md</code></td><td>Breakdown of SRAM&#x27;s revenue streams</td></tr>
-<tr><td><code>competitors/competitors_sram.md</code></td><td>Competitor analysis</td></tr>
-<tr><td><code>prompts/ai-adoption.prompt.md</code></td><td>The prompt used to generate the AI adoption content (for reference)</td></tr>
-<tr><td><code>analysis-hub.html</code></td><td>A single HTML file that displays all the analysis in one place — open it in your browser</td></tr>
-<tr><td><code>tools/build_analysis_hub.py</code></td><td>Script that rebuilds <code>analysis-hub.html</code> after you make edits</td></tr>
-<tr><td><code>syllabus.md</code></td><td>Course syllabus for reference</td></tr>
-</tbody></table></div>
-<hr>
-<h2 id="doc-8-readme-how-to-view-the-full-analysis">How to View the Full Analysis</h2>
-<p>Open <code>analysis-hub.html</code> in your browser. It pulls everything together in one readable view. If you make edits to any markdown file, ask Claude to rebuild it:</p>
-<p>&gt; &quot;Rebuild the analysis hub&quot;</p>
-<hr>
-<h2 id="doc-8-readme-how-claims-are-labeled">How Claims Are Labeled</h2>
-<p>Every factual claim in the analysis files carries one of three labels:</p>
-<ul>
-<li><span class="badge badge-confirmed">✓ Confirmed</span> — backed by a direct source</li>
-<li><span class="badge badge-inference">~ Inference</span> — reasoned from confirmed facts</li>
-<li><span class="badge badge-speculative">? Speculative</span> — plausible but not verified</li>
-</ul>
-<p>Every claim also has a bracketed source (like <code>[S1]</code>). The full source list is at the bottom of <code>analysis.md</code>. Do not add claims without a label and a source.</p>
-<hr>
-<h2 id="doc-8-readme-how-to-contribute">How to Contribute</h2>
-<p>Claude Code handles the technical parts. You focus on the content.</p>
-<p>1. Tell Claude what you want to add or change</p>
-<p>2. Review what Claude proposes before it makes changes</p>
-<p>3. Claude will create a branch, commit the change, and open a pull request</p>
-<p>4. Donovan reviews and merges</p>
-<p>If you get stuck, just ask Claude: &quot;What should I work on next?&quot; or &quot;Walk me through how to contribute.&quot;</p>
-<hr>
-<h2 id="doc-8-readme-questions">Questions</h2>
-<p>Reach out to Donovan Palmer directly.</p></div></section><section class="doc fade-in" id="doc-9-sramaistrategy" data-folder="reference"><div class="doc-header"><span class="doc-folder">reference</span><h2 class="doc-title">Sram Ai Strategy</h2></div><div class="doc-body"><h1 id="doc-9-sramaistrategy-sram-llc-ai-adoption-strategy">SRAM LLC — AI Adoption Strategy</h1>
+<p>the same governance framework across all phases and all use cases.</p></div></section><section class="doc fade-in" id="doc-9-sramaistrategy" data-folder="research"><div class="doc-header"><span class="doc-folder">research/reference</span><h2 class="doc-title">Sram Ai Strategy</h2></div><div class="doc-body"><h1 id="doc-9-sramaistrategy-sram-llc-ai-adoption-strategy">SRAM LLC — AI Adoption Strategy</h1>
 <h2 id="doc-9-sramaistrategy-executive-summary-deep-analysis">Executive Summary &amp; Deep Analysis</h2>
 <p><strong>Prepared:</strong> February 28, 2026</p>
 <p><strong>Scope:</strong> AI adoption roadmap, business process transformation, financial modeling</p>
@@ -2005,7 +2012,7 @@ claude
 <p>6. <strong>2027:</strong> Full platform, subscription, and manufacturing AI at scale.</p>
 <p>The window to establish an unassailable AI moat in cycling is <strong>now</strong>. Shimano&#x27;s 2026 response to SRAM&#x27;s WorldTour parity will likely be product-led. SRAM&#x27;s asymmetric advantage is the platform play — and AI is what turns that platform from a nice-to-have app into an indispensable performance intelligence layer for every serious cyclist on earth.</p>
 <hr>
-<p><em>Analysis compiled from public financial benchmarks, industry AI ROI studies, and SRAM competitive intelligence research. All SRAM-specific financial figures are estimates based on publicly available data. AI ROI benchmarks sourced from IBM, Bridgera, Rock-and-River, LinearB, GitHub/Microsoft, and industry analyst reports (2024–2026). Re-verify projections against internal SRAM financials before use in capital allocation decisions.</em></p></div></section><section class="doc fade-in" id="doc-10-revenuestreamssram" data-folder="revenue"><div class="doc-header"><span class="doc-folder">revenue</span><h2 class="doc-title">Revenue Streams Sram</h2></div><div class="doc-body"><h1 id="doc-10-revenuestreamssram-sram-revenue-architecture-how-the-company-makes-money">SRAM Revenue Architecture: How the Company Makes Money</h1>
+<p><em>Analysis compiled from public financial benchmarks, industry AI ROI studies, and SRAM competitive intelligence research. All SRAM-specific financial figures are estimates based on publicly available data. AI ROI benchmarks sourced from IBM, Bridgera, Rock-and-River, LinearB, GitHub/Microsoft, and industry analyst reports (2024–2026). Re-verify projections against internal SRAM financials before use in capital allocation decisions.</em></p></div></section><section class="doc fade-in" id="doc-10-revenuestreamssram" data-folder="research"><div class="doc-header"><span class="doc-folder">research/revenue</span><h2 class="doc-title">Revenue Streams Sram</h2></div><div class="doc-body"><h1 id="doc-10-revenuestreamssram-sram-revenue-architecture-how-the-company-makes-money">SRAM Revenue Architecture: How the Company Makes Money</h1>
 <p>Date: 2026-02-22</p>
 <p>Company: SRAM LLC (private)</p>
 <h2 id="doc-10-revenuestreamssram-1-core-revenue-model">1) Core Revenue Model</h2>
@@ -2092,7 +2099,7 @@ claude
 <li><a href="https://www.sram.com/en/sram/mountain/collections/eagle-transmission" target="_blank">SRAM mountain collections (Eagle Transmission)</a></li>
 <li><a href="https://www.linkedin.com/company/sram-corporation/" target="_blank">LinkedIn - SRAM company page (employee band / leadership labels)</a></li>
 <li><a href="https://builtin.com/company/sram" target="_blank">Built In - SRAM (jobs/tech stack signals, secondary)</a></li>
-</ul></div></section><section class="doc fade-in" id="doc-11-sramcompanyanalysis" data-folder="root"><div class="doc-header"><span class="doc-folder">root</span><h2 class="doc-title">Sram Company Analysis</h2></div><div class="doc-body"><h1 id="doc-11-sramcompanyanalysis-sram-llc-deep-competitive-intelligence-report">SRAM LLC — Deep Competitive Intelligence Report</h1>
+</ul></div></section><section class="doc fade-in" id="doc-11-sramcompanyanalysis" data-folder="research"><div class="doc-header"><span class="doc-folder">research</span><h2 class="doc-title">Sram Company Analysis</h2></div><div class="doc-body"><h1 id="doc-11-sramcompanyanalysis-sram-llc-deep-competitive-intelligence-report">SRAM LLC — Deep Competitive Intelligence Report</h1>
 <p><strong>Generated:</strong> February 23, 2026</p>
 <p><strong>Research window:</strong> Last 18 months (August 2024 – February 2026)</p>
 <p><strong>Confidence labels:</strong> ✅ Confirmed | ⚠️ Estimated | 🔮 Speculative</p>
@@ -2567,7 +2574,7 @@ claude
 <li><a href="https://www.bikenews.online/index.php?route=bossblog/article&amp;blog_article_id=588" target="_blank">Bikenews – SRAM NT$10B Taichung Plant Investment</a></li>
 </ul>
 <hr>
-<p><em>Report compiled from publicly available sources. All financial figures marked ⚠️ are third-party estimates for a private company. Speculation marked 🔮 is inference from patterns, not confirmed fact. Re-verify time-sensitive data before use in strategic decisions.</em></p></div></section><section class="doc fade-in" id="doc-12-syllabus" data-folder="root"><div class="doc-header"><span class="doc-folder">root</span><h2 class="doc-title">Syllabus</h2></div><div class="doc-body"><h1 id="doc-12-syllabus-human-and-machine-intelligence-aiml-950-mors-950">Human and Machine Intelligence (AIML 950 / MORS 950)</h1>
+<p><em>Report compiled from publicly available sources. All financial figures marked ⚠️ are third-party estimates for a private company. Speculation marked 🔮 is inference from patterns, not confirmed fact. Re-verify time-sensitive data before use in strategic decisions.</em></p></div></section><section class="doc fade-in" id="doc-12-syllabus" data-folder="research"><div class="doc-header"><span class="doc-folder">research</span><h2 class="doc-title">Syllabus</h2></div><div class="doc-body"><h1 id="doc-12-syllabus-human-and-machine-intelligence-aiml-950-mors-950">Human and Machine Intelligence (AIML 950 / MORS 950)</h1>
 <p>Winter 2026 syllabus (reformatted from the PDF source).</p>
 <p>Source: <code>../AIML950_W26_groh.pdf</code></p>
 <p>Reformatted on: 2026-02-19</p>

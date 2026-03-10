@@ -12,7 +12,7 @@ Usage:
     python3 tools/build_presentation.py
 
 Output:
-    presentation/SRAM_AI_Adoption_Playbook.pptx
+    deliverables/SRAM_AI_Adoption_Playbook.pptx
 """
 
 from pptx import Presentation
@@ -1137,7 +1137,7 @@ text(slide, Inches(0.8), Inches(7.0), Inches(10), Inches(0.3),
 # ----------------------------------------------------------
 script_dir = os.path.dirname(os.path.abspath(__file__))
 repo_root = os.path.dirname(script_dir)
-out_dir = os.path.join(repo_root, "presentation")
+out_dir = os.path.join(repo_root, "deliverables")
 os.makedirs(out_dir, exist_ok=True)
 out_path = os.path.join(out_dir, "SRAM_AI_Adoption_Playbook.pptx")
 prs.save(out_path)
