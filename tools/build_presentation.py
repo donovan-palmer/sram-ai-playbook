@@ -274,8 +274,8 @@ slide_header(slide, "WHERE AI ADDS VALUE",
              "12 AI initiatives across four business functions")
 
 text(slide, Inches(0.8), Inches(1.35), Inches(11), Inches(0.35),
-     "Every function at SRAM has AI potential. Ordered by implementation "
-     "complexity and time to return.",
+     "Start where domain knowledge is high and outcomes are measurable. "
+     "Support is the proving ground for everything that follows.",
      size=13, color=BODY)
 
 # Function color coding
@@ -312,9 +312,9 @@ initiative_rows = [
 
 grid_left = Inches(2.4)   # Cards start after row labels
 card_w = Inches(3.2)
-card_h = Inches(1.05)
+card_h = Inches(0.9)
 col_gap = Inches(0.15)
-row_gap = Inches(0.15)
+row_gap = Inches(0.1)
 
 # Complexity arrow across the top
 arrow_labels = ["Quick Win", "Medium Effort", "Long-Term Bet"]
@@ -339,7 +339,9 @@ arrow_tri.line.fill.background()
 arrow_tri.rotation = 90.0
 
 for ri, (area, items) in enumerate(initiative_rows):
-    row_top = Inches(2.1) + Inches(ri * (1.05 + 0.15))
+    # Extra space after support row to fit the annotation
+    extra = Inches(0.35) if ri > 0 else 0
+    row_top = Inches(2.1) + Inches(ri * (0.9 + 0.1)) + extra
     fc = FUNC_COLORS[area]
 
     # Row label on the left with colored accent bar
@@ -349,7 +351,7 @@ for ri, (area, items) in enumerate(initiative_rows):
     label_bar.fill.fore_color.rgb = fc
     label_bar.line.fill.background()
 
-    text(slide, Inches(0.95), row_top + Inches(0.3), Inches(1.35), Inches(0.45),
+    text(slide, Inches(0.95), row_top + Inches(0.25), Inches(1.35), Inches(0.4),
          area, size=9, color=fc, bold=True)
 
     for ci, (initiative, problem, highlight) in enumerate(items):
@@ -368,10 +370,32 @@ for ri, (area, items) in enumerate(initiative_rows):
         else:
             add_rect(slide, left, row_top, card_w, card_h, CARD, BORDER)
 
-        text(slide, left + Inches(0.2), row_top + Inches(0.3), card_w - Inches(0.4), Inches(0.3),
-             initiative, size=13, color=BLACK, bold=True)
-        text(slide, left + Inches(0.2), row_top + Inches(0.65), card_w - Inches(0.4), Inches(0.35),
-             problem, size=10, color=GRAY)
+        text(slide, left + Inches(0.2), row_top + Inches(0.25), card_w - Inches(0.4), Inches(0.3),
+             initiative, size=12, color=BLACK, bold=True)
+        text(slide, left + Inches(0.2), row_top + Inches(0.55), card_w - Inches(0.4), Inches(0.3),
+             problem, size=9, color=GRAY)
+
+# Dashed-style box around the entire SUPPORT row to show it as the starting zone
+# Outline rect spanning all 3 support cards plus the row label
+support_row_top = Inches(2.1)
+support_box = slide.shapes.add_shape(
+    MSO_SHAPE.RECTANGLE,
+    Inches(0.65), support_row_top - Inches(0.08),
+    Inches(11.95), card_h + Inches(0.16))
+support_box.fill.background()
+support_box.line.color.rgb = FUNC_COLORS["SUPPORT"]
+support_box.line.width = Pt(2.5)
+
+# "START HERE" label on the right edge of the support row box
+text(slide, Inches(10.7), support_row_top - Inches(0.32), Inches(1.8), Inches(0.22),
+     "START HERE", size=10, color=FUNC_COLORS["SUPPORT"], bold=True,
+     align=PP_ALIGN.RIGHT)
+
+# Annotation below the support row explaining why
+text(slide, Inches(2.4), support_row_top + card_h + Inches(0.12), Inches(10.0), Inches(0.22),
+     "Support tasks are measurable, well-defined, and understood. "
+     "AI quality is easy to verify when domain knowledge is high.",
+     size=9, color=FUNC_COLORS["SUPPORT"])
 
 # Color legend at bottom
 legend_x = Inches(0.8)
@@ -815,8 +839,8 @@ slide_header(slide, "WHAT COULD BE",
              "Hardware company to performance intelligence by 2031")
 
 text(slide, Inches(0.8), Inches(1.35), Inches(11.5), Inches(0.35),
-     "Each connected SRAM product a rider buys increases the value of the data "
-     "and the quality of the AI. No competitor can replicate this full-stack advantage.",
+     "Proven AI pilots, strong data infrastructure, and teams that understand "
+     "guardrails unlock the innovation no competitor can replicate.",
      size=13, color=BODY)
 
 # Phase timeline across the top
@@ -863,19 +887,34 @@ visions = [
      "area. Proactive ordering replaces reactive."),
 ]
 
-for i, (title, desc) in enumerate(visions):
-    col = i % 2
-    row = i // 2
-    left = Inches(0.8) + Inches(col * 6.2)
-    top = Inches(3.85) + Inches(row * 1.35)
-    card_w = Inches(5.95)
-    card_h = Inches(1.15)
+# AXS Intelligence Platform is the centerpiece - full width, highlighted
+axs_top = Inches(3.85)
+axs_w = Inches(11.7)
+axs_h = Inches(1.3)
+add_rect(slide, Inches(0.8), axs_top, axs_w, axs_h, HIGHLIGHT_BG, RED)
+hbar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
+                               Inches(0.8), axs_top, Pt(4), axs_h)
+hbar.fill.solid()
+hbar.fill.fore_color.rgb = RED
+hbar.line.fill.background()
+text(slide, Inches(1.1), axs_top + Inches(0.08), Inches(4.0), Inches(0.2),
+     "THE UNLOCK", size=9, color=RED, bold=True)
+text(slide, Inches(1.1), axs_top + Inches(0.3), Inches(5.0), Inches(0.35),
+     visions[0][0], size=16, color=BLACK, bold=True)
+text(slide, Inches(1.1), axs_top + Inches(0.7), Inches(10.5), Inches(0.5),
+     visions[0][1], size=12, color=BODY)
 
-    add_rect(slide, left, top, card_w, card_h, CARD, BORDER)
-    text(slide, left + Inches(0.25), top + Inches(0.1), card_w - Inches(0.5), Inches(0.3),
-         title, size=13, color=BLACK, bold=True)
-    text(slide, left + Inches(0.25), top + Inches(0.4), card_w - Inches(0.5), Inches(0.6),
-         desc, size=11, color=BODY)
+# Remaining 3 vision cards in a row below
+for i, (title, desc) in enumerate(visions[1:]):
+    left = Inches(0.8) + Inches(i * 4.0)
+    top = Inches(5.35)
+    vc_w = Inches(3.75)
+    vc_h = Inches(1.15)
+    add_rect(slide, left, top, vc_w, vc_h, CARD, BORDER)
+    text(slide, left + Inches(0.2), top + Inches(0.1), vc_w - Inches(0.4), Inches(0.3),
+         title, size=12, color=BLACK, bold=True)
+    text(slide, left + Inches(0.2), top + Inches(0.4), vc_w - Inches(0.4), Inches(0.6),
+         desc, size=10, color=BODY)
 
 # Flywheel
 add_rect(slide, Inches(0.8), Inches(6.65), Inches(11.7), Inches(0.4), CARD, BORDER, 0.1)
