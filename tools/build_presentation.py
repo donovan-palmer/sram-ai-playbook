@@ -267,26 +267,28 @@ FUNC_COLORS = {
 }
 
 # Rows grouped by function (top to bottom on slide)
+# Order: ambitious/complex at top, measurable/proven at bottom
+# Progressive reveal goes top-down, so SUPPORT lands last as the punchline
 initiative_rows = [
-    ("SUPPORT", [
-        ("AI Support Agent", "70% of dealer questions are repetitive", True),
-        ("Warranty Automation", "Fraudulent and mis-filed claims cost time", False),
-        ("Compatibility Assistant", "Riders get wrong parts, return them", False),
-    ]),
-    ("SUPPLY CHAIN", [
-        ("Demand Forecasting", "No forecasting system exists today", False),
-        ("Inventory Allocation", "Stockouts and rush shipping losses", False),
-        ("Customer Analytics", "Shopify data is siloed, unused", False),
+    ("ENGINEERING", [
+        ("Generative Design", "Physical testing is slow and expensive", False),
+        ("AXS Intelligence", "Telemetry data is collected but unused", False),
+        ("AI-Tuned Components", "Suspension and shifting are static", False),
     ]),
     ("SALES", [
         ("OEM Proposal Automation", "Proposal cycles are slow, manual", False),
         ("Part Recommendations", "No guided upsell at point of service", False),
         ("DTC Personalization", "Velocio has no targeting capability", False),
     ]),
-    ("ENGINEERING", [
-        ("Generative Design", "Physical testing is slow and expensive", False),
-        ("AXS Intelligence", "Telemetry data is collected but unused", False),
-        ("AI-Tuned Components", "Suspension and shifting are static", False),
+    ("SUPPLY CHAIN", [
+        ("Demand Forecasting", "No forecasting system exists today", False),
+        ("Inventory Allocation", "Stockouts and rush shipping losses", False),
+        ("Customer Analytics", "Shopify data is siloed, unused", False),
+    ]),
+    ("SUPPORT", [
+        ("AI Support Agent", "70% of dealer questions are repetitive", True),
+        ("Warranty Automation", "Fraudulent and mis-filed claims cost time", False),
+        ("Compatibility Assistant", "Riders get wrong parts, return them", False),
     ]),
 ]
 
@@ -294,14 +296,12 @@ grid_left = Inches(2.4)
 card_w = Inches(3.2)
 card_h = Inches(0.9)
 
-# Build order: bottom-up (ENGINEERING, SALES, SUPPLY CHAIN, SUPPORT)
-# reveal_count = how many rows visible (counting from bottom)
-# show_outline = whether to show the START HERE box on support row
+# Build order: top-down (ENGINEERING, +SALES, +SUPPLY CHAIN, +SUPPORT)
+# Support lands last as the punchline with START HERE outline
 page += 1
 for build_step in range(4):
-    # Rows visible: build_step=0 -> ENGINEERING only, =1 -> +SALES, etc.
-    # We reveal from bottom (index 3) upward (index 0)
-    visible_from_index = 3 - build_step  # 3, 2, 1, 0
+    # Rows visible: build_step=0 -> row 0 only, =1 -> rows 0-1, etc.
+    visible_up_to = build_step  # 0, 1, 2, 3
     show_outline = (build_step == 3)  # Only on final build
 
     slide = prs.slides.add_slide(blank)
@@ -339,13 +339,13 @@ for build_step in range(4):
     arrow_tri.line.fill.background()
     arrow_tri.rotation = 90.0
 
-    # Draw all rows, but only show visible ones
+    # Draw rows top-down, only show revealed ones
     for ri, (area, items) in enumerate(initiative_rows):
         extra = Inches(0.35) if ri > 0 else 0
         row_top = Inches(2.1) + Inches(ri * (0.9 + 0.1)) + extra
         fc = FUNC_COLORS[area]
 
-        if ri < visible_from_index:
+        if ri > visible_up_to:
             continue  # Skip rows not yet revealed
 
         # Row label with colored accent bar
@@ -381,9 +381,10 @@ for build_step in range(4):
                  card_w - Inches(0.4), Inches(0.3),
                  problem, size=9, color=GRAY)
 
-    # On final build, add the START HERE outline box
+    # On final build, add the START HERE outline box around SUPPORT (row 3)
     if show_outline:
-        support_row_top = Inches(2.1)
+        support_extra = Inches(0.35)  # ri > 0 offset
+        support_row_top = Inches(2.1) + Inches(3 * (0.9 + 0.1)) + support_extra
         support_box = slide.shapes.add_shape(
             MSO_SHAPE.RECTANGLE,
             Inches(0.65), support_row_top - Inches(0.08),
@@ -519,18 +520,9 @@ for build in range(2):
 
 
 # ----------------------------------------------------------
-# SLIDE 6b: SMART Goals (full definitions before Gantt)
+# SLIDE 6b: SMART Goals (progressive build - one goal per click)
 # ----------------------------------------------------------
 page += 1
-slide = prs.slides.add_slide(blank)
-set_slide_bg(slide)
-slide_header(slide, "THE GOALS",
-             "Five SMART goals define pilot success at day 90")
-
-text(slide, Inches(0.8), Inches(1.35), Inches(11.5), Inches(0.35),
-     "Hartsell set the bar: \"One workflow measurably faster, measurably more "
-     "accurate, with no regression in dealer satisfaction scores.\"",
-     size=13, color=BODY)
 
 smart_goals_full = [
     ("G1", "Cut first-response time", "-40%", "Measured weekly vs. SLA baseline"),
@@ -540,76 +532,67 @@ smart_goals_full = [
     ("G5", "Hold customer satisfaction flat", "No decline", "Any sustained drop triggers rollback"),
 ]
 
-for i, (gid, title, target, detail) in enumerate(smart_goals_full):
-    y = Inches(2.0) + Inches(i * 0.85)
-    # Alternating row background
-    if i % 2 == 0:
-        add_rect(slide, Inches(0.8), y - Inches(0.05), Inches(11.7), Inches(0.75),
-                 LIGHT_GRAY_BG, None, 0.02)
+for goals_shown in range(1, 6):  # 1, 2, 3, 4, 5
+    slide = prs.slides.add_slide(blank)
+    set_slide_bg(slide)
+    slide_header(slide, "THE GOALS",
+                 "Five SMART goals define pilot success at day 90")
 
-    # Goal ID badge
-    badge = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,
-                                   Inches(1.1), y + Inches(0.12), Inches(0.55), Inches(0.4))
-    badge.fill.solid()
-    badge.fill.fore_color.rgb = GANTT_ACCENT
-    badge.line.fill.background()
-    badge.adjustments[0] = 0.15
-    tf = badge.text_frame
-    tf.word_wrap = True
-    p = tf.paragraphs[0]
-    p.text = gid
-    p.font.size = Pt(14)
-    p.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
-    p.font.bold = True
-    p.alignment = PP_ALIGN.CENTER
+    text(slide, Inches(0.8), Inches(1.35), Inches(11.5), Inches(0.35),
+         "Hartsell set the bar: \"One workflow measurably faster, measurably more "
+         "accurate, with no regression in dealer satisfaction scores.\"",
+         size=13, color=BODY)
 
-    # Title, target, and detail on one line
-    text(slide, Inches(1.9), y + Inches(0.08), Inches(5.5), Inches(0.4),
-         title, size=16, color=BLACK, bold=True)
-    text(slide, Inches(7.5), y + Inches(0.05), Inches(2.0), Inches(0.45),
-         target, size=22, color=RED, bold=True)
-    text(slide, Inches(9.5), y + Inches(0.15), Inches(3.0), Inches(0.35),
-         detail, size=11, color=GRAY)
+    for i, (gid, title, target, detail) in enumerate(smart_goals_full):
+        if i >= goals_shown:
+            break
+        y = Inches(2.0) + Inches(i * 0.85)
+        if i % 2 == 0:
+            add_rect(slide, Inches(0.8), y - Inches(0.05), Inches(11.7), Inches(0.75),
+                     LIGHT_GRAY_BG, None, 0.02)
 
-# Kill criteria - simple text
-text(slide, Inches(0.8), Inches(6.4), Inches(11.7), Inches(0.3),
-     "Kill criteria: 2 weeks quality drop, any safety error reaching a dealer, "
-     "or dealer opt-out above 15%",
-     size=12, color=GRAY, align=PP_ALIGN.CENTER)
+        badge = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,
+                                       Inches(1.1), y + Inches(0.12),
+                                       Inches(0.55), Inches(0.4))
+        badge.fill.solid()
+        badge.fill.fore_color.rgb = GANTT_ACCENT
+        badge.line.fill.background()
+        badge.adjustments[0] = 0.15
+        tf = badge.text_frame
+        tf.word_wrap = True
+        p = tf.paragraphs[0]
+        p.text = gid
+        p.font.size = Pt(14)
+        p.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
+        p.font.bold = True
+        p.alignment = PP_ALIGN.CENTER
 
-slide_footer(slide, page)
+        text(slide, Inches(1.9), y + Inches(0.08), Inches(5.5), Inches(0.4),
+             title, size=16, color=BLACK, bold=True)
+        text(slide, Inches(7.5), y + Inches(0.05), Inches(2.0), Inches(0.45),
+             target, size=22, color=RED, bold=True)
+        text(slide, Inches(9.5), y + Inches(0.15), Inches(3.0), Inches(0.35),
+             detail, size=11, color=GRAY)
+
+    # Show kill criteria only on final build
+    if goals_shown == 5:
+        text(slide, Inches(0.8), Inches(6.4), Inches(11.7), Inches(0.3),
+             "Kill criteria: 2 weeks quality drop, any safety error reaching a dealer, "
+             "or dealer opt-out above 15%",
+             size=12, color=GRAY, align=PP_ALIGN.CENTER)
+
+    slide_footer(slide, page)
 
 
 # ----------------------------------------------------------
-# SLIDE 6c: Gantt Chart - 90-Day Pilot Timeline
+# SLIDE 6c: Gantt Chart (progressive build - 3 slides)
 # ----------------------------------------------------------
 page += 1
-slide = prs.slides.add_slide(blank)
-set_slide_bg(slide)
-slide_header(slide, "THE TIMELINE",
-             "90-day pilot mapped to SMART goals")
 
-# Column headers: months across the top
-gantt_left = Inches(4.0)
-gantt_width = Inches(8.5)
-month_w = gantt_width / 3
-
-# Month labels
-for i, label in enumerate(["Month 1", "Month 2", "Month 3"]):
-    x = gantt_left + month_w * i
-    text(slide, x, Inches(1.4), month_w, Inches(0.25),
-         label, size=10, color=GRAY, bold=True, align=PP_ALIGN.CENTER)
-
-# Vertical month dividers
-for i in range(1, 3):
-    x = gantt_left + month_w * i
-    divider = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
-                                     x, Inches(1.65), Pt(1), Inches(5.0))
-    divider.fill.solid()
-    divider.fill.fore_color.rgb = CARD_BORDER
-    divider.line.fill.background()
-
-# Gantt rows: (label, smart_goal_num, start_month, duration_months, color)
+# Gantt rows grouped by phase:
+# Phase A (setup): rows 0-1
+# Phase B (execution): rows 2-7
+# Phase C (checkpoints): rows 8-10
 gantt_rows = [
     ("Setup + Integration", "", 0, 1, GANTT_LIGHT,
      "Zendesk + Kendra + Bedrock integration; baseline metrics"),
@@ -635,48 +618,73 @@ gantt_rows = [
      "Decision: scale, adjust, or stop"),
 ]
 
-row_height = Inches(0.38)
-for i, (label, goal_num, start, dur, color, desc) in enumerate(gantt_rows):
-    y = Inches(1.7) + row_height * i
+# Build cutoffs: show rows 0..N
+gantt_builds = [2, 8, 11]  # setup, +execution, +checkpoints
 
-    # Alternating row background
-    if i % 2 == 0:
-        add_rect(slide, Inches(0.8), y, Inches(11.7), row_height,
-                 LIGHT_GRAY_BG, None, 0.01)
+for build_idx, rows_shown in enumerate(gantt_builds):
+    slide = prs.slides.add_slide(blank)
+    set_slide_bg(slide)
+    slide_header(slide, "THE TIMELINE",
+                 "90-day pilot mapped to SMART goals")
 
-    # Row label (left side)
-    text(slide, Inches(0.8), y + Inches(0.05), Inches(2.8), Inches(0.28),
-         label, size=9, color=BLACK, bold=True)
+    gantt_left = Inches(4.0)
+    gantt_width = Inches(8.5)
+    month_w = gantt_width / 3
 
-    # SMART goal tag
-    if goal_num:
-        text(slide, Inches(3.4), y + Inches(0.05), Inches(0.5), Inches(0.28),
-             goal_num, size=8, color=RED, bold=True)
+    for mi, mlabel in enumerate(["Month 1", "Month 2", "Month 3"]):
+        x = gantt_left + month_w * mi
+        text(slide, x, Inches(1.4), month_w, Inches(0.25),
+             mlabel, size=10, color=GRAY, bold=True, align=PP_ALIGN.CENTER)
 
-    # Gantt bar
-    bar_x = gantt_left + month_w * start
-    bar_w = month_w * dur
-    bar = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,
-                                 int(bar_x), y + Inches(0.06),
-                                 int(bar_w), Inches(0.24))
-    bar.fill.solid()
-    bar.fill.fore_color.rgb = color
-    bar.line.fill.background()
-    bar.adjustments[0] = 0.15
+    for di in range(1, 3):
+        x = gantt_left + month_w * di
+        divider = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
+                                         x, Inches(1.65), Pt(1), Inches(5.0))
+        divider.fill.solid()
+        divider.fill.fore_color.rgb = CARD_BORDER
+        divider.line.fill.background()
 
-    # Description inside or beside bar (only if bar is wide enough)
-    if dur >= 1.0:
-        text(slide, int(bar_x) + Inches(0.1), y + Inches(0.06),
-             int(bar_w) - Inches(0.2), Inches(0.24),
-             desc, size=7, color=RGBColor(0xFF, 0xFF, 0xFF) if color == GANTT_ACCENT else BLACK)
+    row_height = Inches(0.38)
+    for i, (label, goal_num, start, dur, color, desc) in enumerate(gantt_rows):
+        if i >= rows_shown:
+            break
+        y = Inches(1.7) + row_height * i
 
-# Minimal legend
-text(slide, Inches(0.8), Inches(6.1), Inches(11), Inches(0.25),
-     "Day-45 checkpoint: scope review if draft acceptance < 50%  |  "
-     "Day-90: go / no-go decision",
-     size=9, color=GRAY, align=PP_ALIGN.CENTER)
+        if i % 2 == 0:
+            add_rect(slide, Inches(0.8), y, Inches(11.7), row_height,
+                     LIGHT_GRAY_BG, None, 0.01)
 
-slide_footer(slide, page)
+        text(slide, Inches(0.8), y + Inches(0.05), Inches(2.8), Inches(0.28),
+             label, size=9, color=BLACK, bold=True)
+
+        if goal_num:
+            text(slide, Inches(3.4), y + Inches(0.05), Inches(0.5), Inches(0.28),
+                 goal_num, size=8, color=RED, bold=True)
+
+        bar_x = gantt_left + month_w * start
+        bar_w = month_w * dur
+        bar = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,
+                                     int(bar_x), y + Inches(0.06),
+                                     int(bar_w), Inches(0.24))
+        bar.fill.solid()
+        bar.fill.fore_color.rgb = color
+        bar.line.fill.background()
+        bar.adjustments[0] = 0.15
+
+        if dur >= 1.0:
+            text(slide, int(bar_x) + Inches(0.1), y + Inches(0.06),
+                 int(bar_w) - Inches(0.2), Inches(0.24),
+                 desc, size=7,
+                 color=RGBColor(0xFF, 0xFF, 0xFF) if color == GANTT_ACCENT else BLACK)
+
+    # Legend only on final build
+    if build_idx == len(gantt_builds) - 1:
+        text(slide, Inches(0.8), Inches(6.1), Inches(11), Inches(0.25),
+             "Day-45 checkpoint: scope review if draft acceptance < 50%  |  "
+             "Day-90: go / no-go decision",
+             size=9, color=GRAY, align=PP_ALIGN.CENTER)
+
+    slide_footer(slide, page)
 
 
 # ----------------------------------------------------------
