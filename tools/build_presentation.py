@@ -269,7 +269,7 @@ slide_header(slide, "WHAT IS",
 # Metrics row - seed the Trustpilot problem early (Duarte tension)
 metrics_data = [
     ("REVENUE", "$1B+", "Private, Chicago-founded", BLACK),
-    ("BRANDS", "7", "Integrated portfolio", BLACK),
+    ("BRANDS", "6", "Integrated portfolio", BLACK),
     ("MTB SHARE", "#1", "Market leader globally", BLACK),
     ("TRUSTPILOT", "1.6 / 5.0", "Support-driven churn risk", ACCENT_RED_SOFT),
 ]
@@ -817,16 +817,20 @@ page += 1
 visions = [
     ("AXS Intelligence Platform",
      "Unified rider dashboard: power, gearing, suspension, heart rate "
-     "in one view. No competitor has the product breadth to build this."),
+     "in one view. No competitor has the product breadth to build this.",
+     "NEW REVENUE: Premium subscription tier"),
     ("Predictive Maintenance",
      "Connected components predict chain and brake pad replacement "
-     "before failure. Installed base becomes recurring revenue."),
+     "before failure. Installed base becomes recurring revenue.",
+     "NEW REVENUE: Per-device monitoring subscription"),
     ("AI-Tuned Performance",
      "Suspension auto-adjusts to terrain. Shifting optimizes for rider "
-     "power. Products improve continuously after purchase."),
+     "power. Products improve continuously after purchase.",
+     "NEW REVENUE: Premium optimization tier"),
     ("Dealer Intelligence",
      "Telemetry tells dealers which parts approach end-of-life in their "
-     "area. Proactive ordering replaces reactive."),
+     "area. Proactive ordering replaces reactive.",
+     "NEW REVENUE: Dealer analytics license"),
 ]
 
 for build in range(2):
@@ -836,8 +840,8 @@ for build in range(2):
                  "Hardware company to performance intelligence by 2031")
 
     text(slide, Inches(0.8), Inches(1.35), Inches(11.5), Inches(0.35),
-         "Proven AI pilots, strong data infrastructure, and teams that understand "
-         "guardrails unlock the innovation no competitor can replicate.",
+         "Each capability creates a new recurring revenue stream. "
+         "SRAM's installed base of connected components becomes a platform, not a one-time sale.",
          size=13, color=BODY)
 
     # AXS Intelligence Platform - always shown
@@ -856,31 +860,36 @@ for build in range(2):
          visions[0][0], size=20, color=BLACK, bold=True)
     text(slide, Inches(1.2), axs_top + Inches(0.9), Inches(10.5), Inches(0.5),
          visions[0][1], size=13, color=BODY)
+    text(slide, Inches(8.0), axs_top + Inches(0.4), Inches(4.2), Inches(0.3),
+         visions[0][2], size=11, color=RED, bold=True, align=PP_ALIGN.RIGHT)
 
     # Build 2: add supporting cards + flywheel
     if build == 1:
-        for i, (title, desc) in enumerate(visions[1:]):
+        for i, (title, desc, rev) in enumerate(visions[1:]):
             left = Inches(0.8) + Inches(i * 4.0)
             top = Inches(4.0)
             vc_w = Inches(3.75)
-            vc_h = Inches(1.3)
+            vc_h = Inches(1.5)
             add_rect(slide, left, top, vc_w, vc_h, CARD, BORDER)
             text(slide, left + Inches(0.25), top + Inches(0.15),
                  vc_w - Inches(0.5), Inches(0.3),
                  title, size=13, color=BLACK, bold=True)
             text(slide, left + Inches(0.25), top + Inches(0.5),
-                 vc_w - Inches(0.5), Inches(0.65),
+                 vc_w - Inches(0.5), Inches(0.55),
                  desc, size=11, color=BODY)
+            text(slide, left + Inches(0.25), top + Inches(1.15),
+                 vc_w - Inches(0.5), Inches(0.25),
+                 rev, size=9, color=RED, bold=True)
 
         # Flywheel
-        add_rect(slide, Inches(0.8), Inches(5.8), Inches(11.7), Inches(0.45),
+        add_rect(slide, Inches(0.8), Inches(6.0), Inches(11.7), Inches(0.45),
                  CARD, BORDER, 0.1)
         red_bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
-                                         Inches(0.8), Inches(5.8), Pt(4), Inches(0.45))
+                                         Inches(0.8), Inches(6.0), Pt(4), Inches(0.45))
         red_bar.fill.solid()
         red_bar.fill.fore_color.rgb = RED
         red_bar.line.fill.background()
-        text(slide, Inches(1.2), Inches(5.84), Inches(11.0), Inches(0.35),
+        text(slide, Inches(1.2), Inches(6.04), Inches(11.0), Inches(0.35),
              "Hardware sells data access  \u2192  Data improves performance  "
              "\u2192  Performance sells hardware",
              size=14, color=BLACK, bold=True, align=PP_ALIGN.CENTER)
@@ -889,7 +898,71 @@ for build in range(2):
 
 
 # ----------------------------------------------------------
-# SLIDE 9: The Ask
+# SLIDE: Organizational Enablers
+# ----------------------------------------------------------
+page += 1
+slide = prs.slides.add_slide(blank)
+set_slide_bg(slide)
+slide_header(slide, "WHAT IT TAKES",
+             "Talent, data, and leadership required at each phase")
+
+# Three columns: Talent, Data, Leadership
+enabler_cols = [
+    ("TALENT", [
+        ("Phase 1", "1 integration engineer + 1 product owner.\n"
+         "No new AI/ML hires. 250-400 existing engineers\n"
+         "have capacity with AI-assisted tooling."),
+        ("Phase 2+", "Add product managers and QA capacity.\n"
+         "The constraint is PM and QA, not developers."),
+    ]),
+    ("DATA", [
+        ("Today", "Good data in pockets, messy data everywhere\n"
+         "else. 18 months of consolidation underway.\n"
+         "AXS + Hammerhead data is pilot-ready."),
+        ("Needed", "Unified data layer linking CRM, inventory,\n"
+         "and telemetry. Foundation for Phase 2-4."),
+    ]),
+    ("LEADERSHIP", [
+        ("Phase 1", "CEO assigns one accountable business owner\n"
+         "with authority over scope and tooling decisions.\n"
+         "Weekly quality reviews."),
+        ("Open question", "No confirmed executive sponsor above\n"
+         "Hartsell for the data consolidation roadmap.\n"
+         "Resolving this is a prerequisite for Phase 2."),
+    ]),
+]
+
+col_w = Inches(3.75)
+col_gap = Inches(0.2)
+col_start = Inches(0.8)
+
+for ci, (col_title, items) in enumerate(enabler_cols):
+    cx = col_start + ci * (col_w + col_gap)
+
+    # Column header
+    text(slide, cx, Inches(1.5), col_w, Inches(0.3),
+         col_title, size=14, color=BLACK, bold=True)
+
+    for ri, (phase, detail) in enumerate(items):
+        ry = Inches(2.0) + Inches(ri * 2.2)
+        card_ht = Inches(2.0)
+        add_rect(slide, cx, ry, col_w, card_ht, CARD, BORDER)
+        text(slide, cx + Inches(0.2), ry + Inches(0.12), col_w - Inches(0.4), Inches(0.25),
+             phase.upper(), size=9, color=GRAY, bold=True)
+        text(slide, cx + Inches(0.2), ry + Inches(0.4), col_w - Inches(0.4), Inches(1.4),
+             detail, size=11, color=BODY)
+
+# Hartsell readiness quote
+quote_box(slide, Inches(0.8), Inches(6.15), Inches(11.7), Inches(0.55),
+          "We are 60 to 70 percent of the way to deploying a bounded support "
+          "assistant for AXS and Hammerhead products.",
+          "Jordan Hartsell, VP Digital Products, SRAM")
+
+slide_footer(slide, page)
+
+
+# ----------------------------------------------------------
+# SLIDE: The Ask
 # ----------------------------------------------------------
 page += 1
 slide = prs.slides.add_slide(blank)
