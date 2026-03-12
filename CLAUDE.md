@@ -17,7 +17,7 @@ Group project workspace for AIML/MORS 950 "Human and Machine Intelligence" at No
 - `research/SRAM_company_analysis.md` — tech stack and org analysis
 - `research/revenue/` — revenue stream analysis
 - `research/competitors/` — competitor analysis
-- `research/interview/` — interview write-up (Jordan Hartsell, VP Digital Products)
+- `research/interview/` — simulated interview with Clint Weber, VP Global Sales and Manufacturing
 - `research/reference/` — supplementary strategy reference
 - `research/prompts/` — prompts used for AI-assisted content generation
 - `research/analysis-hub.html` — generated HTML viewer (do not edit directly)

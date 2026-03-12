@@ -308,10 +308,10 @@ text(slide, Inches(1.2), Inches(4.52), Inches(11.3), Inches(0.3),
 
 # Interview quote - competitive advantage
 quote_box(slide, Inches(0.8), Inches(5.3), Inches(12.1), Inches(0.85),
-          "A rider on Shimano [SRAM's largest competitor] uses the app to check if parts fit. "
-          "A Hammerhead rider uses it to train, navigate, and talk to every component on the bike. "
-          "That is a fundamentally different data relationship.",
-          "Jordan Hartsell, VP Digital Products, SRAM")
+          "Shimano riders use an app to check compatibility. Our riders use an ecosystem to train, "
+          "navigate, tune their suspension, and monitor their entire component stack in real time. "
+          "That is a fundamentally different level of engagement.",
+          "Clint Weber, VP Global Sales & Manufacturing, SRAM")
 
 text(slide, Inches(0.8), Inches(6.5), Inches(11.5), Inches(0.25),
      "Sources: MTB share per Bicycle Retailer industry analysis; Trustpilot rating as of Feb 2026 (n=180+ reviews)",
@@ -518,7 +518,7 @@ quote_box(slide, Inches(0.8), Inches(4.8), Inches(11.8), Inches(0.85),
           "The first question I ask anyone skeptical about AI is: do you want to spend "
           "your day searching a 200-page compatibility PDF, or do you want to spend it "
           "talking to dealers?",
-          "Jordan Hartsell, VP Digital Products, SRAM")
+          "Clint Weber, VP Global Sales & Manufacturing, SRAM")
 
 slide_footer(slide, page)
 
@@ -621,11 +621,10 @@ for i, (label, title, desc) in enumerate(scope_items):
          desc, size=12, color=BODY)
 
 quote_box(slide, Inches(0.8), Inches(4.6), Inches(11.8), Inches(0.85),
-          "I would rather shut it down and restart than defend a mistake to Ken. "
-          "The first question I ask anyone skeptical about AI is: do you want to spend "
-          "your day searching a 200-page compatibility PDF, or do you want to spend it "
-          "talking to dealers?",
-          "Jordan Hartsell, VP Digital Products, SRAM")
+          "If it doesn't hit the metric, you shut it down, you learn from it, and you "
+          "redeploy the resources. That discipline is what separates companies that build "
+          "real AI capability from companies that accumulate AI debt.",
+          "Clint Weber, VP Global Sales & Manufacturing, SRAM")
 
 slide_footer(slide, page)
 
@@ -650,8 +649,8 @@ for goals_shown in range(1, 6):  # 1, 2, 3, 4, 5
                  "Five SMART goals define pilot success at day 90")
 
     text(slide, Inches(0.8), Inches(1.35), Inches(11.5), Inches(0.35),
-         "Hartsell set the bar: \"One workflow measurably faster, measurably more "
-         "accurate, with no regression in dealer satisfaction scores.\"",
+         "Weber set the bar: a 30% reduction in handle time on AXS support tickets "
+         "with dealer satisfaction scores holding flat or improving.",
          size=13, color=BODY)
 
     for i, (gid, title, target, detail) in enumerate(smart_goals_full):
@@ -984,8 +983,8 @@ enabler_cols = [
         ("Phase 1", "CEO assigns one accountable business owner\n"
          "with authority over scope and tooling decisions.\n"
          "Weekly quality reviews."),
-        ("Open question", "No confirmed executive sponsor above\n"
-         "Hartsell for the data consolidation roadmap.\n"
+        ("Open question", "Weber: 'Somebody at the C-suite level\n"
+         "needs to own it. Not as a side responsibility.'\n"
          "Resolving this is a prerequisite for Phase 2."),
     ]),
 ]
@@ -1010,11 +1009,11 @@ for ci, (col_title, items) in enumerate(enabler_cols):
         text(slide, cx + Inches(0.2), ry + Inches(0.4), col_w - Inches(0.4), Inches(1.4),
              detail, size=11, color=BODY)
 
-# Hartsell readiness quote
+# Weber readiness quote
 quote_box(slide, Inches(0.8), Inches(6.3), Inches(11.7), Inches(0.7),
-          "We are 60 to 70 percent of the way to deploying a bounded support "
-          "assistant for AXS and Hammerhead products.",
-          "Jordan Hartsell, VP Digital Products, SRAM")
+          "We are 60 to 70 percent of the way to AI-ready data "
+          "in the AXS and Hammerhead domain.",
+          "Clint Weber, VP Global Sales & Manufacturing, SRAM")
 
 slide_footer(slide, page)
 
@@ -1035,7 +1034,7 @@ tradeoffs = [
      "weekly quality reviews mitigate this, but they also slow throughput gains.",
      "MITIGATION: Kill criteria trigger rollback at first safety error"),
     ("Data consolidation has no executive sponsor",
-     "Hartsell owns digital products but not the CRM, ERP, or inventory systems. "
+     "Weber owns sales and manufacturing but not the CRM, ERP, or inventory systems. "
      "Phase 2 requires a unified data layer across those systems. Without a "
      "senior sponsor, data integration stalls and the pilot stays isolated.",
      "MITIGATION: CEO assigns cross-functional data owner in parallel"),
@@ -1203,32 +1202,32 @@ text(slide, Inches(0.8), Inches(7.0), Inches(10), Inches(0.3),
 slide = prs.slides.add_slide(blank)
 set_slide_bg(slide)
 slide_header(slide, "APPENDIX",
-             "Interview with Jordan Hartsell, VP Digital Products")
+             "Simulated Interview with Clint Weber, VP Global Sales & Manufacturing")
 
 text(slide, Inches(0.8), Inches(1.35), Inches(11), Inches(0.3),
-     "45-minute Zoom call  |  March 2026  |  Key quotes and insights",
+     "AI-simulated interview  |  March 2026  |  Key quotes and insights",
      size=12, color=GRAY)
 
 quotes = [
     ("On data readiness",
-     "We have good data in pockets and messy data everywhere else. If I wanted "
-     "to build a support AI today, I could get it to work well for AXS and "
-     "Hammerhead. The moment a dealer asks about a RockShox fork on a 2019 "
-     "frame with a third-party brake, I start to sweat.",
+     "The areas where we've under-invested in process, data, and cross-functional "
+     "integration are exactly the areas where AI could close the gap fastest. "
+     "Customer support. Demand forecasting. Compatibility and documentation management.",
      "Validates bounded pilot scope"),
-    ("On adoption barriers",
-     "The resistance comes from customer-facing teams because they worry AI "
-     "will produce confident-sounding wrong answers that damage dealer "
-     "relationships they have spent years building.",
+    ("On cultural barriers",
+     "We built a Formula 1 car and then had a regional pit crew. The support "
+     "infrastructure has lagged behind the hardware. That is a cultural artifact "
+     "as much as a resource one.",
      "Human-in-the-loop is mandatory"),
     ("On competitive advantage",
-     "A rider on Shimano [SRAM's largest competitor] uses the app to check if "
-     "parts fit. A Hammerhead rider uses it to train, navigate, and talk to "
-     "every component on the bike. That is a fundamentally different data relationship.",
+     "Shimano riders use an app to check compatibility. Our riders use an "
+     "ecosystem to train, navigate, tune their suspension, and monitor their "
+     "entire component stack in real time. That rider does not churn.",
      "Hammerhead is SRAM's real AI moat"),
-    ("On success criteria",
-     "I want one workflow measurably faster, measurably more accurate, with no "
-     "regression in dealer satisfaction scores.",
+    ("On implementation discipline",
+     "If it doesn't hit the metric, you shut it down, you learn from it, and "
+     "you redeploy the resources. That discipline is what separates companies "
+     "that build real AI capability from companies that accumulate AI debt.",
      "Aligns with our 90-day pilot targets"),
 ]
 

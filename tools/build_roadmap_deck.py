@@ -185,7 +185,7 @@ def slide_exec_summary(prs):
         "$1B+ revenue with AXS ecosystem generating telemetry data no competitor matches",
         "No ERP, no centralized analytics \u2014 70% of dealer questions follow automatable patterns",
         "Trustpilot rating at 1.6/5.0 driven by support friction, not product quality",
-        "VP Digital Products confirms: \"60-70% ready\" for bounded AI deployment",
+        "VP Global Sales & Manufacturing confirms: \"60-70% ready\" for bounded AI deployment",
         "Year 1 expected net value: $10.2M on $2.7M spend (3.8x return)",
         "Phased approach de-risks investment: 90-day pilot proves value before scaling",
     ], size=13)
