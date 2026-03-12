@@ -198,7 +198,67 @@ text(slide, Inches(1.5), Inches(6.3), Inches(10), Inches(0.4),
 
 
 # ----------------------------------------------------------
-# SLIDE 2: SRAM Today (action title: ecosystem advantage)
+# SLIDE 2: What is SRAM? (plain-language intro)
+# ----------------------------------------------------------
+page += 1
+slide = prs.slides.add_slide(blank)
+set_slide_bg(slide)
+slide_header(slide, "CONTEXT",
+             "SRAM makes the parts that make bikes go, stop, and shift")
+
+# Subtitle
+text(slide, Inches(0.8), Inches(1.5), Inches(11), Inches(0.5),
+     "A $1B+ company headquartered in Chicago, powering bikes from weekend rides to the Tour de France.",
+     size=14, color=GRAY)
+
+# Product category cards with emoji icons
+sram_cards = [
+    ("\u2699\uFE0F", "Drivetrains",
+     "Gears and chains that\nmake bikes go fast"),
+    ("\u270B", "Brakes",
+     "Disc brakes that help\nriders stop safely"),
+    ("\U0001F3CB", "Suspension",
+     "RockShox forks that\nabsorb bumps on trails"),
+    ("\U0001F4A8", "Wheels",
+     "Zipp aero wheels built\nfor speed"),
+    ("\U0001F4CA", "Sensors",
+     "Quarq power meters\nthat measure performance"),
+    ("\U0001F4F1", "App",
+     "AXS app that connects\nall components digitally"),
+]
+
+n_cards = len(sram_cards)
+total_avail = Inches(11.7)  # 13.333 - 0.8 margins on each side
+intro_gap = Inches(0.25)
+intro_card_w = (total_avail - intro_gap * (n_cards - 1)) / n_cards
+intro_card_h = Inches(2.8)
+intro_start_x = Inches(0.8)
+intro_card_top = Inches(2.2)
+
+for i, (icon, label, desc) in enumerate(sram_cards):
+    cx = intro_start_x + i * (intro_card_w + intro_gap)
+    add_rect(slide, int(cx), intro_card_top, int(intro_card_w), intro_card_h)
+    # Icon
+    text(slide, int(cx), intro_card_top + Inches(0.25), int(intro_card_w), Inches(0.7),
+         icon, size=36, color=BLACK, bold=False, align=PP_ALIGN.CENTER)
+    # Label
+    text(slide, int(cx), intro_card_top + Inches(1.0), int(intro_card_w), Inches(0.4),
+         label, size=16, color=BLACK, bold=True, align=PP_ALIGN.CENTER)
+    # Description
+    text(slide, int(cx) + Inches(0.15), intro_card_top + Inches(1.5),
+         int(intro_card_w) - Inches(0.3), Inches(1.0),
+         desc, size=11, color=BODY, align=PP_ALIGN.CENTER)
+
+# Bottom line
+text(slide, Inches(0.8), Inches(5.4), Inches(11.7), Inches(0.5),
+     "7 brands. 1 connected ecosystem. From casual riders to elite athletes.",
+     size=14, color=BODY, bold=True, align=PP_ALIGN.CENTER)
+
+slide_footer(slide, page)
+
+
+# ----------------------------------------------------------
+# SLIDE 3: SRAM Today (action title: ecosystem advantage)
 # ----------------------------------------------------------
 page += 1
 slide = prs.slides.add_slide(blank)
