@@ -211,20 +211,20 @@ text(slide, Inches(0.8), Inches(1.5), Inches(11), Inches(0.5),
      "A $1B+ company headquartered in Chicago, powering bikes from weekend rides to the Tour de France.",
      size=14, color=GRAY)
 
-# Product category cards (text only)
+# Product category cards (text only) - matches ecosystem slide order
 sram_cards = [
-    ("Drivetrains", "SRAM",
-     "Gears and chains that\nmake bikes go fast"),
-    ("Brakes", "SRAM",
-     "Disc brakes that help\nriders stop safely"),
+    ("Drivetrains + Braking", "SRAM",
+     "Gears, chains, and disc\nbrakes for every bike"),
     ("Suspension", "RockShox",
      "Forks that absorb\nbumps on trails"),
-    ("Wheels", "Zipp",
+    ("Wheels + Cockpit", "Zipp",
      "Aero wheels built\nfor speed"),
-    ("Sensors", "Quarq",
-     "Power meters that\nmeasure performance"),
-    ("App", "AXS",
-     "Connects all components\ninto one digital ecosystem"),
+    ("Power Meters", "Quarq",
+     "Sensors that measure\nrider performance"),
+    ("Cycling Computer", "Hammerhead",
+     "GPS device for navigation,\ntraining, and data"),
+    ("Pedals", "TIME",
+     "Clipless pedal systems\nfor road and mountain"),
 ]
 
 n_cards = len(sram_cards)
