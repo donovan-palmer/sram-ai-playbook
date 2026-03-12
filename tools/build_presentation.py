@@ -190,6 +190,8 @@ multitext(slide, Inches(1.5), Inches(2.6), Inches(10), Inches(2.5), [
     ("A $10M opportunity starting with a 90-day pilot", 16, BODY, False),
     ("", 8, GRAY, False),
     ("Prepared for Executive Leadership  |  March 2026", 13, GRAY, False),
+    ("", 6, GRAY, False),
+    ("Donovan Palmer, Ed Kreienberg, Will Zheng", 13, GRAY, False),
 ])
 
 text(slide, Inches(1.5), Inches(6.3), Inches(10), Inches(0.4),
