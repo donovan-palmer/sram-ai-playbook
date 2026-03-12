@@ -190,6 +190,8 @@ multitext(slide, Inches(1.5), Inches(2.6), Inches(10), Inches(2.5), [
     ("A $10M opportunity starting with a 90-day pilot", 16, BODY, False),
     ("", 8, GRAY, False),
     ("Prepared for Executive Leadership  |  March 2026", 13, GRAY, False),
+    ("", 6, GRAY, False),
+    ("Donovan Palmer, Ed Kreienberg, Will Zheng", 13, GRAY, False),
 ])
 
 text(slide, Inches(1.5), Inches(6.3), Inches(10), Inches(0.4),
@@ -198,7 +200,67 @@ text(slide, Inches(1.5), Inches(6.3), Inches(10), Inches(0.4),
 
 
 # ----------------------------------------------------------
-# SLIDE 2: SRAM Today (action title: ecosystem advantage)
+# SLIDE 2: What is SRAM? (plain-language intro)
+# ----------------------------------------------------------
+page += 1
+slide = prs.slides.add_slide(blank)
+set_slide_bg(slide)
+slide_header(slide, "CONTEXT",
+             "SRAM makes the parts that make bikes go, stop, and shift")
+
+# Subtitle
+text(slide, Inches(0.8), Inches(1.5), Inches(11), Inches(0.5),
+     "A $1B+ company headquartered in Chicago, powering bikes from weekend rides to the Tour de France.",
+     size=14, color=GRAY)
+
+# Product category cards (text only) - matches ecosystem slide order
+sram_cards = [
+    ("Drivetrains + Braking", "SRAM",
+     "Gears, chains, and disc\nbrakes for every bike"),
+    ("Suspension", "RockShox",
+     "Forks and shocks that\nabsorb trail impacts"),
+    ("Wheels + Cockpit", "Zipp",
+     "Aero wheels, handlebars,\nand stems"),
+    ("Power Meters", "Quarq",
+     "Sensors that measure\nrider output in watts"),
+    ("GPS Bike Computer", "Hammerhead",
+     "On-bike computer for\nnavigation and training data"),
+    ("Pedals", "TIME",
+     "Clip-in pedal systems\nfor road and mountain"),
+]
+
+n_cards = len(sram_cards)
+total_avail = Inches(11.7)  # 13.333 - 0.8 margins on each side
+intro_gap = Inches(0.25)
+intro_card_w = (total_avail - intro_gap * (n_cards - 1)) / n_cards
+intro_card_h = Inches(2.4)
+intro_start_x = Inches(0.8)
+intro_card_top = Inches(2.2)
+
+for i, (label, brand, desc) in enumerate(sram_cards):
+    cx = intro_start_x + i * (intro_card_w + intro_gap)
+    add_rect(slide, int(cx), intro_card_top, int(intro_card_w), intro_card_h)
+    # Brand name (small, above)
+    text(slide, int(cx), intro_card_top + Inches(0.2), int(intro_card_w), Inches(0.25),
+         brand, size=10, color=GRAY, bold=True, align=PP_ALIGN.CENTER)
+    # Product category label
+    text(slide, int(cx), intro_card_top + Inches(0.55), int(intro_card_w), Inches(0.5),
+         label, size=16, color=BLACK, bold=True, align=PP_ALIGN.CENTER)
+    # Description
+    text(slide, int(cx) + Inches(0.15), intro_card_top + Inches(1.2),
+         int(intro_card_w) - Inches(0.3), Inches(1.0),
+         desc, size=11, color=BODY, align=PP_ALIGN.CENTER)
+
+# Bottom line
+text(slide, Inches(0.8), Inches(5.0), Inches(11.7), Inches(0.5),
+     "6 brands. 1 connected ecosystem. From weekend riders to Tour de France pros.",
+     size=14, color=BODY, bold=True, align=PP_ALIGN.CENTER)
+
+slide_footer(slide, page)
+
+
+# ----------------------------------------------------------
+# SLIDE 3: SRAM Today (action title: ecosystem advantage)
 # ----------------------------------------------------------
 page += 1
 slide = prs.slides.add_slide(blank)
@@ -209,7 +271,7 @@ slide_header(slide, "WHAT IS",
 # Metrics row - seed the Trustpilot problem early (Duarte tension)
 metrics_data = [
     ("REVENUE", "$1B+", "Private, Chicago-founded", BLACK),
-    ("BRANDS", "7", "Integrated portfolio", BLACK),
+    ("BRANDS", "6", "Integrated portfolio", BLACK),
     ("MTB SHARE", "#1", "Market leader globally", BLACK),
     ("TRUSTPILOT", "1.6 / 5.0", "Support-driven churn risk", ACCENT_RED_SOFT),
 ]
@@ -223,7 +285,7 @@ eco_items = [
     ("RockShox", "Suspension"),
     ("Zipp", "Wheels + Cockpit"),
     ("Quarq", "Power Meters"),
-    ("Hammerhead", "Cycling Computer"),
+    ("Hammerhead", "GPS Bike Computer"),
     ("TIME", "Pedals"),
 ]
 for i, (brand, desc) in enumerate(eco_items):
@@ -241,15 +303,19 @@ for i, (brand, desc) in enumerate(eco_items):
 add_rect(slide, Inches(0.8), Inches(4.5), Inches(12.1), Inches(0.35),
          CARD, BORDER, 0.1)
 text(slide, Inches(1.2), Inches(4.52), Inches(11.3), Inches(0.3),
-     "AXS Wireless Ecosystem  |  All connected, all generating data",
+     "AXS Wireless Ecosystem  |  All 6 brands connect wirelessly and share data",
      size=11, color=BLACK, bold=True, align=PP_ALIGN.CENTER)
 
 # Interview quote - competitive advantage
 quote_box(slide, Inches(0.8), Inches(5.3), Inches(12.1), Inches(0.85),
-          "A Shimano rider uses the app to check compatibility. A Hammerhead rider uses it "
-          "to train, navigate, and communicate with their component stack. That is a "
-          "fundamentally different data relationship.",
+          "A rider on Shimano [SRAM's largest competitor] uses the app to check if parts fit. "
+          "A Hammerhead rider uses it to train, navigate, and talk to every component on the bike. "
+          "That is a fundamentally different data relationship.",
           "Jordan Hartsell, VP Digital Products, SRAM")
+
+text(slide, Inches(0.8), Inches(6.5), Inches(11.5), Inches(0.25),
+     "Sources: MTB share per Bicycle Retailer industry analysis; Trustpilot rating as of Feb 2026 (n=180+ reviews)",
+     size=8, color=GRAY)
 
 slide_footer(slide, page)
 
@@ -341,8 +407,7 @@ for build_step in range(4):
 
     # Draw rows top-down, only show revealed ones
     for ri, (area, items) in enumerate(initiative_rows):
-        extra = Inches(0.35) if ri > 0 else 0
-        row_top = Inches(2.1) + Inches(ri * (0.9 + 0.1)) + extra
+        row_top = Inches(2.1) + Inches(ri * (0.9 + 0.25))
         fc = FUNC_COLORS[area]
 
         if ri > visible_up_to:
@@ -383,8 +448,7 @@ for build_step in range(4):
 
     # On final build, add the START HERE outline box around SUPPORT (row 3)
     if show_outline:
-        support_extra = Inches(0.35)  # ri > 0 offset
-        support_row_top = Inches(2.1) + Inches(3 * (0.9 + 0.1)) + support_extra
+        support_row_top = Inches(2.1) + Inches(3 * (0.9 + 0.25))
         support_box = slide.shapes.add_shape(
             MSO_SHAPE.RECTANGLE,
             Inches(0.65), support_row_top - Inches(0.08),
@@ -413,8 +477,8 @@ slide_header(slide, "THE PROBLEM",
              "Support quality drives churn, not product quality")
 
 text(slide, Inches(0.8), Inches(1.35), Inches(11), Inches(0.35),
-     "Riders love SRAM hardware. They struggle with firmware, "
-     "compatibility, and warranty resolution.",
+     "Riders love SRAM hardware. They struggle with firmware updates, "
+     "part compatibility, and warranty resolution.",
      size=13, color=BODY)
 
 metric_card(slide, Inches(0.8), Inches(2.2), Inches(3.6), Inches(1.5),
@@ -436,8 +500,8 @@ slide_header(slide, "THE PROBLEM",
              "Support quality drives churn, not product quality")
 
 text(slide, Inches(0.8), Inches(1.35), Inches(11), Inches(0.35),
-     "Riders love SRAM hardware. They struggle with firmware, "
-     "compatibility, and warranty resolution.",
+     "Riders love SRAM hardware. They struggle with firmware updates, "
+     "part compatibility, and warranty resolution.",
      size=13, color=BODY)
 
 metric_card(slide, Inches(0.8), Inches(2.2), Inches(3.6), Inches(1.5),
@@ -464,59 +528,106 @@ slide_footer(slide, page)
 # ----------------------------------------------------------
 page += 1
 
-steps = [
-    ("1", "TICKET IN", "Dealer or rider\nsubmits via Zendesk"),
-    ("2", "AI RETRIEVES", "Amazon Kendra\nfinds approved docs"),
-    ("3", "AI DRAFTS", "Amazon Bedrock\nfrom knowledge base"),
-    ("4", "HUMAN REVIEWS", "Agent approves\nbefore sending"),
-    ("5", "QUALITY LOGGED", "Metrics tracked;\nweekly review"),
+# --- Pilot slide: before/after showing what actually changes ---
+
+# Build 1: before/after workflow
+slide = prs.slides.add_slide(blank)
+set_slide_bg(slide)
+slide_header(slide, "THE SOLUTION",
+             "AI drafts responses, humans approve them, nobody gets a wrong answer")
+
+# TODAY column
+today_left = Inches(0.8)
+col_w = Inches(5.5)
+text(slide, today_left, Inches(1.5), col_w, Inches(0.3),
+     "TODAY", size=14, color=ACCENT_RED_SOFT, bold=True)
+
+today_steps = [
+    ("1. Dealer emails a question",
+     "\"Which AXS derailleur firmware works with my 2024 Eagle cassette?\""),
+    ("2. Agent searches manually",
+     "Opens a 200-page compatibility PDF.\nSearches across multiple documents and wikis."),
+    ("3. Agent writes a response from scratch",
+     "Types out the answer, double-checks part numbers,\nhopes nothing changed since last update."),
+    ("4. Dealer waits",
+     "Average first response: ~4 hours.\n70% of questions follow the same patterns."),
 ]
+for i, (step, detail) in enumerate(today_steps):
+    y = Inches(1.9) + Inches(i * 1.15)
+    add_rect(slide, today_left, y, col_w, Inches(1.0), CARD, BORDER)
+    text(slide, today_left + Inches(0.2), y + Inches(0.08),
+         col_w - Inches(0.4), Inches(0.25),
+         step, size=12, color=BLACK, bold=True)
+    text(slide, today_left + Inches(0.2), y + Inches(0.38),
+         col_w - Inches(0.4), Inches(0.55),
+         detail, size=10, color=GRAY)
 
-for build in range(2):
-    slide = prs.slides.add_slide(blank)
-    set_slide_bg(slide)
-    slide_header(slide, "THE SOLUTION",
-                 "A 90-day pilot with human approval on every response")
+# PILOT column
+pilot_left = Inches(6.8)
+text(slide, pilot_left, Inches(1.5), col_w, Inches(0.3),
+     "WITH AI PILOT", size=14, color=GANTT_ACCENT, bold=True)
 
-    for i, (num, title, desc) in enumerate(steps):
-        left = Inches(0.8) + Inches(i * 2.45)
-        card_w = Inches(2.15)
+pilot_steps = [
+    ("1. Same question arrives",
+     "Dealer submits via Zendesk. Nothing changes for them."),
+    ("2. AI searches approved docs instantly",
+     "Amazon Kendra indexes SRAM's compatibility tables,\nfirmware notes, and service bulletins."),
+    ("3. AI drafts a response for the agent",
+     "Amazon Bedrock generates an answer from the knowledge\nbase. Agent reviews and edits before sending."),
+    ("4. Dealer gets a faster, verified answer",
+     "Target first response: ~2.5 hours.\nAgent spends time on hard problems, not repetitive ones."),
+]
+for i, (step, detail) in enumerate(pilot_steps):
+    y = Inches(1.9) + Inches(i * 1.15)
+    bg = HIGHLIGHT_BG if i == 3 else CARD
+    bd = GANTT_ACCENT if i == 3 else BORDER
+    add_rect(slide, pilot_left, y, col_w, Inches(1.0), bg, bd)
+    text(slide, pilot_left + Inches(0.2), y + Inches(0.08),
+         col_w - Inches(0.4), Inches(0.25),
+         step, size=12, color=BLACK, bold=True)
+    text(slide, pilot_left + Inches(0.2), y + Inches(0.38),
+         col_w - Inches(0.4), Inches(0.55),
+         detail, size=10, color=GRAY)
 
-        add_rect(slide, left, Inches(1.8), card_w, Inches(2.2), CARD, BORDER)
+# Arrow between columns
+arrow_right(slide, Inches(6.35), Inches(3.5), Inches(0.35), Inches(0.35))
 
-        circle = slide.shapes.add_shape(MSO_SHAPE.OVAL,
-                                        left + Inches(0.15), Inches(1.95),
-                                        Inches(0.4), Inches(0.4))
-        circle.fill.solid()
-        circle.fill.fore_color.rgb = BLACK
-        circle.line.fill.background()
-        tf = circle.text_frame
-        tf.paragraphs[0].text = num
-        tf.paragraphs[0].font.size = Pt(16)
-        tf.paragraphs[0].font.color.rgb = BG_WHITE
-        tf.paragraphs[0].font.bold = True
-        tf.paragraphs[0].alignment = PP_ALIGN.CENTER
+slide_footer(slide, page)
 
-        text(slide, left + Inches(0.15), Inches(2.5), card_w - Inches(0.3), Inches(0.3),
-             title, size=11, color=BLACK, bold=True)
-        text(slide, left + Inches(0.15), Inches(2.85), card_w - Inches(0.3), Inches(0.9),
-             desc, size=12, color=BODY)
+# Build 2: add scope constraints + quote
+slide = prs.slides.add_slide(blank)
+set_slide_bg(slide)
+slide_header(slide, "THE SOLUTION",
+             "AI drafts responses, humans approve them, nobody gets a wrong answer")
 
-        if i < len(steps) - 1:
-            arrow_right(slide, left + card_w + Inches(0.02), Inches(2.7))
+# Scope constraints - 3 cards
+scope_items = [
+    ("SCOPE", "AXS + Hammerhead only",
+     "Products where SRAM's documentation\nis complete and structured."),
+    ("GUARDRAIL", "Human approves every response",
+     "No AI answer reaches a dealer without\nan agent reviewing and sending it."),
+    ("KILL SWITCH", "Weekly quality review",
+     "2 weeks of quality decline, any safety\nerror, or 15% dealer opt-out stops the pilot."),
+]
+for i, (label, title, desc) in enumerate(scope_items):
+    left = Inches(0.8) + Inches(i * 4.1)
+    cw = Inches(3.85)
+    add_rect(slide, left, Inches(1.6), cw, Inches(2.4), CARD, BORDER)
+    text(slide, left + Inches(0.2), Inches(1.72), cw - Inches(0.4), Inches(0.2),
+         label, size=9, color=GANTT_ACCENT, bold=True)
+    text(slide, left + Inches(0.2), Inches(2.0), cw - Inches(0.4), Inches(0.35),
+         title, size=16, color=BLACK, bold=True)
+    text(slide, left + Inches(0.2), Inches(2.55), cw - Inches(0.4), Inches(0.8),
+         desc, size=12, color=BODY)
 
-    # Build 2: add constraints + quote
-    if build == 1:
-        text(slide, Inches(0.8), Inches(4.6), Inches(11.5), Inches(0.35),
-             "AXS + Hammerhead support only  |  Human approval on every response  |  "
-             "Weekly quality review with rollback trigger",
-             size=13, color=BODY, align=PP_ALIGN.CENTER)
+quote_box(slide, Inches(0.8), Inches(4.6), Inches(11.8), Inches(0.85),
+          "I would rather shut it down and restart than defend a mistake to Ken. "
+          "The first question I ask anyone skeptical about AI is: do you want to spend "
+          "your day searching a 200-page compatibility PDF, or do you want to spend it "
+          "talking to dealers?",
+          "Jordan Hartsell, VP Digital Products, SRAM")
 
-        quote_box(slide, Inches(0.8), Inches(5.5), Inches(11.8), Inches(0.55),
-                  "I would rather shut it down and restart than defend a mistake to Ken.",
-                  "Jordan Hartsell on the pull-the-plug criteria")
-
-    slide_footer(slide, page)
+slide_footer(slide, page)
 
 
 # ----------------------------------------------------------
@@ -748,6 +859,11 @@ multitext(slide, Inches(7.3), Inches(5.85), Inches(5.2), Inches(0.8), [
     ("Net value: $10.2M  |  Return: 3.8x", 13, BLACK, True),
 ], 1.15)
 
+text(slide, Inches(0.8), Inches(6.5), Inches(5.5), Inches(0.25),
+     "Estimates based on industry benchmarks, interview data, and SRAM public filings. "
+     "Full breakdown in Appendix A1.",
+     size=8, color=GRAY)
+
 slide_footer(slide, page)
 
 
@@ -759,16 +875,20 @@ page += 1
 visions = [
     ("AXS Intelligence Platform",
      "Unified rider dashboard: power, gearing, suspension, heart rate "
-     "in one view. No competitor has the product breadth to build this."),
+     "in one view. No competitor has the product breadth to build this.",
+     "NEW REVENUE: Premium subscription tier"),
     ("Predictive Maintenance",
      "Connected components predict chain and brake pad replacement "
-     "before failure. Installed base becomes recurring revenue."),
+     "before failure. Installed base becomes recurring revenue.",
+     "NEW REVENUE: Per-device monitoring subscription"),
     ("AI-Tuned Performance",
      "Suspension auto-adjusts to terrain. Shifting optimizes for rider "
-     "power. Products improve continuously after purchase."),
+     "power. Products improve continuously after purchase.",
+     "NEW REVENUE: Premium optimization tier"),
     ("Dealer Intelligence",
      "Telemetry tells dealers which parts approach end-of-life in their "
-     "area. Proactive ordering replaces reactive."),
+     "area. Proactive ordering replaces reactive.",
+     "NEW REVENUE: Dealer analytics license"),
 ]
 
 for build in range(2):
@@ -778,8 +898,8 @@ for build in range(2):
                  "Hardware company to performance intelligence by 2031")
 
     text(slide, Inches(0.8), Inches(1.35), Inches(11.5), Inches(0.35),
-         "Proven AI pilots, strong data infrastructure, and teams that understand "
-         "guardrails unlock the innovation no competitor can replicate.",
+         "Each capability creates a new recurring revenue stream. "
+         "SRAM's installed base of connected components becomes a platform, not a one-time sale.",
          size=13, color=BODY)
 
     # AXS Intelligence Platform - always shown
@@ -798,31 +918,36 @@ for build in range(2):
          visions[0][0], size=20, color=BLACK, bold=True)
     text(slide, Inches(1.2), axs_top + Inches(0.9), Inches(10.5), Inches(0.5),
          visions[0][1], size=13, color=BODY)
+    text(slide, Inches(8.0), axs_top + Inches(0.4), Inches(4.2), Inches(0.3),
+         visions[0][2], size=11, color=RED, bold=True, align=PP_ALIGN.RIGHT)
 
     # Build 2: add supporting cards + flywheel
     if build == 1:
-        for i, (title, desc) in enumerate(visions[1:]):
+        for i, (title, desc, rev) in enumerate(visions[1:]):
             left = Inches(0.8) + Inches(i * 4.0)
             top = Inches(4.0)
             vc_w = Inches(3.75)
-            vc_h = Inches(1.3)
+            vc_h = Inches(1.5)
             add_rect(slide, left, top, vc_w, vc_h, CARD, BORDER)
             text(slide, left + Inches(0.25), top + Inches(0.15),
                  vc_w - Inches(0.5), Inches(0.3),
                  title, size=13, color=BLACK, bold=True)
             text(slide, left + Inches(0.25), top + Inches(0.5),
-                 vc_w - Inches(0.5), Inches(0.65),
+                 vc_w - Inches(0.5), Inches(0.55),
                  desc, size=11, color=BODY)
+            text(slide, left + Inches(0.25), top + Inches(1.15),
+                 vc_w - Inches(0.5), Inches(0.25),
+                 rev, size=9, color=RED, bold=True)
 
         # Flywheel
-        add_rect(slide, Inches(0.8), Inches(5.8), Inches(11.7), Inches(0.45),
+        add_rect(slide, Inches(0.8), Inches(6.0), Inches(11.7), Inches(0.45),
                  CARD, BORDER, 0.1)
         red_bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
-                                         Inches(0.8), Inches(5.8), Pt(4), Inches(0.45))
+                                         Inches(0.8), Inches(6.0), Pt(4), Inches(0.45))
         red_bar.fill.solid()
         red_bar.fill.fore_color.rgb = RED
         red_bar.line.fill.background()
-        text(slide, Inches(1.2), Inches(5.84), Inches(11.0), Inches(0.35),
+        text(slide, Inches(1.2), Inches(6.04), Inches(11.0), Inches(0.35),
              "Hardware sells data access  \u2192  Data improves performance  "
              "\u2192  Performance sells hardware",
              size=14, color=BLACK, bold=True, align=PP_ALIGN.CENTER)
@@ -831,7 +956,116 @@ for build in range(2):
 
 
 # ----------------------------------------------------------
-# SLIDE 9: The Ask
+# SLIDE: Organizational Enablers
+# ----------------------------------------------------------
+page += 1
+slide = prs.slides.add_slide(blank)
+set_slide_bg(slide)
+slide_header(slide, "WHAT IT TAKES",
+             "Talent, data, and leadership required at each phase")
+
+# Three columns: Talent, Data, Leadership
+enabler_cols = [
+    ("TALENT", [
+        ("Phase 1", "1 integration engineer + 1 product owner.\n"
+         "No new AI/ML hires. 250-400 existing engineers\n"
+         "have capacity with AI-assisted tooling."),
+        ("Phase 2+", "Add product managers and QA capacity.\n"
+         "The constraint is PM and QA, not developers."),
+    ]),
+    ("DATA", [
+        ("Today", "Good data in pockets, messy data everywhere\n"
+         "else. 18 months of consolidation underway.\n"
+         "AXS + Hammerhead data is pilot-ready."),
+        ("Needed", "Unified data layer linking CRM, inventory,\n"
+         "and telemetry. Foundation for Phase 2-4."),
+    ]),
+    ("LEADERSHIP", [
+        ("Phase 1", "CEO assigns one accountable business owner\n"
+         "with authority over scope and tooling decisions.\n"
+         "Weekly quality reviews."),
+        ("Open question", "No confirmed executive sponsor above\n"
+         "Hartsell for the data consolidation roadmap.\n"
+         "Resolving this is a prerequisite for Phase 2."),
+    ]),
+]
+
+col_w = Inches(3.75)
+col_gap = Inches(0.2)
+col_start = Inches(0.8)
+
+for ci, (col_title, items) in enumerate(enabler_cols):
+    cx = col_start + ci * (col_w + col_gap)
+
+    # Column header
+    text(slide, cx, Inches(1.5), col_w, Inches(0.3),
+         col_title, size=14, color=BLACK, bold=True)
+
+    for ri, (phase, detail) in enumerate(items):
+        ry = Inches(2.0) + Inches(ri * 2.2)
+        card_ht = Inches(2.0)
+        add_rect(slide, cx, ry, col_w, card_ht, CARD, BORDER)
+        text(slide, cx + Inches(0.2), ry + Inches(0.12), col_w - Inches(0.4), Inches(0.25),
+             phase.upper(), size=9, color=GRAY, bold=True)
+        text(slide, cx + Inches(0.2), ry + Inches(0.4), col_w - Inches(0.4), Inches(1.4),
+             detail, size=11, color=BODY)
+
+# Hartsell readiness quote
+quote_box(slide, Inches(0.8), Inches(6.3), Inches(11.7), Inches(0.7),
+          "We are 60 to 70 percent of the way to deploying a bounded support "
+          "assistant for AXS and Hammerhead products.",
+          "Jordan Hartsell, VP Digital Products, SRAM")
+
+slide_footer(slide, page)
+
+
+# ----------------------------------------------------------
+# SLIDE: Trade-offs and Risks
+# ----------------------------------------------------------
+page += 1
+slide = prs.slides.add_slide(blank)
+set_slide_bg(slide)
+slide_header(slide, "THE TRADE-OFFS",
+             "Three risks worth naming before the decision")
+
+tradeoffs = [
+    ("Dealer trust is fragile",
+     "One confident wrong answer from the AI reaches a dealer, and the support "
+     "team loses credibility it spent years building. Human-in-the-loop and "
+     "weekly quality reviews mitigate this, but they also slow throughput gains.",
+     "MITIGATION: Kill criteria trigger rollback at first safety error"),
+    ("Data consolidation has no executive sponsor",
+     "Hartsell owns digital products but not the CRM, ERP, or inventory systems. "
+     "Phase 2 requires a unified data layer across those systems. Without a "
+     "senior sponsor, data integration stalls and the pilot stays isolated.",
+     "MITIGATION: CEO assigns cross-functional data owner in parallel"),
+    ("AI hype creates unrealistic internal expectations",
+     "SRAM's engineering culture values precision. If leadership frames AI as a "
+     "silver bullet rather than a tool, early imperfections will fuel skepticism "
+     "and internal resistance to future phases.",
+     "MITIGATION: Frame pilot as experiment with defined success and failure criteria"),
+]
+
+for i, (title, desc, mitigation) in enumerate(tradeoffs):
+    top = Inches(1.5) + Inches(i * 1.75)
+    add_rect(slide, Inches(0.8), top, Inches(11.5), Inches(1.5), CARD, BORDER)
+    bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
+                                 Inches(0.8), top, Pt(4), Inches(1.5))
+    bar.fill.solid()
+    bar.fill.fore_color.rgb = ACCENT_RED_SOFT
+    bar.line.fill.background()
+    text(slide, Inches(1.2), top + Inches(0.1), Inches(10.5), Inches(0.3),
+         title, size=14, color=BLACK, bold=True)
+    text(slide, Inches(1.2), top + Inches(0.45), Inches(10.5), Inches(0.6),
+         desc, size=11, color=BODY)
+    text(slide, Inches(1.2), top + Inches(1.1), Inches(10.5), Inches(0.25),
+         mitigation, size=10, color=GRAY, bold=True)
+
+slide_footer(slide, page)
+
+
+# ----------------------------------------------------------
+# SLIDE: The Ask
 # ----------------------------------------------------------
 page += 1
 slide = prs.slides.add_slide(blank)
@@ -988,9 +1222,9 @@ quotes = [
      "relationships they have spent years building.",
      "Human-in-the-loop is mandatory"),
     ("On competitive advantage",
-     "A Shimano rider uses the app to check compatibility. A Hammerhead rider "
-     "uses it to train, navigate, and communicate with their component stack. "
-     "That is a fundamentally different data relationship.",
+     "A rider on Shimano [SRAM's largest competitor] uses the app to check if "
+     "parts fit. A Hammerhead rider uses it to train, navigate, and talk to "
+     "every component on the bike. That is a fundamentally different data relationship.",
      "Hammerhead is SRAM's real AI moat"),
     ("On success criteria",
      "I want one workflow measurably faster, measurably more accurate, with no "
