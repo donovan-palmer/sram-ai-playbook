@@ -251,7 +251,7 @@ for i, (label, brand, desc) in enumerate(sram_cards):
 
 # Bottom line
 text(slide, Inches(0.8), Inches(5.0), Inches(11.7), Inches(0.5),
-     "7 brands. 1 connected ecosystem. From casual riders to elite athletes.",
+     "6 brands. 1 connected ecosystem. From casual riders to elite athletes.",
      size=14, color=BODY, bold=True, align=PP_ALIGN.CENTER)
 
 slide_footer(slide, page)
