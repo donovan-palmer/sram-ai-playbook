@@ -673,13 +673,13 @@ for build_step in range(4):
 
 
 # ----------------------------------------------------------
-# SLIDE 11: Step 3A - AI Customer Support
+# SLIDE 11: Step 3A - The Problem
 # ----------------------------------------------------------
 page += 1
 slide = prs.slides.add_slide(blank)
 set_slide_bg(slide)
 add_logo(slide)
-slide_header(slide, "STEP 3A: AI CUSTOMER SUPPORT",
+slide_header(slide, "STEP 3A: THE PROBLEM",
              "Support quality drives churn, not product quality")
 
 text(slide, Inches(0.8), Inches(1.35), Inches(11), Inches(0.35),
@@ -688,110 +688,248 @@ text(slide, Inches(0.8), Inches(1.35), Inches(11), Inches(0.35),
      size=13, color=BODY)
 
 # Problem metrics
-metric_card(slide, Inches(0.8), Inches(1.9), Inches(3.6), Inches(1.2),
+metric_card(slide, Inches(0.8), Inches(1.9), Inches(3.6), Inches(1.5),
             "TRUSTPILOT RATING", "1.6 / 5.0", ACCENT_RED_SOFT,
             "Warranty friction and support delays")
-metric_card(slide, Inches(4.9), Inches(1.9), Inches(3.6), Inches(1.2),
+metric_card(slide, Inches(4.9), Inches(1.9), Inches(3.6), Inches(1.5),
             "AUTOMATABLE", "~70%", BLACK,
             "Questions follow documented patterns")
-metric_card(slide, Inches(9.0), Inches(1.9), Inches(3.6), Inches(1.2),
+metric_card(slide, Inches(9.0), Inches(1.9), Inches(3.6), Inches(1.5),
             "TOP COMPLAINTS", "Firmware + Pairing", ACCENT_RED_SOFT,
             "Reddit, app stores, Trustpilot")
 
-# TODAY vs PILOT columns
+# Today vs With AI Pilot
 today_left = Inches(0.8)
 col_w = Inches(5.5)
-text(slide, today_left, Inches(3.3), col_w, Inches(0.3),
+text(slide, today_left, Inches(3.65), col_w, Inches(0.3),
      "TODAY", size=14, color=ACCENT_RED_SOFT, bold=True)
 
 today_steps = [
-    ("Dealer emails a question",
-     "Agent searches a 200-page compatibility PDF manually."),
-    ("Agent writes a response from scratch",
+    ("1. Dealer emails a question",
+     "\"Which AXS derailleur firmware works with my 2024 Eagle cassette?\""),
+    ("2. Agent searches manually",
+     "Opens a 200-page compatibility PDF. Searches wikis and past tickets."),
+    ("3. Agent writes a response from scratch",
      "Types the answer, double-checks part numbers, hopes nothing changed."),
-    ("Dealer waits ~4 hours for first response",
-     "70% of questions follow the same patterns every time."),
+    ("4. Dealer waits ~4 hours for first response",
+     "70% of questions follow the same documented patterns every time."),
 ]
 for i, (step, detail) in enumerate(today_steps):
-    y = Inches(3.7) + Inches(i * 0.85)
-    add_rect(slide, today_left, y, col_w, Inches(0.75), CARD, BORDER)
-    text(slide, today_left + Inches(0.2), y + Inches(0.08),
-         col_w - Inches(0.4), Inches(0.25),
+    y = Inches(4.05) + Inches(i * 0.7)
+    add_rect(slide, today_left, y, col_w, Inches(0.6), CARD, BORDER)
+    text(slide, today_left + Inches(0.2), y + Inches(0.05),
+         col_w - Inches(0.4), Inches(0.22),
          step, size=11, color=BLACK, bold=True)
-    text(slide, today_left + Inches(0.2), y + Inches(0.38),
-         col_w - Inches(0.4), Inches(0.3),
-         detail, size=10, color=GRAY)
+    text(slide, today_left + Inches(0.2), y + Inches(0.3),
+         col_w - Inches(0.4), Inches(0.25),
+         detail, size=9, color=GRAY)
 
 # PILOT column
 pilot_left = Inches(6.8)
-text(slide, pilot_left, Inches(3.3), col_w, Inches(0.3),
+text(slide, pilot_left, Inches(3.65), col_w, Inches(0.3),
      "WITH AI PILOT", size=14, color=GANTT_ACCENT, bold=True)
 
 pilot_steps = [
-    ("AI searches approved docs instantly",
+    ("1. Same question arrives",
+     "Dealer submits via Zendesk. Nothing changes for them."),
+    ("2. AI searches approved docs instantly",
      "Amazon Kendra indexes compatibility tables and firmware notes."),
-    ("AI drafts a response for the agent",
+    ("3. AI drafts a response for the agent",
      "Amazon Bedrock generates an answer. Agent reviews before sending."),
-    ("Dealer gets a faster, verified answer",
+    ("4. Dealer gets a faster, verified answer",
      "Target first response: ~2.5 hours. Human approves every response."),
 ]
 for i, (step, detail) in enumerate(pilot_steps):
-    y = Inches(3.7) + Inches(i * 0.85)
-    bg = HIGHLIGHT_BG if i == 2 else CARD
-    bd = GANTT_ACCENT if i == 2 else BORDER
-    add_rect(slide, pilot_left, y, col_w, Inches(0.75), bg, bd)
-    text(slide, pilot_left + Inches(0.2), y + Inches(0.08),
-         col_w - Inches(0.4), Inches(0.25),
+    y = Inches(4.05) + Inches(i * 0.7)
+    bg = HIGHLIGHT_BG if i == 3 else CARD
+    bd = GANTT_ACCENT if i == 3 else BORDER
+    add_rect(slide, pilot_left, y, col_w, Inches(0.6), bg, bd)
+    text(slide, pilot_left + Inches(0.2), y + Inches(0.05),
+         col_w - Inches(0.4), Inches(0.22),
          step, size=11, color=BLACK, bold=True)
-    text(slide, pilot_left + Inches(0.2), y + Inches(0.38),
-         col_w - Inches(0.4), Inches(0.3),
-         detail, size=10, color=GRAY)
+    text(slide, pilot_left + Inches(0.2), y + Inches(0.3),
+         col_w - Inches(0.4), Inches(0.25),
+         detail, size=9, color=GRAY)
 
-arrow_right(slide, Inches(6.35), Inches(4.5), Inches(0.35), Inches(0.35))
-
-# Quote
-quote_box(slide, Inches(0.8), Inches(6.3), Inches(11.8), Inches(0.65),
-          "The first question I ask anyone skeptical about AI is: do you want to spend "
-          "your day searching a 200-page compatibility PDF, or do you want to spend it "
-          "talking to dealers?",
-          "Clint Weber, VP Global Sales & Manufacturing, SRAM")
+arrow_right(slide, Inches(6.35), Inches(5.0), Inches(0.35), Inches(0.35))
 
 slide_footer(slide, page)
 
 
 # ----------------------------------------------------------
-# SLIDE 12: Step 3A - Financials and Timeline
+# SLIDE 12: Step 3A - Who Does What With What
 # ----------------------------------------------------------
 page += 1
 slide = prs.slides.add_slide(blank)
 set_slide_bg(slide)
 add_logo(slide)
-slide_header(slide, "STEP 3A: FINANCIALS AND TIMELINE",
-             "6-month pilot: 9x ROI on $500K setup")
+slide_header(slide, "STEP 3A: THE PILOT",
+             "Four roles, three systems, one bounded scope")
 
 text(slide, Inches(0.8), Inches(1.35), Inches(11.5), Inches(0.35),
-     "Day-45 scope review, Day-90 go/no-go gate, Month 7-12 scale to full catalog.",
+     "AXS and Hammerhead dealer support tickets only. "
+     "Every AI-generated response requires human approval before it reaches a dealer.",
      size=13, color=BODY)
 
-# LEFT: Goals and financials
+# LEFT: Roles and responsibilities
 text(slide, Inches(0.8), Inches(1.85), Inches(5.5), Inches(0.3),
-     "SMART Goals", size=14, color=BLACK, bold=True)
+     "WHO DOES WHAT", size=14, color=BLACK, bold=True)
 
-smart_goals = [
-    ("G1", "Cut first-response time", "-40%"),
-    ("G2", "Resolve without escalation", "+15 pts"),
-    ("G3", "AI draft acceptance rate", ">70%"),
-    ("G4", "Agent throughput increase", "+25%"),
-    ("G5", "Hold satisfaction flat", "No decline"),
+roles = [
+    ("Product Owner", "From the support organization",
+     "Owns pilot scope and success criteria.\n"
+     "Runs the weekly quality review.\n"
+     "Decides whether to expand, hold, or kill.\n"
+     "Reports to the C-suite AI Sponsor."),
+    ("Integration Engineer", "1 engineer (internal or contractor)",
+     "Connects Zendesk to Amazon Kendra and Bedrock.\n"
+     "Indexes AXS + Hammerhead docs into Kendra.\n"
+     "Maintains the knowledge base as docs update.\n"
+     "Tunes Bedrock prompts based on agent feedback."),
+    ("Support Agents", "Existing AXS + Hammerhead team",
+     "Review every AI-drafted response before sending.\n"
+     "Edit, approve, or reject each draft.\n"
+     "Flag quality issues for weekly review.\n"
+     "Full authority to override any AI output."),
+    ("Support Manager", "Existing role, expanded scope",
+     "Tracks all five SMART goals weekly.\n"
+     "Runs Day-45 and Day-90 gate reviews.\n"
+     "Escalates kill-criteria violations to the PO.\n"
+     "Owns the rollback decision if quality drops."),
 ]
 
-for i, (gid, title, target) in enumerate(smart_goals):
-    y = Inches(2.25) + Inches(i * 0.58)
+role_card_h = Inches(1.1)
+for i, (role, subtitle, responsibilities) in enumerate(roles):
+    y = Inches(2.25) + Inches(i * (1.1 + 0.12))
+    add_rect(slide, Inches(0.8), y, Inches(5.5), role_card_h, CARD, BORDER)
+    # Role badge
+    badge_color = GANTT_ACCENT if i < 2 else FUNC_COLORS["SUPPORT"]
+    bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
+                                 Inches(0.8), y, Pt(4), role_card_h)
+    bar.fill.solid()
+    bar.fill.fore_color.rgb = badge_color
+    bar.line.fill.background()
+    text(slide, Inches(1.1), y + Inches(0.08), Inches(2.2), Inches(0.22),
+         role, size=12, color=BLACK, bold=True)
+    text(slide, Inches(3.3), y + Inches(0.1), Inches(2.8), Inches(0.2),
+         subtitle, size=9, color=GRAY)
+    text(slide, Inches(1.1), y + Inches(0.35), Inches(5.0), Inches(0.7),
+         responsibilities, size=9, color=BODY)
+
+# RIGHT: Tech stack and scope
+text(slide, Inches(6.8), Inches(1.85), Inches(5.7), Inches(0.3),
+     "WITH WHAT SYSTEMS", size=14, color=BLACK, bold=True)
+
+systems = [
+    ("Zendesk", "TICKET INTAKE",
+     "Receives dealer support tickets.\n"
+     "Routes AXS + Hammerhead tickets to the AI workflow.\n"
+     "All other tickets follow the existing manual process.\n"
+     "No changes to the dealer-facing experience."),
+    ("Amazon Kendra", "KNOWLEDGE BASE",
+     "Indexes SRAM compatibility tables, firmware release\n"
+     "notes, and service bulletins.\n"
+     "Searches approved documentation only.\n"
+     "Updated by integration engineer as docs change."),
+    ("Amazon Bedrock", "RESPONSE GENERATION",
+     "Generates draft responses from Kendra search results.\n"
+     "Cites the source document for every claim.\n"
+     "Flags low-confidence answers for manual handling.\n"
+     "Never sends a response without agent approval."),
+]
+
+sys_card_h = Inches(1.35)
+for i, (name, label, desc) in enumerate(systems):
+    y = Inches(2.25) + Inches(i * (1.35 + 0.12))
+    add_rect(slide, Inches(6.8), y, Inches(5.7), sys_card_h, CARD, BORDER)
+    bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
+                                 Inches(6.8), y, Pt(4), sys_card_h)
+    bar.fill.solid()
+    bar.fill.fore_color.rgb = GANTT_ACCENT
+    bar.line.fill.background()
+    text(slide, Inches(7.1), y + Inches(0.08), Inches(1.8), Inches(0.22),
+         name, size=13, color=BLACK, bold=True)
+    text(slide, Inches(9.0), y + Inches(0.1), Inches(3.3), Inches(0.2),
+         label, size=9, color=GANTT_ACCENT, bold=True)
+    text(slide, Inches(7.1), y + Inches(0.38), Inches(5.2), Inches(0.9),
+         desc, size=9, color=BODY)
+
+# Scope constraints
+scope_items = [
+    ("SCOPE", "AXS + Hammerhead tickets only"),
+    ("GUARDRAIL", "Human approves every response"),
+    ("KILL SWITCH", "2 weeks quality drop = rollback"),
+]
+for i, (label, desc) in enumerate(scope_items):
+    left = Inches(6.8) + Inches(i * 1.95)
+    add_rect(slide, left, Inches(6.4), Inches(1.8), Inches(0.55), HIGHLIGHT_BG, BORDER)
+    text(slide, left + Inches(0.1), Inches(6.43), Inches(1.6), Inches(0.15),
+         label, size=7, color=RED, bold=True)
+    text(slide, left + Inches(0.1), Inches(6.6), Inches(1.6), Inches(0.3),
+         desc, size=8, color=BODY)
+
+slide_footer(slide, page)
+
+
+# ----------------------------------------------------------
+# SLIDE 13: Step 3A - What We Measure
+# ----------------------------------------------------------
+page += 1
+slide = prs.slides.add_slide(blank)
+set_slide_bg(slide)
+add_logo(slide)
+slide_header(slide, "STEP 3A: WHAT WE MEASURE",
+             "Five SMART goals define success at the Day-90 go/no-go gate")
+
+text(slide, Inches(0.8), Inches(1.35), Inches(11.5), Inches(0.35),
+     "Weber set the bar: a 30% reduction in handle time on AXS support tickets "
+     "with dealer satisfaction scores holding flat or improving.",
+     size=13, color=BODY)
+
+# Goal rows with full detail: goal, target, who owns it, how it's measured, trigger
+smart_goals_detail = [
+    ("G1", "Cut first-response time", "-40%",
+     "Support Manager",
+     "Measured weekly vs. current SLA baseline in Zendesk",
+     "Below -20% at Day 45 triggers scope review"),
+    ("G2", "Resolve without escalation", "+15 pts",
+     "Support Manager",
+     "First-contact resolution rate tracked weekly vs. baseline",
+     "Flat or declining at Day 45 triggers agent retraining"),
+    ("G3", "AI draft acceptance rate", ">70%",
+     "Product Owner",
+     "% of AI drafts approved by agents without major edits",
+     "Below 50% at Day 45 triggers knowledge base rebuild"),
+    ("G4", "Agent throughput increase", "+25%",
+     "Support Manager",
+     "Tickets handled per agent per day, tracked weekly",
+     "No improvement by Day 60 triggers workflow audit"),
+    ("G5", "Hold customer satisfaction flat", "No decline",
+     "Product Owner",
+     "Dealer CSAT survey scores, measured biweekly",
+     "Any sustained 2-week drop triggers immediate rollback"),
+]
+
+# Column headers
+col_headers = [("GOAL", Inches(0.8), Inches(0.5)),
+               ("METRIC", Inches(1.35), Inches(2.7)),
+               ("TARGET", Inches(4.1), Inches(1.0)),
+               ("OWNER", Inches(5.15), Inches(1.5)),
+               ("HOW IT'S MEASURED", Inches(6.7), Inches(3.2)),
+               ("TRIGGER IF OFF TRACK", Inches(9.95), Inches(2.5))]
+for label, x, w in col_headers:
+    text(slide, x, Inches(1.85), w, Inches(0.25),
+         label, size=8, color=GRAY, bold=True)
+
+for i, (gid, title, target, owner, measurement, trigger) in enumerate(smart_goals_detail):
+    y = Inches(2.2) + Inches(i * 0.78)
     if i % 2 == 0:
-        add_rect(slide, Inches(0.8), y - Inches(0.03), Inches(5.5), Inches(0.52),
+        add_rect(slide, Inches(0.8), y - Inches(0.03), Inches(11.7), Inches(0.72),
                  LIGHT_GRAY_BG, None, 0.02)
+
+    # Goal badge
     badge = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,
-                                   Inches(1.0), y + Inches(0.06),
+                                   Inches(0.9), y + Inches(0.08),
                                    Inches(0.45), Inches(0.32))
     badge.fill.solid()
     badge.fill.fore_color.rgb = GANTT_ACCENT
@@ -805,23 +943,92 @@ for i, (gid, title, target) in enumerate(smart_goals):
     p.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
     p.font.bold = True
     p.alignment = PP_ALIGN.CENTER
-    text(slide, Inches(1.6), y + Inches(0.04), Inches(3.0), Inches(0.3),
+
+    text(slide, Inches(1.35), y + Inches(0.06), Inches(2.7), Inches(0.28),
          title, size=12, color=BLACK, bold=True)
-    text(slide, Inches(4.6), y + Inches(0.04), Inches(1.5), Inches(0.3),
-         target, size=14, color=RED, bold=True)
+    text(slide, Inches(4.1), y + Inches(0.04), Inches(1.0), Inches(0.3),
+         target, size=16, color=RED, bold=True)
+    text(slide, Inches(5.15), y + Inches(0.08), Inches(1.5), Inches(0.25),
+         owner, size=10, color=GANTT_ACCENT, bold=True)
+    text(slide, Inches(6.7), y + Inches(0.06), Inches(3.2), Inches(0.55),
+         measurement, size=9, color=BODY)
+    text(slide, Inches(9.95), y + Inches(0.06), Inches(2.5), Inches(0.55),
+         trigger, size=9, color=ACCENT_RED_SOFT)
 
-# Financial summary below goals
-metric_card(slide, Inches(0.8), Inches(5.3), Inches(2.6), Inches(0.95),
-            "SETUP COST", "$500K", BLACK, "One-time integration")
-metric_card(slide, Inches(3.55), Inches(5.3), Inches(2.6), Inches(0.95),
-            "NET YEAR-1 VALUE", "~$4.5M", BLACK, "After operating costs")
+# Kill criteria bar
+add_rect(slide, Inches(0.8), Inches(6.2), Inches(11.7), Inches(0.55), HIGHLIGHT_BG, RED, 0.02)
+bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
+                             Inches(0.8), Inches(6.2), Pt(4), Inches(0.55))
+bar.fill.solid()
+bar.fill.fore_color.rgb = RED
+bar.line.fill.background()
+text(slide, Inches(1.2), Inches(6.25), Inches(11.0), Inches(0.2),
+     "KILL CRITERIA", size=9, color=RED, bold=True)
+text(slide, Inches(1.2), Inches(6.45), Inches(11.0), Inches(0.25),
+     "2 consecutive weeks of quality decline  |  Any safety error reaching a dealer  |  "
+     "Dealer opt-out rate above 15%  |  Any of these triggers full rollback",
+     size=10, color=BLACK, bold=True)
 
-# Kill criteria
-text(slide, Inches(0.8), Inches(6.4), Inches(5.5), Inches(0.25),
-     "Kill criteria: 2 weeks quality drop, any safety error, or 15% dealer opt-out",
-     size=9, color=GRAY)
+slide_footer(slide, page)
 
-# RIGHT: Timeline (simplified Gantt)
+
+# ----------------------------------------------------------
+# SLIDE 14: Step 3A - Financials and Timeline
+# ----------------------------------------------------------
+page += 1
+slide = prs.slides.add_slide(blank)
+set_slide_bg(slide)
+add_logo(slide)
+slide_header(slide, "STEP 3A: FINANCIALS AND TIMELINE",
+             "6-month pilot: 9x ROI on $500K setup")
+
+text(slide, Inches(0.8), Inches(1.35), Inches(11.5), Inches(0.35),
+     "Day-45 scope review, Day-90 go/no-go gate, Month 7-12 scale to full catalog.",
+     size=13, color=BODY)
+
+# LEFT: Financial breakdown
+text(slide, Inches(0.8), Inches(1.85), Inches(5.5), Inches(0.3),
+     "Financial Breakdown", size=14, color=BLACK, bold=True)
+
+# Cost breakdown
+fin_rows = [
+    ("SETUP COSTS", "", True, GANTT_ACCENT),
+    ("Zendesk AI + Kendra + Bedrock integration", "$150K", False, None),
+    ("Knowledge base indexing and tuning", "$100K", False, None),
+    ("Integration engineer (6 months)", "$150K", False, None),
+    ("Product owner allocation (6 months)", "$100K", False, None),
+    ("", "", False, None),
+    ("ANNUAL OPERATING COSTS", "", True, GANTT_ACCENT),
+    ("AI platform licensing (Bedrock + Kendra)", "$350K/yr", False, None),
+    ("Knowledge base maintenance", "$100K/yr", False, None),
+    ("Quality review and oversight", "$100K/yr", False, None),
+    ("", "", False, None),
+    ("ANNUAL GROSS BENEFIT", "", True, RED),
+    ("Reduced handle time (70% automation)", "$1.6M/yr", False, None),
+    ("Reduced escalations", "$0.8M/yr", False, None),
+    ("Customer retention improvement", "$3.0M/yr", False, None),
+]
+
+for i, (label, amount, is_header, hdr_color) in enumerate(fin_rows):
+    y = Inches(2.2) + Inches(i * 0.28)
+    if is_header:
+        text(slide, Inches(0.9), y, Inches(3.5), Inches(0.25),
+             label, size=9, color=hdr_color, bold=True)
+    elif label:
+        text(slide, Inches(1.1), y, Inches(3.3), Inches(0.25),
+             label, size=9, color=BODY)
+        text(slide, Inches(4.5), y, Inches(1.5), Inches(0.25),
+             amount, size=9, color=BLACK, bold=True, align=PP_ALIGN.RIGHT)
+
+# Summary metrics
+metric_card(slide, Inches(0.8), Inches(6.0), Inches(1.75), Inches(0.85),
+            "SETUP", "$500K", BLACK, "One-time")
+metric_card(slide, Inches(2.65), Inches(6.0), Inches(1.75), Inches(0.85),
+            "ANNUAL COST", "$550K", BLACK, "Operating")
+metric_card(slide, Inches(4.5), Inches(6.0), Inches(1.75), Inches(0.85),
+            "NET YEAR-1", "~$4.5M", BLACK, "After costs")
+
+# RIGHT: Timeline (Gantt)
 text(slide, Inches(6.8), Inches(1.85), Inches(5.7), Inches(0.3),
      "6-Month Timeline", size=14, color=BLACK, bold=True)
 
@@ -874,19 +1081,13 @@ for i, (label, start, dur, color) in enumerate(gantt_rows):
     bar.line.fill.background()
     bar.adjustments[0] = 0.15
 
-# Scope constraints row
-scope_items = [
-    ("SCOPE", "AXS + Hammerhead only"),
-    ("GUARDRAIL", "Human approves every response"),
-    ("KILL SWITCH", "Weekly quality review"),
-]
-for i, (label, desc) in enumerate(scope_items):
-    left = Inches(6.8) + Inches(i * 1.95)
-    add_rect(slide, left, Inches(6.25), Inches(1.8), Inches(0.65), CARD, BORDER)
-    text(slide, left + Inches(0.1), Inches(6.28), Inches(1.6), Inches(0.18),
-         label, size=7, color=GANTT_ACCENT, bold=True)
-    text(slide, left + Inches(0.1), Inches(6.48), Inches(1.6), Inches(0.35),
-         desc, size=8, color=BODY)
+# ROI summary bar
+add_rect(slide, Inches(6.8), Inches(6.3), Inches(5.7), Inches(0.55), HIGHLIGHT_BG, BORDER, 0.02)
+text(slide, Inches(7.1), Inches(6.38), Inches(5.2), Inches(0.2),
+     "ROI: ~9x  |  Payback: <3 months after go-live", size=12, color=BLACK, bold=True)
+text(slide, Inches(7.1), Inches(6.58), Inches(5.2), Inches(0.2),
+     "Month 7-12: Scale to full product catalog if Day-90 gate passes",
+     size=9, color=GRAY)
 
 slide_footer(slide, page)
 
