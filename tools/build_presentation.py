@@ -221,13 +221,13 @@ text(slide, Inches(1.5), Inches(6.3), Inches(10), Inches(0.4),
 
 
 # ----------------------------------------------------------
-# SLIDE 2: What is SRAM? (plain-language intro)
+# SLIDE 2: Overview of the Business
 # ----------------------------------------------------------
 page += 1
 slide = prs.slides.add_slide(blank)
 set_slide_bg(slide)
 add_logo(slide)
-slide_header(slide, "CONTEXT",
+slide_header(slide, "THE BUSINESS",
              "SRAM makes the parts that make bikes go, stop, and shift")
 
 # Subtitle
@@ -235,7 +235,7 @@ text(slide, Inches(0.8), Inches(1.5), Inches(11), Inches(0.5),
      "A $1B+ company headquartered in Chicago, powering bikes from weekend rides to the Tour de France.",
      size=14, color=GRAY)
 
-# Product category cards (text only) - matches ecosystem slide order
+# Product category cards
 sram_cards = [
     ("Drivetrains + Braking", "SRAM",
      "Gears, chains, and disc\nbrakes for every bike"),
@@ -252,7 +252,7 @@ sram_cards = [
 ]
 
 n_cards = len(sram_cards)
-total_avail = Inches(11.7)  # 13.333 - 0.8 margins on each side
+total_avail = Inches(11.7)
 intro_gap = Inches(0.25)
 intro_card_w = (total_avail - intro_gap * (n_cards - 1)) / n_cards
 intro_card_h = Inches(2.4)
@@ -262,18 +262,14 @@ intro_card_top = Inches(2.2)
 for i, (label, brand, desc) in enumerate(sram_cards):
     cx = intro_start_x + i * (intro_card_w + intro_gap)
     add_rect(slide, int(cx), intro_card_top, int(intro_card_w), intro_card_h)
-    # Brand name (small, above)
     text(slide, int(cx), intro_card_top + Inches(0.2), int(intro_card_w), Inches(0.25),
          brand, size=10, color=GRAY, bold=True, align=PP_ALIGN.CENTER)
-    # Product category label
     text(slide, int(cx), intro_card_top + Inches(0.55), int(intro_card_w), Inches(0.5),
          label, size=16, color=BLACK, bold=True, align=PP_ALIGN.CENTER)
-    # Description
     text(slide, int(cx) + Inches(0.15), intro_card_top + Inches(1.2),
          int(intro_card_w) - Inches(0.3), Inches(1.0),
          desc, size=11, color=BODY, align=PP_ALIGN.CENTER)
 
-# Bottom line
 text(slide, Inches(0.8), Inches(5.0), Inches(11.7), Inches(0.5),
      "6 brands. 1 connected ecosystem. From weekend riders to Tour de France pros.",
      size=14, color=BODY, bold=True, align=PP_ALIGN.CENTER)
@@ -282,16 +278,16 @@ slide_footer(slide, page)
 
 
 # ----------------------------------------------------------
-# SLIDE 3: SRAM Today (action title: ecosystem advantage)
+# SLIDE 3: Competitive Advantage
 # ----------------------------------------------------------
 page += 1
 slide = prs.slides.add_slide(blank)
 set_slide_bg(slide)
 add_logo(slide)
-slide_header(slide, "WHAT IS",
+slide_header(slide, "COMPETITIVE ADVANTAGE",
              "SRAM's connected ecosystem is unmatched in cycling")
 
-# Metrics row - seed the Trustpilot problem early (Duarte tension)
+# Metrics row
 metrics_data = [
     ("REVENUE", "$1B+", "Private, Chicago-founded", BLACK),
     ("BRANDS", "6", "Integrated portfolio", BLACK),
@@ -302,7 +298,7 @@ for i, (label, value, sub, vc) in enumerate(metrics_data):
     metric_card(slide, Inches(0.8 + i * 3.05), Inches(1.6), Inches(2.8), Inches(1.25),
                 label, value, vc, sub)
 
-# The ecosystem story - horizontal flow of brands
+# Ecosystem flow
 eco_items = [
     ("SRAM", "Drivetrains + Braking"),
     ("RockShox", "Suspension"),
@@ -329,7 +325,7 @@ text(slide, Inches(1.2), Inches(4.52), Inches(11.3), Inches(0.3),
      "AXS Wireless Ecosystem  |  All 6 brands connect wirelessly and share data",
      size=11, color=BLACK, bold=True, align=PP_ALIGN.CENTER)
 
-# Interview quote - competitive advantage
+# Interview quote
 quote_box(slide, Inches(0.8), Inches(5.3), Inches(12.1), Inches(0.85),
           "Shimano riders use an app to check compatibility. Our riders use an ecosystem to train, "
           "navigate, tune their suspension, and monitor their entire component stack in real time. "
@@ -344,7 +340,7 @@ slide_footer(slide, page)
 
 
 # ----------------------------------------------------------
-# SLIDE: Four-Step AI Framework Overview
+# SLIDE 4: Four-Step AI Framework Overview
 # ----------------------------------------------------------
 page += 1
 slide = prs.slides.add_slide(blank)
@@ -358,13 +354,13 @@ text(slide, Inches(0.8), Inches(1.35), Inches(11.5), Inches(0.35),
      size=13, color=BODY)
 
 framework_steps = [
-    ("Step 1", "Early Wins", "Month 0-12",
+    ("Step 1", "Democratize AI Tooling", "Month 0-12",
      "GitHub Copilot + Claude Code\nfor 250-400 engineers\n\nMicrosoft CoPilot for 500\nbusiness function staff\n\nQuarterly AI innovation forums",
      "$400K/yr in\n~$2M/yr out  |  5x ROI"),
-    ("Step 2", "Data Foundations", "Month 0-24",
+    ("Step 2", "Enterprise Data Consolidation", "Month 0-24",
      "AWS-native data lakehouse\non existing AWS infrastructure\n\nSAP ERP + Salesforce CRM\nconnected to central platform\n\nPrerequisite for Steps 3B + 4",
      "$6-10M investment\nUnlocks $34M+ downstream"),
-    ("Step 3", "Cost Reduction", "Month 0-36",
+    ("Step 3", "Deploy AI to Operations", "Month 0-36",
      "3A: AI support agent for\nAXS + Hammerhead dealers\n\n3B: SageMaker demand\nforecasting on pilot SKUs\n\nBounded, measurable pilots",
      "3A: ~$4.5M net Y1  |  9x\n3B: ~$4.5M net  |  9x"),
     ("Step 4", "Revenue + Innovation", "Month 36-60+",
@@ -408,18 +404,18 @@ slide_footer(slide, page)
 
 
 # ----------------------------------------------------------
-# SLIDE: Step 1 - Early Wins
+# SLIDE 5: Step 1 - Democratize AI Tooling
 # ----------------------------------------------------------
 page += 1
 slide = prs.slides.add_slide(blank)
 set_slide_bg(slide)
 add_logo(slide)
-slide_header(slide, "STEP 1: EARLY WINS",
-             "AI productivity tools deliver 5x ROI before the data infrastructure is built")
+slide_header(slide, "STEP 1: DEMOCRATIZE AI TOOLING",
+             "Building AI fluency from the ground up is the prerequisite for every initiative")
 
 text(slide, Inches(0.8), Inches(1.35), Inches(11.5), Inches(0.35),
-     "No new hires. No infrastructure. Deploy into existing tools and measure adoption "
-     "before committing to Steps 3 and 4.",
+     "No new hires. No infrastructure. Deploy AI into existing tools, build organizational "
+     "comfort, and identify champions before committing to Steps 3 and 4.",
      size=13, color=BODY)
 
 step1_tools = [
@@ -467,13 +463,13 @@ slide_footer(slide, page)
 
 
 # ----------------------------------------------------------
-# SLIDE: Step 2 - Data Foundations
+# SLIDE 6: Step 2 - Enterprise Data Consolidation
 # ----------------------------------------------------------
 page += 1
 slide = prs.slides.add_slide(blank)
 set_slide_bg(slide)
 add_logo(slide)
-slide_header(slide, "STEP 2: DATA FOUNDATIONS",
+slide_header(slide, "STEP 2: ENTERPRISE DATA CONSOLIDATION",
              "Data infrastructure is the prerequisite, not an optional investment")
 
 text(slide, Inches(0.8), Inches(1.35), Inches(11.5), Inches(0.35),
@@ -543,20 +539,16 @@ slide_footer(slide, page)
 
 
 # ----------------------------------------------------------
-# SLIDE 3: Initiative Map (progressive build - 4 slides)
+# SLIDES 7-10: Initiative Map (progressive build - 4 slides)
 # ----------------------------------------------------------
 
-# Function color coding
 FUNC_COLORS = {
-    "SUPPORT": RGBColor(0x2D, 0x5F, 0x8A),       # Steel blue
-    "SUPPLY CHAIN": RGBColor(0x5B, 0x8C, 0x5A),   # Forest green
-    "SALES": RGBColor(0x8B, 0x6D, 0x2E),           # Amber/gold
-    "ENGINEERING": RGBColor(0x7A, 0x5C, 0x8A),     # Purple
+    "SUPPORT": RGBColor(0x2D, 0x5F, 0x8A),
+    "SUPPLY CHAIN": RGBColor(0x5B, 0x8C, 0x5A),
+    "SALES": RGBColor(0x8B, 0x6D, 0x2E),
+    "ENGINEERING": RGBColor(0x7A, 0x5C, 0x8A),
 }
 
-# Rows grouped by function (top to bottom on slide)
-# Order: ambitious/complex at top, measurable/proven at bottom
-# Progressive reveal goes top-down, so SUPPORT lands last as the punchline
 initiative_rows = [
     ("ENGINEERING", [
         ("Generative Design", "Physical testing is slow and expensive", False),
@@ -584,13 +576,10 @@ grid_left = Inches(2.4)
 card_w = Inches(3.2)
 card_h = Inches(0.9)
 
-# Build order: top-down (ENGINEERING, +SALES, +SUPPLY CHAIN, +SUPPORT)
-# Support lands last as the punchline with START HERE outline
 page += 1
 for build_step in range(4):
-    # Rows visible: build_step=0 -> row 0 only, =1 -> rows 0-1, etc.
-    visible_up_to = build_step  # 0, 1, 2, 3
-    show_outline = (build_step == 3)  # Only on final build
+    visible_up_to = build_step
+    show_outline = (build_step == 3)
 
     slide = prs.slides.add_slide(blank)
     set_slide_bg(slide)
@@ -598,7 +587,6 @@ for build_step in range(4):
     slide_header(slide, "WHERE AI ADDS VALUE",
                  "12 AI initiatives across four business functions")
 
-    # Subtitle changes on final build
     if show_outline:
         sub = ("Start where domain knowledge is high and outcomes are measurable. "
                "Support is the proving ground for everything that follows.")
@@ -607,7 +595,6 @@ for build_step in range(4):
     text(slide, Inches(0.8), Inches(1.35), Inches(11), Inches(0.35),
          sub, size=13, color=BODY)
 
-    # Complexity arrow across the top
     arrow_labels = ["Quick Win", "Medium Effort", "Long-Term Bet"]
     for ci, alabel in enumerate(arrow_labels):
         ax = grid_left + Inches(ci * (3.2 + 0.15))
@@ -628,15 +615,13 @@ for build_step in range(4):
     arrow_tri.line.fill.background()
     arrow_tri.rotation = 90.0
 
-    # Draw rows top-down, only show revealed ones
     for ri, (area, items) in enumerate(initiative_rows):
         row_top = Inches(2.1) + Inches(ri * (0.9 + 0.25))
         fc = FUNC_COLORS[area]
 
         if ri > visible_up_to:
-            continue  # Skip rows not yet revealed
+            continue
 
-        # Row label with colored accent bar
         label_bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
                                            Inches(0.8), row_top, Pt(4), card_h)
         label_bar.fill.solid()
@@ -669,7 +654,6 @@ for build_step in range(4):
                  card_w - Inches(0.4), Inches(0.3),
                  problem, size=9, color=GRAY)
 
-    # On final build, add the START HERE outline box around SUPPORT (row 3)
     if show_outline:
         support_row_top = Inches(2.1) + Inches(3 * (0.9 + 0.25))
         support_box = slide.shapes.add_shape(
@@ -689,15 +673,13 @@ for build_step in range(4):
 
 
 # ----------------------------------------------------------
-# SLIDE 4: The Problem (progressive build - 2 slides)
+# SLIDE 11: Step 3A - AI Customer Support
 # ----------------------------------------------------------
 page += 1
-
-# Build 1: Just metrics
 slide = prs.slides.add_slide(blank)
 set_slide_bg(slide)
 add_logo(slide)
-slide_header(slide, "THE PROBLEM",
+slide_header(slide, "STEP 3A: AI CUSTOMER SUPPORT",
              "Support quality drives churn, not product quality")
 
 text(slide, Inches(0.8), Inches(1.35), Inches(11), Inches(0.35),
@@ -705,41 +687,70 @@ text(slide, Inches(0.8), Inches(1.35), Inches(11), Inches(0.35),
      "part compatibility, and warranty resolution.",
      size=13, color=BODY)
 
-metric_card(slide, Inches(0.8), Inches(2.2), Inches(3.6), Inches(1.5),
+# Problem metrics
+metric_card(slide, Inches(0.8), Inches(1.9), Inches(3.6), Inches(1.2),
             "TRUSTPILOT RATING", "1.6 / 5.0", ACCENT_RED_SOFT,
             "Warranty friction and support delays")
-metric_card(slide, Inches(4.9), Inches(2.2), Inches(3.6), Inches(1.5),
+metric_card(slide, Inches(4.9), Inches(1.9), Inches(3.6), Inches(1.2),
             "AUTOMATABLE", "~70%", BLACK,
             "Questions follow documented patterns")
-metric_card(slide, Inches(9.0), Inches(2.2), Inches(3.6), Inches(1.5),
+metric_card(slide, Inches(9.0), Inches(1.9), Inches(3.6), Inches(1.2),
             "TOP COMPLAINTS", "Firmware + Pairing", ACCENT_RED_SOFT,
             "Reddit, app stores, Trustpilot")
 
-slide_footer(slide, page)
+# TODAY vs PILOT columns
+today_left = Inches(0.8)
+col_w = Inches(5.5)
+text(slide, today_left, Inches(3.3), col_w, Inches(0.3),
+     "TODAY", size=14, color=ACCENT_RED_SOFT, bold=True)
 
-# Build 2: Metrics + quote
-slide = prs.slides.add_slide(blank)
-set_slide_bg(slide)
-add_logo(slide)
-slide_header(slide, "THE PROBLEM",
-             "Support quality drives churn, not product quality")
+today_steps = [
+    ("Dealer emails a question",
+     "Agent searches a 200-page compatibility PDF manually."),
+    ("Agent writes a response from scratch",
+     "Types the answer, double-checks part numbers, hopes nothing changed."),
+    ("Dealer waits ~4 hours for first response",
+     "70% of questions follow the same patterns every time."),
+]
+for i, (step, detail) in enumerate(today_steps):
+    y = Inches(3.7) + Inches(i * 0.85)
+    add_rect(slide, today_left, y, col_w, Inches(0.75), CARD, BORDER)
+    text(slide, today_left + Inches(0.2), y + Inches(0.08),
+         col_w - Inches(0.4), Inches(0.25),
+         step, size=11, color=BLACK, bold=True)
+    text(slide, today_left + Inches(0.2), y + Inches(0.38),
+         col_w - Inches(0.4), Inches(0.3),
+         detail, size=10, color=GRAY)
 
-text(slide, Inches(0.8), Inches(1.35), Inches(11), Inches(0.35),
-     "Riders love SRAM hardware. They struggle with firmware updates, "
-     "part compatibility, and warranty resolution.",
-     size=13, color=BODY)
+# PILOT column
+pilot_left = Inches(6.8)
+text(slide, pilot_left, Inches(3.3), col_w, Inches(0.3),
+     "WITH AI PILOT", size=14, color=GANTT_ACCENT, bold=True)
 
-metric_card(slide, Inches(0.8), Inches(2.2), Inches(3.6), Inches(1.5),
-            "TRUSTPILOT RATING", "1.6 / 5.0", ACCENT_RED_SOFT,
-            "Warranty friction and support delays")
-metric_card(slide, Inches(4.9), Inches(2.2), Inches(3.6), Inches(1.5),
-            "AUTOMATABLE", "~70%", BLACK,
-            "Questions follow documented patterns")
-metric_card(slide, Inches(9.0), Inches(2.2), Inches(3.6), Inches(1.5),
-            "TOP COMPLAINTS", "Firmware + Pairing", ACCENT_RED_SOFT,
-            "Reddit, app stores, Trustpilot")
+pilot_steps = [
+    ("AI searches approved docs instantly",
+     "Amazon Kendra indexes compatibility tables and firmware notes."),
+    ("AI drafts a response for the agent",
+     "Amazon Bedrock generates an answer. Agent reviews before sending."),
+    ("Dealer gets a faster, verified answer",
+     "Target first response: ~2.5 hours. Human approves every response."),
+]
+for i, (step, detail) in enumerate(pilot_steps):
+    y = Inches(3.7) + Inches(i * 0.85)
+    bg = HIGHLIGHT_BG if i == 2 else CARD
+    bd = GANTT_ACCENT if i == 2 else BORDER
+    add_rect(slide, pilot_left, y, col_w, Inches(0.75), bg, bd)
+    text(slide, pilot_left + Inches(0.2), y + Inches(0.08),
+         col_w - Inches(0.4), Inches(0.25),
+         step, size=11, color=BLACK, bold=True)
+    text(slide, pilot_left + Inches(0.2), y + Inches(0.38),
+         col_w - Inches(0.4), Inches(0.3),
+         detail, size=10, color=GRAY)
 
-quote_box(slide, Inches(0.8), Inches(4.8), Inches(11.8), Inches(0.85),
+arrow_right(slide, Inches(6.35), Inches(4.5), Inches(0.35), Inches(0.35))
+
+# Quote
+quote_box(slide, Inches(0.8), Inches(6.3), Inches(11.8), Inches(0.65),
           "The first question I ask anyone skeptical about AI is: do you want to spend "
           "your day searching a 200-page compatibility PDF, or do you want to spend it "
           "talking to dealers?",
@@ -749,284 +760,139 @@ slide_footer(slide, page)
 
 
 # ----------------------------------------------------------
-# SLIDE 5: The 90-Day Pilot (progressive build - 2 slides)
+# SLIDE 12: Step 3A - Financials and Timeline
 # ----------------------------------------------------------
 page += 1
-
-# --- Pilot slide: before/after showing what actually changes ---
-
-# Build 1: before/after workflow
 slide = prs.slides.add_slide(blank)
 set_slide_bg(slide)
 add_logo(slide)
-slide_header(slide, "THE SOLUTION",
-             "AI drafts responses, humans approve them, nobody gets a wrong answer")
+slide_header(slide, "STEP 3A: FINANCIALS AND TIMELINE",
+             "6-month pilot: 9x ROI on $500K setup")
 
-# TODAY column
-today_left = Inches(0.8)
-col_w = Inches(5.5)
-text(slide, today_left, Inches(1.5), col_w, Inches(0.3),
-     "TODAY", size=14, color=ACCENT_RED_SOFT, bold=True)
+text(slide, Inches(0.8), Inches(1.35), Inches(11.5), Inches(0.35),
+     "Day-45 scope review, Day-90 go/no-go gate, Month 7-12 scale to full catalog.",
+     size=13, color=BODY)
 
-today_steps = [
-    ("1. Dealer emails a question",
-     "\"Which AXS derailleur firmware works with my 2024 Eagle cassette?\""),
-    ("2. Agent searches manually",
-     "Opens a 200-page compatibility PDF.\nSearches across multiple documents and wikis."),
-    ("3. Agent writes a response from scratch",
-     "Types out the answer, double-checks part numbers,\nhopes nothing changed since last update."),
-    ("4. Dealer waits",
-     "Average first response: ~4 hours.\n70% of questions follow the same patterns."),
-]
-for i, (step, detail) in enumerate(today_steps):
-    y = Inches(1.9) + Inches(i * 1.15)
-    add_rect(slide, today_left, y, col_w, Inches(1.0), CARD, BORDER)
-    text(slide, today_left + Inches(0.2), y + Inches(0.08),
-         col_w - Inches(0.4), Inches(0.25),
-         step, size=12, color=BLACK, bold=True)
-    text(slide, today_left + Inches(0.2), y + Inches(0.38),
-         col_w - Inches(0.4), Inches(0.55),
-         detail, size=10, color=GRAY)
+# LEFT: Goals and financials
+text(slide, Inches(0.8), Inches(1.85), Inches(5.5), Inches(0.3),
+     "SMART Goals", size=14, color=BLACK, bold=True)
 
-# PILOT column
-pilot_left = Inches(6.8)
-text(slide, pilot_left, Inches(1.5), col_w, Inches(0.3),
-     "WITH AI PILOT", size=14, color=GANTT_ACCENT, bold=True)
-
-pilot_steps = [
-    ("1. Same question arrives",
-     "Dealer submits via Zendesk. Nothing changes for them."),
-    ("2. AI searches approved docs instantly",
-     "Amazon Kendra indexes SRAM's compatibility tables,\nfirmware notes, and service bulletins."),
-    ("3. AI drafts a response for the agent",
-     "Amazon Bedrock generates an answer from the knowledge\nbase. Agent reviews and edits before sending."),
-    ("4. Dealer gets a faster, verified answer",
-     "Target first response: ~2.5 hours.\nAgent spends time on hard problems, not repetitive ones."),
-]
-for i, (step, detail) in enumerate(pilot_steps):
-    y = Inches(1.9) + Inches(i * 1.15)
-    bg = HIGHLIGHT_BG if i == 3 else CARD
-    bd = GANTT_ACCENT if i == 3 else BORDER
-    add_rect(slide, pilot_left, y, col_w, Inches(1.0), bg, bd)
-    text(slide, pilot_left + Inches(0.2), y + Inches(0.08),
-         col_w - Inches(0.4), Inches(0.25),
-         step, size=12, color=BLACK, bold=True)
-    text(slide, pilot_left + Inches(0.2), y + Inches(0.38),
-         col_w - Inches(0.4), Inches(0.55),
-         detail, size=10, color=GRAY)
-
-# Arrow between columns
-arrow_right(slide, Inches(6.35), Inches(3.5), Inches(0.35), Inches(0.35))
-
-slide_footer(slide, page)
-
-# Build 2: add scope constraints + quote
-slide = prs.slides.add_slide(blank)
-set_slide_bg(slide)
-add_logo(slide)
-slide_header(slide, "THE SOLUTION",
-             "AI drafts responses, humans approve them, nobody gets a wrong answer")
-
-# Scope constraints - 3 cards
-scope_items = [
-    ("SCOPE", "AXS + Hammerhead only",
-     "Products where SRAM's documentation\nis complete and structured."),
-    ("GUARDRAIL", "Human approves every response",
-     "No AI answer reaches a dealer without\nan agent reviewing and sending it."),
-    ("KILL SWITCH", "Weekly quality review",
-     "2 weeks of quality decline, any safety\nerror, or 15% dealer opt-out stops the pilot."),
-]
-for i, (label, title, desc) in enumerate(scope_items):
-    left = Inches(0.8) + Inches(i * 4.1)
-    cw = Inches(3.85)
-    add_rect(slide, left, Inches(1.6), cw, Inches(2.4), CARD, BORDER)
-    text(slide, left + Inches(0.2), Inches(1.72), cw - Inches(0.4), Inches(0.2),
-         label, size=9, color=GANTT_ACCENT, bold=True)
-    text(slide, left + Inches(0.2), Inches(2.0), cw - Inches(0.4), Inches(0.35),
-         title, size=16, color=BLACK, bold=True)
-    text(slide, left + Inches(0.2), Inches(2.55), cw - Inches(0.4), Inches(0.8),
-         desc, size=12, color=BODY)
-
-quote_box(slide, Inches(0.8), Inches(4.6), Inches(11.8), Inches(0.85),
-          "If it doesn't hit the metric, you shut it down, you learn from it, and you "
-          "redeploy the resources. That discipline is what separates companies that build "
-          "real AI capability from companies that accumulate AI debt.",
-          "Clint Weber, VP Global Sales & Manufacturing, SRAM")
-
-slide_footer(slide, page)
-
-
-# ----------------------------------------------------------
-# SLIDE 6b: SMART Goals (progressive build - one goal per click)
-# ----------------------------------------------------------
-page += 1
-
-smart_goals_full = [
-    ("G1", "Cut first-response time", "-40%", "Measured weekly vs. SLA baseline"),
-    ("G2", "Resolve more tickets without escalation", "+15 pts", "Measured weekly vs. current rate"),
-    ("G3", "AI draft acceptance rate", ">70%", "Below 50% at day 45 triggers scope review"),
-    ("G4", "Increase agent throughput", "+25%", "Tickets handled per agent per day"),
-    ("G5", "Hold customer satisfaction flat", "No decline", "Any sustained drop triggers rollback"),
+smart_goals = [
+    ("G1", "Cut first-response time", "-40%"),
+    ("G2", "Resolve without escalation", "+15 pts"),
+    ("G3", "AI draft acceptance rate", ">70%"),
+    ("G4", "Agent throughput increase", "+25%"),
+    ("G5", "Hold satisfaction flat", "No decline"),
 ]
 
-for goals_shown in range(1, 6):  # 1, 2, 3, 4, 5
-    slide = prs.slides.add_slide(blank)
-    set_slide_bg(slide)
-    add_logo(slide)
-    slide_header(slide, "THE GOALS",
-                 "Five SMART goals define success at the Day-90 go/no-go gate")
+for i, (gid, title, target) in enumerate(smart_goals):
+    y = Inches(2.25) + Inches(i * 0.58)
+    if i % 2 == 0:
+        add_rect(slide, Inches(0.8), y - Inches(0.03), Inches(5.5), Inches(0.52),
+                 LIGHT_GRAY_BG, None, 0.02)
+    badge = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,
+                                   Inches(1.0), y + Inches(0.06),
+                                   Inches(0.45), Inches(0.32))
+    badge.fill.solid()
+    badge.fill.fore_color.rgb = GANTT_ACCENT
+    badge.line.fill.background()
+    badge.adjustments[0] = 0.15
+    tf = badge.text_frame
+    tf.word_wrap = True
+    p = tf.paragraphs[0]
+    p.text = gid
+    p.font.size = Pt(11)
+    p.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
+    p.font.bold = True
+    p.alignment = PP_ALIGN.CENTER
+    text(slide, Inches(1.6), y + Inches(0.04), Inches(3.0), Inches(0.3),
+         title, size=12, color=BLACK, bold=True)
+    text(slide, Inches(4.6), y + Inches(0.04), Inches(1.5), Inches(0.3),
+         target, size=14, color=RED, bold=True)
 
-    text(slide, Inches(0.8), Inches(1.35), Inches(11.5), Inches(0.35),
-         "Weber set the bar: a 30% reduction in handle time on AXS support tickets "
-         "with dealer satisfaction scores holding flat or improving.",
-         size=13, color=BODY)
+# Financial summary below goals
+metric_card(slide, Inches(0.8), Inches(5.3), Inches(2.6), Inches(0.95),
+            "SETUP COST", "$500K", BLACK, "One-time integration")
+metric_card(slide, Inches(3.55), Inches(5.3), Inches(2.6), Inches(0.95),
+            "NET YEAR-1 VALUE", "~$4.5M", BLACK, "After operating costs")
 
-    for i, (gid, title, target, detail) in enumerate(smart_goals_full):
-        if i >= goals_shown:
-            break
-        y = Inches(2.0) + Inches(i * 0.85)
-        if i % 2 == 0:
-            add_rect(slide, Inches(0.8), y - Inches(0.05), Inches(11.7), Inches(0.75),
-                     LIGHT_GRAY_BG, None, 0.02)
+# Kill criteria
+text(slide, Inches(0.8), Inches(6.4), Inches(5.5), Inches(0.25),
+     "Kill criteria: 2 weeks quality drop, any safety error, or 15% dealer opt-out",
+     size=9, color=GRAY)
 
-        badge = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,
-                                       Inches(1.1), y + Inches(0.12),
-                                       Inches(0.55), Inches(0.4))
-        badge.fill.solid()
-        badge.fill.fore_color.rgb = GANTT_ACCENT
-        badge.line.fill.background()
-        badge.adjustments[0] = 0.15
-        tf = badge.text_frame
-        tf.word_wrap = True
-        p = tf.paragraphs[0]
-        p.text = gid
-        p.font.size = Pt(14)
-        p.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
-        p.font.bold = True
-        p.alignment = PP_ALIGN.CENTER
+# RIGHT: Timeline (simplified Gantt)
+text(slide, Inches(6.8), Inches(1.85), Inches(5.7), Inches(0.3),
+     "6-Month Timeline", size=14, color=BLACK, bold=True)
 
-        text(slide, Inches(1.9), y + Inches(0.08), Inches(5.5), Inches(0.4),
-             title, size=16, color=BLACK, bold=True)
-        text(slide, Inches(7.5), y + Inches(0.05), Inches(2.0), Inches(0.45),
-             target, size=22, color=RED, bold=True)
-        text(slide, Inches(9.5), y + Inches(0.15), Inches(3.0), Inches(0.35),
-             detail, size=11, color=GRAY)
+gantt_left = Inches(8.2)
+gantt_width = Inches(4.3)
+month_w = gantt_width / 6
 
-    # Show kill criteria only on final build
-    if goals_shown == 5:
-        text(slide, Inches(0.8), Inches(6.4), Inches(11.7), Inches(0.3),
-             "Kill criteria: 2 weeks quality drop, any safety error reaching a dealer, "
-             "or dealer opt-out above 15%",
-             size=12, color=GRAY, align=PP_ALIGN.CENTER)
+for mi, mlabel in enumerate(["M1", "M2", "M3", "M4", "M5", "M6"]):
+    x = gantt_left + month_w * mi
+    text(slide, x, Inches(2.2), month_w, Inches(0.2),
+         mlabel, size=8, color=GRAY, bold=True, align=PP_ALIGN.CENTER)
 
-    slide_footer(slide, page)
+for di in range(1, 6):
+    x = gantt_left + month_w * di
+    divider = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
+                                     x, Inches(2.4), Pt(1), Inches(3.8))
+    divider.fill.solid()
+    divider.fill.fore_color.rgb = CARD_BORDER
+    divider.line.fill.background()
 
-
-# ----------------------------------------------------------
-# SLIDE 6c: Gantt Chart (progressive build - 3 slides)
-# ----------------------------------------------------------
-page += 1
-
-# Gantt rows: 6-month support pilot timeline (matches content doc)
-# Month 1: setup. Month 2-3: AXS only. Day-45 checkpoint mid-Month 3.
-# Month 4-5: Hammerhead expansion. Month 6: Day-90 go/no-go. Month 7-12: scale (footnote).
 gantt_rows = [
-    ("Setup + Integration", "", 0, 1.0, GANTT_LIGHT,
-     "Zendesk + Kendra + Bedrock; baseline metrics"),
-    ("Knowledge Base Indexing", "", 0, 0.8, GANTT_LIGHT,
-     "Index AXS + Hammerhead docs in Kendra"),
-    ("AI Draft Rollout (AXS)", "G3", 1.0, 2.0, GANTT_ACCENT,
-     "AI drafts; agents review 100% before sending"),
-    ("AI Draft Rollout (Hammerhead)", "G3", 3.0, 2.0, GANTT_ACCENT,
-     "Expand to Hammerhead device tickets"),
-    ("Response Time Tracking", "G1", 1.0, 5.0, GANTT_ACCENT,
-     "Weekly measurement vs. SLA baseline"),
-    ("Escalation Rate Tracking", "G2", 1.0, 5.0, GANTT_ACCENT,
-     "Weekly measurement vs. baseline"),
-    ("Throughput Measurement", "G4", 2.0, 4.0, GANTT_ACCENT,
-     "Tickets/agent/day tracked weekly"),
-    ("CSAT Monitoring", "G5", 1.0, 5.0, GANTT_ACCENT,
-     "No decline for 2 consecutive periods"),
-    ("Weekly Quality Reviews", "", 1.0, 5.0, GRAY,
-     "Rollback trigger if quality drops 2 weeks"),
-    ("Day-45 Checkpoint", "", 2.5, 0.15, RED,
-     "Scope review if acceptance <50%"),
-    ("Day-90 Go/No-Go", "", 5.75, 0.15, RED,
-     "Decision: scale to full catalog or stop"),
+    ("Setup + Integration", 0, 1.0, GANTT_LIGHT),
+    ("Knowledge Base Indexing", 0, 0.8, GANTT_LIGHT),
+    ("AI Draft Rollout (AXS)", 1.0, 2.0, GANTT_ACCENT),
+    ("AI Draft Rollout (Hammerhead)", 3.0, 2.0, GANTT_ACCENT),
+    ("Response Time Tracking", 1.0, 5.0, GANTT_ACCENT),
+    ("Escalation Rate Tracking", 1.0, 5.0, GANTT_ACCENT),
+    ("Throughput Measurement", 2.0, 4.0, GANTT_ACCENT),
+    ("CSAT Monitoring", 1.0, 5.0, GANTT_ACCENT),
+    ("Weekly Quality Reviews", 1.0, 5.0, GRAY),
+    ("Day-45 Checkpoint", 2.5, 0.15, RED),
+    ("Day-90 Go/No-Go", 5.75, 0.15, RED),
 ]
 
-# Build cutoffs: show rows 0..N
-gantt_builds = [2, 8, 11]  # setup, +execution, +checkpoints
+row_height = Inches(0.34)
+for i, (label, start, dur, color) in enumerate(gantt_rows):
+    y = Inches(2.45) + row_height * i
+    if i % 2 == 0:
+        add_rect(slide, Inches(6.8), y, Inches(5.7), row_height,
+                 LIGHT_GRAY_BG, None, 0.01)
+    text(slide, Inches(6.8), y + Inches(0.04), Inches(1.35), Inches(0.25),
+         label, size=7, color=BLACK, bold=True)
+    bar_x = gantt_left + month_w * start
+    bar_w = month_w * dur
+    bar = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,
+                                 int(bar_x), y + Inches(0.04),
+                                 int(bar_w), Inches(0.22))
+    bar.fill.solid()
+    bar.fill.fore_color.rgb = color
+    bar.line.fill.background()
+    bar.adjustments[0] = 0.15
 
-for build_idx, rows_shown in enumerate(gantt_builds):
-    slide = prs.slides.add_slide(blank)
-    set_slide_bg(slide)
-    add_logo(slide)
-    slide_header(slide, "THE TIMELINE",
-                 "6-month pilot: Day-45 scope review, Day-90 go/no-go, Month 7-12 scale")
+# Scope constraints row
+scope_items = [
+    ("SCOPE", "AXS + Hammerhead only"),
+    ("GUARDRAIL", "Human approves every response"),
+    ("KILL SWITCH", "Weekly quality review"),
+]
+for i, (label, desc) in enumerate(scope_items):
+    left = Inches(6.8) + Inches(i * 1.95)
+    add_rect(slide, left, Inches(6.25), Inches(1.8), Inches(0.65), CARD, BORDER)
+    text(slide, left + Inches(0.1), Inches(6.28), Inches(1.6), Inches(0.18),
+         label, size=7, color=GANTT_ACCENT, bold=True)
+    text(slide, left + Inches(0.1), Inches(6.48), Inches(1.6), Inches(0.35),
+         desc, size=8, color=BODY)
 
-    gantt_left = Inches(4.0)
-    gantt_width = Inches(8.5)
-    month_w = gantt_width / 6
-
-    for mi, mlabel in enumerate(["Month 1", "Month 2", "Month 3", "Month 4", "Month 5", "Month 6"]):
-        x = gantt_left + month_w * mi
-        text(slide, x, Inches(1.4), month_w, Inches(0.25),
-             mlabel, size=9, color=GRAY, bold=True, align=PP_ALIGN.CENTER)
-
-    for di in range(1, 6):
-        x = gantt_left + month_w * di
-        divider = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
-                                         x, Inches(1.65), Pt(1), Inches(5.0))
-        divider.fill.solid()
-        divider.fill.fore_color.rgb = CARD_BORDER
-        divider.line.fill.background()
-
-    row_height = Inches(0.38)
-    for i, (label, goal_num, start, dur, color, desc) in enumerate(gantt_rows):
-        if i >= rows_shown:
-            break
-        y = Inches(1.7) + row_height * i
-
-        if i % 2 == 0:
-            add_rect(slide, Inches(0.8), y, Inches(11.7), row_height,
-                     LIGHT_GRAY_BG, None, 0.01)
-
-        text(slide, Inches(0.8), y + Inches(0.05), Inches(2.8), Inches(0.28),
-             label, size=9, color=BLACK, bold=True)
-
-        if goal_num:
-            text(slide, Inches(3.4), y + Inches(0.05), Inches(0.5), Inches(0.28),
-                 goal_num, size=8, color=RED, bold=True)
-
-        bar_x = gantt_left + month_w * start
-        bar_w = month_w * dur
-        bar = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,
-                                     int(bar_x), y + Inches(0.06),
-                                     int(bar_w), Inches(0.24))
-        bar.fill.solid()
-        bar.fill.fore_color.rgb = color
-        bar.line.fill.background()
-        bar.adjustments[0] = 0.15
-
-        if dur >= 1.0:
-            text(slide, int(bar_x) + Inches(0.1), y + Inches(0.06),
-                 int(bar_w) - Inches(0.2), Inches(0.24),
-                 desc, size=7,
-                 color=RGBColor(0xFF, 0xFF, 0xFF) if color == GANTT_ACCENT else BLACK)
-
-    # Legend only on final build
-    if build_idx == len(gantt_builds) - 1:
-        text(slide, Inches(0.8), Inches(6.1), Inches(11), Inches(0.25),
-             "Day-45: scope review if draft acceptance < 50%  |  "
-             "Day-90: go/no-go gate  |  Month 7-12: scale to full product catalog",
-             size=9, color=GRAY, align=PP_ALIGN.CENTER)
-
-    slide_footer(slide, page)
+slide_footer(slide, page)
 
 
 # ----------------------------------------------------------
-# SLIDE: Demand Forecasting (Step 3B)
+# SLIDE 13: Step 3B - Demand Forecasting
 # ----------------------------------------------------------
 page += 1
 slide = prs.slides.add_slide(blank)
@@ -1063,7 +929,7 @@ for i, (step, detail) in enumerate(fc_steps):
 text(slide, Inches(6.8), Inches(1.9), Inches(5.7), Inches(0.3),
      "WITH SAGEMAKER PILOT", size=14, color=GANTT_ACCENT, bold=True)
 
-pilot_steps = [
+pilot_steps_3b = [
     ("Month 22-27: Model development",
      "SageMaker trained on unified lakehouse data.\nBack-test validates MAPE target of 15% or less."),
     ("Month 27-30: Shadow mode",
@@ -1071,7 +937,7 @@ pilot_steps = [
     ("Month 30-36: Active pilot",
      "Planners act on model recommendations\nwith full override authority. Overrides logged."),
 ]
-for i, (step, detail) in enumerate(pilot_steps):
+for i, (step, detail) in enumerate(pilot_steps_3b):
     y = Inches(2.3) + Inches(i * 1.1)
     bg = HIGHLIGHT_BG if i == 2 else CARD
     bd = GANTT_ACCENT if i == 2 else BORDER
@@ -1083,100 +949,96 @@ for i, (step, detail) in enumerate(pilot_steps):
 
 arrow_right(slide, Inches(6.35), Inches(3.3), Inches(0.35), Inches(0.35))
 
-# Financial summary row
-metric_card(slide, Inches(0.8), Inches(5.65), Inches(2.8), Inches(1.0),
-            "SETUP INVESTMENT", "~$500K", BLACK, "SageMaker + data science lead")
-metric_card(slide, Inches(3.8), Inches(5.65), Inches(2.8), Inches(1.0),
-            "ANNUAL GROSS BENEFIT", "$5.2M", BLACK, "Expected case: stockouts + markdowns")
-metric_card(slide, Inches(6.8), Inches(5.65), Inches(2.8), Inches(1.0),
-            "NET ANNUAL VALUE", "~$4.5M", BLACK, "After $700K operating cost")
-metric_card(slide, Inches(9.8), Inches(5.65), Inches(2.8), Inches(1.0),
-            "ONE-TIME BONUS", "$15-20M", GANTT_ACCENT, "Working capital release from inventory")
-
 slide_footer(slide, page)
 
 
 # ----------------------------------------------------------
-# SLIDE 8: Metrics + Financials
+# SLIDE 14: Step 3B - Financials and Timeline
 # ----------------------------------------------------------
 page += 1
 slide = prs.slides.add_slide(blank)
 set_slide_bg(slide)
 add_logo(slide)
-slide_header(slide, "THE RETURN",
-             "Support pilot: 9x ROI on $500K. Full Year-1 program: 3.8x on $2.7M")
+slide_header(slide, "STEP 3B: FINANCIALS AND TIMELINE",
+             "Demand forecasting delivers 9x ROI once data infrastructure is live")
 
-# LEFT: Scenario range only - clean and spacious
-text(slide, Inches(0.8), Inches(1.6), Inches(5.5), Inches(0.3),
-     "Year-1 Pilot Scenarios", size=18, color=BLACK, bold=True)
+text(slide, Inches(0.8), Inches(1.35), Inches(11.5), Inches(0.35),
+     "Begins at Month 22 after the Step 2 data lakehouse is operational. "
+     "Shadow mode validates accuracy before planners act on recommendations.",
+     size=13, color=BODY)
 
-scenarios = [
-    ("Conservative", "$4.5M", "2.8x"),
-    ("Expected", "$10.2M", "3.8x"),
-    ("Upside", "$22.5M", "6.4x"),
+# Financial metric cards
+metric_card(slide, Inches(0.8), Inches(2.0), Inches(2.8), Inches(1.25),
+            "SETUP INVESTMENT", "~$500K", BLACK, "SageMaker + data science lead")
+metric_card(slide, Inches(3.8), Inches(2.0), Inches(2.8), Inches(1.25),
+            "ANNUAL GROSS BENEFIT", "$5.2M", BLACK, "Stockouts + markdowns reduction")
+metric_card(slide, Inches(6.8), Inches(2.0), Inches(2.8), Inches(1.25),
+            "NET ANNUAL VALUE", "~$4.5M", BLACK, "After $700K operating cost")
+metric_card(slide, Inches(9.8), Inches(2.0), Inches(2.8), Inches(1.25),
+            "ONE-TIME BONUS", "$15-20M", GANTT_ACCENT, "Working capital release from inventory")
+
+# Success criteria
+text(slide, Inches(0.8), Inches(3.55), Inches(5.5), Inches(0.3),
+     "Success Criteria", size=14, color=BLACK, bold=True)
+
+fc_goals = [
+    ("Forecast accuracy (MAPE)", "15% or less", "Back-tested before launch"),
+    ("Stockout reduction", "-30%", "Measured against 12-month baseline"),
+    ("Markdown reduction", "-20%", "Tracked at SKU level"),
+    ("Planner adoption", ">80%", "Recommendations reviewed weekly"),
 ]
-for i, (label, value, roi) in enumerate(scenarios):
-    y = Inches(2.3) + Inches(i * 0.9)
-    if i == 1:  # Highlight expected case
-        add_rect(slide, Inches(0.8), y - Inches(0.1), Inches(5.5), Inches(0.8),
-                 HIGHLIGHT_BG, RED, 0.02)
-    text(slide, Inches(1.0), y, Inches(2.0), Inches(0.5), label, size=14, color=GRAY)
-    text(slide, Inches(3.0), y, Inches(1.8), Inches(0.5), value,
-         size=24, color=BLACK, bold=True)
-    text(slide, Inches(4.8), y + Inches(0.05), Inches(1.2), Inches(0.4),
-         roi + " ROI", size=13, color=GRAY)
+for i, (title, target, detail) in enumerate(fc_goals):
+    y = Inches(4.0) + Inches(i * 0.55)
+    if i % 2 == 0:
+        add_rect(slide, Inches(0.8), y - Inches(0.03), Inches(5.5), Inches(0.5),
+                 LIGHT_GRAY_BG, None, 0.02)
+    text(slide, Inches(1.0), y + Inches(0.04), Inches(2.5), Inches(0.3),
+         title, size=11, color=BLACK, bold=True)
+    text(slide, Inches(3.5), y + Inches(0.02), Inches(1.0), Inches(0.3),
+         target, size=13, color=RED, bold=True)
+    text(slide, Inches(4.6), y + Inches(0.06), Inches(1.7), Inches(0.25),
+         detail, size=9, color=GRAY)
 
-# Full program callout below scenarios
-add_rect(slide, Inches(0.8), Inches(5.15), Inches(5.5), Inches(1.1), CARD, BORDER, 0.02)
-text(slide, Inches(1.05), Inches(5.22), Inches(5.0), Inches(0.22),
-     "FULL PROGRAM (Steps 1-4)", size=9, color=GRAY, bold=True)
-text(slide, Inches(1.05), Inches(5.47), Inches(5.0), Inches(0.25),
-     "$39M+/yr at maturity", size=20, color=BLACK, bold=True)
-text(slide, Inches(1.05), Inches(5.78), Inches(5.0), Inches(0.25),
-     "$15-22M investment over 5 years  |  ~4x blended ROI", size=10, color=GRAY)
+# Timeline
+text(slide, Inches(6.8), Inches(3.55), Inches(5.7), Inches(0.3),
+     "Timeline", size=14, color=BLACK, bold=True)
 
-# RIGHT: Financial summary
-text(slide, Inches(7.0), Inches(1.45), Inches(5.5), Inches(0.3),
-     "Year-1 Financial Impact (All Phases)", size=16, color=BLACK, bold=True)
-
-# Hero metric cards
-metric_card(slide, Inches(7.0), Inches(1.9), Inches(2.8), Inches(1.2),
-            "NET YEAR-1 VALUE", "$10.2M", BLACK, "Expected case")
-metric_card(slide, Inches(10.0), Inches(1.9), Inches(2.8), Inches(1.2),
-            "RETURN ON SPEND", "3.8x", BLACK, "On $2.7M total spend")
-
-# Breakdown
-fin_lines = [
-    ("Cost Reductions", 13, BLACK, True),
-    ("Support automation savings: $1.6M", 11, BODY, False),
-    ("Demand forecasting savings: $1.6M", 11, BODY, False),
-    ("Documentation and translation: $0.24M", 11, BODY, False),
-    ("", 5, GRAY, False),
-    ("Revenue Growth", 13, BLACK, True),
-    ("Customer retention: $3.0M", 11, BODY, False),
-    ("Package size increase: $4.0M", 11, BODY, False),
-    ("Proposal win rate: $2.5M", 11, BODY, False),
+fc_timeline = [
+    ("Month 0-24", "Data foundation (Step 2)", GANTT_LIGHT,
+     "SAP, Salesforce, and lakehouse build.\nHard gate for forecasting launch."),
+    ("Month 22-27", "Model development", GANTT_ACCENT,
+     "SageMaker trained on unified data.\nBack-test validates accuracy."),
+    ("Month 27-30", "Shadow mode", GANTT_ACCENT,
+     "Planners compare model vs. judgment.\nNo operational changes yet."),
+    ("Month 30-36", "Active pilot", RED,
+     "Live recommendations with override.\nOverrides logged for model retraining."),
 ]
-multitext(slide, Inches(7.0), Inches(3.3), Inches(5.5), Inches(2.6), fin_lines, 1.2)
+for i, (timing, label, color, desc) in enumerate(fc_timeline):
+    y = Inches(4.0) + Inches(i * 0.75)
+    add_rect(slide, Inches(6.8), y, Inches(5.7), Inches(0.65), CARD, BORDER)
+    bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(6.8), y, Pt(4), Inches(0.65))
+    bar.fill.solid()
+    bar.fill.fore_color.rgb = color
+    bar.line.fill.background()
+    text(slide, Inches(7.15), y + Inches(0.04), Inches(1.3), Inches(0.2),
+         timing, size=9, color=color, bold=True)
+    text(slide, Inches(8.5), y + Inches(0.04), Inches(3.8), Inches(0.2),
+         label, size=11, color=BLACK, bold=True)
+    text(slide, Inches(7.15), y + Inches(0.28), Inches(5.1), Inches(0.3),
+         desc, size=9, color=GRAY)
 
-# Bottom summary
-add_rect(slide, Inches(7.0), Inches(5.8), Inches(5.8), Inches(0.85), CARD, BORDER, 0.02)
-multitext(slide, Inches(7.3), Inches(5.85), Inches(5.2), Inches(0.8), [
-    ("Gross value: $12.9M", 12, BLACK, True),
-    ("Setup + operating costs: ($2.7M)", 11, GRAY, False),
-    ("Net value: $10.2M  |  Return: 3.8x", 13, BLACK, True),
-], 1.15)
-
-text(slide, Inches(0.8), Inches(6.5), Inches(5.5), Inches(0.25),
-     "Estimates based on industry benchmarks, interview data, and SRAM public filings. "
-     "Full breakdown in Appendix A1.",
-     size=8, color=GRAY)
+# ROI summary
+add_rect(slide, Inches(0.8), Inches(6.3), Inches(11.7), Inches(0.55), HIGHLIGHT_BG, BORDER, 0.02)
+text(slide, Inches(1.2), Inches(6.4), Inches(11.0), Inches(0.35),
+     "ROI: ~9x  |  Net annual value: ~$4.5M  |  Working capital release: $15-20M (one-time)  |  "
+     "Payback period: <6 months after go-live",
+     size=12, color=BLACK, bold=True, align=PP_ALIGN.CENTER)
 
 slide_footer(slide, page)
 
 
 # ----------------------------------------------------------
-# SLIDE 9: 2031 Vision (progressive build - 2 slides)
+# SLIDES 15-16: What Could Be (2031 and beyond)
 # ----------------------------------------------------------
 page += 1
 
@@ -1230,7 +1092,6 @@ for build in range(2):
     text(slide, Inches(8.0), axs_top + Inches(0.4), Inches(4.2), Inches(0.3),
          visions[0][2], size=11, color=RED, bold=True, align=PP_ALIGN.RIGHT)
 
-    # Build 2: add supporting cards + flywheel
     if build == 1:
         for i, (title, desc, rev) in enumerate(visions[1:]):
             left = Inches(0.8) + Inches(i * 4.0)
@@ -1265,13 +1126,383 @@ for build in range(2):
 
 
 # ----------------------------------------------------------
-# SLIDE: 60-Month Roadmap
+# SLIDE 17: Step 4 - New Revenue Streams
 # ----------------------------------------------------------
 page += 1
 slide = prs.slides.add_slide(blank)
 set_slide_bg(slide)
 add_logo(slide)
-slide_header(slide, "THE ROADMAP",
+slide_header(slide, "STEP 4: NEW REVENUE STREAMS",
+             "Premium AXS, subscription model, and four distinct revenue paths")
+
+text(slide, Inches(0.8), Inches(1.35), Inches(11.5), Inches(0.35),
+     "Each initiative is viable only after Step 2 data infrastructure is live. "
+     "Combined, they represent $39M+/yr at maturity.",
+     size=13, color=BODY)
+
+step4_cards = [
+    ("AXS Intelligence Platform",
+     "Unified rider data: AXS drivetrain, RockShox,\nQuarq power, Hammerhead GPS in one view.\nNo competitor has the breadth to build this.",
+     "$3-5M build", "~$20M ARR at scale", "5-7x"),
+    ("Generative Design + R&D",
+     "AI-assisted design, digital twin simulation,\nautomated patent search. Field telemetry trains\nAI on actual performance data at scale.",
+     "$2-4M build", "$3.75-14M/yr benefit", "3-5x"),
+    ("OEM Proposal Automation",
+     "Salesforce AgentForce + CPQ accelerates\nspec proposals and automates documentation.\n1% OEM win rate improvement = $2.5M/yr.",
+     "$500K-1M build", "~$3.0M/yr benefit", "4-5x"),
+    ("Compatible Upgrade Recs",
+     "SageMaker recommendation engine lifts basket\nvalue through dealer and DTC channels.\nPredictive maintenance drives repeat purchases.",
+     "$500K-800K build", "$2.5-5M/yr benefit", "4-7x"),
+]
+
+s4_card_w = Inches(5.7)
+s4_card_h = Inches(2.1)
+s4_gap_x = Inches(0.2)
+s4_gap_y = Inches(0.2)
+s4_start_x = Inches(0.8)
+s4_start_y = Inches(1.85)
+
+for i, (title, desc, invest, benefit, roi) in enumerate(step4_cards):
+    row = i // 2
+    col = i % 2
+    cx = s4_start_x + col * (s4_card_w + s4_gap_x)
+    cy = s4_start_y + row * (s4_card_h + s4_gap_y)
+    add_rect(slide, cx, cy, s4_card_w, s4_card_h, CARD, BORDER)
+    bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, cx, cy, s4_card_w, Pt(4))
+    bar.fill.solid()
+    bar.fill.fore_color.rgb = RED
+    bar.line.fill.background()
+    text(slide, cx + Inches(0.2), cy + Inches(0.12), s4_card_w - Inches(0.4), Inches(0.3),
+         title, size=13, color=BLACK, bold=True)
+    text(slide, cx + Inches(0.2), cy + Inches(0.5), s4_card_w - Inches(0.4), Inches(0.9),
+         desc, size=11, color=BODY)
+    text(slide, cx + Inches(0.2), cy + Inches(1.5), Inches(1.8), Inches(0.35),
+         invest, size=10, color=GRAY)
+    text(slide, cx + Inches(2.1), cy + Inches(1.5), Inches(2.2), Inches(0.35),
+         benefit, size=10, color=BLACK, bold=True)
+    text(slide, cx + Inches(4.4), cy + Inches(1.5), Inches(1.1), Inches(0.35),
+         roi + " ROI", size=10, color=RED, bold=True, align=PP_ALIGN.RIGHT)
+
+add_rect(slide, Inches(0.8), Inches(6.35), Inches(11.7), Inches(0.55), CARD, BORDER, 0.1)
+red_b = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
+                                Inches(0.8), Inches(6.35), Pt(4), Inches(0.55))
+red_b.fill.solid()
+red_b.fill.fore_color.rgb = RED
+red_b.line.fill.background()
+text(slide, Inches(1.2), Inches(6.41), Inches(11.0), Inches(0.42),
+     "Step 4 total: ~$6-11M investment  |  $28-42M/yr at scale  |  "
+     "Full program (Steps 1-4): ~$15-22M in  |  $39M+/yr at maturity  |  ~4x blended ROI",
+     size=12, color=BLACK, bold=True, align=PP_ALIGN.CENTER)
+
+slide_footer(slide, page)
+
+
+# ----------------------------------------------------------
+# SLIDE 18: What It Takes
+# ----------------------------------------------------------
+page += 1
+slide = prs.slides.add_slide(blank)
+set_slide_bg(slide)
+add_logo(slide)
+slide_header(slide, "WHAT IT TAKES",
+             "Talent, data, and leadership required at each phase")
+
+enabler_cols = [
+    ("TALENT", [
+        ("Steps 1 + 3A", "1 integration engineer + 1 product owner\n"
+         "for the support pilot. GitHub Copilot for\n"
+         "engineers; CoPilot for business staff.\n"
+         "CTO + COO name program sponsors."),
+        ("Step 2+", "3-5 data engineers + 1 senior data architect\n"
+         "for the lakehouse. Add ML lead at Month 20\n"
+         "for demand forecasting. Constraint is data\n"
+         "engineering capacity, not AI tooling."),
+    ]),
+    ("DATA", [
+        ("Today", "AXS + Hammerhead data is pilot-ready.\n"
+         "Weber: 60-70% of the way to AI-ready\n"
+         "in this domain. Everything else is siloed\n"
+         "by brand. Shopify is the biggest gap."),
+        ("Needed", "Unified lakehouse linking SAP, Salesforce,\n"
+         "telemetry, and Shopify. Hard gate before\n"
+         "Step 3B and Step 4 launch.\n"
+         "24-month build; start now."),
+    ]),
+    ("LEADERSHIP", [
+        ("Before pilot", "CEO names a dedicated C-suite AI Sponsor\n"
+         "with primary accountability. Not a committee.\n"
+         "Not a secondary responsibility.\n"
+         "Highest-leverage decision in the plan."),
+        ("Phase gate", "Sponsor resolves cross-functional conflicts,\n"
+         "enforces data centralization, and holds\n"
+         "sequencing discipline across all four steps.\n"
+         "No sponsor, no Step 2."),
+    ]),
+]
+
+col_w = Inches(3.75)
+col_gap = Inches(0.2)
+col_start = Inches(0.8)
+
+for ci, (col_title, items) in enumerate(enabler_cols):
+    cx = col_start + ci * (col_w + col_gap)
+    text(slide, cx, Inches(1.5), col_w, Inches(0.3),
+         col_title, size=14, color=BLACK, bold=True)
+    for ri, (phase, detail) in enumerate(items):
+        ry = Inches(2.0) + Inches(ri * 2.2)
+        card_ht = Inches(2.0)
+        add_rect(slide, cx, ry, col_w, card_ht, CARD, BORDER)
+        text(slide, cx + Inches(0.2), ry + Inches(0.12), col_w - Inches(0.4), Inches(0.25),
+             phase.upper(), size=9, color=GRAY, bold=True)
+        text(slide, cx + Inches(0.2), ry + Inches(0.4), col_w - Inches(0.4), Inches(1.4),
+             detail, size=11, color=BODY)
+
+quote_box(slide, Inches(0.8), Inches(6.3), Inches(11.7), Inches(0.7),
+          "We are 60 to 70 percent of the way to AI-ready data "
+          "in the AXS and Hammerhead domain.",
+          "Clint Weber, VP Global Sales & Manufacturing, SRAM")
+
+slide_footer(slide, page)
+
+
+# ----------------------------------------------------------
+# SLIDE 19: Trade-offs and Risks
+# ----------------------------------------------------------
+page += 1
+slide = prs.slides.add_slide(blank)
+set_slide_bg(slide)
+add_logo(slide)
+slide_header(slide, "TRADE-OFFS AND RISKS",
+             "Three risks worth naming before the decision")
+
+tradeoffs = [
+    ("Dealer trust is fragile",
+     "One confident wrong answer from the AI reaches a dealer, and the support "
+     "team loses credibility it spent years building. Human-in-the-loop and "
+     "weekly quality reviews mitigate this, but they also slow throughput gains.",
+     "MITIGATION: Kill criteria trigger rollback at first safety error"),
+    ("Data consolidation has no executive sponsor",
+     "Weber owns sales and manufacturing but not the CRM, ERP, or inventory systems. "
+     "Phase 2 requires a unified data layer across those systems. Without a "
+     "senior sponsor, data integration stalls and the pilot stays isolated.",
+     "MITIGATION: CEO assigns cross-functional data owner in parallel"),
+    ("AI hype creates unrealistic internal expectations",
+     "SRAM's engineering culture values precision. If leadership frames AI as a "
+     "silver bullet rather than a tool, early imperfections will fuel skepticism "
+     "and internal resistance to future phases.",
+     "MITIGATION: Frame pilot as experiment with defined success and failure criteria"),
+]
+
+for i, (title, desc, mitigation) in enumerate(tradeoffs):
+    top = Inches(1.5) + Inches(i * 1.75)
+    add_rect(slide, Inches(0.8), top, Inches(11.5), Inches(1.5), CARD, BORDER)
+    bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
+                                 Inches(0.8), top, Pt(4), Inches(1.5))
+    bar.fill.solid()
+    bar.fill.fore_color.rgb = ACCENT_RED_SOFT
+    bar.line.fill.background()
+    text(slide, Inches(1.2), top + Inches(0.1), Inches(10.5), Inches(0.3),
+         title, size=14, color=BLACK, bold=True)
+    text(slide, Inches(1.2), top + Inches(0.45), Inches(10.5), Inches(0.6),
+         desc, size=11, color=BODY)
+    text(slide, Inches(1.2), top + Inches(1.1), Inches(10.5), Inches(0.25),
+         mitigation, size=10, color=GRAY, bold=True)
+
+slide_footer(slide, page)
+
+
+# ----------------------------------------------------------
+# SLIDE 20: Clear Next Steps for Leadership
+# ----------------------------------------------------------
+page += 1
+slide = prs.slides.add_slide(blank)
+set_slide_bg(slide)
+add_logo(slide)
+slide_header(slide, "NEXT STEPS",
+             "Three actions for SRAM's CEO")
+
+actions = [
+    ("1", "Launch the 6-Month Support Program",
+     "AXS and Hammerhead dealer support. One product owner, one integration "
+     "engineer. Human approval on all outputs. Day-45 scope review, Day-90 "
+     "go/no-go gate. ~$4.5M net Year-1 value at 9x ROI."),
+    ("2", "Name the C-Suite AI Sponsor",
+     "One person. Primary accountability. Not a committee, not a side "
+     "responsibility. This single decision is the highest-leverage action in the "
+     "plan. The program does not survive Step 2 organizational friction without it."),
+    ("3", "Authorize the Step 2 Data Investment",
+     "Begin SAP and Salesforce vendor selection now, in parallel with the pilot. "
+     "Every month of delay is a month of delay on demand forecasting, AXS "
+     "Intelligence, and OEM automation. $6-10M unlocks $34M+/yr at maturity."),
+]
+
+for i, (num, title, desc) in enumerate(actions):
+    top = Inches(1.5) + Inches(i * 1.55)
+    add_rect(slide, Inches(0.8), top, Inches(11.5), Inches(1.3), CARD, BORDER)
+
+    circle = slide.shapes.add_shape(MSO_SHAPE.OVAL, Inches(1.2), top + Inches(0.25),
+                                    Inches(0.5), Inches(0.5))
+    circle.fill.solid()
+    circle.fill.fore_color.rgb = BLACK
+    circle.line.fill.background()
+    tf = circle.text_frame
+    tf.paragraphs[0].text = num
+    tf.paragraphs[0].font.size = Pt(18)
+    tf.paragraphs[0].font.color.rgb = BG_WHITE
+    tf.paragraphs[0].font.bold = True
+    tf.paragraphs[0].alignment = PP_ALIGN.CENTER
+
+    text(slide, Inches(2.0), top + Inches(0.1), Inches(9.8), Inches(0.35),
+         title, size=18, color=BLACK, bold=True)
+    text(slide, Inches(2.0), top + Inches(0.5), Inches(9.8), Inches(0.6),
+         desc, size=12, color=BODY)
+
+# Bottom bar
+add_rect(slide, Inches(0.8), Inches(6.25), Inches(11.5), Inches(0.6), CARD, BORDER, 0.1)
+red_bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
+                                 Inches(0.8), Inches(6.25), Pt(4), Inches(0.6))
+red_bar.fill.solid()
+red_bar.fill.fore_color.rgb = RED
+red_bar.line.fill.background()
+multitext(slide, Inches(1.3), Inches(6.28), Inches(10.5), Inches(0.55), [
+    ("Support pilot: 9x ROI on $500K setup  |  Full program: $39M+/yr at maturity on $15-22M investment", 13, BLACK, True),
+    ("Downside bounded by pilot kill criteria  |  Upside scales with SRAM's connected data advantage", 11, GRAY, False),
+], 1.1)
+
+slide_footer(slide, page)
+
+
+# ===========================================================
+# APPENDIX SLIDES
+# ===========================================================
+
+# ----------------------------------------------------------
+# APPENDIX A1: Full Financial Breakdown
+# ----------------------------------------------------------
+slide = prs.slides.add_slide(blank)
+set_slide_bg(slide)
+add_logo(slide)
+slide_header(slide, "APPENDIX",
+             "Financial detail across three scenarios")
+
+headers = ["Category", "Conservative", "Expected", "Upside"]
+rows = [
+    ("Support assistant savings", "$0.5M", "$1.6M", "$4.3M"),
+    ("Forecasting + inventory", "$0.7M", "$1.6M", "$4.5M"),
+    ("Documentation + translation", "$0.1M", "$0.24M", "$0.9M"),
+    ("Customer retention revenue", "$1.5M", "$3.0M", "$4.5M"),
+    ("Package size increase", "$2.0M", "$4.0M", "$8.0M"),
+    ("Proposal win-rate revenue", "$1.3M", "$2.5M", "$3.8M"),
+]
+totals = [
+    ("Gross value", "$6.1M", "$12.9M", "$26.0M"),
+    ("Setup costs", "($1.2M)", "($2.0M)", "($2.5M)"),
+    ("Operating costs", "($0.4M)", "($0.7M)", "($1.0M)"),
+    ("Net Year-1 value", "$4.5M", "$10.2M", "$22.5M"),
+    ("Return on spend", "2.8x", "3.8x", "6.4x"),
+]
+
+for j, h in enumerate(headers):
+    x = Inches(0.8 + j * 3.0) if j > 0 else Inches(0.8)
+    text(slide, x, Inches(1.5), Inches(3.0), Inches(0.3),
+         h, size=11, color=GRAY, bold=True)
+
+for i, (cat, c, e, u) in enumerate(rows):
+    y = Inches(1.9 + i * 0.4)
+    if i % 2 == 0:
+        add_rect(slide, Inches(0.8), y - Inches(0.02), Inches(11.5), Inches(0.38),
+                 LIGHT_GRAY_BG, None, 0.02)
+    text(slide, Inches(0.8), y, Inches(3.0), Inches(0.3), cat, size=11, color=BODY)
+    text(slide, Inches(3.8), y, Inches(3.0), Inches(0.3), c, size=11, color=BODY)
+    text(slide, Inches(6.8), y, Inches(3.0), Inches(0.3), e,
+         size=11, color=BLACK, bold=True)
+    text(slide, Inches(9.8), y, Inches(3.0), Inches(0.3), u, size=11, color=BODY)
+
+sep_y = Inches(1.9 + len(rows) * 0.4)
+line = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
+                              Inches(0.8), sep_y, Inches(11.5), Pt(1))
+line.fill.solid()
+line.fill.fore_color.rgb = BORDER
+line.line.fill.background()
+
+for i, (cat, c, e, u) in enumerate(totals):
+    y = sep_y + Inches(0.15 + i * 0.4)
+    is_key = cat in ("Net Year-1 value", "Return on spend")
+    text(slide, Inches(0.8), y, Inches(3.0), Inches(0.3), cat,
+         size=11, color=BLACK, bold=is_key)
+    text(slide, Inches(3.8), y, Inches(3.0), Inches(0.3), c,
+         size=11, color=BLACK if is_key else BODY, bold=is_key)
+    text(slide, Inches(6.8), y, Inches(3.0), Inches(0.3), e,
+         size=11, color=BLACK, bold=True)
+    text(slide, Inches(9.8), y, Inches(3.0), Inches(0.3), u,
+         size=11, color=BLACK if is_key else BODY, bold=is_key)
+
+text(slide, Inches(0.8), Inches(7.0), Inches(10), Inches(0.3),
+     "APPENDIX A1", size=8, color=GRAY)
+
+
+# ----------------------------------------------------------
+# APPENDIX A2: Interview Highlights
+# ----------------------------------------------------------
+slide = prs.slides.add_slide(blank)
+set_slide_bg(slide)
+add_logo(slide)
+slide_header(slide, "APPENDIX",
+             "Simulated Interview with Clint Weber, VP Global Sales & Manufacturing")
+
+text(slide, Inches(0.8), Inches(1.35), Inches(11), Inches(0.3),
+     "AI-simulated interview  |  March 2026  |  Key quotes and insights",
+     size=12, color=GRAY)
+
+quotes = [
+    ("On data readiness",
+     "The areas where we've under-invested in process, data, and cross-functional "
+     "integration are exactly the areas where AI could close the gap fastest. "
+     "Customer support. Demand forecasting. Compatibility and documentation management.",
+     "Validates bounded pilot scope"),
+    ("On cultural barriers",
+     "We built a Formula 1 car and then had a regional pit crew. The support "
+     "infrastructure has lagged behind the hardware. That is a cultural artifact "
+     "as much as a resource one.",
+     "Human-in-the-loop is mandatory"),
+    ("On competitive advantage",
+     "Shimano riders use an app to check compatibility. Our riders use an "
+     "ecosystem to train, navigate, tune their suspension, and monitor their "
+     "entire component stack in real time. That rider does not churn.",
+     "Hammerhead is SRAM's real AI moat"),
+    ("On implementation discipline",
+     "If it doesn't hit the metric, you shut it down, you learn from it, and "
+     "you redeploy the resources. That discipline is what separates companies "
+     "that build real AI capability from companies that accumulate AI debt.",
+     "Aligns with our 90-day pilot targets"),
+]
+
+for i, (topic, quote, implication) in enumerate(quotes):
+    y = Inches(1.85 + i * 1.3)
+    add_rect(slide, Inches(0.8), y, Inches(11.8), Inches(1.1), CARD, BORDER)
+    bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
+                                 Inches(0.8), y, Pt(4), Inches(1.1))
+    bar.fill.solid()
+    bar.fill.fore_color.rgb = GRAY
+    bar.line.fill.background()
+    text(slide, Inches(1.2), y + Inches(0.05), Inches(2.0), Inches(0.2),
+         topic.upper(), size=9, color=GRAY, bold=True)
+    text(slide, Inches(1.2), y + Inches(0.28), Inches(8.0), Inches(0.6),
+         f"\u201C{quote}\u201D", size=11, color=BODY, italic=True)
+    text(slide, Inches(9.5), y + Inches(0.35), Inches(2.8), Inches(0.5),
+         f"\u2192 {implication}", size=10, color=BLACK, bold=True)
+
+text(slide, Inches(0.8), Inches(7.0), Inches(10), Inches(0.3),
+     "APPENDIX A2", size=8, color=GRAY)
+
+
+# ----------------------------------------------------------
+# APPENDIX A3: 60-Month Roadmap
+# ----------------------------------------------------------
+slide = prs.slides.add_slide(blank)
+set_slide_bg(slide)
+add_logo(slide)
+slide_header(slide, "APPENDIX",
              "Five years from pilot to AI-first enterprise")
 
 text(slide, Inches(0.8), Inches(1.35), Inches(11.5), Inches(0.35),
@@ -1354,392 +1585,12 @@ text(slide, Inches(0.8), Inches(5.9), Inches(11.7), Inches(0.25),
      "Expected annual value at maturity: $39M+/yr  |  Blended ROI: ~4x",
      size=10, color=GRAY, align=PP_ALIGN.CENTER)
 
-slide_footer(slide, page)
-
-
-# ----------------------------------------------------------
-# SLIDE: Step 4 Revenue + Innovation Detail
-# ----------------------------------------------------------
-page += 1
-slide = prs.slides.add_slide(blank)
-set_slide_bg(slide)
-add_logo(slide)
-slide_header(slide, "STEP 4: REVENUE + INNOVATION",
-             "SRAM's connected ecosystem creates four distinct new revenue streams")
-
-text(slide, Inches(0.8), Inches(1.35), Inches(11.5), Inches(0.35),
-     "Each initiative is viable only after Step 2 data infrastructure is live. "
-     "Combined, they represent $39M+/yr at maturity.",
-     size=13, color=BODY)
-
-step4_cards = [
-    ("AXS Intelligence Platform",
-     "Unified rider data: AXS drivetrain, RockShox,\nQuarq power, Hammerhead GPS in one view.\nNo competitor has the breadth to build this.",
-     "$3-5M build", "~$20M ARR at scale", "5-7x"),
-    ("Generative Design + R&D",
-     "AI-assisted design, digital twin simulation,\nautomated patent search. Field telemetry trains\nAI on actual performance data at scale.",
-     "$2-4M build", "$3.75-14M/yr benefit", "3-5x"),
-    ("OEM Proposal Automation",
-     "Salesforce AgentForce + CPQ accelerates\nspec proposals and automates documentation.\n1% OEM win rate improvement = $2.5M/yr.",
-     "$500K-1M build", "~$3.0M/yr benefit", "4-5x"),
-    ("Compatible Upgrade Recs",
-     "SageMaker recommendation engine lifts basket\nvalue through dealer and DTC channels.\nPredictive maintenance drives repeat purchases.",
-     "$500K-800K build", "$2.5-5M/yr benefit", "4-7x"),
-]
-
-s4_card_w = Inches(5.7)
-s4_card_h = Inches(2.1)
-s4_gap_x = Inches(0.2)
-s4_gap_y = Inches(0.2)
-s4_start_x = Inches(0.8)
-s4_start_y = Inches(1.85)
-
-for i, (title, desc, invest, benefit, roi) in enumerate(step4_cards):
-    row = i // 2
-    col = i % 2
-    cx = s4_start_x + col * (s4_card_w + s4_gap_x)
-    cy = s4_start_y + row * (s4_card_h + s4_gap_y)
-    add_rect(slide, cx, cy, s4_card_w, s4_card_h, CARD, BORDER)
-    bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, cx, cy, s4_card_w, Pt(4))
-    bar.fill.solid()
-    bar.fill.fore_color.rgb = RED
-    bar.line.fill.background()
-    text(slide, cx + Inches(0.2), cy + Inches(0.12), s4_card_w - Inches(0.4), Inches(0.3),
-         title, size=13, color=BLACK, bold=True)
-    text(slide, cx + Inches(0.2), cy + Inches(0.5), s4_card_w - Inches(0.4), Inches(0.9),
-         desc, size=11, color=BODY)
-    text(slide, cx + Inches(0.2), cy + Inches(1.5), Inches(1.8), Inches(0.35),
-         invest, size=10, color=GRAY)
-    text(slide, cx + Inches(2.1), cy + Inches(1.5), Inches(2.2), Inches(0.35),
-         benefit, size=10, color=BLACK, bold=True)
-    text(slide, cx + Inches(4.4), cy + Inches(1.5), Inches(1.1), Inches(0.35),
-         roi + " ROI", size=10, color=RED, bold=True, align=PP_ALIGN.RIGHT)
-
-add_rect(slide, Inches(0.8), Inches(6.35), Inches(11.7), Inches(0.55), CARD, BORDER, 0.1)
-red_b = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
-                                Inches(0.8), Inches(6.35), Pt(4), Inches(0.55))
-red_b.fill.solid()
-red_b.fill.fore_color.rgb = RED
-red_b.line.fill.background()
-text(slide, Inches(1.2), Inches(6.41), Inches(11.0), Inches(0.42),
-     "Step 4 total: ~$6-11M investment  |  $28-42M/yr at scale  |  "
-     "Full program (Steps 1-4): ~$15-22M in  |  $39M+/yr at maturity  |  ~4x blended ROI",
-     size=12, color=BLACK, bold=True, align=PP_ALIGN.CENTER)
-
-slide_footer(slide, page)
-
-
-# ----------------------------------------------------------
-# SLIDE: Organizational Enablers
-# ----------------------------------------------------------
-page += 1
-slide = prs.slides.add_slide(blank)
-set_slide_bg(slide)
-add_logo(slide)
-slide_header(slide, "WHAT IT TAKES",
-             "Talent, data, and leadership required at each phase")
-
-# Three columns: Talent, Data, Leadership
-enabler_cols = [
-    ("TALENT", [
-        ("Steps 1 + 3A", "1 integration engineer + 1 product owner\n"
-         "for the support pilot. GitHub Copilot for\n"
-         "engineers; CoPilot for business staff.\n"
-         "CTO + COO name program sponsors."),
-        ("Step 2+", "3-5 data engineers + 1 senior data architect\n"
-         "for the lakehouse. Add ML lead at Month 20\n"
-         "for demand forecasting. Constraint is data\n"
-         "engineering capacity, not AI tooling."),
-    ]),
-    ("DATA", [
-        ("Today", "AXS + Hammerhead data is pilot-ready.\n"
-         "Weber: 60-70% of the way to AI-ready\n"
-         "in this domain. Everything else is siloed\n"
-         "by brand. Shopify is the biggest gap."),
-        ("Needed", "Unified lakehouse linking SAP, Salesforce,\n"
-         "telemetry, and Shopify. Hard gate before\n"
-         "Step 3B and Step 4 can launch.\n"
-         "24-month build; start now."),
-    ]),
-    ("LEADERSHIP", [
-        ("Before pilot", "CEO names a dedicated C-suite AI Sponsor\n"
-         "with primary accountability. Not a committee.\n"
-         "Not a secondary responsibility.\n"
-         "Highest-leverage decision in the plan."),
-        ("Phase gate", "Sponsor resolves cross-functional conflicts,\n"
-         "enforces data centralization, and holds\n"
-         "sequencing discipline across all four steps.\n"
-         "No sponsor, no Step 2."),
-    ]),
-]
-
-col_w = Inches(3.75)
-col_gap = Inches(0.2)
-col_start = Inches(0.8)
-
-for ci, (col_title, items) in enumerate(enabler_cols):
-    cx = col_start + ci * (col_w + col_gap)
-
-    # Column header
-    text(slide, cx, Inches(1.5), col_w, Inches(0.3),
-         col_title, size=14, color=BLACK, bold=True)
-
-    for ri, (phase, detail) in enumerate(items):
-        ry = Inches(2.0) + Inches(ri * 2.2)
-        card_ht = Inches(2.0)
-        add_rect(slide, cx, ry, col_w, card_ht, CARD, BORDER)
-        text(slide, cx + Inches(0.2), ry + Inches(0.12), col_w - Inches(0.4), Inches(0.25),
-             phase.upper(), size=9, color=GRAY, bold=True)
-        text(slide, cx + Inches(0.2), ry + Inches(0.4), col_w - Inches(0.4), Inches(1.4),
-             detail, size=11, color=BODY)
-
-# Weber readiness quote
-quote_box(slide, Inches(0.8), Inches(6.3), Inches(11.7), Inches(0.7),
-          "We are 60 to 70 percent of the way to AI-ready data "
-          "in the AXS and Hammerhead domain.",
-          "Clint Weber, VP Global Sales & Manufacturing, SRAM")
-
-slide_footer(slide, page)
-
-
-# ----------------------------------------------------------
-# SLIDE: Trade-offs and Risks
-# ----------------------------------------------------------
-page += 1
-slide = prs.slides.add_slide(blank)
-set_slide_bg(slide)
-add_logo(slide)
-slide_header(slide, "THE TRADE-OFFS",
-             "Three risks worth naming before the decision")
-
-tradeoffs = [
-    ("Dealer trust is fragile",
-     "One confident wrong answer from the AI reaches a dealer, and the support "
-     "team loses credibility it spent years building. Human-in-the-loop and "
-     "weekly quality reviews mitigate this, but they also slow throughput gains.",
-     "MITIGATION: Kill criteria trigger rollback at first safety error"),
-    ("Data consolidation has no executive sponsor",
-     "Weber owns sales and manufacturing but not the CRM, ERP, or inventory systems. "
-     "Phase 2 requires a unified data layer across those systems. Without a "
-     "senior sponsor, data integration stalls and the pilot stays isolated.",
-     "MITIGATION: CEO assigns cross-functional data owner in parallel"),
-    ("AI hype creates unrealistic internal expectations",
-     "SRAM's engineering culture values precision. If leadership frames AI as a "
-     "silver bullet rather than a tool, early imperfections will fuel skepticism "
-     "and internal resistance to future phases.",
-     "MITIGATION: Frame pilot as experiment with defined success and failure criteria"),
-]
-
-for i, (title, desc, mitigation) in enumerate(tradeoffs):
-    top = Inches(1.5) + Inches(i * 1.75)
-    add_rect(slide, Inches(0.8), top, Inches(11.5), Inches(1.5), CARD, BORDER)
-    bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
-                                 Inches(0.8), top, Pt(4), Inches(1.5))
-    bar.fill.solid()
-    bar.fill.fore_color.rgb = ACCENT_RED_SOFT
-    bar.line.fill.background()
-    text(slide, Inches(1.2), top + Inches(0.1), Inches(10.5), Inches(0.3),
-         title, size=14, color=BLACK, bold=True)
-    text(slide, Inches(1.2), top + Inches(0.45), Inches(10.5), Inches(0.6),
-         desc, size=11, color=BODY)
-    text(slide, Inches(1.2), top + Inches(1.1), Inches(10.5), Inches(0.25),
-         mitigation, size=10, color=GRAY, bold=True)
-
-slide_footer(slide, page)
-
-
-# ----------------------------------------------------------
-# SLIDE: The Ask
-# ----------------------------------------------------------
-page += 1
-slide = prs.slides.add_slide(blank)
-set_slide_bg(slide)
-add_logo(slide)
-slide_header(slide, "THE DECISION",
-             "Three actions for SRAM's CEO")
-
-actions = [
-    ("1", "Launch the 6-Month Support Program",
-     "AXS and Hammerhead dealer support. One product owner, one integration "
-     "engineer. Human approval on all outputs. Day-45 scope review, Day-90 "
-     "go/no-go gate. ~$4.5M net Year-1 value at 9x ROI."),
-    ("2", "Name the C-Suite AI Sponsor",
-     "One person. Primary accountability. Not a committee, not a side "
-     "responsibility. This single decision is the highest-leverage action in the "
-     "plan. The program does not survive Step 2 organizational friction without it."),
-    ("3", "Authorize the Step 2 Data Investment",
-     "Begin SAP and Salesforce vendor selection now, in parallel with the pilot. "
-     "Every month of delay is a month of delay on demand forecasting, AXS "
-     "Intelligence, and OEM automation. $6-10M unlocks $34M+/yr at maturity."),
-]
-
-for i, (num, title, desc) in enumerate(actions):
-    top = Inches(1.5) + Inches(i * 1.55)
-    add_rect(slide, Inches(0.8), top, Inches(11.5), Inches(1.3), CARD, BORDER)
-
-    # Number circle
-    circle = slide.shapes.add_shape(MSO_SHAPE.OVAL, Inches(1.2), top + Inches(0.25),
-                                    Inches(0.5), Inches(0.5))
-    circle.fill.solid()
-    circle.fill.fore_color.rgb = BLACK
-    circle.line.fill.background()
-    tf = circle.text_frame
-    tf.paragraphs[0].text = num
-    tf.paragraphs[0].font.size = Pt(18)
-    tf.paragraphs[0].font.color.rgb = BG_WHITE
-    tf.paragraphs[0].font.bold = True
-    tf.paragraphs[0].alignment = PP_ALIGN.CENTER
-
-    text(slide, Inches(2.0), top + Inches(0.1), Inches(9.8), Inches(0.35),
-         title, size=18, color=BLACK, bold=True)
-    text(slide, Inches(2.0), top + Inches(0.5), Inches(9.8), Inches(0.6),
-         desc, size=12, color=BODY)
-
-# Bottom bar
-add_rect(slide, Inches(0.8), Inches(6.25), Inches(11.5), Inches(0.6), CARD, BORDER, 0.1)
-red_bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
-                                 Inches(0.8), Inches(6.25), Pt(4), Inches(0.6))
-red_bar.fill.solid()
-red_bar.fill.fore_color.rgb = RED
-red_bar.line.fill.background()
-multitext(slide, Inches(1.3), Inches(6.28), Inches(10.5), Inches(0.55), [
-    ("Support pilot: 9x ROI on $500K setup  |  Full program: $39M+/yr at maturity on $15-22M investment", 13, BLACK, True),
-    ("Downside bounded by pilot kill criteria  |  Upside scales with SRAM's connected data advantage", 11, GRAY, False),
-], 1.1)
-
-slide_footer(slide, page)
-
-
-# ===========================================================
-# APPENDIX SLIDES (for Q&A backup)
-# ===========================================================
-
-# ----------------------------------------------------------
-# APPENDIX A1: Full Financial Breakdown
-# ----------------------------------------------------------
-slide = prs.slides.add_slide(blank)
-set_slide_bg(slide)
-add_logo(slide)
-slide_header(slide, "APPENDIX",
-             "Financial detail across three scenarios")
-
-headers = ["Category", "Conservative", "Expected", "Upside"]
-rows = [
-    ("Support assistant savings", "$0.5M", "$1.6M", "$4.3M"),
-    ("Forecasting + inventory", "$0.7M", "$1.6M", "$4.5M"),
-    ("Documentation + translation", "$0.1M", "$0.24M", "$0.9M"),
-    ("Customer retention revenue", "$1.5M", "$3.0M", "$4.5M"),
-    ("Package size increase", "$2.0M", "$4.0M", "$8.0M"),
-    ("Proposal win-rate revenue", "$1.3M", "$2.5M", "$3.8M"),
-]
-totals = [
-    ("Gross value", "$6.1M", "$12.9M", "$26.0M"),
-    ("Setup costs", "($1.2M)", "($2.0M)", "($2.5M)"),
-    ("Operating costs", "($0.4M)", "($0.7M)", "($1.0M)"),
-    ("Net Year-1 value", "$4.5M", "$10.2M", "$22.5M"),
-    ("Return on spend", "2.8x", "3.8x", "6.4x"),
-]
-
-# Header row
-for j, h in enumerate(headers):
-    x = Inches(0.8 + j * 3.0) if j > 0 else Inches(0.8)
-    text(slide, x, Inches(1.5), Inches(3.0), Inches(0.3),
-         h, size=11, color=GRAY, bold=True)
-
-# Data rows
-for i, (cat, c, e, u) in enumerate(rows):
-    y = Inches(1.9 + i * 0.4)
-    if i % 2 == 0:
-        add_rect(slide, Inches(0.8), y - Inches(0.02), Inches(11.5), Inches(0.38),
-                 LIGHT_GRAY_BG, None, 0.02)
-    text(slide, Inches(0.8), y, Inches(3.0), Inches(0.3), cat, size=11, color=BODY)
-    text(slide, Inches(3.8), y, Inches(3.0), Inches(0.3), c, size=11, color=BODY)
-    text(slide, Inches(6.8), y, Inches(3.0), Inches(0.3), e,
-         size=11, color=BLACK, bold=True)
-    text(slide, Inches(9.8), y, Inches(3.0), Inches(0.3), u, size=11, color=BODY)
-
-# Separator line
-sep_y = Inches(1.9 + len(rows) * 0.4)
-line = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
-                              Inches(0.8), sep_y, Inches(11.5), Pt(1))
-line.fill.solid()
-line.fill.fore_color.rgb = BORDER
-line.line.fill.background()
-
-# Total rows
-for i, (cat, c, e, u) in enumerate(totals):
-    y = sep_y + Inches(0.15 + i * 0.4)
-    is_key = cat in ("Net Year-1 value", "Return on spend")
-    text(slide, Inches(0.8), y, Inches(3.0), Inches(0.3), cat,
-         size=11, color=BLACK, bold=is_key)
-    text(slide, Inches(3.8), y, Inches(3.0), Inches(0.3), c,
-         size=11, color=BLACK if is_key else BODY, bold=is_key)
-    text(slide, Inches(6.8), y, Inches(3.0), Inches(0.3), e,
-         size=11, color=BLACK, bold=True)
-    text(slide, Inches(9.8), y, Inches(3.0), Inches(0.3), u,
-         size=11, color=BLACK if is_key else BODY, bold=is_key)
-
 text(slide, Inches(0.8), Inches(7.0), Inches(10), Inches(0.3),
-     "APPENDIX A1", size=8, color=GRAY)
+     "APPENDIX A3", size=8, color=GRAY)
 
 
 # ----------------------------------------------------------
-# APPENDIX A2: Interview Highlights
-# ----------------------------------------------------------
-slide = prs.slides.add_slide(blank)
-set_slide_bg(slide)
-add_logo(slide)
-slide_header(slide, "APPENDIX",
-             "Simulated Interview with Clint Weber, VP Global Sales & Manufacturing")
-
-text(slide, Inches(0.8), Inches(1.35), Inches(11), Inches(0.3),
-     "AI-simulated interview  |  March 2026  |  Key quotes and insights",
-     size=12, color=GRAY)
-
-quotes = [
-    ("On data readiness",
-     "The areas where we've under-invested in process, data, and cross-functional "
-     "integration are exactly the areas where AI could close the gap fastest. "
-     "Customer support. Demand forecasting. Compatibility and documentation management.",
-     "Validates bounded pilot scope"),
-    ("On cultural barriers",
-     "We built a Formula 1 car and then had a regional pit crew. The support "
-     "infrastructure has lagged behind the hardware. That is a cultural artifact "
-     "as much as a resource one.",
-     "Human-in-the-loop is mandatory"),
-    ("On competitive advantage",
-     "Shimano riders use an app to check compatibility. Our riders use an "
-     "ecosystem to train, navigate, tune their suspension, and monitor their "
-     "entire component stack in real time. That rider does not churn.",
-     "Hammerhead is SRAM's real AI moat"),
-    ("On implementation discipline",
-     "If it doesn't hit the metric, you shut it down, you learn from it, and "
-     "you redeploy the resources. That discipline is what separates companies "
-     "that build real AI capability from companies that accumulate AI debt.",
-     "Aligns with our 90-day pilot targets"),
-]
-
-for i, (topic, quote, implication) in enumerate(quotes):
-    y = Inches(1.85 + i * 1.3)
-    add_rect(slide, Inches(0.8), y, Inches(11.8), Inches(1.1), CARD, BORDER)
-    bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,
-                                 Inches(0.8), y, Pt(4), Inches(1.1))
-    bar.fill.solid()
-    bar.fill.fore_color.rgb = GRAY
-    bar.line.fill.background()
-    text(slide, Inches(1.2), y + Inches(0.05), Inches(2.0), Inches(0.2),
-         topic.upper(), size=9, color=GRAY, bold=True)
-    text(slide, Inches(1.2), y + Inches(0.28), Inches(8.0), Inches(0.6),
-         f"\u201C{quote}\u201D", size=11, color=BODY, italic=True)
-    text(slide, Inches(9.5), y + Inches(0.35), Inches(2.8), Inches(0.5),
-         f"\u2192 {implication}", size=10, color=BLACK, bold=True)
-
-text(slide, Inches(0.8), Inches(7.0), Inches(10), Inches(0.3),
-     "APPENDIX A2", size=8, color=GRAY)
-
-
-# ----------------------------------------------------------
-# APPENDIX A3: Phasing and Organizational Requirements
+# APPENDIX A4: Phasing and Organizational Requirements
 # ----------------------------------------------------------
 slide = prs.slides.add_slide(blank)
 set_slide_bg(slide)
@@ -1789,7 +1640,7 @@ for i, (title, timing, items) in enumerate(phase_details):
                 Inches(1.6), items, BODY, 11)
 
 text(slide, Inches(0.8), Inches(7.0), Inches(10), Inches(0.3),
-     "APPENDIX A3", size=8, color=GRAY)
+     "APPENDIX A4", size=8, color=GRAY)
 
 
 # ----------------------------------------------------------
@@ -1803,5 +1654,5 @@ out_path = os.path.join(out_dir, "SRAM_AI_Adoption_Playbook.pptx")
 prs.save(out_path)
 print(f"Saved presentation to {out_path}")
 n_slides = len(prs.slides)
-n_appendix = 3
+n_appendix = 4
 print(f"Slides: {n_slides} ({n_slides - n_appendix} content + {n_appendix} appendix)")
